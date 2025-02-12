@@ -1,5 +1,7 @@
 <?php
- require_once dirname(__DIR__,3). '/vendor/autoload.php';
+
+include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -7,7 +9,7 @@
 
 <head>
     <?php
-        include_once PATH . "Template/_includes/_head.php";
+    include_once PATH . "Template/_includes/_head.php";
     ?>
 </head>
 
@@ -66,36 +68,19 @@
                     <!-- /.card-footer-->
                 </div>
                 <!-- /.card -->
-
             </section>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-
-        <footer class="main-footer">
-            <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.0.1
-            </div>
-            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-            reserved.
-        </footer>
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
+        <?php
+        include_once PATH . 'Template/_includes/_footer.php';
+        ?>
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
-
-    <!-- jQuery -->
-    <script src="../../plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../../dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../../dist/js/demo.js"></script>
+    <?php
+    include_once PATH . 'Template/_includes/_scripts.php';
+    ?>
 </body>
 
 </html>
