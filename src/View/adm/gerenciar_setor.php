@@ -1,7 +1,5 @@
 <?php
-
 include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -30,12 +28,12 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Blank Page</h1>
+                            <h1>Gerenciar setor do equipamento</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Blank Page</li>
+                                <li class="breadcrumb-item"><a href="#">Menu</a></li>
+                                <li class="breadcrumb-item active">Pagina Inicial</li>
                             </ol>
                         </div>
                     </div>
@@ -48,7 +46,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                 <!-- Default box -->
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Title</h3>
+                        <h3 class="card-title">Editar setor do equipamento</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
@@ -59,13 +57,13 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                         </div>
                     </div>
                     <div class="card-body">
-                        Start creating your amazing application!
+                            <div class="form-group">
+                                <label for="nomeEquipamento">Alterar setor do equipamento</label>
+                                <input type="text" class="form-control" id="nomeEquipamento" name="nomeEquipamento" placeholder="Digite o nome do equipamento">
+                            </div>
+                            <button type="submit" class="btn btn-success">Salvar</button>
                     </div>
                     <!-- /.card-body -->
-                    <div class="card-footer">
-                        Footer
-                    </div>
-                    <!-- /.card-footer-->
                 </div>
                 <!-- /.card -->
             </section>
