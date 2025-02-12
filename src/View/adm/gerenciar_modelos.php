@@ -44,7 +44,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
 
                 <!-- Default box -->
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header card-primary card-outline">
                         <h3 class="card-title">Gerenciar modelo do equipamento</h3>
 
                         <div class="card-tools">
