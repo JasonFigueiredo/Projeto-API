@@ -32,13 +32,13 @@
                         <li class="nav-item">
                             <a href="gerenciar_modelo_equipamento.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Gerenciar Modelo</p>
+                                <p>Gerenciar modelo</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="gerenciar_tipo_equipamento.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Gerenciar Equipamento</p>
+                                <p>Gerenciar equipamento</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -48,9 +48,21 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="gerenciar_setor.php" class="nav-link">
+                            <a href="alocar_equipamentos.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Alocar equipamento</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="consultar_equipamento.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Consultar equipamento</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="consultar_usuario.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Consultar usuario</p>
                             </a>
                         </li>
                     </ul>
