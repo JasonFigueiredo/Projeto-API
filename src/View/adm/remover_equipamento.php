@@ -28,7 +28,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Gerenciar setor do equipamento</h1>
+                            <h1>Remover equipamento</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -46,7 +46,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                 <!-- Default box -->
                 <div class="card">
                     <div class="card-header card-primary card-outline">
-                        <h3 class="card-title">Editar setor do equipamento</h3>
+                        <h3 class="card-title">Aqui você poderá remover seus equipamentos</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
@@ -57,15 +57,52 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                         </div>
                     </div>
                     <div class="card-body">
+                        <form action="remover_equipamento.php" method="post">
                             <div class="form-group">
-                                <label for="nomeEquipamento">Alterar setor do equipamento</label>
-                                <input type="text" class="form-control" id="nomeEquipamento" name="nomeEquipamento" placeholder="Digite o nome do equipamento">
+                                <label for="equipamento">Selecione o equipamento</label>
+                                <select class="form-control" id="equipamento" name="equipamento">
+                                    <option value="">Selecione...</option>
+                                    <option value="equipamento1">Equipamento 1</option>
+                                    <option value="equipamento2">Equipamento 2</option>
+                                    <option value="equipamento3">Equipamento 3</option>
+                                    <!-- Adicione mais opções conforme necessário -->
+                                </select>
                             </div>
-                            <button type="submit" class="btn btn-success">Salvar</button>
+                            <button type="submit" class="btn btn-success">Procurar</button>
+                        </form>
                     </div>
                     <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
+            </section>
+
+            <section class="content">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">Lista de equipamentos desse setor</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Equipamento</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Notebook</td>
+                                    <td>
+                                        <a href="#" class=" btn btn-warning btn-xs">Alterar</a>
+                                        <a href="#" class=" btn btn-danger btn-xs">Excluir</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
             </section>
             <!-- /.content -->
         </div>

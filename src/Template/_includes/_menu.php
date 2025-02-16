@@ -30,21 +30,21 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
+                            <a href="gerenciar_modelo_equipamento.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Gerenciar Modelo</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="gerenciar_tipo_equipamento.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Novo equipamento</p>
+                                <p>Gerenciar Equipamento</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="gerenciar_modelos.php" class="nav-link">
+                            <a href="remover_equipamento.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Modelo equipamento</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="gerenciar_setor.php" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Setor equipamento</p>
+                                <p>Remover equipamento</p>
                             </a>
                         </li>
                         <li class="nav-item">

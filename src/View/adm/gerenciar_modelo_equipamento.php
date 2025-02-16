@@ -25,14 +25,14 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>Gerenciar tipo equipamento</h1>
+                    <div class="row mb-2 ">
+                        <div class="col-sm-6 ">
+                            <h1>Gerenciar modelo de equipamento</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Menu</a></li>
-                                <li class="breadcrumb-item active">Gerenciar modelos</li>
+                                <li class="breadcrumb-item active">Pagina Inicial</li>
                             </ol>
                         </div>
                     </div>
@@ -41,11 +41,10 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
 
             <!-- Main content -->
             <section class="content">
-
                 <!-- Default box -->
                 <div class="card">
                     <div class="card-header card-primary card-outline">
-                        <h3 class="card-title">Aqui você gerencia todos os tipos de equipamentos cadastrados</h3>
+                        <h3 class="card-title ">Aqui você pode gerenciar todos os modelos de equipamentos cadastrados</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
@@ -56,28 +55,27 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                         </div>
                     </div>
                     <div class="card-body">
-                            <div class="form-group">
-                                <label for="nomeEquipamento">Nome do tipo</label>
-                                <input type="text" class="form-control" id="nomeEquipamento" name="nomeEquipamento" placeholder="Digite aqui...">
-                            </div>
-                            <button type="submit" class="btn btn-success">Gravar</button>
+                        <div class="form-group">
+                            <label for="nomeEquipamento">Nome do modelo</label>
+                            <input type="text" class="form-control" id="nomeEquipamento" name="nomeEquipamento" placeholder="Digite aqui...">
+                        </div>
+                        <button type="submit" class="btn btn-success">Adicionar</button>
                     </div>
                     <!-- /.card-body -->
                 </div>
-                <!-- /.card -->
             </section>
 
             <section class="content">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">Tipos de equipamentos</h3>
+                        <h3 class="card-title">Modelos cadastrados</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Nome do equipamento</th>
+                                    <th>Nome do modelo</th>
                                     <th>Ação</th>
                                 </tr>
                             </thead>
@@ -95,18 +93,17 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                     <!-- /.card-body -->
                 </div>
             </section>
-            <!-- /.content -->
+            <!-- /.content-wrapper -->
+            <!-- /.control-sidebar -->
         </div>
-        <!-- /.content-wrapper -->
         <?php
         include_once PATH . 'Template/_includes/_footer.php';
         ?>
-        <!-- /.control-sidebar -->
+        <!-- ./wrapper -->
+        <?php
+        include_once PATH . 'Template/_includes/_scripts.php';
+        ?>
     </div>
-    <!-- ./wrapper -->
-    <?php
-    include_once PATH . 'Template/_includes/_scripts.php';
-    ?>
 </body>
 
 </html>
