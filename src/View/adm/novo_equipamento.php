@@ -28,7 +28,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Alocar equipamento</h1>
+                            <h1>Novo equipamento</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -46,7 +46,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                 <!-- Default box -->
                 <div class="card">
                     <div class="card-header card-primary card-outline">
-                        <h3 class="card-title">Aqui você poderá alocar um equipamento ao setor especifico</h3>
+                        <h3 class="card-title">Aqui você poderá cadastrar seus equipamentos</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
@@ -57,9 +57,9 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="alocar_equipamentos.php" method="post">
+                        <form action="novo_equipamento.php" method="post">
                             <div class="form-group">
-                                <label for="equipamento">Selecione o equipamento:</label>
+                                <label for="equipamento">Tipo:</label>
                                 <select class="form-control" id="equipamento" name="equipamento">
                                     <option value="">Selecione...</option>
                                     <option value="equipamento1">Equipamento 1</option>
@@ -69,19 +69,41 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                                 </select>
                             </div>
                         </form>
-                        <form action="alocar_equipamentos.php" method="post">
+                        <form action="novo_equipamento.php" method="post">
                             <div class="form-group">
-                                <label for="equipamento">Selecione o setor:</label>
+                                <label for="equipamento">Modelo:</label>
                                 <select class="form-control" id="equipamento" name="equipamento">
                                     <option value="">Selecione...</option>
-                                    <option value="equipamento1">Setor 1</option>
-                                    <option value="equipamento2">Setor 2</option>
-                                    <option value="equipamento3">Setor 3</option>
+                                    <option value="equipamento1">Modelo 1</option>
+                                    <option value="equipamento2">Modelo 2</option>
+                                    <option value="equipamento3">Modelo 3</option>
                                     <!-- Adicione mais opções conforme necessário -->
                                 </select>
                             </div>
+                        </form>
+                        <form action="novo_equipamento.php" method="post">
+                            <div class="form-group">
+                                <label for="identificacao">Identificação:</label>
+                                <input type="text" class="form-control" id="identificacao" name="identificacao" placeholder="Digite a identificação">
+                            </div>
+                        </form>
+                        <form action="novo_equipamento.php" method="post">
+                            <div class="form-group">
+                                <label for="observacoes">Observações:</label>
+                                <textarea class="form-control" id="observacoes" name="observacoes" rows="4" maxlength="200" placeholder="Digite suas observações" onkeyup="countChars(this)"></textarea>
+                                <small id="charCount" class="form-text text-muted">200 caracteres restantes</small>
+                            </div>
                             <button type="submit" class="btn btn-success">Procurar</button>
                         </form>
+                        <script>
+                            // Função para contar os caracteres do campo de observações e exibir a quantidade restante com base no atributo maxlength
+                            function countChars(textarea) {
+                                var maxLength = textarea.getAttribute('maxlength');
+                                var currentLength = textarea.value.length;
+                                var remainingChars = maxLength - currentLength;
+                                document.getElementById('charCount').textContent = remainingChars + ' caracteres restantes';
+                            }
+                        </script>
                     </div>
                     <!-- /.card-body -->
                 </div>

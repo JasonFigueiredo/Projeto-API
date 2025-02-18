@@ -27,7 +27,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Consultar equipamento</h1>
+                            <h1>Consultar usuario</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -45,7 +45,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                 <!-- Default box -->
                 <div class="card">
                     <div class="card-header card-primary card-outline">
-                        <h3 class="card-title">Aqui você faz a consulta dos seus equipamentos</h3>
+                        <h3 class="card-title">Aqui você faz a consulta todos os seus usuarios</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
@@ -70,26 +70,22 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
             <section class="content">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">Equipamentos cadastrados</h3>
+                        <h3 class="card-title">Usuario cadastrado</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Nome do equipamento</th>
-                                    <th>Modelo</th>
-                                    <th>Identificação</th>
-                                    <th>Descrição</th>
+                                    <th>Nome do usuario</th>
+                                    <th>Setor</th>
                                     <th>Ação</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Notebook</td>
-                                    <td>Dell</td>
-                                    <td>not01</td>
-                                    <td>Serviços de gestão de documentação</td>
+                                    <td>João no arms</td>
+                                    <td>Manutenção</td>
                                     <td>
                                         <a href="#" class=" btn btn-warning btn-xs">Alterar</a>
                                         <a href="#" class=" btn btn-danger btn-xs">Excluir</a>

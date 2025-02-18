@@ -18,8 +18,8 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+                <!-- Adicione ícones aos links usando a classe .nav-icon
+               com font-awesome ou qualquer outra biblioteca de ícones -->
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -30,6 +30,18 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
+                            <a href="novo_usuario.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Novo usuario</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="novo_equipamento.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Novo equipamento</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="gerenciar_modelo_equipamento.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Gerenciar modelo</p>
@@ -39,12 +51,6 @@
                             <a href="gerenciar_tipo_equipamento.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Gerenciar equipamento</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="remover_equipamento.php" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Remover equipamento</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -63,6 +69,12 @@
                             <a href="consultar_usuario.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Consultar usuario</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="remover_equipamento.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Remover equipamento</p>
                             </a>
                         </li>
                     </ul>

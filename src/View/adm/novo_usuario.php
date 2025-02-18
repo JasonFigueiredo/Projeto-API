@@ -28,7 +28,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Alocar equipamento</h1>
+                            <h1>Novo usuario</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -46,7 +46,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                 <!-- Default box -->
                 <div class="card">
                     <div class="card-header card-primary card-outline">
-                        <h3 class="card-title">Aqui você poderá alocar um equipamento ao setor especifico</h3>
+                        <h3 class="card-title">Aqui você insere um novo usuario</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
@@ -57,9 +57,9 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="alocar_equipamentos.php" method="post">
+                        <form action="novo_usuario.php" method="post">
                             <div class="form-group">
-                                <label for="equipamento">Selecione o equipamento:</label>
+                                <label for="equipamento">Tipo:</label>
                                 <select class="form-control" id="equipamento" name="equipamento">
                                     <option value="">Selecione...</option>
                                     <option value="equipamento1">Equipamento 1</option>
@@ -69,9 +69,9 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                                 </select>
                             </div>
                         </form>
-                        <form action="alocar_equipamentos.php" method="post">
+                        <form action="novo_usuario.php" method="post">
                             <div class="form-group">
-                                <label for="equipamento">Selecione o setor:</label>
+                                <label for="equipamento">Setor:</label>
                                 <select class="form-control" id="equipamento" name="equipamento">
                                     <option value="">Selecione...</option>
                                     <option value="equipamento1">Setor 1</option>
@@ -80,7 +80,45 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                                     <!-- Adicione mais opções conforme necessário -->
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-success">Procurar</button>
+                        </form>
+                        <form action="novo_usuario.php" method="post">
+                            <div class="form-group">
+                                <label for="identificacao">Nome:</label>
+                                <input type="text" class="form-control" id="identificacao" name="identificacao" placeholder="Digite a identificação" required>
+                            </div>
+                        </form>
+                        <form action="novo_usuario.php" method="post">
+                            <div class="form-group">
+                                <label for="sobrenome">Sobrenome:</label>
+                                <input type="text" class="form-control" id="sobrenome" name="sobrenome" placeholder="Digite o nome" required>
+                            </div>
+                        </form>
+                        <form action="novo_usuario.php" method="post">
+                            <div class="form-group">
+                                <label for="email">E-mail:</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Digite o E-mail" required>
+                            </div>
+                        </form>
+                        <form action="novo_usuario.php" method="post">
+                            <div class="form-group">
+                                <label for="telefone">Telefone:</label>
+                                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Digite o telefone" required pattern="\(\d{2}\) \d{5}-\d{4}">
+                                <small class="form-text text-muted">Formato: (ddd) xxxxx-xxxx</small>
+                            </div>
+                        </form>
+                        <script>
+                            // script para formatar o telefone e adicionar máscara
+                            document.getElementById('telefone').addEventListener('input', function(e) {
+                                var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+                                e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+                            });
+                        </script>
+                        <form action="novo_usuario.php" method="post">
+                            <div class="form-group">
+                                <label for="endereco">Endereço:</label>
+                                <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Digite a endereço" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Gravar</button>
                         </form>
                     </div>
                     <!-- /.card-body -->
