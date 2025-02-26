@@ -4,7 +4,6 @@ namespace Src\_Public;
 
 class Util
 {
-
     private static function SetarFusoHorario()
     {
         date_default_timezone_set('America/Sao_Paulo');
@@ -49,4 +48,3 @@ class Util
         return $palavra;
     }
 }
-?>

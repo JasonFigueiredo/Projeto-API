@@ -9,7 +9,7 @@ class TecnicoVO extends UsuarioVO
 {
     private $nome_empresa;
 
-    public function setNomeEmpresa($nome_empresa): void
+    public function setNomeEmpresa(string $nome_empresa): void
     {
         $this->nome_empresa = Util::RemoverTags($nome_empresa);
     }

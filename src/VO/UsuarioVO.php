@@ -16,7 +16,7 @@ class UsuarioVO
     private $status;
 
     // get set de ID
-    public function setId($id)
+    public function setId(int $id): void
     {
         $this->id = $id;
     }
@@ -26,7 +26,7 @@ class UsuarioVO
     }
 
     // get set de NOME
-    public function setNome($nome)
+    public function setNome(string $nome): void
     {
         $this->nome = Util::TratarDados($nome);
     }
@@ -36,7 +36,7 @@ class UsuarioVO
     }
 
     // get set de TIPO
-    public function setTipo($tipo)
+    public function setTipo(string $tipo): void
     {
         $this->tipo = Util::TratarDados($tipo);
     }
@@ -46,7 +46,7 @@ class UsuarioVO
     }
 
     // get set de EMAIL
-    public function setEmail($email): void
+    public function setEmail(string $email): void
     {
         $this->email = Util::RemoverTags($email);
     }
@@ -56,7 +56,7 @@ class UsuarioVO
     }
 
     // get set de TELEFONE
-    public function setTel($tel): void
+    public function setTel(int $tel): void
     {
         $this->tel = Util::TirarCaracteresEspeciais($tel);
     }
@@ -66,7 +66,7 @@ class UsuarioVO
     }
 
     // get set de SENHA
-    public function setSenha($senha): void
+    public function setSenha(string $senha): void
     {
         $this->senha = Util::RemoverTags($senha);
     }
@@ -76,7 +76,7 @@ class UsuarioVO
     }
 
     // get e set de STATUS
-    public function setStatus($status): void
+    public function setStatus(string $status): void
     {
         $this->status = $status;
     }
