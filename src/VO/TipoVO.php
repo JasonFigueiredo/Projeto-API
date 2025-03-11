@@ -2,6 +2,8 @@
 
 namespace Src\VO;
 
+use Src\_Public\Util;
+
 class TipoVO
 {
     private $id;
@@ -9,7 +11,7 @@ class TipoVO
 
     public function setNome(string $p_nome_tipo): void
     {
-        $this->nome_tipo = $p_nome_tipo;
+        $this->nome_tipo = Util::RemoverTags($p_nome_tipo);
     }
     public function getNome(): string
     {

@@ -5,6 +5,8 @@
 <!-- AdminLTE App -->
 <script src="../../Template/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
+<!-- Toastr -->
+<script src="../../Template/plugins/toastr/toastr.min.js"></script>
 <script src="../../Template/dist/js/demo.js"></script>
 <script src="../../Template/plugins/datatables/jquery.dataTables.js"></script>
 <script src="../../Template/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
