@@ -6,9 +6,9 @@ class ModeloVO
 {
     private $nome_modelo;
     
-    public function setIdModelo(string $nome_modelo): void
+    public function setIdModelo(string $p_nome_modelo): void
     {
-        $this->nome_modelo = $nome_modelo;
+        $this->nome_modelo = $p_nome_modelo;
     }
     public function getIdModelo(): string
     {

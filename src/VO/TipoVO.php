@@ -4,14 +4,25 @@ namespace Src\VO;
 
 class TipoVO
 {
+    private $id;
     private $nome_tipo;
 
-    public function setIdTipo(string $nome_tipo): void
+    public function setNome(string $p_nome_tipo): void
     {
-        $this->nome_tipo = $nome_tipo;
+        $this->nome_tipo = $p_nome_tipo;
     }
-    public function getIdTipo(): string
+    public function getNome(): string
     {
         return $this->nome_tipo;
     }
+
+    public function setId(int $p_id): void
+    {
+        $this->id = $p_id;
+    }
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
 }

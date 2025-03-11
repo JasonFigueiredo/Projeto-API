@@ -16,9 +16,9 @@ class EquipamentoVO
     private $tipo_id;
 
     // get set de ID
-    public function setId(int $id): void
+    public function setId(int $p_id): void
     {
-        $this->id = $id;
+        $this->id = $p_id;
     }
     public function getId(): int
     {
