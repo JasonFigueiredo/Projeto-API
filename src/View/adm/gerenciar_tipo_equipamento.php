@@ -57,11 +57,13 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/tipo_equipamento_dataview
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="form-group">
-                            <label for="nomeEquipamento">Nome do tipo</label>
-                            <input type="text" class="form-control" id="nomeEquipamento" name="nomeEquipamento" placeholder="Digite aqui...">
-                        </div>
-                        <button type="submit" class="btn btn-success" name="btn_cadastrar">Gravar</button>
+                        <form id="formCadastrarTipoEquipamento" method="post">
+                            <div class="form-group">
+                                <label for="nomeEquipamento">Nome do tipo</label>
+                                <input type="text" class="form-control" id="nomeEquipamento" name="tipo" placeholder="Digite aqui...">
+                            </div>
+                            <button type="submit" class="btn btn-success" id="btn_cadastrar" name="btn_cadastrar">Gravar</button>
+                        </form>
                     </div>
                     <!-- /.card-body -->
                 </div>
