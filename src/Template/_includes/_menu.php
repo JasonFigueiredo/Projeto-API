@@ -1,17 +1,13 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="./_menu.php" class="brand-link">
-        <!-- <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" -->
-        <!-- style="opacity: .8"> -->
-        <span class="brand-text font-weight-light">Controle OS</span>
-    </a>
-
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+            <img src="/ControleOs/src/Template/dist/img/jason.png" class="img-circle elevation-2" alt="User Image">
+            </div>
             <div class="info">
-                <a href="#" class="d-block">Jason Figueiredo</a>
+            <a href="#" class="d-block">Jason Figueiredo</a>
             </div>
         </div>
 
@@ -85,3 +81,19 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+
+<!-- Sctipt para que o menu fique selecionado quando o usuario clicar em algum tópico  -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var navLinks = document.querySelectorAll('.nav-link');
+
+        navLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                navLinks.forEach(function(nav) {
+                    nav.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+    });
+</script>

@@ -112,6 +112,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
     <!-- ./wrapper -->
     <?php
     include_once PATH . 'Template/_includes/_scripts.php';
+    include_once PATH . 'Template/_includes/_msg.php';
     ?>
 </body>
 
