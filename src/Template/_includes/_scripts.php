@@ -10,6 +10,8 @@
 <script src="../../Template/dist/js/demo.js"></script>
 <script src="../../Template/plugins/datatables/jquery.dataTables.js"></script>
 <script src="../../Template/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<!-- Mensagem script -->
+<script src="../../Resource/js/mensagem.js"></script>
 <script>
     $(document).ready(function() {
         $("#example1").DataTable({

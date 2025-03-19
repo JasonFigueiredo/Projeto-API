@@ -6,7 +6,7 @@ use Src\VO\ModeloVO;
 include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
 
 if (isset($_POST["btn_cadastrar"])) {
-    
+
     // Criar meu VO
     $vo = new ModeloVO();
     $ctrl = new ModeloEquipamentoCTRL();
@@ -17,4 +17,3 @@ if (isset($_POST["btn_cadastrar"])) {
     // Chama a função de cadastro da Controler
     $ret = $ctrl->CadastrarModelo($vo);
 }
-?>

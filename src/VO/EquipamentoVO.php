@@ -2,18 +2,21 @@
 
 namespace Src\VO;
 
+use Src\_Public\Util;
+
 class EquipamentoVO
 {
     private $id;
     private $identificacao;
     private $descricao;
     private $situacao;
-    private $data_descarte;
+    private $tipo_id;
     private $motivo_descarte;
     private $modelo_id;
+    // foi adicionado á mais para alocar o equipamento
     private $alocar_id;
     private $alocar_setor_id;
-    private $tipo_id;
+    private $data_descarte;
 
     // get set de ID
     public function setId(int $p_id): void
@@ -28,7 +31,7 @@ class EquipamentoVO
     // get set de IDENTIFICACAO
     public function setIdentificacao(string $identificacao): void
     {
-        $this->identificacao = $identificacao;
+        $this->identificacao = Util::RemoverTags($identificacao);
     }
     public function getIdentificacao(): string
     {
@@ -68,7 +71,7 @@ class EquipamentoVO
     // get set de MOTIVO_DESCARTE
     public function setMotivoDescarte(string $motivo_descarte): void
     {
-        $this->motivo_descarte = $motivo_descarte;
+        $this->motivo_descarte = Util::RemoverTags($motivo_descarte);
     }
     public function getMotivoDescarte(): string
     {

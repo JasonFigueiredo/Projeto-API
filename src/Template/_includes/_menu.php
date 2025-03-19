@@ -56,6 +56,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="gerenciar_setor.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Gerenciar Setor</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="consultar_equipamento.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Consultar equipamento</p>

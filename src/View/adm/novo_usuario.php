@@ -118,7 +118,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                                 <label for="endereco">Endereço:</label>
                                 <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Digite a endereço" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Gravar</button>
+                            <button type="submit" class="btn btn-primary" name="">Gravar</button>
                         </form>
                     </div>
                     <!-- /.card-body -->
