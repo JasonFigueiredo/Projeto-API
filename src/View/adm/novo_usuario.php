@@ -59,7 +59,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                     <div class="card-body">
                         <form action="novo_usuario.php" method="post">
                             <div class="form-group">
-                                <label for="equipamento">Tipo:</label>
+                                <label>Tipo:</label>
                                 <select class="form-control" id="equipamento" name="equipamento">
                                     <option value="">Selecione...</option>
                                     <option value="equipamento1">Equipamento 1</option>
@@ -71,7 +71,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                         </form>
                         <form action="novo_usuario.php" method="post">
                             <div class="form-group">
-                                <label for="equipamento">Setor:</label>
+                                <label>Setor:</label>
                                 <select class="form-control" id="equipamento" name="equipamento">
                                     <option value="">Selecione...</option>
                                     <option value="equipamento1">Setor 1</option>
@@ -83,25 +83,25 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                         </form>
                         <form action="novo_usuario.php" method="post">
                             <div class="form-group">
-                                <label for="identificacao">Nome:</label>
+                                <label>Nome:</label>
                                 <input type="text" class="form-control" id="identificacao" name="identificacao" placeholder="Digite a identificação" required>
                             </div>
                         </form>
                         <form action="novo_usuario.php" method="post">
                             <div class="form-group">
-                                <label for="sobrenome">Sobrenome:</label>
+                                <label>Sobrenome:</label>
                                 <input type="text" class="form-control" id="sobrenome" name="sobrenome" placeholder="Digite o nome" required>
                             </div>
                         </form>
                         <form action="novo_usuario.php" method="post">
                             <div class="form-group">
-                                <label for="email">E-mail:</label>
+                                <label >E-mail:</label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Digite o E-mail" required>
                             </div>
                         </form>
                         <form action="novo_usuario.php" method="post">
                             <div class="form-group">
-                                <label for="telefone">Telefone:</label>
+                                <label>Telefone:</label>
                                 <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Digite o telefone" required pattern="\(\d{2}\) \d{5}-\d{4}">
                                 <small class="form-text text-muted">Formato: (ddd) xxxxx-xxxx</small>
                             </div>
@@ -115,10 +115,10 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                         </script>
                         <form action="novo_usuario.php" method="post">
                             <div class="form-group">
-                                <label for="endereco">Endereço:</label>
+                                <label>Endereço:</label>
                                 <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Digite a endereço" required>
                             </div>
-                            <button type="submit" class="btn btn-primary" name="">Gravar</button>
+                            <button type="submit" class="btn btn-primary" name="btn_gravar">Gravar</button>
                         </form>
                     </div>
                     <!-- /.card-body -->

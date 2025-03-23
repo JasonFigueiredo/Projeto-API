@@ -1,12 +1,12 @@
 <?php
 
 namespace Src\Controller;
-use Src\VO\ModeloVO;
+use Src\VO\TipoVO;
 
-class ModeloEquipamentoCTRL
+class GerenciarTipoEquipamentoCTRL
 {
 
-    public function CadastrarModelo(ModeloVO $vo): int
+    public function GerenciarTipoEquipamento(TipoVO $vo): int
     {
         if(empty($vo->getNome())){
             return 0;

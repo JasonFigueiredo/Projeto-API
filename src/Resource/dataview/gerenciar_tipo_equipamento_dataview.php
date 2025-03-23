@@ -1,6 +1,6 @@
 <?php
 
-use Src\Controller\TipoEquipamentoCTRL;
+use Src\Controller\GerenciarTipoEquipamentoCTRL;
 use Src\VO\TipoVO;
 
 include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
@@ -13,8 +13,8 @@ if (isset($_POST["btn_cadastrar"])) {
     $vo->setNome($_POST["tipo"]);
 
     // Criar meu Controler
-    $crtl = new TipoEquipamentoCTRL();
+    $crtl = new GerenciarTipoEquipamentoCTRL();
 
     // Chama a função de cadastro da Controler
-    $ret = $crtl->CadastrarTipoEquipamentoCTRL($vo);
+    $ret = $crtl->GerenciarTipoEquipamento($vo);
 }

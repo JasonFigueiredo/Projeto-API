@@ -13,7 +13,6 @@ class EquipamentoVO
     private $tipo_id;
     private $motivo_descarte;
     private $modelo_id;
-    // foi adicionado á mais para alocar o equipamento
     private $alocar_id;
     private $alocar_setor_id;
     private $data_descarte;
@@ -29,9 +28,9 @@ class EquipamentoVO
     }
 
     // get set de IDENTIFICACAO
-    public function setIdentificacao(string $identificacao): void
+    public function setIdentificacao(string $p_identificacao): void
     {
-        $this->identificacao = Util::RemoverTags($identificacao);
+        $this->identificacao = Util::RemoverTags($p_identificacao);
     }
     public function getIdentificacao(): string
     {
@@ -79,9 +78,9 @@ class EquipamentoVO
     }
 
     // get set de MODELO_ID
-    public function setModeloId(int $modelo_id): void
+    public function setModeloId(int $modelo): void
     {
-        $this->modelo_id = $modelo_id;
+        $this->modelo_id = $modelo;
     }
     public function getModeloId(): int
     {
@@ -109,9 +108,9 @@ class EquipamentoVO
     }
 
     // get set de TIPO_ID
-    public function setTipoId(int $tipo_id): void
+    public function setTipoId(int $tipo): void
     {
-        $this->tipo_id = $tipo_id;
+        $this->tipo_id = $tipo;
     }
     public function getTipoId(): int
     {

@@ -1,5 +1,6 @@
 <?php
-include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
+include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_modelo_equipamento_dataview.php';
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -55,11 +56,13 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                         </div>
                     </div>
                     <div class="card-body">
+                        <form action="gerenciar_modelo_equipamento.php" method="post">
                         <div class="form-group">
-                            <label for="nomeEquipamento">Nome do modelo</label>
-                            <input type="text" class="form-control" id="nomeEquipamento" name="tipo" placeholder="Digite aqui...">
+                            <label>Nome do modelo</label>
+                            <input type="text" class="form-control" id="modeloEquipamento" name="modelo" placeholder="Digite aqui...">
                         </div>
-                        <button type="submit" class="btn btn-success" name="btn_cadastrar">Adicionar</button>
+                        <button type="submit" class="btn btn-success" id="btn_cadastrar" name="btn_cadastrar">Cadastrar</button>
+                        </form>
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -94,11 +97,11 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                 </div>
             </section>
             <!-- /.content-wrapper -->
+            <?php
+            include_once PATH . 'Template/_includes/_footer.php';
+            ?>
             <!-- /.control-sidebar -->
         </div>
-        <?php
-        include_once PATH . 'Template/_includes/_footer.php';
-        ?>
         <!-- ./wrapper -->
         <?php
         include_once PATH . 'Template/_includes/_scripts.php';

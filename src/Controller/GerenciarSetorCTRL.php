@@ -5,10 +5,10 @@ namespace Src\Controller;
 
 use Src\VO\SetorVO;
 
-class SetorCTRL
+class GerenciarSetorCTRL
 {
 
-  public function CadastrarSetor(SetorVO $vo): int
+  public function GerenciarSetor(SetorVO $vo): int
   {
     if (empty($vo->getNome()))
       return 0;

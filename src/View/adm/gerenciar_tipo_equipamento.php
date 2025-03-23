@@ -1,5 +1,5 @@
 <?php
-include_once dirname(__DIR__, 2) . '/Resource/dataview/tipo_equipamento_dataview.php';
+include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_tipo_equipamento_dataview.php';
 
 ?>
 <!DOCTYPE html>
@@ -57,12 +57,12 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/tipo_equipamento_dataview
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="formCadastrarTipoEquipamento" method="post">
+                        <form method="post" action="gerenciar_tipo_equipamento.php">
                             <div class="form-group">
-                                <label for="nomeEquipamento">Nome do tipo</label>
-                                <input type="text" class="form-control" id="nomeEquipamento" name="tipo" placeholder="Digite aqui...">
+                                <label>Nome do tipo</label>
+                                <input type="text" class="form-control" id="tipo" name="tipo" placeholder="Digite aqui...">
                             </div>
-                            <button type="submit" class="btn btn-success" id="btn_cadastrar" name="btn_cadastrar">Gravar</button>
+                            <button onclick="return ValidarTipo()" type="submit" class="btn btn-success" id="tipo" name="btn_cadastrar">Gravar</button>
                         </form>
                     </div>
                     <!-- /.card-body -->
@@ -111,6 +111,21 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/tipo_equipamento_dataview
     include_once PATH . 'Template/_includes/_scripts.php';
     include_once PATH . 'Template/_includes/_msg.php';
     ?>
+    <script>
+        function ValidarTipo() {
+
+            if($("#tipo").val() == "") 
+            {
+                $("#tipo").addClass("is-invalid");
+                MostrarMensagem(0);
+                return false;
+            } 
+            else {
+                $("#tipo").removeClass("is-invalid").addClass("is-valid");
+            }
+            return false;
+        }
+    </script>
 </body>
 
 </html>

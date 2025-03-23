@@ -1,5 +1,5 @@
 <?php
-include_once dirname(__DIR__, 2) . '/Resource/dataview/setor_dataview.php';
+include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_setor_dataview.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,12 +56,12 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/setor_dataview.php';
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="formCadastrarTipoEquipamento" method="post">
+                        <form method="post" action="gerenciar_setor.php">
                             <div class="form-group">
-                                <label for="nomeEquipamento">Nome do tipo</label>
+                                <label for="nomesetor">Nome do Setor</label>
                                 <input type="text" maxlength="45" class="form-control" id="nome" name="nome" placeholder="Digite aqui...">
                             </div>
-                            <button type="submit" class="btn btn-success" id="btn_cadastrar" name="btn_cadastrar">Gravar</button>
+                            <button type="submit" class="btn btn-success" id="btn_cadastrar" name="btn_cadastrar">Cadastrar</button>
                         </form>
                     </div>
                     <!-- /.card-body -->

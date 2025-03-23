@@ -1,5 +1,5 @@
 <?php
-include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
+include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_equipamento_dataview.php';
 ?>
 
 <!DOCTYPE html>
@@ -59,41 +59,40 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                     <div class="card-body">
                         <form action="novo_equipamento.php" method="post">
                             <div class="form-group">
-                                <label for="equipamento">Tipo:</label>
-                                <select class="form-control" id="equipamento" name="equipamento">
+                                <label>Tipo:</label>
+                                <select class="form-control" id="tipo" name="tipo">
                                     <option value="">Selecione...</option>
-                                    <option value="equipamento1">Equipamento 1</option>
-                                    <option value="equipamento2">Equipamento 2</option>
-                                    <option value="equipamento3">Equipamento 3</option>
+                                    <option value="1">Equipamento 1</option>
+                                    <option value="2">Equipamento 2</option>
+                                    <option value="3">Equipamento 3</option>
                                     <!-- Adicione mais opções conforme necessário -->
                                 </select>
                             </div>
-                        </form>
-                        <form action="novo_equipamento.php" method="post">
+
                             <div class="form-group">
-                                <label for="equipamento">Modelo:</label>
-                                <select class="form-control" id="equipamento" name="equipamento">
+                                <label>Modelo:</label>
+                                <select class="form-control" id="modelo" name="modelo">
                                     <option value="">Selecione...</option>
-                                    <option value="equipamento1">Modelo 1</option>
-                                    <option value="equipamento2">Modelo 2</option>
-                                    <option value="equipamento3">Modelo 3</option>
+                                    <option value="1">Modelo 1</option>
+                                    <option value="2">Modelo 2</option>
+                                    <option value="3">Modelo 3</option>
                                     <!-- Adicione mais opções conforme necessário -->
                                 </select>
                             </div>
-                        </form>
-                        <form action="novo_equipamento.php" method="post">
+
+
                             <div class="form-group">
-                                <label for="identificacao">Identificação:</label>
+                                <label>Identificação:</label>
                                 <input type="text" class="form-control" id="identificacao" name="identificacao" placeholder="Digite a identificação">
                             </div>
-                        </form>
-                        <form action="novo_equipamento.php" method="post">
+
+
                             <div class="form-group">
-                                <label for="observacoes">Observações:</label>
-                                <textarea class="form-control" id="observacoes" name="observacoes" rows="4" maxlength="200" placeholder="Digite suas observações" onkeyup="countChars(this)"></textarea>
-                                <small id="charCount" class="form-text text-muted">200 caracteres restantes</small>
+                                <label>Observações:</label>
+                                <textarea class="form-control" id="descricao" name="descricao" rows="4" maxlength="150" placeholder="Digite suas observações" onkeyup="countChars(this)"></textarea>
+                                <small id="charCount" class="form-text text-muted">150 caracteres restantes</small>
                             </div>
-                            <button type="submit" class="btn btn-success">Procurar</button>
+                            <button type="submit" class="btn btn-success" name="btn_cadastrar">Cadastrar</button>
                         </form>
                         <script>
                             // Função para contar os caracteres do campo de observações e exibir a quantidade restante com base no atributo maxlength
