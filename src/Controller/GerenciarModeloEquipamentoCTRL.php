@@ -6,7 +6,7 @@ use Src\VO\ModeloVO;
 class GerenciarModeloEquipamentoCTRL
 {
 
-    public function GerenciarModeloEquipamento(ModeloVO $vo): int
+    public function GerenciarModeloEquipamento(ModeloVO $vo): string
     {
         if(empty($vo->getNome())){
             return 0;

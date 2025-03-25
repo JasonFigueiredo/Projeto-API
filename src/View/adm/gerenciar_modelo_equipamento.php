@@ -51,19 +51,17 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_modelo_equipame
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
                                 title="Collapse">
                                 <i class="fas fa-minus"></i></button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                                <i class="fas fa-times"></i></button>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <form action="gerenciar_modelo_equipamento.php" method="post">
-                        <div class="form-group">
-                            <label>Nome do modelo</label>
-                            <input type="text" class="form-control" id="modeloEquipamento" name="modelo" placeholder="Digite aqui...">
+                    <form action="gerenciar_modelo_equipamento.php" method="post">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Nome do modelo</label>
+                                <input type="text" class="form-control" id="tipo" name="modelo" placeholder="Digite aqui...">
+                            </div>
+                            <button onclick="return ValidarTipo()" type="submit" class="btn btn-success" id="btn_cadastrar" name="btn_cadastrar">Cadastrar</button>
                         </div>
-                        <button type="submit" class="btn btn-success" id="btn_cadastrar" name="btn_cadastrar">Cadastrar</button>
-                        </form>
-                    </div>
+                    </form>
                     <!-- /.card-body -->
                 </div>
             </section>
@@ -96,18 +94,31 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_modelo_equipame
                     <!-- /.card-body -->
                 </div>
             </section>
-            <!-- /.content-wrapper -->
-            <?php
-            include_once PATH . 'Template/_includes/_footer.php';
-            ?>
-            <!-- /.control-sidebar -->
         </div>
-        <!-- ./wrapper -->
+        <!-- /.content-wrapper -->
         <?php
-        include_once PATH . 'Template/_includes/_scripts.php';
-        include_once PATH . 'Template/_includes/_msg.php';
+        include_once PATH . 'Template/_includes/_footer.php';
         ?>
+        <!-- /.control-sidebar -->
     </div>
+    <!-- ./wrapper -->
+    <?php
+    include_once PATH . 'Template/_includes/_scripts.php';
+    include_once PATH . 'Template/_includes/_msg.php';
+    ?>
+    <script>
+        function ValidarTipo() {
+
+            if ($("#tipo").val() == "") {
+                $("#tipo").addClass("is-invalid");
+                MostrarMensagem(0);
+                return false;
+            } else {
+                $("#tipo").removeClass("is-invalid").addClass("is-valid");
+            }
+            return false;
+        }
+    </script>
 </body>
 
 </html>

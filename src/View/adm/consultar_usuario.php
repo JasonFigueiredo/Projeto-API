@@ -51,16 +51,14 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
                                 title="Collapse">
                                 <i class="fas fa-minus"></i></button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                                <i class="fas fa-times"></i></button>
                         </div>
                     </div>
                     <div class="card-body">
-                            <div class="form-group">
-                                <label for="nomeEquipamento">Pesquisar por tipo</label>
-                                <input type="text" class="form-control" id="nomeEquipamento" name="nomeEquipamento" placeholder="Digite aqui...">
-                            </div>
-                            <button type="submit" class="btn btn-success">Buscar</button>
+                        <div class="form-group">
+                            <label for="nomeEquipamento">Pesquisar por tipo</label>
+                            <input type="text" class="form-control" id="nomeEquipamento" name="nomeEquipamento" placeholder="Digite aqui...">
+                        </div>
+                        <button type="submit" class="btn btn-success">Buscar</button>
                     </div>
                     <!-- /.card-body -->
                 </div>

@@ -52,8 +52,6 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_tipo_equipament
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
                                 title="Collapse">
                                 <i class="fas fa-minus"></i></button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                                <i class="fas fa-times"></i></button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -114,13 +112,11 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_tipo_equipament
     <script>
         function ValidarTipo() {
 
-            if($("#tipo").val() == "") 
-            {
+            if ($("#tipo").val() == "") {
                 $("#tipo").addClass("is-invalid");
                 MostrarMensagem(0);
                 return false;
-            } 
-            else {
+            } else {
                 $("#tipo").removeClass("is-invalid").addClass("is-valid");
             }
             return false;
