@@ -64,7 +64,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_equipamento_dataview
                             </div>
                             <div class="form-group">
                                 <label>Modelo:</label>
-                                <select class="form-control" id="tipo" name="modelo">
+                                <select class="form-control" id="modelo" name="modelo">
                                     <option value="">Selecione...</option>
                                     <option value="1">Modelo 1</option>
                                     <option value="2">Modelo 2</option>
@@ -74,7 +74,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_equipamento_dataview
                             </div>
                             <div class="form-group">
                                 <label>Identificação:</label>
-                                <input type="text" class="form-control" id="tipo" name="identificacao" placeholder="Digite a identificação" required>
+                                <input type="text" class="form-control" id="identificacao" name="identificacao" placeholder="Digite a identificação" required>
                             </div>
                             <div class="form-group">
                                 <label>Observações:</label>
@@ -113,14 +113,32 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_equipamento_dataview
 
     <script>
         function ValidarTipo() {
+            let isValid = true;
+
             if ($("#tipo").val() == "") {
                 $("#tipo").addClass("is-invalid");
-                MostrarMensagem(0);
-                return false;
+                isValid = false;
             } else {
                 $("#tipo").removeClass("is-invalid").addClass("is-valid");
             }
-            return false;
+
+            if ($("#modelo").val() == "") {
+                $("#modelo").addClass("is-invalid");
+                isValid = false;
+            } else {
+                $("#modelo").removeClass("is-invalid").addClass("is-valid");
+            }
+            if ($("#identificacao").val() == "") {
+                $("#identificacao").addClass("is-invalid");
+                isValid = false;
+            } else {
+                $("#identificacao").removeClass("is-invalid").addClass("is-valid");
+            }
+            
+            if (!isValid) {
+                MostrarMensagem(0);
+            }
+            return isValid;
         }
     </script>
 </body>

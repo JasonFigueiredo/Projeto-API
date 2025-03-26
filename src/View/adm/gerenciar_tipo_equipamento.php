@@ -58,9 +58,9 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_tipo_equipament
                         <form method="post" action="gerenciar_tipo_equipamento.php">
                             <div class="form-group">
                                 <label>Nome do tipo</label>
-                                <input type="text" class="form-control" id="tipo" name="tipo" placeholder="Digite aqui...">
+                                <input type="text" class="form-control obg" id="tipo" name="tipo" placeholder="Digite aqui...">
                             </div>
-                            <button onclick="return ValidarTipo()" type="submit" class="btn btn-success" id="tipo" name="btn_cadastrar">Gravar</button>
+                            <button onclick="return ValidarTipo()" type="submit" class="btn btn-success" name="btn_cadastrar">Gravar</button>
                         </form>
                     </div>
                     <!-- /.card-body -->
@@ -119,7 +119,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_tipo_equipament
             } else {
                 $("#tipo").removeClass("is-invalid").addClass("is-valid");
             }
-            return false;
+            return true;
         }
     </script>
 </body>

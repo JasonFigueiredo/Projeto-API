@@ -119,7 +119,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_setor_dataview.
             } else {
                 $("#tipo").removeClass("is-invalid").addClass("is-valid");
             }
-            return false;
+            return true;
         }
     </script>
 

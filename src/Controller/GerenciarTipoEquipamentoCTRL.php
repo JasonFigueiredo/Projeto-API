@@ -8,7 +8,7 @@ use Src\Model\TipoEquipamentoMODEL;
 class GerenciarTipoEquipamentoCTRL
 {
 
-    public function GerenciarTipoEquipamento(TipoVO $vo): int
+    public function CadastrarTipoEquipamento(TipoVO $vo): int
     {
         if (empty($vo->getNome()))
             return 0;

@@ -106,7 +106,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/alocar_equipamento_datavi
             } else {
                 $("#tipo").removeClass("is-invalid").addClass("is-valid");
             }
-            return false;
+            return true;
         }
     </script>
 </body>

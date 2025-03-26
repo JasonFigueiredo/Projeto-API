@@ -16,5 +16,5 @@ if (isset($_POST["btn_cadastrar"])) {
     $crtl = new GerenciarTipoEquipamentoCTRL();
 
     // Chama a função de cadastro da Controler
-    $ret = $crtl->GerenciarTipoEquipamento($vo);
+    $ret = $crtl->CadastrarTipoEquipamento($vo);
 }

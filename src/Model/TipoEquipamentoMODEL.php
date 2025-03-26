@@ -8,7 +8,7 @@ use Src\Model\SQL\TIPO_EQUIPAMENTO_SQL;
 
 class TipoEquipamentoMODEL extends Conexao{
   
-  public function CadastrarTipoEquipamento(TipoVO $vo)
+  public function CadastrarTipoEquipamento(TipoVO $vo): int
   {
     $conexao = parent::retornarConexao();
     $sql = $conexao->prepare(TIPO_EQUIPAMENTO_SQL::INSERIR_TIPO_EQUIPAMENTO());

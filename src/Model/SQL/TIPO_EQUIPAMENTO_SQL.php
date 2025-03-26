@@ -5,11 +5,9 @@ namespace Src\Model\SQL;
 
 class TIPO_EQUIPAMENTO_SQL
 {
-  public static function INSERIR_TIPO_EQUIPAMENTO()
+  public static function INSERIR_TIPO_EQUIPAMENTO(): string
   {
-    $sql = "INSERT INTO tb_tipo 
-                    FROM nome_tipo
-                    VALUES (?)";
+    $sql = "INSERT INTO tb_tipo (nome_tipo) VALUES (?)";
     return $sql; 
   }
 }

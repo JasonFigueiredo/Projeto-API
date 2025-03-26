@@ -116,7 +116,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_modelo_equipame
             } else {
                 $("#tipo").removeClass("is-invalid").addClass("is-valid");
             }
-            return false;
+            return true;
         }
     </script>
 </body>
