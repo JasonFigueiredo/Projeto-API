@@ -8,15 +8,24 @@ use Src\Model\TipoEquipamentoMODEL;
 class GerenciarTipoEquipamentoCTRL
 {
 
-    public function CadastrarTipoEquipamento(TipoVO $vo): int
+    private $model;
+
+    public function __construct()
+    {
+        $this->model = new TipoEquipamentoMODEL();
+    }
+
+    public function CadastrarTipoEquipamentoCTRL(TipoVO $vo): int
     {
         if (empty($vo->getNome()))
             return 0;
 
-        $model = new TipoEquipamentoMODEL();
-
-        $ret = $model->CadastrarTipoEquipamento($vo);
+        $ret = $this->model->CadastrarTipoEquipamentoMODEL($vo);
 
         return $ret;
+    }
+    public function ConsultarTipoEquipamentoCTRL()
+    {
+        return $this->model->ColsultarTipoEquipamentoMODEL();
     }
 }

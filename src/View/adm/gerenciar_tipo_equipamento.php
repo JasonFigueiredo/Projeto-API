@@ -55,12 +55,12 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_tipo_equipament
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="gerenciar_tipo_equipamento.php">
+                        <form id="formCad" method="post" action="gerenciar_tipo_equipamento.php">
                             <div class="form-group">
                                 <label>Nome do tipo</label>
                                 <input type="text" class="form-control obg" id="tipo" name="tipo" placeholder="Digite aqui...">
                             </div>
-                            <button onclick="return ValidarTipo()" type="submit" class="btn btn-success" name="btn_cadastrar">Gravar</button>
+                            <button onclick="return NotificarCampos('formCad')" type="submit" class="btn btn-success" name="btn_cadastrar">Gravar</button>
                         </form>
                     </div>
                     <!-- /.card-body -->
@@ -83,13 +83,18 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_tipo_equipament
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Notebook</td>
-                                    <td>
-                                        <a href="#" class=" btn btn-warning btn-xs">Alterar</a>
-                                        <a href="#" class=" btn btn-danger btn-xs">Excluir</a>
-                                    </td>
-                                </tr>
+                                <?php
+                                for ($i = 0; $i < count($tipos_equipamentos); $i++) { ?>
+                                    <tr>
+                                        <td>
+                                            <a href="#" class=" btn btn-warning btn-xs">Alterar</a>
+                                            <a href="#" class=" btn btn-danger btn-xs">Excluir</a>
+                                        </td>
+                                        <td>
+                                            <?= $tipos_equipamentos[$i]['nome_tipo']?>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
@@ -109,19 +114,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_tipo_equipament
     include_once PATH . 'Template/_includes/_scripts.php';
     include_once PATH . 'Template/_includes/_msg.php';
     ?>
-    <script>
-        function ValidarTipo() {
 
-            if ($("#tipo").val() == "") {
-                $("#tipo").addClass("is-invalid");
-                MostrarMensagem(0);
-                return false;
-            } else {
-                $("#tipo").removeClass("is-invalid").addClass("is-valid");
-            }
-            return true;
-        }
-    </script>
 </body>
 
 </html>

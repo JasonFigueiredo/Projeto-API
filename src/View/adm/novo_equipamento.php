@@ -51,10 +51,10 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_equipamento_dataview
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="novo_equipamento.php" method="post">
+                        <form id="formCad" action="novo_equipamento.php" method="post">
                             <div class="form-group">
                                 <label>Tipo:</label>
-                                <select class="form-control" id="tipo" name="tipo">
+                                <select class="form-control obg" id="tipo" name="tipo">
                                     <option value="">Selecione...</option>
                                     <option value="1">Equipamento 1</option>
                                     <option value="2">Equipamento 2</option>
@@ -64,7 +64,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_equipamento_dataview
                             </div>
                             <div class="form-group">
                                 <label>Modelo:</label>
-                                <select class="form-control" id="modelo" name="modelo">
+                                <select class="form-control obg" id="modelo" name="modelo">
                                     <option value="">Selecione...</option>
                                     <option value="1">Modelo 1</option>
                                     <option value="2">Modelo 2</option>
@@ -74,14 +74,14 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_equipamento_dataview
                             </div>
                             <div class="form-group">
                                 <label>Identificação:</label>
-                                <input type="text" class="form-control" id="identificacao" name="identificacao" placeholder="Digite a identificação" required>
+                                <input type="text" class="form-control obg" id="identificacao" name="identificacao" placeholder="Digite a identificação">
                             </div>
                             <div class="form-group">
                                 <label>Observações:</label>
-                                <textarea class="form-control" id="descricao" name="descricao" rows="4" maxlength="150" placeholder="Digite suas observações" onkeyup="countChars(this)"></textarea>
+                                <textarea class="form-control obg" id="descricao" name="descricao" rows="4" maxlength="150" placeholder="Digite suas observações" onkeyup="countChars(this)"></textarea>
                                 <small id="charCount" class="form-text text-muted">150 caracteres restantes</small>
                             </div>
-                            <button onclick="return ValidarTipo()" type="submit" class="btn btn-success" id="btn" name="btn_cadastrar">Cadastrar</button>
+                            <button onclick="return NotificarCampos('formCad')" type="submit" class="btn btn-success" id="btn" name="btn_cadastrar">Cadastrar</button>
                         </form>
                         <script>
                             // Função para contar os caracteres do campo de observações e exibir a quantidade restante com base no atributo maxlength
@@ -110,37 +110,6 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_equipamento_dataview
     include_once PATH . 'Template/_includes/_scripts.php';
     include_once PATH . 'Template/_includes/_msg.php';
     ?>
-
-    <script>
-        function ValidarTipo() {
-            let isValid = true;
-
-            if ($("#tipo").val() == "") {
-                $("#tipo").addClass("is-invalid");
-                isValid = false;
-            } else {
-                $("#tipo").removeClass("is-invalid").addClass("is-valid");
-            }
-
-            if ($("#modelo").val() == "") {
-                $("#modelo").addClass("is-invalid");
-                isValid = false;
-            } else {
-                $("#modelo").removeClass("is-invalid").addClass("is-valid");
-            }
-            if ($("#identificacao").val() == "") {
-                $("#identificacao").addClass("is-invalid");
-                isValid = false;
-            } else {
-                $("#identificacao").removeClass("is-invalid").addClass("is-valid");
-            }
-            
-            if (!isValid) {
-                MostrarMensagem(0);
-            }
-            return isValid;
-        }
-    </script>
 </body>
 
 </html>

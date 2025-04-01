@@ -7,11 +7,17 @@ use Src\VO\TipoVO;
 use Src\Model\SQL\TIPO_EQUIPAMENTO_SQL;
 
 class TipoEquipamentoMODEL extends Conexao{
-  
-  public function CadastrarTipoEquipamento(TipoVO $vo): int
+
+  private $conexao;
+
+  public function __construct()
   {
-    $conexao = parent::retornarConexao();
-    $sql = $conexao->prepare(TIPO_EQUIPAMENTO_SQL::INSERIR_TIPO_EQUIPAMENTO());
+    $this->conexao = parent::retornarConexao();
+  }
+  
+  public function CadastrarTipoEquipamentoMODEL(TipoVO $vo)
+  {
+    $sql = $this->conexao->prepare(TIPO_EQUIPAMENTO_SQL::INSERIR_TIPO_EQUIPAMENTO());
     $sql->bindValue(1, $vo->getNome());
 
     try{
@@ -21,5 +27,12 @@ class TipoEquipamentoMODEL extends Conexao{
     catch (Exception $ex){
       return -1;
     }
+  }
+
+  public function ColsultarTipoEquipamentoModel()
+  {
+    $sql = $this->conexao->prepare(TIPO_EQUIPAMENTO_SQL::SELECIONAR_TIPO_EQUIPAMENTO());
+    $sql->execute();
+    return $sql->fetchAll(\PDO::FETCH_ASSOC);
   }
 }
