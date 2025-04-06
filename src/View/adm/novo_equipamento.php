@@ -81,7 +81,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_equipamento_dataview
                                 <textarea class="form-control obg" id="descricao" name="descricao" rows="4" maxlength="150" placeholder="Digite suas observações" onkeyup="countChars(this)"></textarea>
                                 <small id="charCount" class="form-text text-muted">150 caracteres restantes</small>
                             </div>
-                            <button onclick="return NotificarCampos('formCad')" type="submit" class="btn btn-success" id="btn" name="btn_cadastrar">Cadastrar</button>
+                            <button onclick="return NotificarCampos('formCad')" type="submit" class="btn btn-success" name="btn_cadastrar">Cadastrar</button>
                         </form>
                         <script>
                             // Função para contar os caracteres do campo de observações e exibir a quantidade restante com base no atributo maxlength

@@ -87,11 +87,11 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_tipo_equipament
                                 for ($i = 0; $i < count($tipos_equipamentos); $i++) { ?>
                                     <tr>
                                         <td>
-                                            <a href="#" class=" btn btn-warning btn-xs">Alterar</a>
-                                            <a href="#" class=" btn btn-danger btn-xs">Excluir</a>
+                                            <a href="#" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#alterar-tipo" onclick="CarregarTipoEquipamento('<?= $tipos_equipamentos[$i]['id'] ?>','<?= $tipos_equipamentos[$i]['nome_tipo'] ?>')">Alterar</a>
+                                            <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarExcluir('<?= $tipos_equipamentos[$i]['id'] ?>', '<?= $tipos_equipamentos[$i]['nome_tipo'] ?>')">Excluir</a>
                                         </td>
                                         <td>
-                                            <?= $tipos_equipamentos[$i]['nome_tipo']?>
+                                            <?= $tipos_equipamentos[$i]['nome_tipo'] ?>
                                         </td>
                                     </tr>
                                 <?php } ?>
@@ -103,6 +103,11 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_tipo_equipament
             </section>
             <!-- /.content -->
         </div>
+
+        <form action="gerenciar_tipo_equipamento.php" method="post" id="formAlt">
+            <?php include_once 'modais/excluir.php' ?>
+            <?php include_once 'modais/alterar-tipo.php' ?>
+        </form>
         <!-- /.content-wrapper -->
         <?php
         include_once PATH . 'Template/_includes/_footer.php';

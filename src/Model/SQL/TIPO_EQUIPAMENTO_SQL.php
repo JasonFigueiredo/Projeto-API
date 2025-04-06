@@ -5,13 +5,16 @@ namespace Src\Model\SQL;
 
 class TIPO_EQUIPAMENTO_SQL
 {
-  public static function INSERIR_TIPO_EQUIPAMENTO()
+
+  //COMANDO SQL PARA INSERIR TIPO DE EQUIPAMENTO
+  public static function INSERIR_TIPO_EQUIPAMENTO(): string
   {
-    $sql = "INSERT INTO tb_tipo (nome_tipo) VALUES (?)";
+    $sql = 'INSERT INTO tb_tipo (nome_tipo) VALUES (?)';
     return $sql;
   }
 
-  public static function SELECIONAR_TIPO_EQUIPAMENTO()
+  //COMANDO SQL PARA SELECIONAR TIPO DE EQUIPAMENTO  
+  public static function SELECIONAR_TIPO_EQUIPAMENTO(): string
   {
     $sql = 'SELECT id, 
             nome_tipo 
@@ -19,4 +22,22 @@ class TIPO_EQUIPAMENTO_SQL
             ORDER BY nome_tipo';
     return $sql;
   }
+
+  //COMANDO SQL PARA ALTERAR TIPO DE EQUIPAMENTO POR ID
+  public static function ALTERAR_TIPO_EQUIPAMENTO(): string
+  {
+    $sql = 'UPDATE tb_tipo 
+            SET nome_tipo = ? 
+            WHERE id = ?';
+    return $sql;
+  }
+
+  //COMANDO SQL PARA EXCLUIR TIPO DE EQUIPAMENTO POR ID
+  public static function EXCLUIR_TIPO_EQUIPAMENTO(): string
+  {
+    $sql = 'DELETE FROM tb_tipo 
+            WHERE id = ?';
+    return $sql;
+  }
+  
 }

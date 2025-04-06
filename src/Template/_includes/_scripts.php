@@ -13,6 +13,7 @@
 <!-- Mensagem script -->
 <script src="../../Resource/js/mensagem.js"></script>
 <script src="../../Resource/js/funcoes.js"></script>
+<script src="../../Resource/js/carregar_modal.js"></script>
 <script>
     $(document).ready(function() {
         $("#example1").DataTable({

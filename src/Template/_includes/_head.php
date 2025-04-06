@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="../../Template/plugins/toastr/toastr.min.css">
 <!-- Font Awesome -->
 <link rel="stylesheet" href="../../Template/plugins/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" />
 <!-- Ionicons -->
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 <!-- overlayScrollbars -->
