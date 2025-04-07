@@ -48,6 +48,7 @@ class TipoEquipamentoMODEL extends Conexao{
   {
     $sql = $this->conexao->prepare(TIPO_EQUIPAMENTO_SQL::ALTERAR_TIPO_EQUIPAMENTO());
     $sql->bindValue(1, $vo->getNome());
+    $sql->bindValue(2, $vo->getId());
 
     try {
       $sql->execute();

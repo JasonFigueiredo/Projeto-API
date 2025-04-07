@@ -38,7 +38,7 @@ class GerenciarTipoEquipamentoCTRL
     /// Método para Alterar um tipo de equipamento
     public function AlterarTipoEquipamentoCTRL(TipoVO $vo): int
     {
-        if (empty($vo->getNome()))
+        if (empty($vo->getNome()) || empty($vo->getId()))
             return 0;
 
         $ret = $this->model->AlterarTipoEquipamentoMODEL($vo);
