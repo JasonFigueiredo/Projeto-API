@@ -20,14 +20,14 @@ if (isset($_POST['btn_cadastrar'])) {
     $ret = $ctrl->CadastrarTipoEquipamentoCTRL($vo);
 }
 
-if (isset($_POST['btn_alterar'])) {
+else if (isset($_POST['btn_alterar'])) {
     $vo = new TipoVO();
     $vo->setNome($_POST['tipo_alterar']);
     $vo->setId($_POST['id_alterar']);
     $ret = $ctrl->AlterarTipoEquipamentoCTRL($vo);
 }
 
-if (isset($_POST['btn_excluir'])) {
+else if (isset($_POST['btn_excluir'])) {
     $vo = new TipoVO();
     $vo->setId($_POST['id_excluir']);
     $ret = $ctrl->ExcluirTipoEquipamentoCTRL($vo);

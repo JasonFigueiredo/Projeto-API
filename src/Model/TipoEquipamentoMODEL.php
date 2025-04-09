@@ -28,6 +28,7 @@ class TipoEquipamentoMODEL extends Conexao{
       return 1;
     }
     catch (Exception $ex){
+      
       return -1;
     }
   }
