@@ -1,3 +1,9 @@
+function BASE_URL_DATAVIEW() {
+  return '../../Resource/dataview/' + dataview + '.php';
+  
+}
+
+
 function NotificarCampos(formID) {
   let ret = true;
 

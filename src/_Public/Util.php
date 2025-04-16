@@ -4,6 +4,10 @@ namespace Src\_Public;
 
 class Util
 {
+    public static function CodigoLogado(){
+        return 1;
+    }
+
     private static function SetarFusoHorario()
     {
         date_default_timezone_set('America/Sao_Paulo');

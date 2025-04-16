@@ -2,6 +2,7 @@
 
 namespace Src\Controller;
 
+use Src\_Public\Util;
 use Src\VO\TipoVO;
 use Src\Model\TipoEquipamentoMODEL;
 
@@ -21,10 +22,11 @@ class GerenciarTipoEquipamentoCTRL
     {
         if (empty($vo->getNome()))
             return 0;
+        
+        $vo->setCodLogado(Util::CodigoLogado());
+        $vo->setFuncaoErro(CADASTRAR_TIPO_EQUIPAMENTO);
 
-        $ret = $this->model->CadastrarTipoEquipamentoMODEL($vo);
-
-        return $ret;
+        return $this->model->CadastrarTipoEquipamentoMODEL($vo);
     }
 
 

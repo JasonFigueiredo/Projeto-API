@@ -4,7 +4,7 @@ namespace Src\VO;
 
 use Src\_Public\Util;
 
-class TipoVO
+class TipoVO extends LogErroVO
 {
     private $id;
     private $nome_tipo;

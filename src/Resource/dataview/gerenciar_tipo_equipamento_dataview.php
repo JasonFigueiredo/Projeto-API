@@ -18,6 +18,8 @@ if (isset($_POST['btn_cadastrar'])) {
     
     // Chama a função de cadastro da Controler
     $ret = $ctrl->CadastrarTipoEquipamentoCTRL($vo);
+
+    
 }
 
 else if (isset($_POST['btn_alterar'])) {

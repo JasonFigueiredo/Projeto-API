@@ -1,12 +1,14 @@
 <?php
 
 namespace Src\Model;
+
 use Exception;
 use Src\Model\Conexao;
 use Src\VO\TipoVO;
 use Src\Model\SQL\TIPO_EQUIPAMENTO_SQL;
 
-class TipoEquipamentoMODEL extends Conexao{
+class TipoEquipamentoMODEL extends Conexao
+{
 
   private $conexao;
 
@@ -14,21 +16,21 @@ class TipoEquipamentoMODEL extends Conexao{
   {
     $this->conexao = parent::retornarConexao();
   }
-  
+
 
   /// Método para cadastrar um tipo de equipamento
   /// Retorna 1 se o cadastro foi realizado com sucesso, -1 caso contrário
-  public function CadastrarTipoEquipamentoMODEL(TipoVO $vo)
+  public function CadastrarTipoEquipamentoMODEL(TipoVO $vo): int
   {
     $sql = $this->conexao->prepare(TIPO_EQUIPAMENTO_SQL::INSERIR_TIPO_EQUIPAMENTO());
     $sql->bindValue(1, $vo->getNome());
 
-    try{
+    try {
       $sql->execute();
       return 1;
-    }
-    catch (Exception $ex){
-      
+    } catch (Exception $ex) {
+      $vo->setErroTecnico($ex->getMessage());
+      parent::GravarErroLog($vo);
       return -1;
     }
   }
@@ -42,7 +44,7 @@ class TipoEquipamentoMODEL extends Conexao{
     return $sql->fetchAll(\PDO::FETCH_ASSOC);
   }
 
-  
+
   /// Método para alterar um tipo de equipamento
   /// Retorna 1 se a alteração foi realizada com sucesso, -1 caso contrário
   public function AlterarTipoEquipamentoMODEL(TipoVO $vo)
