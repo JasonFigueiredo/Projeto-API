@@ -119,7 +119,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_tipo_equipament
     include_once PATH . 'Template/_includes/_scripts.php';
     include_once PATH . 'Template/_includes/_msg.php';
     ?>
-
+    <script src="../../Resource/ajax/gerenciar_tipo_equipamento_ajax.js"></script>
 </body>
 
 </html>

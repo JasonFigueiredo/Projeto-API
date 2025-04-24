@@ -12,24 +12,19 @@ $ctrl = new GerenciarTipoEquipamentoCTRL();
 if (isset($_POST['btn_cadastrar'])) {
     // Criar meu VO
     $vo = new TipoVO();
-    
     // Setar os valores inserido nos campos
     $vo->setNome($_POST['tipo']);
-    
     // Chama a função de cadastro da Controler
     $ret = $ctrl->CadastrarTipoEquipamentoCTRL($vo);
 
-    
-}
-
-else if (isset($_POST['btn_alterar'])) {
+    if ($_POST['btn_cadastrar'] == 'ajx')
+        echo $ret;
+} else if (isset($_POST['btn_alterar'])) {
     $vo = new TipoVO();
     $vo->setNome($_POST['tipo_alterar']);
     $vo->setId($_POST['id_alterar']);
     $ret = $ctrl->AlterarTipoEquipamentoCTRL($vo);
-}
-
-else if (isset($_POST['btn_excluir'])) {
+} else if (isset($_POST['btn_excluir'])) {
     $vo = new TipoVO();
     $vo->setId($_POST['id_excluir']);
     $ret = $ctrl->ExcluirTipoEquipamentoCTRL($vo);

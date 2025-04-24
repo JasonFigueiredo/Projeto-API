@@ -5,17 +5,16 @@ function CadastrarTipoEquipamento(formID) {
     let nome = $("#tipo").val();
 
     $.ajax({
-      type:"post",
+      type: "post",
       url: BASE_URL_DATAVIEW("tipo_equipamento_dataview"),
-      data:{
-        tipo:nome,
-        btn_cadastrar:'ajx'
+      data: {
+        tipo: nome,
+        btn_cadastrar: 'ajx'
       },
-      success:function (ret) {
-        if
-        
-
+      success: function (ret) {
+        MostrarMensagem(ret);
+        LimparNotificacoes(formID);
+      }
+    })
   }
-
-
 }
