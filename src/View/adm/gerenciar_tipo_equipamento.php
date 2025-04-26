@@ -60,7 +60,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_tipo_equipament
                                 <label>Nome do tipo</label>
                                 <input type="text" class="form-control obg" id="tipo" name="tipo" placeholder="Digite aqui...">
                             </div>
-                            <button onclick="return NotificarCampos('formCad')" type="submit" class="btn btn-success" name="btn_cadastrar">Gravar</button>
+                            <button type="button" onclick="return CadastrarTipoEquipamento()" class="btn btn-success" name="btn_cadastrar">Gravar</button>
                         </form>
                     </div>
                     <!-- /.card-body -->
@@ -119,7 +119,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_tipo_equipament
     include_once PATH . 'Template/_includes/_scripts.php';
     include_once PATH . 'Template/_includes/_msg.php';
     ?>
-    <script src="../../Resource/ajax/gerenciar_tipo_equipamento_ajax.js"></script>
+    <script src="../../Resource/ajax/tipo_equipamento_ajax.js"></script>
 </body>
 
 </html>

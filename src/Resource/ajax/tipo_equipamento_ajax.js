@@ -6,7 +6,7 @@ function CadastrarTipoEquipamento(formID) {
 
     $.ajax({
       type: "post",
-      url: BASE_URL_DATAVIEW("tipo_equipamento_dataview"),
+      url: BASE_URL_DATAVIEW("gerenciar_tipo_equipamento_dataview"),
       data: {
         tipo: nome,
         btn_cadastrar: 'ajx'
