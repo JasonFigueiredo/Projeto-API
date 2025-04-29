@@ -4,14 +4,14 @@ function Excluir() {
   
   $.ajax({
     type: "post",
-    url: BASE_URL_DATAVIEW("gerenciar_tipo_equipamento_dataview"),
+    url: BASE_URL_DATAVIEW("gerenciar_modelo_equipamento_dataview"),
     data: {
       btn_excluir: "ajx",
       id_excluir: id
     },
     success: function (ret) {
       MostrarMensagem(ret);
-      ConsultarTipo();
+      ConsultarModelo();
       FecharModal("modal-excluir");
     }
   });
@@ -23,14 +23,14 @@ function CadastrarTipoEquipamento(formID) {
 
     $.ajax({
       type: "post",
-      url: BASE_URL_DATAVIEW("gerenciar_tipo_equipamento_dataview"),
+      url: BASE_URL_DATAVIEW("gerenciar_modelo_equipamento_dataview"),
       data: {
         tipo: nome,
         btn_cadastrar: "ajx",
       },
       success: function (ret) {
         MostrarMensagem(ret);
-        ConsultarTipo();
+        ConsultarModelo();
         LimparNotificacoes(formID);
       },
     });
@@ -41,9 +41,9 @@ function ConsultarTipo() {
 
   $.ajax({
     type: "post",
-    url: BASE_URL_DATAVIEW("gerenciar_tipo_equipamento_dataview"),
+    url: BASE_URL_DATAVIEW("gerenciar_modelo_equipamento_dataview"),
     data: {
-      consultar_tipo: "ajx"
+      consultar_modelo: "ajx"
     },
     success: function (dados) {
       $("#tableResult").html(dados);
@@ -59,7 +59,7 @@ function AlterarTipoEquipamento(formID) {
 
     $.ajax({
       type: "post",
-      url: BASE_URL_DATAVIEW("gerenciar_tipo_equipamento_dataview"),
+      url: BASE_URL_DATAVIEW("gerenciar_modelo_equipamento_dataview"),
       data: {
         btn_alterar: 'ajx',
         tipo_alterar: nome_tipo,
@@ -67,7 +67,7 @@ function AlterarTipoEquipamento(formID) {
       },
       success: function (ret) {
         MostrarMensagem(ret);
-        ConsultarTipo();
+        ConsultarModelo();
         FecharModal("alterar_tipo");
       }
     });
