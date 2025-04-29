@@ -19,6 +19,10 @@ if (isset($_POST['btn_cadastrar'])) {
 
     if ($_POST['btn_cadastrar'] == 'ajx')
         echo $ret;
+<<<<<<< Updated upstream
+=======
+    
+>>>>>>> Stashed changes
 } 
 
 else if (isset($_POST['btn_alterar'])) {
@@ -26,9 +30,12 @@ else if (isset($_POST['btn_alterar'])) {
     $vo->setNome($_POST['tipo_alterar']);
     $vo->setId($_POST['id_alterar']);
     $ret = $ctrl->AlterarTipoEquipamentoCTRL($vo);
+<<<<<<< Updated upstream
 
     if ($_POST['btn_alterar'] == 'ajx')
     echo $ret;
+=======
+>>>>>>> Stashed changes
 } 
 
 else if (isset($_POST['btn_excluir'])) {

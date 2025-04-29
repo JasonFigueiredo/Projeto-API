@@ -23,7 +23,7 @@ function ConsultarTipo() {
     type: "post",
     url: BASE_URL_DATAVIEW("gerenciar_tipo_equipamento_dataview"),
     data: {
-        consultar_tipo: "ajx"
+      consultar_tipo: "ajx"
     },
     success: function (dados) {
       $("#tableResult").html(dados);
@@ -32,9 +32,9 @@ function ConsultarTipo() {
   });
 }
 
-function AlterarTipoEquipamento(formID){
-if(NotificarCampos(formID))
-  let nome_tipo = $("#tipo_alterar").val();
+function AlterarTipoEquipamento(formID) {
+  if (NotificarCampos(formID))
+    let nome_tipo = $("#tipo_alterar").val();
   let id = $("#id_alterar").val();
 
   $.ajax({
@@ -48,7 +48,7 @@ if(NotificarCampos(formID))
     success: function (ret) {
       MostrarMensagem(ret);
       ConsultarTipo();
-      FecharModal("alterar_tipo"); 
+      FecharModal("alterar_tipo");
     }
   });
 
