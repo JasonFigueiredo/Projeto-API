@@ -18,7 +18,7 @@
       </div>
       <div class="modal-footer justify-content-center">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button class="btn btn-success" name="btn_alterar" onclick="return NotificarCampos('formAlt')">Alterar</button>
+        <button type="button" class="btn btn-success" name="btn_alterar" onclick="AlterarTipoEquipamento('formAlt')">Alterar</button>
       </div>
     </div>
   </div>

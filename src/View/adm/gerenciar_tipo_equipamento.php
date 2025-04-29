@@ -75,27 +75,8 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_tipo_equipament
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Nome do equipamento</th>
-                                    <th>Ação</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                for ($i = 0; $i < count($tipos_equipamentos); $i++) { ?>
-                                    <tr>
-                                        <td>
-                                            <a href="#" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#alterar-tipo" onclick="CarregarTipoEquipamento('<?= $tipos_equipamentos[$i]['id'] ?>','<?= $tipos_equipamentos[$i]['nome_tipo'] ?>')">Alterar</a>
-                                            <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarExcluir('<?= $tipos_equipamentos[$i]['id'] ?>','<?= $tipos_equipamentos[$i]['nome_tipo'] ?>')">Excluir</a>
-                                        </td>
-                                        <td>
-                                            <?= $tipos_equipamentos[$i]['nome_tipo'] ?>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-                            </tbody>
+                        <table id="example1" class="table table-bordered table-striped" id="tableResult">
+                           
                         </table>
                     </div>
                     <!-- /.card-body -->
@@ -120,6 +101,9 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_tipo_equipament
     include_once PATH . 'Template/_includes/_msg.php';
     ?>
     <script src="../../Resource/ajax/tipo_equipamento_ajax.js"></script>
+    <script>
+        ConsultarTipo();
+    </script>
 </body>
 
 </html>
