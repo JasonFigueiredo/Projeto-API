@@ -12,7 +12,7 @@
         <input type="hidden" id="id_alterar" name="id_alterar">
         <div class="form-group ">
           <label>Tipo de equipamento: 
-            <input type="text" class="form-control obg" id="tipo_alterar" name="tipo_alterar" placeholder="Digite o novo tipo de equipamento" style="width: 300px;">
+            <input type="text" class="form-control obg" id="tipo_alterar" name="tipo_alterar" placeholder="Digite o novo tipo de equipamento" onkeypress="FocarCampoTravar(event, 'btn_alterar')" style="width: 300px;">
           </label>
         </div>
       </div>

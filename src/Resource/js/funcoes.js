@@ -31,3 +31,10 @@ function NotificarCampos(formID) {
 function FecharModal(nome_modal){
   $("#" + nome_modal).modal("hide");
 }
+
+function FocarCampoTravar(e, next) {
+  if (e.keyCode === 13) {
+    e.preventDefault(); //Nao irá para o servidor
+    $("#" + next).focus();
+  }
+}
