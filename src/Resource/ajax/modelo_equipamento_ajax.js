@@ -17,7 +17,7 @@ function Excluir() {
   });
 }
 
-function CadastrarTipoEquipamento(formID) {
+function CadastrarEquipamento(formID) {
   if (NotificarCampos(formID)) {
     let nome = $("#tipo").val();
 
@@ -37,7 +37,7 @@ function CadastrarTipoEquipamento(formID) {
   }
 }
 
-function ConsultarTipo() {
+function ConsultarModelo() {
 
   $.ajax({
     type: "post",
@@ -52,9 +52,9 @@ function ConsultarTipo() {
   });
 }
 
-function AlterarTipoEquipamento(formID) {
+function AlterarModeloEquipamento(formID) {
   if (NotificarCampos(formID)) {
-    let nome_tipo = $("#tipo_alterar").val();
+    let nome_modelo = $("#modelo_alterar").val();
     let id = $("#id_alterar").val();
 
     $.ajax({
@@ -62,7 +62,7 @@ function AlterarTipoEquipamento(formID) {
       url: BASE_URL_DATAVIEW("gerenciar_modelo_equipamento_dataview"),
       data: {
         btn_alterar: 'ajx',
-        tipo_alterar: nome_tipo,
+        modelo_alterar: nome_modelo,
         id_alterar: id
       },
       success: function (ret) {

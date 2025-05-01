@@ -68,7 +68,7 @@ function AlterarTipoEquipamento(formID) {
       success: function (ret) {
         MostrarMensagem(ret);
         ConsultarTipo();
-        FecharModal("alterar_tipo");
+        FecharModal("alterar-tipo");
       }
     });
   }
