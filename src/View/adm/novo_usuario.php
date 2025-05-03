@@ -55,10 +55,10 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_usuario_dataview.php
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="novo_usuario.php" method="post">
+                        <form action="novo_usuario.php" method="post" id="formCad">
                             <div class="form-group">
                                 <label>Tipo:</label>
-                                <select class="form-control" id="tipo" name="tipo">
+                                <select class="form-control obg" id="tipo" name="tipo">
                                     <option value="">Selecione...</option>
                                     <option value="equipamento1">Equipamento 1</option>
                                     <option value="equipamento2">Equipamento 2</option>
@@ -68,7 +68,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_usuario_dataview.php
                             </div>
                             <div class="form-group">
                                 <label>Setor:</label>
-                                <select class="form-control" id="" name="">
+                                <select class="form-control obg" id="" name="">
                                     <option value="">Selecione...</option>
                                     <option value="equipamento1">Setor 1</option>
                                     <option value="equipamento2">Setor 2</option>
@@ -78,33 +78,26 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_usuario_dataview.php
                             </div>
                             <div class="form-group">
                                 <label>Nome:</label>
-                                <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite o nome do usuario" required>
+                                <input type="text" class="form-control obg" id="nome" name="nome" placeholder="Digite o nome do usuario">
                             </div>
                             <div class="form-group">
                                 <label>Sobrenome:</label>
-                                <input type="text" class="form-control" id="sobrenome" name="sobrenome" placeholder="Digite o sobrenome" required>
+                                <input type="text" class="form-control obg" id="sobrenome" name="sobrenome" placeholder="Digite o sobrenome">
                             </div>
                             <div class="form-group">
                                 <label>E-mail:</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Digite o E-mail" required>
+                                <input type="email" class="form-control obg" id="email" name="email" placeholder="Digite o E-mail">
                             </div>
                             <div class="form-group">
                                 <label>Telefone:</label>
-                                <input type="text" class="form-control" id="tel" name="tel" placeholder="Digite o telefone" required pattern="\(\d{2}\) \d{5}-\d{4}">
+                                <input type="text" class="form-control obg" id="tel" name="tel" placeholder="Digite o telefone">
                                 <small class="form-text text-muted">Formato: (ddd) xxxxx-xxxx</small>
                             </div>
-                            <script>
-                                // script para formatar o telefone e adicionar máscara
-                                document.getElementById('telefone').addEventListener('input', function(e) {
-                                    var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
-                                    e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
-                                });
-                            </script>
                             <div class="form-group">
                                 <label>Endereço:</label>
-                                <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Digite a endereço" required>
+                                <input type="text" class="form-control obg" id="endereco" name="endereco" placeholder="Digite a endereço">
                             </div>
-                            <button type="submit" class="btn btn-primary" name="btn_cadastrar">Gravar</button>
+                            <button onclick="return NotificarCampos('formCad')" type="submit" class="btn btn-primary" name="btn_cadastrar">Gravar</button>
                         </form>
                     </div>
                     <!-- /.card-body -->

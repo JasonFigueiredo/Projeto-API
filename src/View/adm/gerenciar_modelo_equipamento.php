@@ -50,16 +50,17 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_modelo_equipame
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
                                 title="Collapse">
-                                <i class="fas fa-minus"></i></button>
+                                <i class="fas fa-minus"></i>
+                            </button>
                         </div>
                     </div>
-                    <form action="gerenciar_modelo_equipamento.php" method="post">
+                    <form action="gerenciar_modelo_equipamento.php" method="post" id="formCad">
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Nome do modelo</label>
-                                <input type="text" class="form-control" id="tipo" name="modelo" placeholder="Digite aqui...">
+                                <input type="text" class="form-control obg" id="tipo" name="modelo" placeholder="Digite aqui...">
                             </div>
-                            <button onclick="return ValidarTipo()" type="submit" class="btn btn-success" id="btn_cadastrar" name="btn_cadastrar">Cadastrar</button>
+                            <button onclick="return NotificarCampos('formCad')" type="button" class="btn btn-success" id="btn_cadastrar" name="btn_cadastrar">Cadastrar</button>
                         </div>
                     </form>
                     <!-- /.card-body -->
@@ -106,19 +107,6 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_modelo_equipame
     include_once PATH . 'Template/_includes/_scripts.php';
     include_once PATH . 'Template/_includes/_msg.php';
     ?>
-    <script>
-        function ValidarTipo() {
-
-            if ($("#tipo").val() == "") {
-                $("#tipo").addClass("is-invalid");
-                MostrarMensagem(0);
-                return false;
-            } else {
-                $("#tipo").removeClass("is-invalid").addClass("is-valid");
-            }
-            return true;
-        }
-    </script>
 </body>
 
 </html>

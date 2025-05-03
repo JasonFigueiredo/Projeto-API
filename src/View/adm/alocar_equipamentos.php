@@ -55,10 +55,10 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/alocar_equipamento_datavi
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="alocar_equipamentos.php" method="post">
+                        <form action="alocar_equipamentos.php" method="post" id="formCad">
                             <div class="form-group">
                                 <label>Selecione o equipamento:</label>
-                                <select class="form-control" id="tipo" name="tipo">
+                                <select class="form-control obg" id="tipo" name="tipo">
                                     <option value="">Selecione...</option>
                                     <option value="equipamento1">Equipamento 1</option>
                                     <option value="equipamento2">Equipamento 2</option>
@@ -68,7 +68,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/alocar_equipamento_datavi
                             </div>
                             <div class="form-group">
                                 <label>Selecione o setor:</label>
-                                <select class="form-control" id="tipo" name="setor">
+                                <select class="form-control obg" id="tipo" name="setor">
                                     <option value="">Selecione...</option>
                                     <option value="equipamento1">Setor 1</option>
                                     <option value="equipamento2">Setor 2</option>
@@ -76,7 +76,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/alocar_equipamento_datavi
                                     <!-- Adicione mais opções conforme necessário -->
                                 </select>
                             </div>
-                            <button onclick="return ValidarTipo()" type="submit" class="btn btn-success" name="btn_alocar" id="tipo">Procurar</button>
+                            <button onclick="return NotificarCampos('formCad')" type="submit" class="btn btn-success" name="btn_alocar" id="tipo">Procurar</button>
                         </form>
                     </div>
                     <!-- /.card-body -->
@@ -96,19 +96,6 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/alocar_equipamento_datavi
     include_once PATH . 'Template/_includes/_scripts.php';
     include_once PATH . 'Template/_includes/_msg.php';
     ?>
-    <script>
-        function ValidarTipo() {
-
-            if ($("#tipo").val() == "") {
-                $("#tipo").addClass("is-invalid");
-                MostrarMensagem(0);
-                return false;
-            } else {
-                $("#tipo").removeClass("is-invalid").addClass("is-valid");
-            }
-            return true;
-        }
-    </script>
 </body>
 
 </html>

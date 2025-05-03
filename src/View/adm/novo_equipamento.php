@@ -83,15 +83,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_equipamento_dataview
                             </div>
                             <button onclick="return NotificarCampos('formCad')" type="submit" class="btn btn-success" name="btn_cadastrar">Cadastrar</button>
                         </form>
-                        <script>
-                            // Função para contar os caracteres do campo de observações e exibir a quantidade restante com base no atributo maxlength
-                            function countChars(textarea) {
-                                var maxLength = textarea.getAttribute('maxlength');
-                                var currentLength = textarea.value.length;
-                                var remainingChars = maxLength - currentLength;
-                                document.getElementById('charCount').textContent = remainingChars + ' caracteres restantes';
-                            }
-                        </script>
+                        
                     </div>
                     <!-- /.card-body -->
                 </div>

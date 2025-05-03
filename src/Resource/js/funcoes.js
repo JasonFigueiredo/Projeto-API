@@ -28,7 +28,8 @@ function NotificarCampos(formID) {
   return ret;
 }
 
-function FecharModal(nome_modal){
+
+function FecharModal(nome_modal) {
   $("#" + nome_modal).modal("hide");
 }
 

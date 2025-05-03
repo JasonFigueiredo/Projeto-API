@@ -60,7 +60,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_tipo_equipament
                                 <label>Nome do tipo</label>
                                 <input type="text" class="form-control obg" id="tipo" name="tipo" placeholder="Digite aqui...">
                             </div>
-                            <button type="button" onclick="return CadastrarTipoEquipamento()" class="btn btn-success" name="btn_cadastrar">Gravar</button>
+                            <button type="button" onclick="return NotificarCampos('formCad')" class="btn btn-success" name="btn_cadastrar">Gravar</button>
                         </form>
                     </div>
                     <!-- /.card-body -->

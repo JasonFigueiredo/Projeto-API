@@ -55,10 +55,10 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="remover_equipamento.php" method="post">
+                        <form action="remover_equipamento.php" method="post" id="formCad">
                             <div class="form-group">
                                 <label for="equipamento">Selecione o equipamento</label>
-                                <select class="form-control" id="equipamento" name="equipamento">
+                                <select class="form-control obg" id="equipamento" name="equipamento">
                                     <option value="">Selecione...</option>
                                     <option value="equipamento1">Equipamento 1</option>
                                     <option value="equipamento2">Equipamento 2</option>
@@ -66,7 +66,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                                     <!-- Adicione mais opções conforme necessário -->
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-success">Procurar</button>
+                            <button onclick="return NotificarCampos('formCad')" type="button" class="btn btn-success">Procurar</button>
                         </form>
                     </div>
                     <!-- /.card-body -->

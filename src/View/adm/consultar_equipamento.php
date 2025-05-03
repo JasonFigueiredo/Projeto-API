@@ -54,11 +54,13 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="form-group">
-                            <label for="nomeEquipamento">Pesquisar por tipo</label>
-                            <input type="text" class="form-control" id="nomeEquipamento" name="nomeEquipamento" placeholder="Digite aqui...">
-                        </div>
-                        <button type="submit" class="btn btn-success">Buscar</button>
+                        <form action="consultar_equipamento.php" method="POST" id="formCad">
+                            <div class="form-group">
+                                <label for="nomeEquipamento">Pesquisar por tipo</label>
+                                <input type="text" class="form-control obg" id="nomeEquipamento" name="nomeEquipamento" placeholder="Digite aqui...">
+                            </div>
+                            <button onclick="NotificarCampos('formCad')" type="button" class="btn btn-success">Buscar</button>
+                        </form>
                     </div>
                     <!-- /.card-body -->
                 </div>
