@@ -1,11 +1,11 @@
 function BASE_URL_DATAVIEW(dataview) {
-  return "../../Resource/dataview/" + dataview + ".php";
+  return '../../Resource/dataview/' + dataview + '.php';
 }
 function LimparNotificacoes(formID) {
   $(
     "#" + formID + " input, #" + formID + " textarea, #" + formID + " select"
   ).each(function () {
-    $(this).val("");
+    $(this).val('');
     $(this).removeClass("is-invalid").removeClass("is-valid");
   });
 }

@@ -60,7 +60,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_tipo_equipament
                                 <label>Nome do tipo</label>
                                 <input type="text" class="form-control obg" id="tipo" name="tipo" placeholder="Digite aqui...">
                             </div>
-                            <button type="button" onclick="return NotificarCampos('formCad')" class="btn btn-success" name="btn_cadastrar">Gravar</button>
+                            <button type="button" onclick="return CadastrarTipoEquipamento('formCad')" class="btn btn-success" name="btn_cadastrar">Gravar</button>
                         </form>
                     </div>
                     <!-- /.card-body -->
@@ -74,8 +74,8 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_tipo_equipament
                         <h3 class="card-title">Tipos de equipamentos</h3>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped" id="tableResult">
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-bordered table-striped" id="tableResult">
                            
                         </table>
                     </div>

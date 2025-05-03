@@ -23,17 +23,17 @@ function CadastrarTipoEquipamento(formID) {
 
     $.ajax({
       type: "post",
-      url: BASE_URL_DATAVIEW("gerenciar_tipo_equipamento_dataview"),
+      url: BASE_URL_DATAVIEW('gerenciar_tipo_equipamento_dataview'),
       data: {
         tipo: nome,
-        btn_cadastrar: "ajx",
+        btn_cadastrar: 'ajx',
       },
       success: function (ret) {
         MostrarMensagem(ret);
         ConsultarTipo();
         LimparNotificacoes(formID);
       },
-    });
+    }); 
   }
 }
 
@@ -41,13 +41,13 @@ function ConsultarTipo() {
 
   $.ajax({
     type: "post",
-    url: BASE_URL_DATAVIEW("gerenciar_tipo_equipamento_dataview"),
+    url: BASE_URL_DATAVIEW('gerenciar_tipo_equipamento_dataview'),
     data: {
-      consultar_tipo: "ajx"
+      consultar_tipo: 'ajx'
     },
     success: function (dados) {
       $("#tableResult").html(dados);
-      alert(dados);
+      FecharModal("modal-consultar");
     }
   });
 }
