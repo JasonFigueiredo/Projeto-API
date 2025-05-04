@@ -7,8 +7,6 @@ use Src\VO\TipoVO;
 
 $ctrl = new GerenciarTipoEquipamentoCTRL();
 
-
-
 if (isset($_POST['btn_cadastrar'])) {
     // Criar meu VO
     $vo = new TipoVO();
@@ -19,7 +17,8 @@ if (isset($_POST['btn_cadastrar'])) {
 
     if ($_POST['btn_cadastrar'] == 'ajx')
         echo $ret;
-} else if (isset($_POST['btn_alterar'])) {
+} 
+else if (isset($_POST['btn_alterar'])) {
     $vo = new TipoVO();
     $vo->setNome($_POST['tipo_alterar']);
     $vo->setId($_POST['id_alterar']);
@@ -27,11 +26,16 @@ if (isset($_POST['btn_cadastrar'])) {
 
     if ($_POST['btn_alterar'] == 'ajx')
         echo $ret;
-} else if (isset($_POST['btn_excluir'])) {
+} 
+else if (isset($_POST['btn_excluir'])) {
     $vo = new TipoVO();
     $vo->setId($_POST['id_excluir']);
     $ret = $ctrl->ExcluirTipoEquipamentoCTRL($vo);
-} else if (isset($_POST['consultar_tipo'])) {
+
+    if ($_POST['btn_excluir'] == 'ajx')
+        echo $ret;
+} 
+else if (isset($_POST['consultar_tipo'])) {
 
     $tipos_equipamentos = $ctrl->ConsultarTipoEquipamentoCTRL();
 

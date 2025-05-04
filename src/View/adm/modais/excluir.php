@@ -17,7 +17,7 @@
       </div>
       <div class="modal-footer justify-content-center">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button class="btn btn-danger" name="btn_excluir" onclick="">Excluir</button>
+        <button type="button" class="btn btn-danger" name="btn_excluir" onclick="Excluir()">Excluir</button>
       </div>
     </div>
   </div>
