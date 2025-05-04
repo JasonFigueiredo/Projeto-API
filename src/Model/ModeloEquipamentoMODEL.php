@@ -61,7 +61,7 @@ class ModeloEquipamentoMODEL extends Conexao
     }
   }
 
-  /// Método para excluir um tipo de equipamento
+  /// Método para excluir um modelo de equipamento
   /// Retorna 1 se a exclusão foi realizada com sucesso, -1 caso contrário
   public function ExcluirModeloEquipamentoMODEL(ModeloVO $vo)
   {

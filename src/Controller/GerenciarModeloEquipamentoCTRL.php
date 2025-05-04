@@ -15,7 +15,7 @@ class GerenciarModeloEquipamentoCTRL
         $this->modeloEquipamentoModel = new ModeloEquipamentoMODEL();
     }
 
-    public function GerenciarModeloEquipamento(ModeloVO $vo): string
+    public function CadastrarModeloCTRL(ModeloVO $vo): string
     {
         if (empty($vo->getNome()))
             return 0;
@@ -38,13 +38,13 @@ class GerenciarModeloEquipamentoCTRL
         return $this->modeloEquipamentoModel->AlterarModeloEquipamentoMODEL($vo);
     }
 
-    public function ExcluirModeloCTRL(ModeloVO $vo): string
+    public function ExcluirModeloCTRL(ModeloVO $vo): int
     {
         if (empty($vo->getId())) {
             return 0;
         }
 
-        $vo->setErroTecnico(EXCLUIR_MODELO_EQUIPAMENTO);
+        $vo->setFuncaoErro(EXCLUIR_MODELO_EQUIPAMENTO);
         $vo->setCodLogado(Util::CodigoLogado());
 
         return $this->modeloEquipamentoModel->ExcluirModeloEquipamentoMODEL($vo);
