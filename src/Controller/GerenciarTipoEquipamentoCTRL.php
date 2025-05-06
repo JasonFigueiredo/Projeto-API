@@ -1,14 +1,12 @@
 <?php
 
 namespace Src\Controller;
-
 use Src\_Public\Util;
 use Src\VO\TipoVO;
 use Src\Model\TipoEquipamentoMODEL;
 
 class GerenciarTipoEquipamentoCTRL
 {
-
     private $model;
 
     public function __construct()

@@ -60,7 +60,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_modelo_equipame
                                 <label>Nome do modelo</label>
                                 <input type="text" class="form-control obg" id="tipo" name="modelo" placeholder="Digite aqui...">
                             </div>
-                            <button onclick="return NotificarCampos('formCad')" type="button" class="btn btn-success" id="btn_cadastrar" name="btn_cadastrar">Cadastrar</button>
+                            <button onclick="CadastrarModeloEquipamento('formCad')" type="button" class="btn btn-success" id="btn_cadastrar" name="btn_cadastrar">Cadastrar</button>
                         </div>
                     </form>
                     <!-- /.card-body -->
@@ -74,22 +74,8 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_modelo_equipame
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Nome do modelo</th>
-                                    <th>Ação</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Notebook</td>
-                                    <td>
-                                        <a href="#" class=" btn btn-warning btn-xs">Alterar</a>
-                                        <a href="#" class=" btn btn-danger btn-xs">Excluir</a>
-                                    </td>
-                                </tr>
-                            </tbody>
+                        <table class="table table-striped table-bordered table-hover" id="tabelaModeloEquipamento">
+
                         </table>
                     </div>
                     <!-- /.card-body -->
@@ -102,11 +88,19 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_modelo_equipame
         ?>
         <!-- /.control-sidebar -->
     </div>
+    <form action="gerenciar_modelo_equipamento.php" method="post" id="formAlt">
+        <?php include_once 'modais/excluir.php' ?>
+        <?php include_once 'modais/alterar-modelo.php' ?>
+    </form>
     <!-- ./wrapper -->
     <?php
     include_once PATH . 'Template/_includes/_scripts.php';
     include_once PATH . 'Template/_includes/_msg.php';
     ?>
+    <script src="../../Resource/ajax/modelo_equipamento_ajax.js"></script>
+    <script>
+        ConsultarModelo();
+    </script>
 </body>
 
 </html>

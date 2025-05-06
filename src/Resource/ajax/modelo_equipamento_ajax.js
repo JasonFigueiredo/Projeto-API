@@ -1,7 +1,7 @@
 function Excluir() {
-  
-  let id = $("#id_excluir").val()
-  
+
+  let id = $("#id_excluir").val();
+
   $.ajax({
     type: "post",
     url: BASE_URL_DATAVIEW("gerenciar_modelo_equipamento_dataview"),
@@ -17,15 +17,15 @@ function Excluir() {
   });
 }
 
-function CadastrarEquipamento(formID) {
+function CadastrarModeloEquipamento(formID) {
   if (NotificarCampos(formID)) {
-    let nome = $("#tipo").val();
+    let nome_modelo = $("#modelo").val();
 
     $.ajax({
       type: "post",
       url: BASE_URL_DATAVIEW("gerenciar_modelo_equipamento_dataview"),
       data: {
-        tipo: nome,
+        tipo: nome_modelo,
         btn_cadastrar: "ajx",
       },
       success: function (ret) {
@@ -68,7 +68,7 @@ function AlterarModeloEquipamento(formID) {
       success: function (ret) {
         MostrarMensagem(ret);
         ConsultarModelo();
-        FecharModal("alterar_tipo");
+        FecharModal("alterar_modelo");
       }
     });
   }

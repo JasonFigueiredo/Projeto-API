@@ -8,11 +8,8 @@ use Src\VO\TipoVO;
 $ctrl = new GerenciarTipoEquipamentoCTRL();
 
 if (isset($_POST['btn_cadastrar'])) {
-    // Criar meu VO
     $vo = new TipoVO();
-    // Setar os valores inserido nos campos
     $vo->setNome($_POST['tipo']);
-    // Chama a função de cadastro da Controler
     $ret = $ctrl->CadastrarTipoEquipamentoCTRL($vo);
 
     if ($_POST['btn_cadastrar'] == 'ajx')
