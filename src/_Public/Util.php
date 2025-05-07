@@ -55,26 +55,26 @@ class Util
     // Função para formatar o valor ATIVO e INATIVO e a com cores personalizadas
     
     
-    // public static function MostrarSituacao(int $sit): string
-    // {
-    //     $situacao = '';
+    public static function MostrarSituacao(int $sit): string
+    {
+        $situacao = '';
 
-    //     switch ($sit) {
-    //         case SITUACAO_ATIVO:
-    //             $situacao = '<strong style="color: #008000;">ATIVO</strong>';
-    //             break;
+        switch ($sit) {
+            case SITUACAO_ATIVO:
+                $situacao = '<strong style="color: #008000;">ATIVO</strong>';
+                break;
 
-    //         case SITUACAO_INATIVO:
-    //             $situacao = '<strong style="color: #FF0000;">INATIVO</strong>';
-    //             break;
-    //     }
+            case SITUACAO_INATIVO:
+                $situacao = '<strong style="color: #FF0000;">INATIVO</strong>';
+                break;
+        }
 
-    //     return $situacao;
-    // }
+        return $situacao;
+    }
 
-    // public static function ChamarPagina($pag)
-    // {
-    //     header("location: $pag.php");
-    //     exit;
-    // }
+    public static function ChamarPagina($pag)
+    {
+        header("location: $pag.php");
+        exit;
+    }
 }
