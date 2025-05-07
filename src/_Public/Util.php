@@ -4,7 +4,8 @@ namespace Src\_Public;
 
 class Util
 {
-    public static function CodigoLogado(){
+    public static function CodigoLogado()
+    {
         return 1;
     }
 
@@ -51,4 +52,29 @@ class Util
         $palavra = str_replace($especiais, '', trim($palavra));
         return $palavra;
     }
+    // Função para formatar o valor ATIVO e INATIVO e a com cores personalizadas
+    
+    
+    // public static function MostrarSituacao(int $sit): string
+    // {
+    //     $situacao = '';
+
+    //     switch ($sit) {
+    //         case SITUACAO_ATIVO:
+    //             $situacao = '<strong style="color: #008000;">ATIVO</strong>';
+    //             break;
+
+    //         case SITUACAO_INATIVO:
+    //             $situacao = '<strong style="color: #FF0000;">INATIVO</strong>';
+    //             break;
+    //     }
+
+    //     return $situacao;
+    // }
+
+    // public static function ChamarPagina($pag)
+    // {
+    //     header("location: $pag.php");
+    //     exit;
+    // }
 }
