@@ -1,6 +1,7 @@
 <?php
 
 namespace Src\Controller;
+
 use Src\_Public\Util;
 use Src\VO\TipoVO;
 use Src\Model\TipoEquipamentoMODEL;
@@ -14,13 +15,12 @@ class GerenciarTipoEquipamentoCTRL
         $this->model = new TipoEquipamentoMODEL();
     }
 
-
     /// Método para cadastrar um tipo de equipamento
     public function CadastrarTipoEquipamentoCTRL(TipoVO $vo): int
     {
         if (empty($vo->getNome()))
             return 0;
-        
+
         $vo->setCodLogado(Util::CodigoLogado());
         $vo->setFuncaoErro(CADASTRAR_TIPO_EQUIPAMENTO);
 
@@ -56,5 +56,4 @@ class GerenciarTipoEquipamentoCTRL
 
         return $ret;
     }
-
 }

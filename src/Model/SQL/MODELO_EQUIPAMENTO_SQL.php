@@ -5,7 +5,6 @@ namespace Src\Model\SQL;
 use Exception;
 use Src\Model\Conexao;
 use Src\VO\TipoVO;
-// Removed redundant import to avoid duplicate declaration error
 
 class MODELO_EQUIPAMENTO_SQL
 {

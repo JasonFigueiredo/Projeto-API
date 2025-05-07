@@ -20,7 +20,7 @@
 
       <div class="modal-footer justify-content-center">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-success" id="modelo_alterar" name="btn_alterar" onclick="AlterarModeloEquipamento('formAlt')">Alterar</button>
+        <button type="button" class="btn btn-success"  name="btn_alterar" onclick="AlterarModeloEquipamento('formAlt')">Alterar</button>
       </div>
     </div>
   </div>

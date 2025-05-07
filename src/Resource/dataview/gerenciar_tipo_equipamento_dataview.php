@@ -14,8 +14,7 @@ if (isset($_POST['btn_cadastrar'])) {
 
     if ($_POST['btn_cadastrar'] == 'ajx')
         echo $ret;
-} 
-else if (isset($_POST['btn_alterar'])) {
+} else if (isset($_POST['btn_alterar'])) {
     $vo = new TipoVO();
     $vo->setNome($_POST['tipo_alterar']);
     $vo->setId($_POST['id_alterar']);
@@ -23,20 +22,16 @@ else if (isset($_POST['btn_alterar'])) {
 
     if ($_POST['btn_alterar'] == 'ajx')
         echo $ret;
-} 
-else if (isset($_POST['btn_excluir'])) {
+} else if (isset($_POST['btn_excluir'])) {
     $vo = new TipoVO();
     $vo->setId($_POST['id_excluir']);
     $ret = $ctrl->ExcluirTipoEquipamentoCTRL($vo);
 
     if ($_POST['btn_excluir'] == 'ajx')
         echo $ret;
-} 
-else if (isset($_POST['consultar_tipo'])) {
+} else if (isset($_POST['consultar_tipo'])) {
 
-    $tipos_equipamentos = $ctrl->ConsultarTipoEquipamentoCTRL();
-
-?>
+    $tipos_equipamentos = $ctrl->ConsultarTipoEquipamentoCTRL(); ?>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>

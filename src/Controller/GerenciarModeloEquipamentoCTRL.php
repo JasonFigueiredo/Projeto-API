@@ -1,6 +1,7 @@
 <?php
 
 namespace Src\Controller;
+
 use Src\_Public\Util;
 use Src\VO\ModeloVO;
 use Src\Model\ModeloEquipamentoMODEL;
@@ -20,19 +21,19 @@ class GerenciarModeloEquipamentoCTRL
             return 0;
 
         $vo->setCodLogado(Util::CodigoLogado());
-        $vo->setErroTecnico(CADASTRAR_MODELO_EQUIPAMENTO);
+        $vo->setFuncaoErro(CADASTRAR_MODELO_EQUIPAMENTO);
 
         return $this->model->CadastrarModeloEquipamentoMODEL($vo);
     }
 
     public function AlterarModeloCTRL(ModeloVO $vo): int
     {
-        if (empty($vo->getId()) || empty($vo->getNome())) {
+        if (empty($vo->getNome()) || empty($vo->getId())) {
             return 0;
         }
 
         $vo->setCodLogado(Util::CodigoLogado());
-        $vo->setErroTecnico(ALTERAR_MODELO_EQUIPAMENTO);
+        $vo->setFuncaoErro(ALTERAR_MODELO_EQUIPAMENTO);
 
         return $this->model->AlterarModeloEquipamentoMODEL($vo);
     }
@@ -43,8 +44,8 @@ class GerenciarModeloEquipamentoCTRL
             return 0;
         }
 
-        $vo->setFuncaoErro(EXCLUIR_MODELO_EQUIPAMENTO);
         $vo->setCodLogado(Util::CodigoLogado());
+        $vo->setFuncaoErro(EXCLUIR_MODELO_EQUIPAMENTO);
 
         return $this->model->ExcluirModeloEquipamentoMODEL($vo);
     }
@@ -53,5 +54,4 @@ class GerenciarModeloEquipamentoCTRL
     {
         return $this->model->ConsultarModeloEquipamentoModel();
     }
-    
 }
