@@ -47,7 +47,6 @@ function ConsultarModelo() {
     },
     success: function (dados) {
       $("#tableResult").html(dados);
-      alert(dados);
     }
   });
 }

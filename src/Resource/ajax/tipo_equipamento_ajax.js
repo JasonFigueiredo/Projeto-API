@@ -1,6 +1,6 @@
 function Excluir() {
   
-  let id = $("#id_excluir").val()
+  let id = $("#id_excluir").val();
   
   $.ajax({
     type: "post",
