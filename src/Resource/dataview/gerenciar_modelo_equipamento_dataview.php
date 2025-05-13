@@ -47,7 +47,7 @@ else if (isset($_POST["consultar_modelo"])) {
             for ($i = 0; $i < count($modelos_equipamentos); $i++) { ?>
                 <tr>
                     <td>
-                        <a href="#" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-alterar" onclick="CarregarModeloEquipamento('<?= $modelos_equipamentos[$i]['id'] ?>','<?= $modelos_equipamentos[$i]['nome_modelo'] ?>')">Alterar</a>
+                        <a href="#" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#alterar-modelo" onclick="CarregarModeloEquipamento('<?= $modelos_equipamentos[$i]['id'] ?>','<?= $modelos_equipamentos[$i]['nome_modelo'] ?>')">Alterar</a>
                         <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarExcluir('<?= $modelos_equipamentos[$i]['id'] ?>','<?= $modelos_equipamentos[$i]['nome_modelo'] ?>')">Excluir</a>
                     </td>
                     <td>

@@ -58,7 +58,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_modelo_equipame
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Nome do modelo</label>
-                                <input type="text" class="form-control obg" id="tipo" name="modelo" placeholder="Digite aqui...">
+                                <input type="text" class="form-control obg" id="modelo" name="modelo" placeholder="Digite aqui...">
                             </div>
                             <button onclick="CadastrarModeloEquipamento('formCad')" type="button" class="btn btn-success" id="btn_cadastrar" name="btn_cadastrar">Cadastrar</button>
                         </div>
@@ -74,7 +74,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_modelo_equipame
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table class="table table-striped table-bordered table-hover" id="tabelaModeloEquipamento">
+                        <table class="table table-striped table-bordered table-hover" id="tableResult">
 
                         </table>
                     </div>

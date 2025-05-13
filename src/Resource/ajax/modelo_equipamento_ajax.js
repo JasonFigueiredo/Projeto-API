@@ -25,7 +25,7 @@ function CadastrarModeloEquipamento(formID) {
       type: "post",
       url: BASE_URL_DATAVIEW("gerenciar_modelo_equipamento_dataview"),
       data: {
-        tipo: nome_modelo,
+        modelo: nome_modelo,
         btn_cadastrar: "ajx",
       },
       success: function (ret) {
@@ -67,7 +67,7 @@ function AlterarModeloEquipamento(formID) {
       success: function (ret) {
         MostrarMensagem(ret);
         ConsultarModelo();
-        FecharModal("alterar_modelo");
+        FecharModal("alterar-modelo");
       }
     });
   }
