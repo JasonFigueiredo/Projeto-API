@@ -39,3 +39,10 @@ function FocarCampoTravar(e, next) {
     $("#" + next).focus();
   }
 }
+
+function Load() {
+  $(".loader").addClass("is-active");
+}
+function RemoverLoad() {
+  $(".loader").removeClass("is-active");
+}
