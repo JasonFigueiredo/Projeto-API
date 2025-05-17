@@ -12,7 +12,7 @@ class ModeloVO extends LogErroVO
     // Setters e Getters do modelo 
     public function setNome(string $p_nome_modelo): void
     {
-        $this->nome_modelo = Util::RemoverTags($p_nome_modelo);
+        $this->nome_modelo = Util::TirarCaracteresEspeciais($p_nome_modelo);
     }
     public function getNome(): string
     {

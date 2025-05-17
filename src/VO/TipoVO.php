@@ -11,7 +11,7 @@ class TipoVO extends LogErroVO
 
     public function setNome(string $p_nome_tipo): void
     {
-        $this->nome_tipo = Util::RemoverTags($p_nome_tipo);
+        $this->nome_tipo = Util::TirarCaracteresEspeciais($p_nome_tipo);
     }
     public function getNome(): string
     {
