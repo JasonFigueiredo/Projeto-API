@@ -4,7 +4,8 @@ namespace Src\VO;
 
 use Src\_Public\Util;
 
-class EquipamentoVO
+
+class EquipamentoVO extends LogErroVO
 {
     private $id;
     private $identificacao;
