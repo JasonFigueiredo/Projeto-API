@@ -55,11 +55,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_equipamento_dataview
                             <div class="form-group">
                                 <label>Tipo:</label>
                                 <select class="form-control obg" id="tipo" name="tipo">
-                                    <option value="">Selecione...</option>
-                                    <option value="1">Equipamento 1</option>
-                                    <option value="2">Equipamento 2</option>
-                                    <option value="3">Equipamento 3</option>
-                                    <!-- Adicione mais opções conforme necessário -->
+<!-- visualização do SELECT sera inserido atravez do dataView -->
                                 </select>
                             </div>
                             <div class="form-group">
