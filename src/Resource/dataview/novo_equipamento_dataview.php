@@ -18,4 +18,15 @@ if (isset($_POST['btn_cadastrar'])) {
 
     // Chame o método para cadastrar o novo equipamento
     $ret = $ctrl->NovoEquipamento($vo);
-}
+} else if (isset($_POST["carregar_tipos"])) {
+    $tipos = (new TipoEquipamentoCTRL)->ConsultarTipoEquipamentoCTRL();
+?>
+
+    <select name="tipo" id="tipo" class="form-control obg">
+        <option value="">Selecione</option>
+        <?php foreach ($tipos as $item) { ?>
+            <option value="<? $item['id'] ?>"><? $item["nome_tipo"] ?></option>
+        <?php } ?>
+
+    </select>
+<?php } ?>
