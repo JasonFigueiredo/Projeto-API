@@ -29,4 +29,16 @@ if (isset($_POST['btn_cadastrar'])) {
         <?php } ?>
 
     </select>
+<?php } else if (isset($_POST["carregar_modelos"])){
+    $modelos = (new ModeloEquipamentoCTRL)->ConsultarModeloCTRL();
+?>
+
+    <select name="modelo" id="modelo" class="form-control obg">
+        <option value="">Selecione</option>
+        <?php foreach ($modelos as $item) { ?>
+            <option value="<? $item['id'] ?>"><? $item["nome_modelo"] ?></option>
+        <?php } ?>
+
+    </select>
+
 <?php } ?>
