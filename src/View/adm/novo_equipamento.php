@@ -1,5 +1,5 @@
 <?php
-include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_equipamento_dataview.php';
+include_once dirname(__DIR__, 2) . '/Resource/dataview/equipamento_dataview.php';
 ?>
 
 <!DOCTYPE html>
@@ -61,10 +61,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_equipamento_dataview
                             <div class="form-group">
                                 <label>Modelo:</label>
                                 <select class="form-control obg" id="modelo" name="modelo">
-                                    <option value="">Selecione...</option>
-                                    <option value="1">Modelo 1</option>
-                                    <option value="2">Modelo 2</option>
-                                    <option value="3">Modelo 3</option>
+                                   
                                     <!-- Adicione mais opções conforme necessário -->
                                 </select>
                             </div>
@@ -98,9 +95,10 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_equipamento_dataview
     include_once PATH . 'Template/_includes/_scripts.php';
     include_once PATH . 'Template/_includes/_msg.php';
     ?>
+
 <script src="../../Resource/ajax/equipamento_ajax.js"></script>
 <script>
-    CarregarTipos();
+    CarregarTipo();
     CarregarModelos();
 </script>
     

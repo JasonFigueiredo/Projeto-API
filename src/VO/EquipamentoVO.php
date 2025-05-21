@@ -79,11 +79,11 @@ class EquipamentoVO extends LogErroVO
     }
 
     // get set de MODELO_ID
-    public function setModeloId(int $modelo): void
+    public function setModelo(int $modelo): void
     {
         $this->modelo_id = $modelo;
     }
-    public function getModeloId(): int
+    public function getModelo(): int
     {
         return $this->modelo_id;
     }
@@ -109,11 +109,11 @@ class EquipamentoVO extends LogErroVO
     }
 
     // get set de TIPO_ID
-    public function setTipoId(int $tipo): void
+    public function setTipo(int $tipo): void
     {
         $this->tipo_id = $tipo;
     }
-    public function getTipoId(): int
+    public function getTipo(): int
     {
         return $this->tipo_id;
     }

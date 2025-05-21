@@ -5,9 +5,9 @@ namespace Src\Model;
 use Exception;
 use Src\Model\Conexao;
 use Src\VO\EquipamentoVO;
-use Src\Model\SQL\EQUIPAMENTO_SQL;
+use Src\Model\SQL\NOVO_EQUIPAMENTO_SQL;
 
-class EquipamentoMODEL extends Conexao
+class NovoEquipamentoMODEL extends Conexao
 {
 
     private $conexao;
@@ -17,10 +17,10 @@ class EquipamentoMODEL extends Conexao
         $this->conexao = parent::retornarConexao();
     }
 
-    public function CadastrarEquipamento(EquipamentoVO $vo): int
+    public function NovoEquipamentoModel(EquipamentoVO $vo): int
     {
 
-        $sql = $this->conexao->prepare(EQUIPAMENTO_SQL::INSERIR_EQUIPAMENTO());
+        $sql = $this->conexao->prepare(NOVO_EQUIPAMENTO_SQL::INSERIR_EQUIPAMENTO());
         $i = 1;
         $sql->bindValue($i++, $vo->getIdentificacao());
         $sql->bindValue($i++, $vo->getDescricao());

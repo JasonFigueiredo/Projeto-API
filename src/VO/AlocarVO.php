@@ -5,7 +5,7 @@ namespace Src\VO;
 use DateTime;
 use Src\_Public\Util;
 
-class AlocarVO
+class AlocarVO extends LogErroVO
 {
     private $id;
     private $equipamento_id;

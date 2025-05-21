@@ -37,7 +37,7 @@ class TipoEquipamentoMODEL extends Conexao
 
   /// Método para consultar todos os tipos de equipamentos
   /// Retorna um array com os tipos de equipamentos cadastrados
-  public function ColsultarTipoEquipamentoModel()
+  public function ConsultarTipoEquipamentoModel()
   {
     $sql = $this->conexao->prepare(TIPO_EQUIPAMENTO_SQL::SELECIONAR_TIPO_EQUIPAMENTO());
     $sql->execute();

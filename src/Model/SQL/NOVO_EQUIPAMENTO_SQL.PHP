@@ -2,7 +2,7 @@
 
 namespace Src\Model\SQL;
 
-class EQUIPAMENTO_SQL
+class NOVO_EQUIPAMENTO_SQL
 {
 
     public static function INSERIR_EQUIPAMENTO()
@@ -11,6 +11,7 @@ class EQUIPAMENTO_SQL
         $sql = "INSERT INTO 
         tb_equipamento (identificacao, descricao, situacao, tipo_id, modelo_id)
         values (?,?,?,?,?)";
+        
         return $sql;
     }
 }

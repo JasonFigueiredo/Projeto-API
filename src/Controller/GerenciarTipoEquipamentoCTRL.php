@@ -31,7 +31,7 @@ class GerenciarTipoEquipamentoCTRL
     /// Método para consultar todos os tipos de equipamentos
     public function ConsultarTipoEquipamentoCTRL()
     {
-        return $this->model->ColsultarTipoEquipamentoMODEL();
+        return $this->model->ConsultarTipoEquipamentoMODEL();
     }
 
 

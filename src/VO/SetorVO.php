@@ -5,7 +5,7 @@ namespace Src\VO;
 
 use Src\_Public\Util;
 
-class SetorVO
+class SetorVO extends LogErroVO
 {
 
   private $id;
