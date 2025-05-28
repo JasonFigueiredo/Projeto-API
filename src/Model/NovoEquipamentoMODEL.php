@@ -37,4 +37,21 @@ class NovoEquipamentoMODEL extends Conexao
             return -1;
         }
     }
+
+    public function FiltrarEquipamentoModel($tipo, $modelo)
+    {
+        $sql = $this->conexao->prepare(NOVO_EQUIPAMENTO_SQL::FILTRAR_EQUIPAMENTO($tipo, $modelo));
+
+        if ($tipo != "" && $modelo != "") {
+            $sql->bindValue(1, $modelo);
+            $sql->bindValue(2, $tipo);
+        } elseif ($tipo == "" && $modelo != "") {
+            $sql->bindValue(1, $modelo);
+        } elseif ($tipo != "" && $modelo == "") {
+            $sql->bindValue(1, $tipo);
+        }
+
+        $sql->execute();
+        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }

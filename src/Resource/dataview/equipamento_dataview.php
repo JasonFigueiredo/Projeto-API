@@ -24,7 +24,6 @@ if (isset($_POST['btn_cadastrar'])) {
 } else if (isset($_POST["carregar_tipos"])) {
     $tipos = (new GerenciarTipoEquipamentoCTRL)->ConsultarTipoEquipamentoCTRL();
 ?>
-
     <select name="tipo" id="tipo" class="form-control obg">
         <option value="">Selecione</option>
         <?php foreach ($tipos as $item) { ?>
@@ -35,11 +34,20 @@ if (isset($_POST['btn_cadastrar'])) {
 <?php } else if (isset($_POST["carregar_modelos"])) {
     $modelos = (new GerenciarModeloEquipamentoCTRL)->ConsultarModeloCTRL();
 ?>
-
     <select name="modelo" id="modelo" class="form-control obg">
         <option value="">Selecione</option>
         <?php foreach ($modelos as $item) { ?>
             <option value="<?= $item['id'] ?>"><?= $item["nome_modelo"] ?></option>
         <?php } ?>
     </select>
+<?php } ?>
+
+<?php } else if (isset($_POST['filtrar_equipamentos'])) {
+
+    $tipoId = $_POST['tipo'];
+    $modeloId = $_POST['modelo'];
+
+    $equipamentos = $ctrl->FiltrarEquipamentoCTRL($tipoId, $modeloId);
+?>
+
 <?php } ?>

@@ -55,14 +55,11 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/equipamento_dataview.php'
                             <div class="form-group">
                                 <label>Tipo:</label>
                                 <select class="form-control obg" id="tipo" name="tipo">
-<!-- visualização do SELECT sera inserido atravez do dataView -->
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Modelo:</label>
                                 <select class="form-control obg" id="modelo" name="modelo">
-                                   
-                                    <!-- Adicione mais opções conforme necessário -->
                                 </select>
                             </div>
                             <div class="form-group">

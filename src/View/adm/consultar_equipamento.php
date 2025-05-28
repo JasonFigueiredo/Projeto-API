@@ -57,9 +57,19 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                         <form action="consultar_equipamento.php" method="POST" id="formCad">
                             <div class="form-group">
                                 <label for="nomeEquipamento">Pesquisar por tipo</label>
-                                <input type="text" class="form-control obg" id="nomeEquipamento" name="nomeEquipamento" placeholder="Digite aqui...">
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label>Tipo:</label>
+                                        <select class="form-control" id="tipo" name="tipo" onchange="FiltrarEquipamentoTipo(this.value)">
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Modelo:</label>
+                                        <select class="form-control" id="modelo" name="modelo" onchange="FiltrarEquipamentoModelo(this.value)">
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
-                            <button onclick="NotificarCampos('formCad')" type="button" class="btn btn-success">Buscar</button>
                         </form>
                     </div>
                     <!-- /.card-body -->
@@ -110,10 +120,17 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
+
     <?php
     include_once PATH . 'Template/_includes/_scripts.php';
     include_once PATH . 'Template/_includes/_msg.php';
     ?>
+
+    <script src="../../Resource/ajax/equipamento_ajax.js"></script>
+    <script>
+        CarregarTipo();
+        CarregarModelos();
+    </script>
 </body>
 
 </html>
