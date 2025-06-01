@@ -45,8 +45,10 @@ class NovoEquipamentoMODEL extends Conexao
         if ($tipo != "" && $modelo != "") {
             $sql->bindValue(1, $modelo);
             $sql->bindValue(2, $tipo);
+
         } elseif ($tipo == "" && $modelo != "") {
             $sql->bindValue(1, $modelo);
+            
         } elseif ($tipo != "" && $modelo == "") {
             $sql->bindValue(1, $tipo);
         }

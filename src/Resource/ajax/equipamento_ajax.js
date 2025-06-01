@@ -34,7 +34,11 @@ function CarregarModelos() {
     })
 }
 
-function FiltrarEquipamentoTipo(id) {
+function FiltrarEquipamentos() {
+
+    let idTipo = $("#tipo").val();
+    let idModelo = $("#modelo").val();
+    
     $.ajax({
         beforeSend: function () {
             Load();
@@ -42,30 +46,12 @@ function FiltrarEquipamentoTipo(id) {
         type: 'post', url: BASE_URL_DATAVIEW("equipamento_dataview"),
         data: {
             filtrar_equipamentos: "ajx",
-            tipo: $("#tipo").val(),
-            modelo: $("#modelo").val(),
+            tipo: idTipo,
+            modelo: idModelo,
             status: $("#status").val()
         },
         success: function (dados) {
-            $("#equipamentos").html(dados);
-        },
-        complete: function () {
-            RemoverLoad();
-        }
-    })
-}
-function FiltrarEquipamentoModelo(id) {
-    $.ajax({
-        beforeSend: function () {
-            Load();
-        },
-        type: 'post', url: BASE_URL_DATAVIEW("equipamento_dataview"),
-        data: {
-            filtrar_modelos: "ajx",
-            tipo: $("#tipo").val()
-        },
-        success: function (dados) {
-            $("#modelo").html(dados);
+            $("#tableResult").html(dados);
         },
         complete: function () {
             RemoverLoad();

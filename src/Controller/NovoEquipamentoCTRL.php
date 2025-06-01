@@ -31,8 +31,9 @@ class NovoEquipamentoCTRL
 
     return $this->model->NovoEquipamentoModel($vo);
   }
-  public function FiltrarEquipamento($tipoid, $modeloid): array
+
+  public function FiltrarEquipamentoCTRL($tipo, $modelo): array
   {
-    return $this->model->FiltrarEquipamentoModel($tipoid, $modeloid);
+    return $this->model->FiltrarEquipamentoModel($tipo, $modelo);
   }
 }

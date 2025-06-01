@@ -1,5 +1,6 @@
 <?php
 
+use Src\_Public\Util;
 use Src\Controller\NovoEquipamentoCTRL;
 use Src\Controller\GerenciarTipoEquipamentoCTRL;
 use Src\Controller\GerenciarModeloEquipamentoCTRL;
@@ -40,14 +41,38 @@ if (isset($_POST['btn_cadastrar'])) {
             <option value="<?= $item['id'] ?>"><?= $item["nome_modelo"] ?></option>
         <?php } ?>
     </select>
-<?php } ?>
-
 <?php } else if (isset($_POST['filtrar_equipamentos'])) {
 
-    $tipoId = $_POST['tipo'];
-    $modeloId = $_POST['modelo'];
+    $tipo = $_POST['tipo'];
+    $modelo = $_POST['modelo'];
 
-    $equipamentos = $ctrl->FiltrarEquipamentoCTRL($tipoId, $modeloId);
+    $equipamentos = $ctrl->FiltrarEquipamentoCTRL($tipo, $modelo);
 ?>
-
+    <table id="example1" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Nome do equipamento</th>
+                <th>Modelo</th>
+                <th>Identificação</th>
+                <th>Descrição</th>
+                <th>Situação</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($equipamentos as $item) { ?>
+            <tr>
+                <td><?= $item['nome_tipo'] ?></td>
+                <td><?= $item['nome_modelo'] ?></td>
+                <td><?= $item['identificacao'] ?></td>
+                <td><?= $item['descricao'] ?></td>
+                <td><?= Util::MostrarSituacao($item['situacao'])?></td>
+                <td>
+                    <a href="#" class=" btn btn-warning btn-xs">Alterar</a>
+                    <a href="#" class=" btn btn-danger btn-xs">Excluir</a>
+                </td>
+            </tr>
+        </tbody>
+            <?php } ?>
+    </table>
 <?php } ?>

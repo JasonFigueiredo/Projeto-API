@@ -60,12 +60,12 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label>Tipo:</label>
-                                        <select class="form-control" id="tipo" name="tipo" onchange="FiltrarEquipamentoTipo(this.value)">
+                                        <select class="form-control" id="tipo" name="tipo" onchange="FiltrarEquipamentos()">
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Modelo:</label>
-                                        <select class="form-control" id="modelo" name="modelo" onchange="FiltrarEquipamentoModelo(this.value)">
+                                        <select class="form-control" id="modelo" name="modelo" onchange="FiltrarEquipamentos()">
                                         </select>
                                     </div>
                                 </div>
@@ -84,28 +84,8 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Nome do equipamento</th>
-                                    <th>Modelo</th>
-                                    <th>Identificação</th>
-                                    <th>Descrição</th>
-                                    <th>Ação</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Notebook</td>
-                                    <td>Dell</td>
-                                    <td>not01</td>
-                                    <td>Serviços de gestão de documentação</td>
-                                    <td>
-                                        <a href="#" class=" btn btn-warning btn-xs">Alterar</a>
-                                        <a href="#" class=" btn btn-danger btn-xs">Excluir</a>
-                                    </td>
-                                </tr>
-                            </tbody>
+                        <table id="tableResult" class="table table-bordered table-striped">
+                           
                         </table>
                     </div>
                     <!-- /.card-body -->
@@ -130,6 +110,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
     <script>
         CarregarTipo();
         CarregarModelos();
+        FiltrarEquipamentos();
     </script>
 </body>
 
