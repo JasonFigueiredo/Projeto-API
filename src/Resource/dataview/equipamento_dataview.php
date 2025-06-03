@@ -68,7 +68,7 @@ if (isset($_POST['btn_cadastrar'])) {
                     <td><?= $item['descricao'] ?></td>
                     <td><?= Util::MostrarSituacao($item['situacao']) ?></td>
                     <td>
-                        <a href="equipamento.php?id=<?= $item['equipamento_id'] ?>" class=" btn btn-warning btn-xs">Alterar</a>
+                        <a href="novo_equipamento.php?id=<?= $item['equipamento_id'] ?>" class=" btn btn-warning btn-xs">Alterar</a>
                         <a href="#" class=" btn btn-danger btn-xs">Excluir</a>
                     </td>
                 </tr>

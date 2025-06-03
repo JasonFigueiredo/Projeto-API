@@ -1,11 +1,7 @@
 <?php
 include_once dirname(__DIR__, 2) . '/Resource/dataview/equipamento_dataview.php';
 
-if (isset($equipamentos)) {
-    echo 'ALTERAR';
-} else {
-    echo 'NOVO';
-}
+$titulo =  isset($equipamentos) ? 'Editar Equipamento' : 'Novo Equipamento';
 
 ?>
 
@@ -33,7 +29,7 @@ if (isset($equipamentos)) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Novo equipamento</h1>
+                            <h1><?= $titulo ?></h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -49,7 +45,7 @@ if (isset($equipamentos)) {
                 <!-- Defalt box -->
                 <div class="card">
                     <div class="card-header card-primary card-outline">
-                        <h3 class="card-title">Aqui você poderá cadastrar seus equipamentos</h3>
+                        <h3 class="card-title"><?= $titulo ?></h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
@@ -78,7 +74,7 @@ if (isset($equipamentos)) {
                                 <textarea class="form-control obg" id="descricao" name="descricao" rows="4" maxlength="150" placeholder="Digite suas observações" onkeyup="countChars(this)"></textarea>
                                 <small id="charCount" class="form-text text-muted">150 caracteres restantes</small>
                             </div>
-                            <button onclick="return NotificarCampos('formCad')" type="submit" class="btn btn-success" name="btn_cadastrar">Cadastrar</button>
+                            <button onclick="return NotificarCampos('formCad')" type="submit" class="btn btn-success" name="btn_cadastrar"><?= $titulo ?></button>
                         </form>
 
                     </div>
