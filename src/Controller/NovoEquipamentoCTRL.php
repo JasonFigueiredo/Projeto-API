@@ -36,4 +36,21 @@ class NovoEquipamentoCTRL
   {
     return $this->model->FiltrarEquipamentoModel($tipo, $modelo);
   }
+
+  public function DetalharEquipamentoCTRL(int $id): array | null
+  {
+    return $this->model->DetalharEquipamentoModel($id);
+  }
+
+
+  public function ExcluirEquipamentoCTRL(EquipamentoVO $vo): int
+  {
+    if (empty($vo->getId())) 
+      return 0;
+
+      $vo->setCodLogado(Util::CodigoLogado());
+      $vo->setFuncaoErro(EXCLUIR_NOVO_EQUIPAMENTO);
+
+    return $this->model->ExcluirEquipamentoModel($vo);
+  }
 }

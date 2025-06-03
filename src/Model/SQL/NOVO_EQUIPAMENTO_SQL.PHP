@@ -15,6 +15,31 @@ class NOVO_EQUIPAMENTO_SQL
         return $sql;
     }
 
+    public static function DETALHAR_EQUIPAMENTO()
+    {
+
+        $sql = "SELECT id, 
+                identificacao, 
+                descricao, 
+                situacao, 
+                tipo_id, 
+                modelo_id 
+        FROM tb_equipamento 
+        WHERE id = ?";
+
+        return $sql;
+    }
+
+    public static function EXCLUIR_EQUIPAMENTO()
+    {
+
+        $sql = "DELETE FROM 
+                tb_equipamento 
+        WHERE id = ?";
+
+        return $sql;
+    }
+
     public static function FILTRAR_EQUIPAMENTO($idTipo, $idModelo)
 
     {

@@ -1,5 +1,12 @@
 <?php
 include_once dirname(__DIR__, 2) . '/Resource/dataview/equipamento_dataview.php';
+
+if (isset($equipamentos)) {
+    echo 'ALTERAR';
+} else {
+    echo 'NOVO';
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +80,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/equipamento_dataview.php'
                             </div>
                             <button onclick="return NotificarCampos('formCad')" type="submit" class="btn btn-success" name="btn_cadastrar">Cadastrar</button>
                         </form>
-                        
+
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -93,12 +100,12 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/equipamento_dataview.php'
     include_once PATH . 'Template/_includes/_msg.php';
     ?>
 
-<script src="../../Resource/ajax/equipamento_ajax.js"></script>
-<script>
-    CarregarTipo();
-    CarregarModelos();
-</script>
-    
+    <script src="../../Resource/ajax/equipamento_ajax.js"></script>
+    <script>
+        CarregarTipo();
+        CarregarModelos();
+    </script>
+
 </body>
 
 </html>

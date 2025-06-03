@@ -61,18 +61,24 @@ if (isset($_POST['btn_cadastrar'])) {
         </thead>
         <tbody>
             <?php foreach ($equipamentos as $item) { ?>
-            <tr>
-                <td><?= $item['nome_tipo'] ?></td>
-                <td><?= $item['nome_modelo'] ?></td>
-                <td><?= $item['identificacao'] ?></td>
-                <td><?= $item['descricao'] ?></td>
-                <td><?= Util::MostrarSituacao($item['situacao'])?></td>
-                <td>
-                    <a href="#" class=" btn btn-warning btn-xs">Alterar</a>
-                    <a href="#" class=" btn btn-danger btn-xs">Excluir</a>
-                </td>
-            </tr>
+                <tr>
+                    <td><?= $item['nome_tipo'] ?></td>
+                    <td><?= $item['nome_modelo'] ?></td>
+                    <td><?= $item['identificacao'] ?></td>
+                    <td><?= $item['descricao'] ?></td>
+                    <td><?= Util::MostrarSituacao($item['situacao']) ?></td>
+                    <td>
+                        <a href="equipamento.php?id=<?= $item['equipamento_id'] ?>" class=" btn btn-warning btn-xs">Alterar</a>
+                        <a href="#" class=" btn btn-danger btn-xs">Excluir</a>
+                    </td>
+                </tr>
         </tbody>
-            <?php } ?>
+    <?php } ?>
     </table>
-<?php } ?>
+<?php } else if (isset($_GET['id'])) {
+
+    $equipamento = $ctrl->DetalharEquipamentoCTRL($_GET['id']);
+
+    if (empty($equipamento))
+        Util::ChamarPagina('consultar_equipamento');
+} ?>

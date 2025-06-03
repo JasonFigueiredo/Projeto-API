@@ -56,4 +56,29 @@ class NovoEquipamentoMODEL extends Conexao
         $sql->execute();
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+        public function DetalharEquipamentoModel($id): array | null
+    {
+        $sql = $this->conexao->prepare(NOVO_EQUIPAMENTO_SQL::DETALHAR_EQUIPAMENTO());
+
+        $sql->bindValue(1, $id);
+
+        $sql->execute();
+        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function ExcluirEquipamentoModel(EquipamentoVO $vo): int
+    {
+        $sql = $this->conexao->prepare(NOVO_EQUIPAMENTO_SQL::EXCLUIR_EQUIPAMENTO());
+
+        $sql->bindValue(1, $vo->getId());
+
+        try {
+            $sql->execute();
+            return 1;
+        } catch (Exception $ex) {
+            return -1;
+        }
+    }
 }
+
