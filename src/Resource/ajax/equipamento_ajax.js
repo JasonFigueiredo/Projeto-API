@@ -5,7 +5,8 @@ function CarregarTipo() {
         },
         type: 'post', url: BASE_URL_DATAVIEW("equipamento_dataview"),
         data: {
-            carregar_tipos: "ajx"
+            carregar_tipos: "ajx",
+            tipo_id: $('#tipo_id').val()
         },
         success: function (dados) {
             $("#tipo").html(dados);
@@ -23,7 +24,8 @@ function CarregarModelos() {
         },
         type: 'post', url: BASE_URL_DATAVIEW("equipamento_dataview"),
         data: {
-            carregar_modelos: "ajx"
+            carregar_modelos: "ajx",
+            modelo_id: $('#modelo_id').val()
         },
         success: function (dados) {
             $("#modelo").html(dados);

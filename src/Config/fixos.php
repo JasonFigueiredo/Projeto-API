@@ -11,9 +11,9 @@
     const ALTERAR_MODELO_EQUIPAMENTO = "Alterar Modelo de Equipamento";
     const EXCLUIR_MODELO_EQUIPAMENTO = "Excluir Modelo de Equipamento";
 
-    const CADASTRAR_NOVO_EQUIPAMENTO = "Cadastrar Novo Equipamento";
-    const ALTERAR_NOVO_EQUIPAMENTO = "Alterar Novo Equipamento";
-    const EXCLUIR_NOVO_EQUIPAMENTO = "Excluir Novo Equipamento";
+    const CADASTRAR_EQUIPAMENTO = "Cadastrar Equipamento";
+    const ALTERAR_EQUIPAMENTO = "Alterar Equipamento";
+    const EXCLUIR_EQUIPAMENTO = "Excluir Novo Equipamento";
 
     const SITUACAO_ATIVO = 1;
     const SITUACAO_INATIVO = 0;

@@ -64,7 +64,7 @@ class NovoEquipamentoMODEL extends Conexao
         $sql->bindValue(1, $id);
 
         $sql->execute();
-        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+        return $sql->fetch(\PDO::FETCH_ASSOC);
     }
 
     public function ExcluirEquipamentoModel(EquipamentoVO $vo): int

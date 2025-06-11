@@ -26,7 +26,7 @@ class NovoEquipamentoCTRL
       return 0;
 
     $vo->setSituacao(SITUACAO_ATIVO);
-    $vo->setFuncaoErro(CADASTRAR_NOVO_EQUIPAMENTO);
+    $vo->setFuncaoErro(CADASTRAR_EQUIPAMENTO);
     $vo->setCodLogado(Util::CodigoLogado());
 
     return $this->model->NovoEquipamentoModel($vo);
@@ -49,7 +49,7 @@ class NovoEquipamentoCTRL
       return 0;
 
       $vo->setCodLogado(Util::CodigoLogado());
-      $vo->setFuncaoErro(EXCLUIR_NOVO_EQUIPAMENTO);
+      $vo->setFuncaoErro(EXCLUIR_EQUIPAMENTO);
 
     return $this->model->ExcluirEquipamentoModel($vo);
   }

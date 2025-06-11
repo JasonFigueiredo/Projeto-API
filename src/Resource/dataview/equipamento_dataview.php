@@ -24,23 +24,27 @@ if (isset($_POST['btn_cadastrar'])) {
     $ret = $ctrl->NovoEquipamento($vo);
 } else if (isset($_POST["carregar_tipos"])) {
     $tipos = (new GerenciarTipoEquipamentoCTRL)->ConsultarTipoEquipamentoCTRL();
+    $tipo_id = isset($_POST['tipo_id']) ? $_POST['tipo_id'] : '';
 ?>
+
     <select name="tipo" id="tipo" class="form-control obg">
         <option value="">Selecione</option>
         <?php foreach ($tipos as $item) { ?>
-            <option value="<?= $item['id'] ?>"><?= $item["nome_tipo"] ?></option>
+            <option value="<?= $item['id'] ?>" <?= $tipo_id == $item['id'] ? 'selected' : '' ?>  ><?= $item["nome_tipo"] ?></option>
         <?php } ?>
     </select>
 
 <?php } else if (isset($_POST["carregar_modelos"])) {
     $modelos = (new GerenciarModeloEquipamentoCTRL)->ConsultarModeloCTRL();
+    $modelo_id = isset($_POST['modelo_id']) ? $_POST['modelo_id'] : '';
 ?>
     <select name="modelo" id="modelo" class="form-control obg">
         <option value="">Selecione</option>
         <?php foreach ($modelos as $item) { ?>
-            <option value="<?= $item['id'] ?>"><?= $item["nome_modelo"] ?></option>
+            <option value="<?= $item['id'] ?>" <?= $modelo_id == $item['id'] ? 'selected' : ''  ?>> <?= $item["nome_modelo"] ?></option>
         <?php } ?>
     </select>
+
 <?php } else if (isset($_POST['filtrar_equipamentos'])) {
 
     $tipo = $_POST['tipo'];
@@ -68,14 +72,14 @@ if (isset($_POST['btn_cadastrar'])) {
                     <td><?= $item['descricao'] ?></td>
                     <td><?= Util::MostrarSituacao($item['situacao']) ?></td>
                     <td>
-                        <a href="novo_equipamento.php?id=<?= $item['equipamento_id'] ?>" class=" btn btn-warning btn-xs">Alterar</a>
+                        <a href="equipamento.php?id=<?= $item['equipamento_id'] ?>" class=" btn btn-warning btn-xs">Alterar</a>
                         <a href="#" class=" btn btn-danger btn-xs">Excluir</a>
                     </td>
                 </tr>
         </tbody>
     <?php } ?>
     </table>
-<?php } else if (isset($_GET['id'])) {
+<?php } else if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
     $equipamento = $ctrl->DetalharEquipamentoCTRL($_GET['id']);
 

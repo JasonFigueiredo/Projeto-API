@@ -1,7 +1,7 @@
 <?php
 include_once dirname(__DIR__, 2) . '/Resource/dataview/equipamento_dataview.php';
 
-$titulo =  isset($equipamentos) ? 'Editar Equipamento' : 'Novo Equipamento';
+$titulo =  isset($equipamento) ? ALTERAR_EQUIPAMENTO  : CADASTRAR_EQUIPAMENTO;
 
 ?>
 
@@ -55,7 +55,10 @@ $titulo =  isset($equipamentos) ? 'Editar Equipamento' : 'Novo Equipamento';
                     </div>
                     <div class="card-body">
                         <form id="formCad" action="novo_equipamento.php" method="post">
-                            <div class="form-group">
+                           <input type="hidden" id="id_equipamento" value="<?= isset($equipamento) ? $equipamento['id'] : '' ?>">
+                           <input type="hidden" id="tipo_id" value="<?= isset($equipamento) ? $equipamento['tipo_id'] : '' ?>">
+                           <input type="hidden" id="modelo_id" value="<?= isset($equipamento) ? $equipamento['modelo_id'] : '' ?>">
+                        <div class="form-group">
                                 <label>Tipo:</label>
                                 <select class="form-control obg" id="tipo" name="tipo">
                                 </select>
@@ -67,11 +70,11 @@ $titulo =  isset($equipamentos) ? 'Editar Equipamento' : 'Novo Equipamento';
                             </div>
                             <div class="form-group">
                                 <label>Identificação:</label>
-                                <input type="text" class="form-control obg" id="identificacao" name="identificacao" placeholder="Digite a identificação">
+                                <input type="text" class="form-control obg" id="identificacao" name="identificacao" value="<?= isset($equipamento) ? $equipamento['identificacao'] : '' ?>" placeholder="Digite a identificação" >
                             </div>
                             <div class="form-group">
                                 <label>Observações:</label>
-                                <textarea class="form-control obg" id="descricao" name="descricao" rows="4" maxlength="150" placeholder="Digite suas observações" onkeyup="countChars(this)"></textarea>
+                                <textarea class="form-control obg" id="descricao" name="descricao" rows="4" maxlength="150" placeholder="Digite suas observações" onkeyup="countChars(this)"><?= isset($equipamento) ? $equipamento['descricao'] : '' ?></textarea>
                                 <small id="charCount" class="form-text text-muted">150 caracteres restantes</small>
                             </div>
                             <button onclick="return NotificarCampos('formCad')" type="submit" class="btn btn-success" name="btn_cadastrar"><?= $titulo ?></button>

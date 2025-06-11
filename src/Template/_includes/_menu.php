@@ -32,7 +32,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="novo_equipamento.php" class="nav-link">
+                            <a href="equipamento.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Novo equipamento</p>
                             </a>
