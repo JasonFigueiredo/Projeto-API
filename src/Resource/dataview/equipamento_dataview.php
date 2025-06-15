@@ -30,7 +30,7 @@ if (isset($_POST['btn_cadastrar'])) {
     <select name="tipo" id="tipo" class="form-control obg">
         <option value="">Selecione</option>
         <?php foreach ($tipos as $item) { ?>
-            <option value="<?= $item['id'] ?>" <?= $tipo_id == $item['id'] ? 'selected' : '' ?>  ><?= $item["nome_tipo"] ?></option>
+            <option value="<?= $item['id'] ?>" <?= $tipo_id == $item['id'] ? 'selected' : '' ?>><?= $item["nome_tipo"] ?></option>
         <?php } ?>
     </select>
 
@@ -85,4 +85,19 @@ if (isset($_POST['btn_cadastrar'])) {
 
     if (empty($equipamento))
         Util::ChamarPagina('consultar_equipamento');
+} else if (isset($_POST['btn_alterar'])) {
+
+    $vo = new EquipamentoVO();
+
+    $vo->setId($_POST['id_equipamento']);
+    $vo->setIdentificacao($_POST['identificacao']);
+    $vo->setTipo((intval($_POST['tipo'])));
+    $vo->setModelo((int)$_POST['modelo']);
+    $vo->setDescricao($_POST['descricao']);
+
+    // Chame o método para alterar o equipamento
+    $ret = $ctrl->AlterarEquipamento($vo);
+
+    if($_POST['btn_alterar'] == 'ajx')
+    echo $ret;
 } ?>

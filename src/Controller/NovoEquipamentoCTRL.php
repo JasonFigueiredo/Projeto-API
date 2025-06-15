@@ -32,6 +32,23 @@ class NovoEquipamentoCTRL
     return $this->model->NovoEquipamentoModel($vo);
   }
 
+  public function AlterarEquipamento(EquipamentoVO $vo): int
+  {
+    if (
+      empty($vo->getTipo()) ||
+      empty($vo->getModelo()) ||
+      empty($vo->getIdentificacao()) ||
+      empty($vo->getDescricao()) ||
+      empty($vo->getId())
+    )
+      return 0;
+
+    $vo->setFuncaoErro(ALTERAR_EQUIPAMENTO);
+    $vo->setCodLogado(Util::CodigoLogado());
+
+    return $this->model->AlterarEquipamentoModel($vo);
+  }
+
   public function FiltrarEquipamentoCTRL($tipo, $modelo): array
   {
     return $this->model->FiltrarEquipamentoModel($tipo, $modelo);
@@ -45,11 +62,11 @@ class NovoEquipamentoCTRL
 
   public function ExcluirEquipamentoCTRL(EquipamentoVO $vo): int
   {
-    if (empty($vo->getId())) 
+    if (empty($vo->getId()))
       return 0;
 
-      $vo->setCodLogado(Util::CodigoLogado());
-      $vo->setFuncaoErro(EXCLUIR_EQUIPAMENTO);
+    $vo->setCodLogado(Util::CodigoLogado());
+    $vo->setFuncaoErro(EXCLUIR_EQUIPAMENTO);
 
     return $this->model->ExcluirEquipamentoModel($vo);
   }

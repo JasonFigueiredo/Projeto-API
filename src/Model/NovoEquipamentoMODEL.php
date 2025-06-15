@@ -80,5 +80,26 @@ class NovoEquipamentoMODEL extends Conexao
             return -1;
         }
     }
+
+    public function AlterarEquipamentoModel(EquipamentoVO $vo): int
+    {
+
+        $sql = $this->conexao->prepare(NOVO_EQUIPAMENTO_SQL::ALTERAR_EQUIPAMENTO());
+        $i = 1;
+        $sql->bindValue($i++, $vo->getIdentificacao());
+        $sql->bindValue($i++, $vo->getDescricao());
+        $sql->bindValue($i++, $vo->getTipo());
+        $sql->bindValue($i++, $vo->getModelo());
+        $sql->bindValue($i++, $vo->getId());
+
+        try {
+            $sql->execute();
+            return 1;
+        } catch (Exception $ex) {
+            $vo->setErroTecnico($ex->getMessage());
+            parent::GravarErroLog($vo);
+            return -1;
+        }
+    }
 }
 

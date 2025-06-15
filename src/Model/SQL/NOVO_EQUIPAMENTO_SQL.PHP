@@ -15,6 +15,17 @@ class NOVO_EQUIPAMENTO_SQL
         return $sql;
     }
 
+    public static function ALTERAR_EQUIPAMENTO()
+    {
+        $sql = "UPDATE tb_equipamento
+                SET identificacao = ?,
+                    descricao = ?,
+                    tipo_id = ?,
+                    modelo_id = ?
+                WHERE id = ?";
+        return $sql;
+    }
+
     public static function DETALHAR_EQUIPAMENTO()
     {
 
