@@ -32,7 +32,7 @@ class NovoEquipamentoCTRL
     return $this->model->NovoEquipamentoModel($vo);
   }
 
-  public function AlterarEquipamento(EquipamentoVO $vo): int
+  public function AlterarEquipamentoCTRL(EquipamentoVO $vo): int
   {
     if (
       empty($vo->getTipo()) ||

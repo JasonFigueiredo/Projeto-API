@@ -96,7 +96,7 @@ if (isset($_POST['btn_cadastrar'])) {
     $vo->setDescricao($_POST['descricao']);
 
     // Chame o método para alterar o equipamento
-    $ret = $ctrl->AlterarEquipamento($vo);
+    $ret = $ctrl->AlterarEquipamentoCTRL($vo);
 
     if($_POST['btn_alterar'] == 'ajx')
     echo $ret;

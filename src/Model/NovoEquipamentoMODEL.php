@@ -100,6 +100,6 @@ class NovoEquipamentoMODEL extends Conexao
             parent::GravarErroLog($vo);
             return -1;
         }
-    }
+    } 
 }
 
