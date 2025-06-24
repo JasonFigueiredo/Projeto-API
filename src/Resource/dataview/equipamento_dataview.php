@@ -1,5 +1,6 @@
 <?php
 
+use FontLib\Table\Type\post;
 use Src\_Public\Util;
 use Src\Controller\NovoEquipamentoCTRL;
 use Src\Controller\GerenciarTipoEquipamentoCTRL;
@@ -10,7 +11,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
 
 $ctrl = new NovoEquipamentoCTRL();
 
-if (isset($_POST['btn_cadastrar'])) {
+if (isset($_POST['btn_gravar']) && $_POST['btn_gravar'] == 'cadastrar') {
 
     $vo = new EquipamentoVO();
 
@@ -22,6 +23,7 @@ if (isset($_POST['btn_cadastrar'])) {
 
     // Chame o método para cadastrar o novo equipamento
     $ret = $ctrl->NovoEquipamento($vo);
+
 } else if (isset($_POST["carregar_tipos"])) {
     $tipos = (new GerenciarTipoEquipamentoCTRL)->ConsultarTipoEquipamentoCTRL();
     $tipo_id = isset($_POST['tipo_id']) ? $_POST['tipo_id'] : '';
@@ -85,7 +87,7 @@ if (isset($_POST['btn_cadastrar'])) {
 
     if (empty($equipamento))
         Util::ChamarPagina('consultar_equipamento');
-} else if (isset($_POST['btn_alterar'])) {
+} else if (isset($_POST['btn_gravar']) && $_POST['btn_gravar'] == 'alterar ') {
 
     $vo = new EquipamentoVO();
 
@@ -98,6 +100,6 @@ if (isset($_POST['btn_cadastrar'])) {
     // Chame o método para alterar o equipamento
     $ret = $ctrl->AlterarEquipamentoCTRL($vo);
 
-    if($_POST['btn_alterar'] == 'ajx')
+    if($_POST['btn_gravar'] == 'alterar')
     echo $ret;
 } ?>
