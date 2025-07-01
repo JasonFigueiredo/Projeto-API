@@ -17,12 +17,15 @@ if (isset($_POST['btn_gravar']) && $_POST['btn_gravar'] == 'cadastrar') {
 
     // Defina os valores no VO
     $vo->setIdentificacao($_POST['identificacao']);
-    $vo->setTipo($_POST['tipo']);
-    $vo->setModelo($_POST['modelo']);
+    $vo->setTipo(intval($_POST['tipo']));
+    $vo->setModelo((int)($_POST['modelo']));
     $vo->setDescricao($_POST['descricao']);
 
     // Chame o método para cadastrar o novo equipamento
     $ret = $ctrl->NovoEquipamento($vo);
+
+    if($_POST['btn_cadastrar'] == 'ajx')
+    echo $ret;
 
 } else if (isset($_POST["carregar_tipos"])) {
     $tipos = (new GerenciarTipoEquipamentoCTRL)->ConsultarTipoEquipamentoCTRL();
@@ -87,7 +90,7 @@ if (isset($_POST['btn_gravar']) && $_POST['btn_gravar'] == 'cadastrar') {
 
     if (empty($equipamento))
         Util::ChamarPagina('consultar_equipamento');
-} else if (isset($_POST['btn_gravar']) && $_POST['btn_gravar'] == 'alterar ') {
+} else if (isset($_POST['btn_gravar']) && $_POST['btn_gravar'] == 'alterar') {
 
     $vo = new EquipamentoVO();
 
