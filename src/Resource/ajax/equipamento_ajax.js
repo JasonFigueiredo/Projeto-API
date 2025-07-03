@@ -61,6 +61,26 @@ function FiltrarEquipamentos() {
     })
 }
 
+function Excluir() {
+    $.ajax({
+        beforeSend: function () {
+            Load();
+        },
+        type: 'post',
+        url: BASE_URL_DATAVIEW("equipamento_dataview"),
+        data: {
+            btn_excluir: 'excluir',
+            id_equipamento: $("#id_equipamento").val(),
+        },
+        success: function (ret) {
+            MostrarMensagem(ret);
+            FiltrarEquipamentos();
+        },
+        complete: function () {
+            RemoverLoad();
+        }
+    })
+}
 
 function GravarEquipamento() {
 
@@ -70,19 +90,22 @@ function GravarEquipamento() {
             beforeSend: function () {
                 Load();
             },
-            type: 'post', 
+            type: 'post',
             url: BASE_URL_DATAVIEW("equipamento_dataview"),
             data: {
                 btn_gravar: $("#id_equipamento").val() == "" ? "cadastrar" : "alterar",
-                id: $("#id").val(),
+                identificacao: $("#identificacao").val(),
                 tipo_id: $("#tipo").val(),
                 modelo_id: $("#modelo").val(),
-                nome: $("#nome").val(),
-                status: $("#status").val()
+                descricao: $("#descricao").val(),
+                id_equipamento: $("#id_equipamento").val(),
             },
             success: function (ret) {
                 MostrarMensagem(ret);
-                LimparNotificacoes(ret);
+
+                if ($("#id_equipamento").val() == "") {
+                    LimparNotificacoes(formID);
+                }
             },
             complete: function () {
                 RemoverLoad();

@@ -35,8 +35,8 @@ if (isset($_POST['btn_cadastrar'])) {
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>Nome do equipamento</th>
                 <th>Ação</th>
+                <th>Nome do Equipamento</th>
             </tr>
         </thead>
         <tbody>

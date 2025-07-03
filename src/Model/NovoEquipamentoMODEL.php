@@ -69,14 +69,16 @@ class NovoEquipamentoMODEL extends Conexao
 
     public function ExcluirEquipamentoModel(EquipamentoVO $vo): int
     {
-        $sql = $this->conexao->prepare(NOVO_EQUIPAMENTO_SQL::EXCLUIR_EQUIPAMENTO());
 
+        $sql = $this->conexao->prepare(NOVO_EQUIPAMENTO_SQL::EXCLUIR_EQUIPAMENTO());
         $sql->bindValue(1, $vo->getId());
 
         try {
             $sql->execute();
             return 1;
         } catch (Exception $ex) {
+            $vo->setErroTecnico($ex->getMessage());
+            parent::GravarErroLog($vo);
             return -1;
         }
     }

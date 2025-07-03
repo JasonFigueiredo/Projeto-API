@@ -1,6 +1,5 @@
 <?php
 
-use FontLib\Table\Type\post;
 use Src\_Public\Util;
 use Src\Controller\NovoEquipamentoCTRL;
 use Src\Controller\GerenciarTipoEquipamentoCTRL;
@@ -24,7 +23,7 @@ if (isset($_POST['btn_gravar']) && $_POST['btn_gravar'] == 'cadastrar') {
     // Chame o método para cadastrar o novo equipamento
     $ret = $ctrl->NovoEquipamento($vo);
 
-    if($_POST['btn_cadastrar'] == 'ajx')
+    if($_POST['btn_gravar'] == 'cadastrar')
     echo $ret;
 
 } else if (isset($_POST["carregar_tipos"])) {
@@ -77,8 +76,8 @@ if (isset($_POST['btn_gravar']) && $_POST['btn_gravar'] == 'cadastrar') {
                     <td><?= $item['descricao'] ?></td>
                     <td><?= Util::MostrarSituacao($item['situacao']) ?></td>
                     <td>
-                        <a href="equipamento.php?id=<?= $item['equipamento_id'] ?>" class=" btn btn-warning btn-xs">Alterar</a>
-                        <a href="#" class=" btn btn-danger btn-xs">Excluir</a>
+                        <a href="equipamento.php?" id="<?= $item['equipamento_id'] ?>" class=" btn btn-warning btn-xs">Alterar</a>
+                        <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarExcluir('<?= $item['equipamento_id'] ?>', '<?= $item['nome_tipo'] . ' / ' . $item['nome_modelo'] . ' / ' . $item['identificacao'] ?>')">Excluir</a>
                     </td>
                 </tr>
         </tbody>
@@ -105,4 +104,11 @@ if (isset($_POST['btn_gravar']) && $_POST['btn_gravar'] == 'cadastrar') {
 
     if($_POST['btn_gravar'] == 'alterar')
     echo $ret;
-} ?>
+} else if (isset($_POST['btn_excluir'])) {
+
+    $vo = new EquipamentoVO();
+    $vo->setId($_POST['id_equipamento']);
+
+    $ret = $ctrl->ExcluirEquipamentoCTRL($vo);
+    echo $ret;
+}

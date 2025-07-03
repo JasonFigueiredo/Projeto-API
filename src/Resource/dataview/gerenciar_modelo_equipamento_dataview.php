@@ -38,8 +38,8 @@ else if (isset($_POST["consultar_modelo"])) {
     <table class="table table-striped table-bordered table-hover" id="tabelaModeloEquipamento">
         <thead>
             <tr>
-                <th>Modelo</th>
                 <th>Ações</th>
+                <th>Nome do Modelo</th>
             </tr>
         </thead>
         <tbody>

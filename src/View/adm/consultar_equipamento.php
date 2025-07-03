@@ -75,6 +75,9 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                     <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
+                <form action="consultar_equipamento.php" method="post" id="formAlt">
+                    <?php include_once 'modais/excluir.php' ?>
+                </form>
             </section>
 
             <section class="content">
@@ -85,7 +88,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table id="tableResult" class="table table-bordered table-striped">
-                           
+
                         </table>
                     </div>
                     <!-- /.card-body -->
