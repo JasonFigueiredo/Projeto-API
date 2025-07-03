@@ -70,11 +70,12 @@ function Excluir() {
         url: BASE_URL_DATAVIEW("equipamento_dataview"),
         data: {
             btn_excluir: 'excluir',
-            id_equipamento: $("#id_equipamento").val(),
+            id_equipamento: $("#id_excluir").val(),
         },
         success: function (ret) {
             MostrarMensagem(ret);
             FiltrarEquipamentos();
+            FecharModal("modal-excluir");
         },
         complete: function () {
             RemoverLoad();
@@ -82,7 +83,7 @@ function Excluir() {
     })
 }
 
-function GravarEquipamento() {
+function GravarEquipamento(formID) {
 
     if (NotificarCampos(formID)) {
 
@@ -95,8 +96,8 @@ function GravarEquipamento() {
             data: {
                 btn_gravar: $("#id_equipamento").val() == "" ? "cadastrar" : "alterar",
                 identificacao: $("#identificacao").val(),
-                tipo_id: $("#tipo").val(),
-                modelo_id: $("#modelo").val(),
+                tipo: $("#tipo").val(),
+                modelo: $("#modelo").val(),
                 descricao: $("#descricao").val(),
                 id_equipamento: $("#id_equipamento").val(),
             },

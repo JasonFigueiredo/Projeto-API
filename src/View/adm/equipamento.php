@@ -77,7 +77,7 @@ $titulo =  isset($equipamento) ? ALTERAR_EQUIPAMENTO  : CADASTRAR_EQUIPAMENTO;
                                 <textarea class="form-control obg" id="descricao" name="descricao" rows="4" maxlength="150" placeholder="Digite suas observações" onkeyup="countChars(this)"><?= isset($equipamento) ? $equipamento['descricao'] : '' ?></textarea>
                                 <small id="charCount" class="form-text text-muted">150 caracteres restantes</small>
                             </div>
-                            <button onclick="return NotificarCampos('formCad')" type="button" class="btn btn-success" name="btn_cadastrar"><?= $titulo ?></button>
+                            <button onclick="return GravarEquipamento('formCad')" type="button" class="btn btn-success" name="btn_cadastrar"><?= $titulo ?></button>
                         </form>
 
                     </div>

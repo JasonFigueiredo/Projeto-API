@@ -46,7 +46,7 @@ class NOVO_EQUIPAMENTO_SQL
 
         $sql = "DELETE FROM 
                 tb_equipamento 
-        WHERE id = ?";
+                WHERE id = ?";
 
         return $sql;
     }
