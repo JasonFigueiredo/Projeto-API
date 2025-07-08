@@ -15,6 +15,10 @@
     const ALTERAR_EQUIPAMENTO = "Alterar Equipamento";
     const EXCLUIR_EQUIPAMENTO = "Excluir Novo Equipamento";
 
+    const SITUACAO_EQUIPAMENTO_ALOCADO = 1;
+    const SITUACAO_EQUIPAMENTO_REMOVIDO = 2;
+    const SITUACAO_EQUIPAMENTO_MANUTENCAO = 3;
+
     const SITUACAO_ATIVO = 1;
     const SITUACAO_INATIVO = 0;
     const SITUACAO_DESCARTADO = 0;

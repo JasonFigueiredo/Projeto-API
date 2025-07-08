@@ -10,6 +10,17 @@ class AlocarVO extends LogErroVO
     private $id;
     private $equipamento_id;
     private $setor_id;
+    private $situacao;
+
+    public function setSituacao(int $p_id): void
+    {
+        $this->situacao = Util::TratarDados($p_id);
+    }
+
+    public function getSituacao(): int
+    {
+        return $this->situacao;
+    }
 
 
     public function setId(int $p_id): void
