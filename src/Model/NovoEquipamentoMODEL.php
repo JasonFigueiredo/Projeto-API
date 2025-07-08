@@ -38,19 +38,20 @@ class NovoEquipamentoMODEL extends Conexao
         }
     }
 
-    public function FiltrarEquipamentoModel($tipo, $modelo)
+    public function FiltrarEquipamentoModel($tipo, $modelo, $situacao): array
     {
         $sql = $this->conexao->prepare(NOVO_EQUIPAMENTO_SQL::FILTRAR_EQUIPAMENTO($tipo, $modelo));
-
+        $i= 1;
+        $sql->bindValue($i++, $situacao);
         if ($tipo != "" && $modelo != "") {
-            $sql->bindValue(1, $modelo);
-            $sql->bindValue(2, $tipo);
+            $sql->bindValue($i++, $modelo);
+            $sql->bindValue($i++, $tipo);
 
         } elseif ($tipo == "" && $modelo != "") {
-            $sql->bindValue(1, $modelo);
-            
+            $sql->bindValue($i++, $modelo);
+
         } elseif ($tipo != "" && $modelo == "") {
-            $sql->bindValue(1, $tipo);
+            $sql->bindValue($i++, $tipo);
         }
 
         $sql->execute();

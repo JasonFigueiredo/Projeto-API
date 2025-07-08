@@ -78,6 +78,9 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                 <form action="consultar_equipamento.php" method="post" id="formAlt">
                     <?php include_once 'modais/excluir.php' ?>
                 </form>
+                <form action="consultar_equipamento.php" method="post" id="formDesc">
+                    <?php include_once 'modais/descarte.php' ?>
+                </form>
             </section>
 
             <section class="content">

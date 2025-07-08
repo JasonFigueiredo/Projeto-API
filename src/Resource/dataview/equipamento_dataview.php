@@ -78,6 +78,9 @@ if (isset($_POST['btn_gravar']) && $_POST['btn_gravar'] == 'cadastrar') {
                     <td>
                         <a href="equipamento.php?id=<?= $item['equipamento_id'] ?>" class=" btn btn-warning btn-xs">Alterar</a>
                         <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarExcluir('<?= $item['equipamento_id'] ?>', '<?= $item['nome_tipo'] . ' / ' . $item['nome_modelo'] . ' / ' . $item['identificacao'] ?>')">Excluir</a>
+                     <?php if($item['esta_alocado'] == 0 && $item['situacao'] != SITUACAO_DESCARTADO){ ?>
+                        <a href="#" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-descarte" onclick="CarregarDetalhar('<?= $item['equipamento_id'] ?>')">Descarte</a>
+                    <?php } ?>
                     </td>
                 </tr>
         </tbody>

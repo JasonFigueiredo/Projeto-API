@@ -54,19 +54,24 @@ class NOVO_EQUIPAMENTO_SQL
     public static function FILTRAR_EQUIPAMENTO($idTipo, $idModelo)
 
     {
-        $sql = "SELECT eq.id as equipamento_id,
+        $sql = 'SELECT eq.id as equipamento_id,
                        identificacao,
                        descricao,
                        situacao,
                        data_descarte,
                        motivo_descarte,
                        nome_modelo,
-                       nome_tipo
+                       nome_tipo,
+                       (select count(*)
+                          from tb_alocar as al
+                         where al.equipamento_id = equipamento_id
+                           and al.situacao != ?) as esta_alocado
                 FROM tb_equipamento as eq
                 INNER JOIN tb_modelo as mo
-                    ON eq.modelo_id = mo.id
+                ON eq.modelo_id = mo.id
                 INNER JOIN tb_tipo as ti
-                    ON eq.tipo_id = ti.id";
+                ON eq.tipo_id = ti.id';
+                    
         if ($idTipo != "" && $idModelo != "") {
             $sql .= ' WHERE eq.modelo_id = ? AND eq.tipo_id = ?';
         } elseif ($idTipo == "" && $idModelo != "") {

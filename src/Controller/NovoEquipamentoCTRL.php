@@ -51,10 +51,10 @@ class NovoEquipamentoCTRL
 
   public function FiltrarEquipamentoCTRL($tipo, $modelo): array
   {
-    return $this->model->FiltrarEquipamentoModel($tipo, $modelo);
+    return $this->model->FiltrarEquipamentoModel($tipo, $modelo, SITUACAO_EQUIPAMENTO_REMOVIDO);
   }
 
-  public function DetalharEquipamentoCTRL(int $id): array | null
+  public function DetalharEquipamentoCTRL(int $id): array | String
   {
     return $this->model->DetalharEquipamentoModel($id);
   }
