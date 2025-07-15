@@ -114,3 +114,31 @@ function GravarEquipamento(formID) {
         })
     }
 }
+function Descartar(formID) {
+
+    if (NotificarCampos(formID)) {
+
+        $.ajax({
+            beforeSend:  function () {
+                Load();
+            },
+            type: 'post',
+            url: BASE_URL_DATAVIEW("equipamento_dataview"),
+            data: {
+                btn_descarte: "Descarte",
+                id_equipamento: $("#id_descarte").val(),
+                motivo_descarte: $("#motivo_descarte").val(),
+                data_descarte: $("#data_descarte").val(),
+            },
+            success: function (ret) {
+                MostrarMensagem(ret);
+                LimparNotificacoes(formID);
+                FiltrarEquipamentos();
+                FecharModal("modal-descarte");
+            },
+            complete: function () {
+                RemoverLoad();
+            }
+        })
+    }
+}

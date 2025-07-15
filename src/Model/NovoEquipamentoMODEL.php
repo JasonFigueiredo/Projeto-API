@@ -41,15 +41,13 @@ class NovoEquipamentoMODEL extends Conexao
     public function FiltrarEquipamentoModel($tipo, $modelo, $situacao): array
     {
         $sql = $this->conexao->prepare(NOVO_EQUIPAMENTO_SQL::FILTRAR_EQUIPAMENTO($tipo, $modelo));
-        $i= 1;
+        $i = 1;
         $sql->bindValue($i++, $situacao);
         if ($tipo != "" && $modelo != "") {
             $sql->bindValue($i++, $modelo);
             $sql->bindValue($i++, $tipo);
-
         } elseif ($tipo == "" && $modelo != "") {
             $sql->bindValue($i++, $modelo);
-
         } elseif ($tipo != "" && $modelo == "") {
             $sql->bindValue($i++, $tipo);
         }
@@ -58,7 +56,7 @@ class NovoEquipamentoMODEL extends Conexao
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-        public function DetalharEquipamentoModel($id): array | null
+    public function DetalharEquipamentoModel($id): array | null
     {
         $sql = $this->conexao->prepare(NOVO_EQUIPAMENTO_SQL::DETALHAR_EQUIPAMENTO());
 
@@ -103,5 +101,25 @@ class NovoEquipamentoMODEL extends Conexao
             parent::GravarErroLog($vo);
             return -1;
         }
-    } 
+    }
+
+    public function DescartarEquipamentoModel(EquipamentoVO $vo): int
+    {
+
+        $sql = $this->conexao->prepare(NOVO_EQUIPAMENTO_SQL::DESCARTE_EQUIPAMENTO());
+        $i = 1;
+        $sql->bindValue($i++, $vo->getDataDescarte());
+        $sql->bindValue($i++, $vo->getMotivoDescarte());
+        $sql->bindValue($i++, $vo->getSituacao());
+        $sql->bindValue($i++, $vo->getId());
+
+        try {
+            $sql->execute();
+            return 1;
+        } catch (Exception $ex) {
+            $vo->setErroTecnico($ex->getMessage());
+            parent::GravarErroLog($vo);
+            return -1;
+        }
+    }
 }

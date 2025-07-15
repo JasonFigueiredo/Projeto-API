@@ -70,4 +70,20 @@ class NovoEquipamentoCTRL
 
     return $this->model->ExcluirEquipamentoModel($vo);
   }
+
+  public function DescartarEquipamentoCTRL(EquipamentoVO $vo): int
+  {
+    if (
+      empty($vo->getId()) ||
+      empty($vo->getMotivoDescarte()) ||
+      empty($vo->getDataDescarte())
+    )
+      return 0;
+
+    $vo->setCodLogado(Util::CodigoLogado());
+    $vo->setSituacao(SITUACAO_DESCARTADO);
+    $vo->setFuncaoErro(DESCARTAR_EQUIPAMENTO);
+
+    return $this->model->DescartarEquipamentoModel($vo);
+  }
 }

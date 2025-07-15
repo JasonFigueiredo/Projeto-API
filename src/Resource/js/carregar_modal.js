@@ -1,4 +1,9 @@
+function CarregarDescarte(id, nome) {
+  $("#id_descarte").val(id);
+  $("#nome_descarte").html(nome);
+}
 function CarregarExcluir(id, nome) {
+ 
   $("#id_excluir").val(id);
   $("#nome_excluir").html(nome);
 }

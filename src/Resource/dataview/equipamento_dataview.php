@@ -54,34 +54,36 @@ if (isset($_POST['btn_gravar']) && $_POST['btn_gravar'] == 'cadastrar') {
     $tipo = $_POST['tipo'];
     $modelo = $_POST['modelo'];
 
-    $equipamentos = $ctrl->FiltrarEquipamentoCTRL($tipo, $modelo);
+    $equipamentos = $ctrl->FiltrarEquipamentoCTRL($tipo, $modelo); 
+
+
 ?>
     <table id="example1" class="table table-bordered table-striped">
         <thead>
             <tr>
+                <th>Ações</th>
                 <th>Nome do equipamento</th>
                 <th>Modelo</th>
                 <th>Identificação</th>
                 <th>Descrição</th>
                 <th>Situação</th>
-                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($equipamentos as $item) { ?>
                 <tr>
+                    <td>
+                        <a href="equipamento.php?id=<?= $item['equipamento_id'] ?>" class=" btn btn-success btn-xs">Alterar</a>
+                        <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarExcluir('<?= $item['equipamento_id'] ?>','<hr><b>Nome:</b> <?= $item['nome_tipo'] ?><br><b>Modelo:</b> <?= $item['nome_modelo'] ?><br><b>Identificação:</b> <?= $item['identificacao'] ?><br><b>Descrição:</b> <?= $item['descricao'] ?><hr>')">Excluir</a>
+                     <?php if($item['esta_alocado'] == 0 && $item['situacao'] != SITUACAO_DESCARTADO){ ?>
+                        <a href="#" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-descarte" onclick="CarregarDescarte('<?= $item['equipamento_id'] ?>','<hr><b>Nome:</b> <?= $item['nome_tipo'] ?><br><b>Modelo:</b> <?= $item['nome_modelo'] ?><br><b>Identificação:</b> <?= $item['identificacao'] ?><br><b>Descrição:</b> <?= $item['descricao'] ?><hr>')">Descarte</a>
+                     <?php } ?>
+                    </td>
                     <td><?= $item['nome_tipo'] ?></td>
                     <td><?= $item['nome_modelo'] ?></td>
                     <td><?= $item['identificacao'] ?></td>
                     <td><?= $item['descricao'] ?></td>
                     <td><?= Util::MostrarSituacao($item['situacao']) ?></td>
-                    <td>
-                        <a href="equipamento.php?id=<?= $item['equipamento_id'] ?>" class=" btn btn-warning btn-xs">Alterar</a>
-                        <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarExcluir('<?= $item['equipamento_id'] ?>', '<?= $item['nome_tipo'] . ' / ' . $item['nome_modelo'] . ' / ' . $item['identificacao'] ?>')">Excluir</a>
-                     <?php if($item['esta_alocado'] == 0 && $item['situacao'] != SITUACAO_DESCARTADO){ ?>
-                        <a href="#" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-descarte" onclick="CarregarDetalhar('<?= $item['equipamento_id'] ?>')">Descarte</a>
-                    <?php } ?>
-                    </td>
                 </tr>
         </tbody>
     <?php } ?>
@@ -113,5 +115,13 @@ if (isset($_POST['btn_gravar']) && $_POST['btn_gravar'] == 'cadastrar') {
     $vo->setId($_POST['id_equipamento']);
 
     $ret = $ctrl->ExcluirEquipamentoCTRL($vo);
+    echo $ret;
+}
+else if(isset($_POST['btn_descarte'])){
+    $vo = new EquipamentoVO();
+    $vo->setId($_POST['id_equipamento']);
+    $vo->setMotivoDescarte($_POST['motivo_descarte']);
+    $vo->setDataDescarte(($_POST['data_descarte']));
+    $ret = $ctrl->DescartarEquipamentoCTRL($vo);
     echo $ret;
 }

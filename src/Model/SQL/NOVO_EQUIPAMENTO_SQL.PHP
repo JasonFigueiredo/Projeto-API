@@ -82,4 +82,14 @@ class NOVO_EQUIPAMENTO_SQL
 
         return $sql;
     }
+
+    public static function DESCARTE_EQUIPAMENTO()
+    {
+        $sql = "UPDATE tb_equipamento
+                SET data_descarte = ?,
+                    motivo_descarte = ?,
+                    situacao = ?
+                WHERE id = ?";
+        return $sql;
+    }
 }

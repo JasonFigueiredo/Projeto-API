@@ -59,11 +59,11 @@ class EquipamentoVO extends LogErroVO
     }
 
     // get set de DATA_DESCARTE
-    public function setDataDescarte(int $data_descarte): void
+    public function setDataDescarte(string $data_descarte): void
     {
         $this->data_descarte = $data_descarte;
     }
-    public function getDataDescarte(): int
+    public function getDataDescarte(): string
     {
         return $this->data_descarte;
     }
