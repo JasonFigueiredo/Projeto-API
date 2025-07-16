@@ -77,4 +77,11 @@ class Util
         header("location: $pag.php");
         exit;
     }
+
+    public static function MostrarDadosArray($arr){
+        echo '<pre>';
+        print_r($arr);
+        echo '</pre>';
+        exit;
+    }
 }
