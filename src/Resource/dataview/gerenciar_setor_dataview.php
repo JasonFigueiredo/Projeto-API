@@ -1,16 +1,21 @@
 <?php
 
-use Src\Controller\GerenciarSetorCTRL;
+use Src\Controller\SetorCTRL;
 use Src\VO\SetorVO;
 
 include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
 
-if (isset($_POST['btn_cadastrar'])) {
+$ctrl = new SetorCTRL();
 
-  $vo = new SetorVO();
-  $ctrl = new GerenciarSetorCTRL();
+if (isset($_POST['consultar_setor'])) {
+  $setores = $ctrl->ConsultarSetorCTRL();
 
-  $vo->setNome($_POST['nome']);
+?>
 
-  $ret = $ctrl->GerenciarSetor($vo);
-}
+  <select class="form-control">
+    <option value="">Selecione</option>
+    <?php foreach ($setores as $item) { ?>
+      <option value="<?= $item['id'] ?>"><?= $item['nome_setor'] ?></option>
+    <?php } ?>
+  </select>
+<?php } ?>

@@ -59,16 +59,12 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/alocar_equipamento_datavi
                             <div class="form-group">
                                 <label>Selecione o equipamento:</label>
                                 <select class="form-control obg" id="tipo" name="tipo">
-                                    <option value="">Selecione...</option>
-                                    <option value="equipamento1">Equipamento 1</option>
-                                    <option value="equipamento2">Equipamento 2</option>
-                                    <option value="equipamento3">Equipamento 3</option>
                                     <!-- Adicione mais opções conforme necessário -->
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Selecione o setor:</label>
-                                <select class="form-control obg" id="tipo" name="setor">
+                                <select class="form-control obg" id="setor" name="setor">
                                     <option value="">Selecione...</option>
                                     <option value="equipamento1">Setor 1</option>
                                     <option value="equipamento2">Setor 2</option>
@@ -96,6 +92,8 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/alocar_equipamento_datavi
     include_once PATH . 'Template/_includes/_scripts.php';
     include_once PATH . 'Template/_includes/_msg.php';
     ?>
+
+    <script src="../../Resource/ajax/setor_ajax.js"></script>
 </body>
 
 </html>
