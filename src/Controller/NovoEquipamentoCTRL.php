@@ -4,6 +4,7 @@ namespace Src\Controller;
 
 use Src\_Public\Util;
 use Src\VO\EquipamentoVO;
+use Src\VO\AlocarVO;
 use Src\Model\NovoEquipamentoMODEL;
 
 class NovoEquipamentoCTRL
@@ -90,5 +91,19 @@ class NovoEquipamentoCTRL
   public function SelecionarEquipamentoNaoAlocadosCTRL(): array | null
   {
     return $this->model->SelecionarEquipamentoNaoAlocadosMODEL(SITUACAO_ATIVO, SITUACAO_EQUIPAMENTO_REMOVIDO);
+  }
+
+  public function AlocarEquipamentoCTRL(AlocarVO $vo): int
+  {
+    if (
+      empty($vo->getEquipamentoId()) ||
+      empty($vo->getSetorId())
+    )
+      return 0;
+    $vo->setSituacao(SITUACAO_EQUIPAMENTO_ALOCADO);
+    $vo->setFuncaoErro(ALOCAR_EQUIPAMENTO);
+    $vo->setCodLogado(Util::CodigoLogado());
+
+    return $this->model->AlocarEquipamentoModel($vo);
   }
 }

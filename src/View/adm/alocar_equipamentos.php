@@ -66,9 +66,9 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/alocar_equipamento_datavi
                                 <select class="form-control obg" id="equipamento" name="equipamento">
                                 </select>
                             </div>
-                            <button onclick="return NotificarCampos('formCad')" type="submit" class="btn btn-success" name="btn_alocar" id="tipo">Procurar</button>
+                            <button onclick="return NotificarCampos('formCad')" type="submit" class="btn btn-success" name="btn_alocar" id="tipo">Alocar</button>
                         </form>
-                    </div>
+                    </div> 
                     <!-- /.card-body -->
                 </div>
                 <!-- /.card -->

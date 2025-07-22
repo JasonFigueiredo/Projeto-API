@@ -4,6 +4,7 @@ namespace Src\Model;
 
 use Exception;
 use Src\Model\Conexao;
+use Src\VO\AlocarVO;
 use Src\VO\EquipamentoVO;
 use Src\Model\SQL\NOVO_EQUIPAMENTO_SQL;
 
@@ -28,6 +29,25 @@ class NovoEquipamentoMODEL extends Conexao
         $sql->bindValue($i++, $vo->getTipo());
         $sql->bindValue($i++, $vo->getModelo());
 
+        try {
+            $sql->execute();
+            return 1;
+        } catch (Exception $ex) {
+            $vo->setErroTecnico($ex->getMessage());
+            parent::GravarErroLog($vo);
+            return -1;
+        }
+    }
+
+    public function AlocarEquipamentoMODEL(AlocarVO $vo): int
+    {
+
+        $sql = $this->conexao->prepare(NOVO_EQUIPAMENTO_SQL::ALOCAR_EQUIPAMENTO());
+        $i = 1;
+        $sql->bindValue($i++, $vo->getDataAlocacar());
+        $sql->bindValue($i++, $vo->getSituacao());
+        $sql->bindValue($i++, $vo->getSetorId());
+        $sql->bindValue($i++, $vo->getEquipamentoId());
         try {
             $sql->execute();
             return 1;
@@ -65,7 +85,7 @@ class NovoEquipamentoMODEL extends Conexao
         $sql->execute();
         return $sql->fetch(\PDO::FETCH_ASSOC);
     }
-    
+
     public function SelecionarEquipamentoNaoAlocadosMODEL(int $situacao_equipamento, int $situacao_alocar): array | null
     {
         $sql = $this->conexao->prepare(NOVO_EQUIPAMENTO_SQL::SELECIONAR_EQUIPAMENTO_NAO_ALOCADOS());
