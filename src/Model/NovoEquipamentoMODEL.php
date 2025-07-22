@@ -44,7 +44,7 @@ class NovoEquipamentoMODEL extends Conexao
 
         $sql = $this->conexao->prepare(NOVO_EQUIPAMENTO_SQL::ALOCAR_EQUIPAMENTO());
         $i = 1;
-        $sql->bindValue($i++, $vo->getDataAlocacar());
+        $sql->bindValue($i++, $vo->getDataAlocar());
         $sql->bindValue($i++, $vo->getSituacao());
         $sql->bindValue($i++, $vo->getSetorId());
         $sql->bindValue($i++, $vo->getEquipamentoId());

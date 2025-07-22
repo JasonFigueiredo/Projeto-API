@@ -113,12 +113,8 @@ class NOVO_EQUIPAMENTO_SQL
 
     public static function ALOCAR_EQUIPAMENTO()
     {
-        $sql = " INSERT INTO tb_alocar( 
-        data_alocacar,
-        situacao,
-        setor_id,
-        equipamento_id
-        ) VALUES (?, ?, ?, ?)";
+        $sql = " INSERT INTO tb_alocar(data_alocar, situacao, setor_id, equipamento_id) 
+        VALUES (?, ?, ?, ?)";
         return $sql;
     }
 }

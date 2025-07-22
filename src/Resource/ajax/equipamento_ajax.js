@@ -120,7 +120,7 @@ function Descartar(formID) {
     if (NotificarCampos(formID)) {
 
         $.ajax({
-            beforeSend:  function () {
+            beforeSend: function () {
                 Load();
             },
             type: 'post',
@@ -149,7 +149,7 @@ function CarregarEquipamentosNaoAlocados() {
         beforeSend: function () {
             Load();
         },
-        type: 'post', 
+        type: 'post',
         url: BASE_URL_DATAVIEW("equipamento_dataview"),
         data: {
             carregar_equipamentos_nao_alocados: "ajx"
@@ -161,4 +161,30 @@ function CarregarEquipamentosNaoAlocados() {
             RemoverLoad();
         }
     })
+}
+
+function AlocarEquipamento(formID) {
+    if (NotificarCampos(formID)) {
+
+        $.ajax({
+            beforeSend: function () {
+                Load();
+            },
+            type: 'post',
+            url: BASE_URL_DATAVIEW("equipamento_dataview"),
+            data: {
+                alocar_equipamento: "ajx",
+                id_equipamento: $("#equipamento").val(),
+                id_setor: $("#setor").val(),
+            },
+            success: function (ret) {
+                MostrarMensagem(ret);
+                LimparNotificacoes(formID);
+                CarregarEquipamentosNaoAlocados();
+            },
+            complete: function () {
+                RemoverLoad();
+            }
+        })
+    }
 }

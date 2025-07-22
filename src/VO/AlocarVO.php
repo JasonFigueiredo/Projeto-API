@@ -53,7 +53,7 @@ class AlocarVO extends LogErroVO
     }
 
 
-    public function getDataAlocacar(): string
+    public function getDataAlocar(): string
     {
         return Util::DataAtual();
     }

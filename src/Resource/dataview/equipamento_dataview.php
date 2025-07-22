@@ -5,6 +5,7 @@ use Src\Controller\NovoEquipamentoCTRL;
 use Src\Controller\GerenciarTipoEquipamentoCTRL;
 use Src\Controller\GerenciarModeloEquipamentoCTRL;
 use Src\VO\EquipamentoVO;
+use Src\VO\AlocarVO;
 
 include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
 
@@ -133,4 +134,12 @@ if (isset($_POST['btn_gravar']) && $_POST['btn_gravar'] == 'cadastrar') {
             <option value="<?= $item['equipamento_id'] ?>"> <?= 'Identificação: ' . $item["identificacao"] . ' / ' . $item["nome_tipo"] . ' / ' . $item["nome_modelo"] ?></option>
         <?php } ?>
     </select>
-<?php } ?>
+<?php } else if (isset($_POST['alocar_equipamento'])) {
+
+    $vo = new AlocarVO();
+    $vo->setEquipamentoId($_POST['id_equipamento']);
+    $vo->setSetorId($_POST['id_setor']);
+
+    $ret = $ctrl->AlocarEquipamentoCTRL($vo);
+    echo $ret;
+}

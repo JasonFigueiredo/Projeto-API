@@ -60,7 +60,6 @@ class NovoEquipamentoCTRL
     return $this->model->DetalharEquipamentoModel($id);
   }
 
-
   public function ExcluirEquipamentoCTRL(EquipamentoVO $vo): int
   {
     if (empty($vo->getId()))
