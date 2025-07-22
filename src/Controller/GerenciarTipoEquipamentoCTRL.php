@@ -27,13 +27,11 @@ class GerenciarTipoEquipamentoCTRL
         return $this->model->CadastrarTipoEquipamentoMODEL($vo);
     }
 
-
     /// Método para consultar todos os tipos de equipamentos
     public function ConsultarTipoEquipamentoCTRL()
     {
         return $this->model->ConsultarTipoEquipamentoMODEL();
     }
-
 
     /// Método para Alterar um tipo de equipamento
     public function AlterarTipoEquipamentoCTRL(TipoVO $vo): int

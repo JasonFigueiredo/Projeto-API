@@ -17,9 +17,6 @@ class ModeloEquipamentoMODEL extends Conexao
     $this->conexao = parent::retornarConexao();
   }
 
-
-  /// Método para cadastrar um modelo de equipamento
-  /// Retorna 1 se o cadastro foi realizado com sucesso, -1 caso contrário
   public function CadastrarModeloEquipamentoMODEL(ModeloVO $vo): int
   {
     $sql = $this->conexao->prepare(MODELO_EQUIPAMENTO_SQL::INSERIR_MODELO_EQUIPAMENTO());
@@ -35,8 +32,6 @@ class ModeloEquipamentoMODEL extends Conexao
     }
   }
 
-  /// Método para consultar todos os modelos de equipamentos
-  /// Retorna um array com os modelos de equipamentos cadastrados
   public function ConsultarModeloEquipamentoModel()
   {
     $sql = $this->conexao->prepare(MODELO_EQUIPAMENTO_SQL::SELECIONAR_MODELO_EQUIPAMENTO());
@@ -44,9 +39,6 @@ class ModeloEquipamentoMODEL extends Conexao
     return $sql->fetchAll(\PDO::FETCH_ASSOC);
   }
 
-
-  /// Método para alterar um modelo de equipamento
-  /// Retorna 1 se a alteração foi realizada com sucesso, -1 caso contrário
   public function AlterarModeloEquipamentoMODEL(ModeloVO $vo)
   {
     $sql = $this->conexao->prepare(MODELO_EQUIPAMENTO_SQL::ALTERAR_MODELO_EQUIPAMENTO());
@@ -61,8 +53,6 @@ class ModeloEquipamentoMODEL extends Conexao
     }
   }
 
-  /// Método para excluir um modelo de equipamento
-  /// Retorna 1 se a exclusão foi realizada com sucesso, -1 caso contrário
   public function ExcluirModeloEquipamentoMODEL(ModeloVO $vo)
   {
     $sql = $this->conexao->prepare(MODELO_EQUIPAMENTO_SQL::EXCLUIR_MODELO_EQUIPAMENTO());

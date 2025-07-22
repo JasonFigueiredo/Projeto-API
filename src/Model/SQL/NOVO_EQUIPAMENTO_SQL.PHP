@@ -7,7 +7,6 @@ class NOVO_EQUIPAMENTO_SQL
 
     public static function INSERIR_EQUIPAMENTO()
     {
-
         $sql = "INSERT INTO 
         tb_equipamento (identificacao, descricao, situacao, tipo_id, modelo_id)
         values (?,?,?,?,?)";
@@ -43,7 +42,6 @@ class NOVO_EQUIPAMENTO_SQL
 
     public static function EXCLUIR_EQUIPAMENTO()
     {
-
         $sql = "DELETE FROM 
                 tb_equipamento 
                 WHERE id = ?";
@@ -52,7 +50,6 @@ class NOVO_EQUIPAMENTO_SQL
     }
 
     public static function FILTRAR_EQUIPAMENTO($idTipo, $idModelo)
-
     {
         $sql = 'SELECT eq.id as equipamento_id,
                        identificacao,
