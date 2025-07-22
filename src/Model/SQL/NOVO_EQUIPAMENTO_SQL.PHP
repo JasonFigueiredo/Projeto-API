@@ -71,7 +71,7 @@ class NOVO_EQUIPAMENTO_SQL
                 ON eq.modelo_id = mo.id
                 INNER JOIN tb_tipo as ti
                 ON eq.tipo_id = ti.id';
-                    
+
         if ($idTipo != "" && $idModelo != "") {
             $sql .= ' WHERE eq.modelo_id = ? AND eq.tipo_id = ?';
         } elseif ($idTipo == "" && $idModelo != "") {
@@ -90,6 +90,24 @@ class NOVO_EQUIPAMENTO_SQL
                     motivo_descarte = ?,
                     situacao = ?
                 WHERE id = ?";
+        return $sql;
+    }
+    public static function SELECIONAR_EQUIPAMENTO_NAO_ALOCADOS()
+    {
+        $sql = "SELECT eq.id as equipamento_id,
+				eq.identificacao,
+				ti.nome_tipo,
+				mo.nome_modelo
+		        from tb_equipamento as eq
+                inner join tb_tipo as ti
+		        on eq.tipo_id = ti.id
+                inner join tb_modelo as mo
+		        on eq.modelo_id = mo.id
+		        where eq.situacao = ?
+		        and eq.id   
+                not in (select eq.id
+				from tb_alocar
+				where situacao != ?);";
         return $sql;
     }
 }

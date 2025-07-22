@@ -114,6 +114,7 @@ function GravarEquipamento(formID) {
         })
     }
 }
+
 function Descartar(formID) {
 
     if (NotificarCampos(formID)) {
@@ -141,4 +142,23 @@ function Descartar(formID) {
             }
         })
     }
+}
+
+function CarregarEquipamentosNaoAlocados() {
+    $.ajax({
+        beforeSend: function () {
+            Load();
+        },
+        type: 'post', 
+        url: BASE_URL_DATAVIEW("equipamento_dataview"),
+        data: {
+            carregar_equipamentos_nao_alocados: "ajx"
+        },
+        success: function (dados) {
+            $("#equipamento").html(dados);
+        },
+        complete: function () {
+            RemoverLoad();
+        }
+    })
 }

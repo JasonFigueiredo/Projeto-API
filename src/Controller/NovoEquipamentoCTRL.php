@@ -86,4 +86,9 @@ class NovoEquipamentoCTRL
 
     return $this->model->DescartarEquipamentoModel($vo);
   }
+
+  public function SelecionarEquipamentoNaoAlocadosCTRL(): array | null
+  {
+    return $this->model->SelecionarEquipamentoNaoAlocadosMODEL(SITUACAO_ATIVO, SITUACAO_EQUIPAMENTO_REMOVIDO);
+  }
 }

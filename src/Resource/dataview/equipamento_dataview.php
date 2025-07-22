@@ -124,4 +124,13 @@ if (isset($_POST['btn_gravar']) && $_POST['btn_gravar'] == 'cadastrar') {
     $vo->setDataDescarte(($_POST['data_descarte']));
     $ret = $ctrl->DescartarEquipamentoCTRL($vo);
     echo $ret;
-}
+} else if (isset($_POST['carregar_equipamentos_nao_alocados'])) {
+    $equipamentos = $ctrl->SelecionarEquipamentoNaoAlocadosCTRL();
+?>
+    <select class="form-control obg">
+        <option value="">Selecione</option>
+        <?php foreach ($equipamentos as $item) { ?>
+            <option value="<?= $item['equipamento_id'] ?>"> <?= 'Identificação: ' . $item["identificacao"] . ' / ' . $item["nome_tipo"] . ' / ' . $item["nome_modelo"] ?></option>
+        <?php } ?>
+    </select>
+<?php } ?>

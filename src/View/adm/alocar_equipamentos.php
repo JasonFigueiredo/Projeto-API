@@ -57,19 +57,13 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/alocar_equipamento_datavi
                     <div class="card-body">
                         <form action="alocar_equipamentos.php" method="post" id="formCad">
                             <div class="form-group">
-                                <label>Selecione o equipamento:</label>
-                                <select class="form-control obg" id="tipo" name="tipo">
-                                    <!-- Adicione mais opções conforme necessário -->
+                                <label>Selecione o setor:</label>
+                                <select class="form-control obg" id="setor" name="setor">
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Selecione o setor:</label>
-                                <select class="form-control obg" id="setor" name="setor">
-                                    <option value="">Selecione...</option>
-                                    <option value="equipamento1">Setor 1</option>
-                                    <option value="equipamento2">Setor 2</option>
-                                    <option value="equipamento3">Setor 3</option>
-                                    <!-- Adicione mais opções conforme necessário -->
+                                <label>Selecione o equipamento:</label>
+                                <select class="form-control obg" id="equipamento" name="equipamento">
                                 </select>
                             </div>
                             <button onclick="return NotificarCampos('formCad')" type="submit" class="btn btn-success" name="btn_alocar" id="tipo">Procurar</button>
@@ -92,8 +86,13 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/alocar_equipamento_datavi
     include_once PATH . 'Template/_includes/_scripts.php';
     include_once PATH . 'Template/_includes/_msg.php';
     ?>
-
     <script src="../../Resource/ajax/setor_ajax.js"></script>
+    <script src="../../Resource/ajax/equipamento_ajax.js"></script>
+    <script>
+        CarregarSetores();
+        CarregarEquipamentosNaoAlocados();
+    </script>
+
 </body>
 
 </html>

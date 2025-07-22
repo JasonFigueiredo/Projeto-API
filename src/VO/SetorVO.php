@@ -1,6 +1,4 @@
 <?php
-
-
 namespace Src\VO;
 
 use Src\_Public\Util;

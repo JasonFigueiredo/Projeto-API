@@ -11,7 +11,6 @@ if (isset($_POST['consultar_setor'])) {
   $setores = $ctrl->ConsultarSetorCTRL();
 
 ?>
-
   <select class="form-control">
     <option value="">Selecione</option>
     <?php foreach ($setores as $item) { ?>

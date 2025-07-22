@@ -5,7 +5,7 @@ function CarregarSetores() {
     },
 
     type: 'POST',
-    url: BASE_URL_DATAVIEW('setor_dataview.php'),
+    url: BASE_URL_DATAVIEW('gerenciar_setor_dataview'),
     data: {
       consultar_setor: 'ajx',
     },

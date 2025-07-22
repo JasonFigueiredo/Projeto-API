@@ -65,6 +65,17 @@ class NovoEquipamentoMODEL extends Conexao
         $sql->execute();
         return $sql->fetch(\PDO::FETCH_ASSOC);
     }
+    
+    public function SelecionarEquipamentoNaoAlocadosMODEL(int $situacao_equipamento, int $situacao_alocar): array | null
+    {
+        $sql = $this->conexao->prepare(NOVO_EQUIPAMENTO_SQL::SELECIONAR_EQUIPAMENTO_NAO_ALOCADOS());
+        $i = 1;
+        $sql->bindValue($i++, $situacao_equipamento);
+        $sql->bindValue($i++, $situacao_alocar);
+
+        $sql->execute();
+        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+    }
 
     public function ExcluirEquipamentoModel(EquipamentoVO $vo): int
     {
