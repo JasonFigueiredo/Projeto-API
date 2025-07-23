@@ -1,7 +1,7 @@
 function CarregarDescarteInfo(data, nome, motivo) {
   $("#data_descarte_info").val(data);
   $("#nome_descarte_info").html(nome);
-  $("#motivo_info").html(motivo);
+  $("#motivo_info").val(motivo);
 }
 function CarregarDescarte(id, nome) {
   $("#id_descarte").val(id);

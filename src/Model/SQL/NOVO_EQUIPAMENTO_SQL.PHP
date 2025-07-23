@@ -61,7 +61,7 @@ class NOVO_EQUIPAMENTO_SQL
                        nome_tipo,
                        (select count(*)
                           from tb_alocar as al
-                         where al.equipamento_id = equipamento_id
+                         where al.equipamento_id = eq.id
                            and al.situacao != ?) as esta_alocado
                 FROM tb_equipamento as eq
                 INNER JOIN tb_modelo as mo
@@ -102,9 +102,9 @@ class NOVO_EQUIPAMENTO_SQL
 		        on eq.modelo_id = mo.id
 		        where eq.situacao = ?
 		        and eq.id   
-                not in (select eq.id
-				from tb_alocar
-				where situacao != ?);";
+                not in (select al.equipamento_id
+				from tb_alocar as al
+				where al.situacao != ?);";
         return $sql;
     }
 
