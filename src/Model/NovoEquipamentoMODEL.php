@@ -76,7 +76,7 @@ class NovoEquipamentoMODEL extends Conexao
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function DetalharEquipamentoModel($id): array | null
+    public function DetalharEquipamentoModel($id): array | String
     {
         $sql = $this->conexao->prepare(NOVO_EQUIPAMENTO_SQL::DETALHAR_EQUIPAMENTO());
 
@@ -84,6 +84,17 @@ class NovoEquipamentoMODEL extends Conexao
 
         $sql->execute();
         return $sql->fetch(\PDO::FETCH_ASSOC);
+    }
+    
+    public function ListarEquipamentosAlocadosSetorMODEL(int $idSetor, int $situacaoAlocado): array | null
+    {
+        $sql = $this->conexao->prepare(NOVO_EQUIPAMENTO_SQL::EQUIPAMENTOS_ALOCADOS_SETOR());
+
+        $sql->bindValue(1, $idSetor);
+        $sql->bindValue(2, $situacaoAlocado);
+
+        $sql->execute();
+        return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public function SelecionarEquipamentoNaoAlocadosMODEL(int $situacao_equipamento, int $situacao_alocar): array | null

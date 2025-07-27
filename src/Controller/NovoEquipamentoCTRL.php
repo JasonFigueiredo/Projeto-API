@@ -7,6 +7,7 @@ use Src\VO\EquipamentoVO;
 use Src\VO\AlocarVO;
 use Src\Model\NovoEquipamentoMODEL;
 
+
 class NovoEquipamentoCTRL
 {
   private $model;
@@ -58,6 +59,11 @@ class NovoEquipamentoCTRL
   public function DetalharEquipamentoCTRL(int $id): array | String
   {
     return $this->model->DetalharEquipamentoModel($id);
+  }
+
+  public function ListarEquipamentosAlocadosSetorCTRL(int $idSetor): array | null
+  {
+    return $this->model->ListarEquipamentosAlocadosSetorMODEL($idSetor, SITUACAO_EQUIPAMENTO_ALOCADO);
   }
 
   public function ExcluirEquipamentoCTRL(EquipamentoVO $vo): int

@@ -28,7 +28,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Remover equipamento</h1>
+                            <h1>Remover Alocação dos setores</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -46,7 +46,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                 <!-- Default box -->
                 <div class="card">
                     <div class="card-header card-primary card-outline">
-                        <h3 class="card-title">Aqui você poderá remover seus equipamentos</h3>
+                        <h3 class="card-title">Aqui você poderá remover suas alocações do setores</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
@@ -57,16 +57,11 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                     <div class="card-body">
                         <form action="remover_equipamento.php" method="post" id="formCad">
                             <div class="form-group">
-                                <label for="equipamento">Selecione o equipamento</label>
-                                <select class="form-control obg" id="equipamento" name="equipamento">
-                                    <option value="">Selecione...</option>
-                                    <option value="equipamento1">Equipamento 1</option>
-                                    <option value="equipamento2">Equipamento 2</option>
-                                    <option value="equipamento3">Equipamento 3</option>
+                                <label for="equipamento">Selecione o setor</label>
+                                <select class="form-control obg" id="setor" name="setor">
                                     <!-- Adicione mais opções conforme necessário -->
                                 </select>
                             </div>
-                            <button onclick="return NotificarCampos('formCad')" type="button" class="btn btn-success">Procurar</button>
                         </form>
                     </div>
                     <!-- /.card-body -->
@@ -80,25 +75,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                         <h3 class="card-title">Lista de equipamentos desse setor</h3>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Equipamento</th>
-                                    <th>Ação</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Notebook</td>
-                                    <td>
-                                        <a href="#" class=" btn btn-warning btn-xs">Alterar</a>
-                                        <a href="#" class=" btn btn-danger btn-xs">Excluir</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                   
                     <!-- /.card-body -->
                 </div>
             </section>
@@ -115,6 +92,10 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
     include_once PATH . 'Template/_includes/_scripts.php';
     include_once PATH . 'Template/_includes/_msg.php';
     ?>
+    <script src="../../Resource/ajax/setor_ajax.js"></script>
+    <script>
+        CarregarSetores();
+    </script>
 </body>
 
 </html>
