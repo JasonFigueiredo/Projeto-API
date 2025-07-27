@@ -188,3 +188,27 @@ function AlocarEquipamento(formID) {
         })
     }
 }
+
+function CarregarEquipamentosAlocados() {
+    if (idSetor != "") {
+        $.ajax({
+            beforeSend: function () {
+                Load();
+            },
+            type: 'post',
+            url: BASE_URL_DATAVIEW("equipamento_dataview"),
+            data: {
+                filtrar_equipamentos_alocados: "ajx",
+                id_setor: idSetor
+            },
+            success: function (dados) {
+                $("#tableResult").html(dados);
+            },
+            complete: function () {
+                RemoverLoad();
+            }
+        })
+    } else {
+        $("#tableResult").html("");
+    }
+}

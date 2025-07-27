@@ -142,4 +142,29 @@ if (isset($_POST['btn_gravar']) && $_POST['btn_gravar'] == 'cadastrar') {
 
     $ret = $ctrl->AlocarEquipamentoCTRL($vo);
     echo $ret;
+} else if (isset($_POST['filtrar_equipamentos_alocados'])) {
+    
+    $equipamentos = $ctrl->ListarEquipamentosAlocadosSetorCTRL($_POST['id_setor']); ?>
+
+    <table id='tableResult' class="table table-hover">
+        <thead>
+            <tr>
+                <th>Ação</th>
+                <th>Equipamento</th>
+                <th>Alocado em</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($equipamentos as $item) { ?>
+            <tr>
+                <td>
+                    <a href="#" class="btn btn-danger btn-md">Remover do Setor</a>
+                </td>
+                <td><?= 'identificação: ' . $item['identificacao'] . ' / ' . $item['nome_marca']. ' / ' . $item['nome_modelo']?></td>
+                <td><?= $item['data_alocar']?></td>
+            </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+<?php
 }

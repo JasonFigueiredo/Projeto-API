@@ -46,7 +46,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                 <!-- Default box -->
                 <div class="card">
                     <div class="card-header card-primary card-outline">
-                        <h3 class="card-title">Aqui você poderá remover suas alocações do setores</h3>
+                        <h3 class="card-title">Aqui você poderá selecionar os setores cadastrados</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
@@ -58,8 +58,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                         <form action="remover_equipamento.php" method="post" id="formCad">
                             <div class="form-group">
                                 <label for="equipamento">Selecione o setor</label>
-                                <select class="form-control obg" id="setor" name="setor">
-                                    <!-- Adicione mais opções conforme necessário -->
+                                <select class="form-control obg" id="setor" name="setor" onchange="CarregarEquipamentosAlocados(this.value)">
                                 </select>
                             </div>
                         </form>
@@ -69,13 +68,17 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                 <!-- /.card -->
             </section>
 
-            <section class="content">
+           <section class="content">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">Lista de equipamentos desse setor</h3>
+                        <h3 class="card-title">Equipamentos cadastrados</h3>
                     </div>
                     <!-- /.card-header -->
-                   
+                    <div class="card-body">
+                        <table id="tableResult" class="table table-bordered table-striped">
+
+                        </table>
+                    </div>
                     <!-- /.card-body -->
                 </div>
             </section>
@@ -93,6 +96,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
     include_once PATH . 'Template/_includes/_msg.php';
     ?>
     <script src="../../Resource/ajax/setor_ajax.js"></script>
+    <script src="../../Resource/ajax/equipamento_ajax.js"></script>
     <script>
         CarregarSetores();
     </script>
