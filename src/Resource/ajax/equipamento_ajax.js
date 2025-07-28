@@ -189,7 +189,7 @@ function AlocarEquipamento(formID) {
     }
 }
 
-function CarregarEquipamentosAlocados() {
+function CarregarEquipamentosAlocados(idSetor) {
     if (idSetor != "") {
         $.ajax({
             beforeSend: function () {
@@ -203,12 +203,14 @@ function CarregarEquipamentosAlocados() {
             },
             success: function (dados) {
                 $("#tableResult").html(dados);
+                $("#divResultado").show();
             },
             complete: function () {
                 RemoverLoad();
             }
         })
-    } else {
+    } else { 
+        $("#divResultado").hide();
         $("#tableResult").html("");
     }
 }

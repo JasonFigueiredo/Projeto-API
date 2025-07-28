@@ -57,7 +57,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                     <div class="card-body">
                         <form action="remover_equipamento.php" method="post" id="formCad">
                             <div class="form-group">
-                                <label for="equipamento">Selecione o setor</label>
+                                <label>Selecione o setor</label>
                                 <select class="form-control obg" id="setor" name="setor" onchange="CarregarEquipamentosAlocados(this.value)">
                                 </select>
                             </div>
@@ -68,13 +68,13 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                 <!-- /.card -->
             </section>
 
-           <section class="content">
+           <section class="content" id="divResultado" style="display: none;">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">Equipamentos cadastrados</h3>
+                        <h3 class="card-title">Lista de equipamentos do setor</h3>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body">
+                    <div class="card-body table-responsive p-0">
                         <table id="tableResult" class="table table-bordered table-striped">
 
                         </table>
