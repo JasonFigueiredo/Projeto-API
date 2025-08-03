@@ -1,6 +1,7 @@
 function BASE_URL_DATAVIEW(dataview) {
   return '../../Resource/dataview/' + dataview + '.php';
 }
+
 function LimparNotificacoes(formID) {
   $(
     "#" + formID + " input, #" + formID + " textarea, #" + formID + " select"
@@ -9,6 +10,7 @@ function LimparNotificacoes(formID) {
     $(this).removeClass("is-invalid").removeClass("is-valid");
   });
 }
+
 function NotificarCampos(formID) {
   let ret = true;
   $(
@@ -28,7 +30,6 @@ function NotificarCampos(formID) {
   return ret;
 }
 
-
 function FecharModal(nome_modal) {
   $("#" + nome_modal).modal("hide");
 }
@@ -43,6 +44,7 @@ function FocarCampoTravar(e, next) {
 function Load() {
   $(".loader").addClass("is-active");
 }
+
 function RemoverLoad() {
   $(".loader").removeClass("is-active");
 }

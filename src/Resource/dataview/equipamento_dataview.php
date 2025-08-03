@@ -161,7 +161,10 @@ if (isset($_POST['btn_gravar']) && $_POST['btn_gravar'] == 'cadastrar') {
                     <a href="#" class="btn btn-danger btn-md">Remover do Setor</a>
                 </td>
                 <td><?= 'identificação: ' . $item['identificacao'] . ' / ' . $item['nome_tipo']. ' / ' . $item['nome_modelo']?></td>
-                <td><?= $item['data_alocar']?></td>
+                <!-- função para formatar a visualização da data -->
+                <td>
+                    <?= date('d/m/Y', strtotime($item['data_alocar'])) ?>
+                </td>
             </tr>
             <?php } ?>
         </tbody>

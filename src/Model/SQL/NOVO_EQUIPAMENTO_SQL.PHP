@@ -117,21 +117,22 @@ class NOVO_EQUIPAMENTO_SQL
 
     public static function EQUIPAMENTOS_ALOCADOS_SETOR()
     {
-        $sql = "SELECT eq.id as equipamento_id,
-                    eq.identificacao,
-                    ti.nome_tipo,
-                    mo.nome_modelo,
-                    al.id as alocar_id
-                FROM tb_equipamento as eq
-            inner join tb_tipo as ti
-                on eq.tipo_id = ti.id
-            inner join tb_modelo as mo
-                on eq.modelo_id = mo.id
-            inner join tb_alocar as al
-                on al.equipamento_id = eq.id
-            WHERE al.setor_id = ?
-                AND al.data_remocao IS NULL
-                AND al.situacao = ?";
+        $sql = 'SELECT eq.id as equipamento_id,
+                       eq.identificacao,
+                       ti.nome_tipo,
+                       mo.nome_modelo,
+                       al.id as alocar_id,
+                       al.data_alocar
+                  FROM tb_equipamento as eq
+            INNER JOIN tb_tipo as ti
+                    ON eq.tipo_id = ti.id
+            INNER JOIN tb_modelo as mo
+                    ON eq.modelo_id = mo.id
+            INNER JOIN tb_alocar as al
+                    ON al.equipamento_id = eq.id
+                 WHERE al.setor_id = ?
+                   AND al.data_remocao IS NULL
+                   AND al.situacao = ?';
         return $sql;
     }
 }
