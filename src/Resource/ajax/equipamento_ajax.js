@@ -74,12 +74,11 @@ function Excluir() {
         },
         success: function (ret) {
             MostrarMensagem(ret);
-            if ($('#tela').val() == "excluir") {
+            if ($('#tela').val() == "excluir")
                 FiltrarEquipamentos();
-            } else {
-                CarregarEquipamentosAlocados($("#setor").val());
-                FecharModal("modal-excluir");
-            }
+            else
+            CarregarEquipamentosAlocados($("#setor").val());
+            FecharModal("modal-excluir");
         },
         complete: function () {
             RemoverLoad();

@@ -1,69 +1,13 @@
 ------------------------------------------------------
-Data do erro: 2025-07-22
-Hora do erro: 19:00
+Data do erro: 2025-08-04
+Hora do erro: 13:40
 Codigo do logado: 1
 Funcao do erro: Excluir Novo Equipamento
 Erro tecnico: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_controleos`.`tb_alocar`, CONSTRAINT `fk_tb_alocar_tb_equipamento1` FOREIGN KEY (`equipamento_id`) REFERENCES `tb_equipamento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
 ------------------------------------------------------
 ------------------------------------------------------
-Data do erro: 2025-07-22
-Hora do erro: 19:01
-Codigo do logado: 1
-Funcao do erro: Excluir Novo Equipamento
-Erro tecnico: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_controleos`.`tb_alocar`, CONSTRAINT `fk_tb_alocar_tb_equipamento1` FOREIGN KEY (`equipamento_id`) REFERENCES `tb_equipamento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
-------------------------------------------------------
-------------------------------------------------------
-Data do erro: 2025-07-22
-Hora do erro: 19:05
-Codigo do logado: 1
-Funcao do erro: Excluir Novo Equipamento
-Erro tecnico: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_controleos`.`tb_alocar`, CONSTRAINT `fk_tb_alocar_tb_equipamento1` FOREIGN KEY (`equipamento_id`) REFERENCES `tb_equipamento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
-------------------------------------------------------
-------------------------------------------------------
-Data do erro: 2025-07-22
-Hora do erro: 19:06
-Codigo do logado: 1
-Funcao do erro: Excluir Novo Equipamento
-Erro tecnico: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_controleos`.`tb_alocar`, CONSTRAINT `fk_tb_alocar_tb_equipamento1` FOREIGN KEY (`equipamento_id`) REFERENCES `tb_equipamento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
-------------------------------------------------------
-------------------------------------------------------
-Data do erro: 2025-07-27
-Hora do erro: 14:53
-Codigo do logado: 1
-Funcao do erro: Excluir Novo Equipamento
-Erro tecnico: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_controleos`.`tb_alocar`, CONSTRAINT `fk_tb_alocar_tb_equipamento1` FOREIGN KEY (`equipamento_id`) REFERENCES `tb_equipamento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
-------------------------------------------------------
-------------------------------------------------------
-Data do erro: 2025-07-27
-Hora do erro: 14:53
-Codigo do logado: 1
-Funcao do erro: Excluir Novo Equipamento
-Erro tecnico: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_controleos`.`tb_alocar`, CONSTRAINT `fk_tb_alocar_tb_equipamento1` FOREIGN KEY (`equipamento_id`) REFERENCES `tb_equipamento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
-------------------------------------------------------
-------------------------------------------------------
-Data do erro: 2025-07-27
-Hora do erro: 14:54
-Codigo do logado: 1
-Funcao do erro: Excluir Novo Equipamento
-Erro tecnico: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_controleos`.`tb_alocar`, CONSTRAINT `fk_tb_alocar_tb_equipamento1` FOREIGN KEY (`equipamento_id`) REFERENCES `tb_equipamento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
-------------------------------------------------------
-------------------------------------------------------
-Data do erro: 2025-07-27
-Hora do erro: 14:54
-Codigo do logado: 1
-Funcao do erro: Excluir Novo Equipamento
-Erro tecnico: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_controleos`.`tb_alocar`, CONSTRAINT `fk_tb_alocar_tb_equipamento1` FOREIGN KEY (`equipamento_id`) REFERENCES `tb_equipamento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
-------------------------------------------------------
-------------------------------------------------------
-Data do erro: 2025-07-27
-Hora do erro: 14:54
-Codigo do logado: 1
-Funcao do erro: Excluir Novo Equipamento
-Erro tecnico: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_controleos`.`tb_alocar`, CONSTRAINT `fk_tb_alocar_tb_equipamento1` FOREIGN KEY (`equipamento_id`) REFERENCES `tb_equipamento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
-------------------------------------------------------
-------------------------------------------------------
-Data do erro: 2025-08-03
-Hora do erro: 16:25
+Data do erro: 2025-08-04
+Hora do erro: 13:41
 Codigo do logado: 1
 Funcao do erro: Excluir Novo Equipamento
 Erro tecnico: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_controleos`.`tb_alocar`, CONSTRAINT `fk_tb_alocar_tb_equipamento1` FOREIGN KEY (`equipamento_id`) REFERENCES `tb_equipamento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)

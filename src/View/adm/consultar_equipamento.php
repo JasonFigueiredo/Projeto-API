@@ -52,7 +52,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="consultar_equipamento.php" method="POST" id="formCad">
+                        <form action="consultar_equipamento.php" method="post" id="formCad">
                         <input type="hidden" value="tela_excluir" id="tela" >    
                         <div class="form-group">
                                 <label for="nomeEquipamento">Pesquisar por tipo</label>

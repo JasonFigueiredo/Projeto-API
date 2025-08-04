@@ -143,7 +143,7 @@ if (isset($_POST['btn_gravar']) && $_POST['btn_gravar'] == 'cadastrar') {
     $ret = $ctrl->AlocarEquipamentoCTRL($vo);
     echo $ret;
 } else if (isset($_POST['filtrar_equipamentos_alocados'])) {
-    
+
     $equipamentos = $ctrl->ListarEquipamentosAlocadosSetorCTRL($_POST['id_setor']); ?>
 
     <table id='tableResult' class="table table-hover">
@@ -158,7 +158,9 @@ if (isset($_POST['btn_gravar']) && $_POST['btn_gravar'] == 'cadastrar') {
             <?php foreach ($equipamentos as $item) { ?>
             <tr>
                 <td>
-                    <a href="#" data-toggle="modal" data-target="#modal-excluir" onclick="CarregarExcluir(<?= $item['alocar_id'] ?>, '<?=$item['identificacao'] . ' / ' . $item['nome_tipo']. ' / ' . $item['nome_modelo']?>')" class="btn btn-danger btn-md">Remover do Setor</a>
+                    <a href="#" data-toggle="modal" data-target="#modal-excluir" 
+                    onclick="CarregarExcluir(<?= $item['alocar_id'] ?>, '<?=$item['identificacao'] . ' / ' . $item['nome_tipo']. ' / ' . $item['nome_modelo']?>')" 
+                    class="btn btn-danger btn-md">Remover do Setor</a>
                 </td>
                 <td><?= 'identificação: ' . $item['identificacao'] . ' / ' . $item['nome_tipo']. ' / ' . $item['nome_modelo']?></td>
                 <!-- função para formatar a visualização da data -->
