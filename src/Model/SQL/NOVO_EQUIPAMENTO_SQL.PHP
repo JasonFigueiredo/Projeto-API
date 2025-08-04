@@ -60,14 +60,14 @@ class NOVO_EQUIPAMENTO_SQL
                        nome_modelo,
                        nome_tipo,
                        (select count(*)
-                          from tb_alocar as al
-                         where al.equipamento_id = eq.id
-                           and al.situacao != ?) as esta_alocado
-                FROM tb_equipamento as eq
-                INNER JOIN tb_modelo as mo
-                ON eq.modelo_id = mo.id
-                INNER JOIN tb_tipo as ti
-                ON eq.tipo_id = ti.id';
+                  from tb_alocar as al
+                 where al.equipamento_id = eq.id
+                   and al.situacao != ?) as esta_alocado
+                  FROM tb_equipamento as eq
+            INNER JOIN tb_modelo as mo
+                    ON eq.modelo_id = mo.id
+            INNER JOIN tb_tipo as ti
+                    ON eq.tipo_id = ti.id';
 
         if ($idTipo != "" && $idModelo != "") {
             $sql .= ' WHERE eq.modelo_id = ? AND eq.tipo_id = ?';
@@ -133,6 +133,15 @@ class NOVO_EQUIPAMENTO_SQL
                  WHERE al.setor_id = ?
                    AND al.data_remocao IS NULL
                    AND al.situacao = ?';
+        return $sql;
+    }
+
+    public static function REMOVER_EQUIPAMENTO_SETOR()
+    {
+        $sql = "UPDATE tb_alocar
+                SET data_remocao = ?,
+                    situacao = ?
+                WHERE id = ?";
         return $sql;
     }
 }

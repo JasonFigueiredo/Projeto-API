@@ -69,13 +69,17 @@ function Excluir() {
         type: 'post',
         url: BASE_URL_DATAVIEW("equipamento_dataview"),
         data: {
-            btn_excluir: 'excluir',
+            btn_excluir: $('#tela').val() == "tela_remover" ? "remover_equipamento" : "excluir",
             id_equipamento: $("#id_excluir").val(),
         },
         success: function (ret) {
             MostrarMensagem(ret);
-            FiltrarEquipamentos();
-            FecharModal("modal-excluir");
+            if ($('#tela').val() == "excluir") {
+                FiltrarEquipamentos();
+            } else {
+                CarregarEquipamentosAlocados($("#setor").val());
+                FecharModal("modal-excluir");
+            }
         },
         complete: function () {
             RemoverLoad();
@@ -209,7 +213,7 @@ function CarregarEquipamentosAlocados(idSetor) {
                 RemoverLoad();
             }
         })
-    } else { 
+    } else {
         $("#divResultado").hide();
         $("#tableResult").html("");
     }

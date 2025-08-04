@@ -111,4 +111,13 @@ class NovoEquipamentoCTRL
 
     return $this->model->AlocarEquipamentoModel($vo);
   }
+
+  public function RemoverEquipamentoSetorCTRL(AlocarVO $vo): int
+  {
+    $vo->setCodLogado(Util::CodigoLogado());
+    $vo->setSituacao(SITUACAO_EQUIPAMENTO_REMOVIDO);
+    $vo->setFuncaoErro(REMOVER_ALOCAR_EQUIPAMENTO);
+
+    return $this->model->RemoverEquipamentoSetorModel($vo);
+  }
 }

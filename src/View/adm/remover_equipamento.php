@@ -56,7 +56,8 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                     </div>
                     <div class="card-body">
                         <form action="remover_equipamento.php" method="post" id="formCad">
-                            <div class="form-group">
+                        <input type="hidden" value="tela_remover" id="tela" >    
+                        <div class="form-group">
                                 <label>Selecione o setor</label>
                                 <select class="form-control obg" id="setor" name="setor" onchange="CarregarEquipamentosAlocados(this.value)">
                                 </select>
@@ -68,7 +69,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                 <!-- /.card -->
             </section>
 
-           <section class="content" id="divResultado" style="display: none;">
+            <section class="content" id="divResultado" style="display: none;">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
                         <h3 class="card-title">Equipamentos alocados</h3>
@@ -85,6 +86,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
+        <?php include_once 'modais/excluir.php' ?>
         <?php
         include_once PATH . 'Template/_includes/_footer.php';
         ?>

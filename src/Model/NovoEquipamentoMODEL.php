@@ -164,4 +164,22 @@ class NovoEquipamentoMODEL extends Conexao
             return -1;
         }
     }
+
+    public function RemoverEquipamentoSetorModel(AlocarVO $vo): int
+    {
+        $sql = $this->conexao->prepare(NOVO_EQUIPAMENTO_SQL::REMOVER_EQUIPAMENTO_SETOR());
+        $i = 1;
+        $sql->bindValue($i++, $vo->getDataRemocao());
+        $sql->bindValue($i++, $vo->getSituacao());
+        $sql->bindValue($i++, $vo->getId());
+
+        try {
+            $sql->execute();
+            return 1;
+        } catch (Exception $ex) {
+            $vo->setErroTecnico($ex->getMessage());
+            parent::GravarErroLog($vo);
+            return -1;
+        }
+    }
 }

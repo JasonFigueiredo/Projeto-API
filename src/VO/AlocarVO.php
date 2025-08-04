@@ -61,4 +61,16 @@ class AlocarVO extends LogErroVO
     {
         return Util::DataAtual();
     }
+
+    private $dataRemocao;
+
+    public function getDataRemocao()
+    {
+        return $this->dataRemocao;
+    }
+
+    public function setDataRemocao($dataRemocao)
+    {
+        $this->dataRemocao = $dataRemocao;
+    }
 }

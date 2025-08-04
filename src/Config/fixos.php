@@ -18,6 +18,7 @@
     const EXCLUIR_EQUIPAMENTO = "Excluir Novo Equipamento";
     const DESCARTAR_EQUIPAMENTO = "Descartar Equipamento";
     const ALOCAR_EQUIPAMENTO = "Alocar Equipamento";
+    const REMOVER_ALOCAR_EQUIPAMENTO = "Remover Alocar Equipamento";
 
     // Flags de situação de equipamento
     const SITUACAO_EQUIPAMENTO_ALOCADO = 1;
