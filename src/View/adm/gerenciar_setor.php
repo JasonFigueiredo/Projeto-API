@@ -75,22 +75,14 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_setor_dataview.
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="setores" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>Nome do setor</th>
                                     <th>Ação</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Notebook</td>
-                                    <td>
-                                        <a href="#" class=" btn btn-warning btn-xs">Alterar</a>
-                                        <a href="#" class=" btn btn-danger btn-xs">Excluir</a>
-                                    </td>
-                                </tr>
-                            </tbody>
+                            
                         </table>
                     </div>
                     <!-- /.card-body -->
