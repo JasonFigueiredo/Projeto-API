@@ -53,8 +53,8 @@ class Util
         return $palavra;
     }
     // Função para formatar o valor ATIVO e INATIVO e a com cores personalizadas
-    
-    
+
+
     public static function MostrarSituacao(int $sit): string
     {
         $situacao = '';
@@ -63,9 +63,8 @@ class Util
             case SITUACAO_ATIVO:
                 $situacao = '<strong style="color: #008000;">ATIVO</strong>';
                 break;
-
             case SITUACAO_INATIVO:
-                $situacao = '<strong style="color: #FF0000;">INATIVO</strong>';
+                $situacao = '<strong style="color: #ff0000ff;">INATIVO</strong>';
                 break;
         }
 
@@ -78,7 +77,8 @@ class Util
         exit;
     }
 
-    public static function MostrarDadosArray($arr){
+    public static function MostrarDadosArray($arr)
+    {
         echo '<pre>';
         print_r($arr);
         echo '</pre>';
