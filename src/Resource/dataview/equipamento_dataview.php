@@ -73,9 +73,9 @@ if (isset($_POST['btn_gravar']) && $_POST['btn_gravar'] == 'cadastrar') {
             <?php foreach ($equipamentos as $item) { ?>
                 <tr>
                     <td>
-                        <a href="equipamento.php?id=<?= $item['equipamento_id'] ?>" class=" btn btn-success btn-xs">Alterar</a>
+                        <a href="equipamento.php?id=<?= $item['equipamento_id'] ?>" class=" btn btn-warning btn-xs">Alterar</a>
                         <?php if ($item['esta_alocado'] == 0 && $item['situacao'] != SITUACAO_DESCARTADO) { ?>
-                            <a href="#" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-descarte" onclick="CarregarDescarte('<?= $item['equipamento_id'] ?>','<hr><b>Nome:</b> <?= $item['nome_tipo'] ?><br><b>Modelo:</b> <?= $item['nome_modelo'] ?><br><b>Identificação:</b> <?= $item['identificacao'] ?><br><b>Descrição:</b> <?= $item['descricao'] ?><hr>')">Descarte</a>
+                            <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-descarte" onclick="CarregarDescarte('<?= $item['equipamento_id'] ?>','<hr><b>Nome:</b> <?= $item['nome_tipo'] ?><br><b>Modelo:</b> <?= $item['nome_modelo'] ?><br><b>Identificação:</b> <?= $item['identificacao'] ?><br><b>Descrição:</b> <?= $item['descricao'] ?><hr>')">Descarte</a>
                         <?php } else if ($item['situacao'] == SITUACAO_DESCARTADO) { ?>
                             <a href="#" class="btn btn-secondary btn-xs" data-toggle="modal" data-target="#modal-descarteinfo" onclick="CarregarDescarteInfo('<?= $item['data_descarte'] ?>','<hr><b>Nome:</b> <?= $item['nome_tipo'] ?><br><b>Modelo:</b> <?= $item['nome_modelo'] ?><br><b>Identificação:</b> <?= $item['identificacao'] ?><br><b>Descrição:</b> <?= $item['descricao'] ?><br><hr>', '<?= $item['motivo_descarte'] ?>')">Dados descarte</a>
                         <?php } ?>

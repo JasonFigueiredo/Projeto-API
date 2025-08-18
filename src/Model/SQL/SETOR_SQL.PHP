@@ -20,4 +20,16 @@ class SETOR_SQL
           return $sql;
   }
 
+  public static function EXCLUIR_SETOR(): string
+  {
+    $sql = 'DELETE FROM tb_setor WHERE id = ?';
+    return $sql;
+  }
+
+  public static function BUSCAR_SETOR_POR_ID(): string
+  {
+    $sql = 'SELECT id, nome_setor FROM tb_setor WHERE id = ?';
+    return $sql;
+  }
+
 }
