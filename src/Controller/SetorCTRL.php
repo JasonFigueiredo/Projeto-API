@@ -15,6 +15,13 @@ class SetorCTRL
         $this->model = new SetorMODEL();
     }
 
+    public function CadastrarSetorCTRL(SetorVO $vo)
+    {
+        if(empty($vo->getNome())) 
+            return 0;
+
+        return $this->model->CadastrarSetorMODEL($vo);
+    }
     public function ConsultarSetorCTRL()
     {
         return $this->model->ConsultarSetorMODEL();

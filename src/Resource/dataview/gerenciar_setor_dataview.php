@@ -6,15 +6,15 @@ use Src\VO\SetorVO;
 include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
 
 $ctrl = new SetorCTRL();
+$ret = null;
 
-if (isset($_POST['consultar_setor'])) {
-  $setores = $ctrl->ConsultarSetorCTRL();
+if (isset($_POST['btn_cadastrar'])) {
+  $vo = new SetorVO();
+  $nome_setor = $_POST['nome_setor'] ?? '';
+  $vo->setNome($nome_setor);
+  $ret = $ctrl->CadastrarSetorCTRL($vo);
+}
 
+$setores = $ctrl->ConsultarSetorCTRL();
 ?>
-  <select class="form-control">
-    <option value="">Selecione</option>
-    <?php foreach ($setores as $item) { ?>
-      <option value="<?= $item['id'] ?>"><?= $item['nome_setor'] ?></option>
-    <?php } ?>
-  </select>
-<?php } ?>
+

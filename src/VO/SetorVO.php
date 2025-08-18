@@ -13,14 +13,17 @@ class SetorVO extends LogErroVO
   {
     $this->id = $id;
   }
+
   public function getId(): int
   {
     return $this->id;
   }
-  public function setNome(string $nome): void
+
+    public function setNome(?string $nome)
   {
-    $this->nome = Util::RemoverTags($nome);
+    $this->nome = $nome ? Util::RemoverTags($nome) : '';
   }
+  
   public function getNome(): string
   {
     return $this->nome;

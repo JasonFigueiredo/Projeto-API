@@ -57,10 +57,10 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_setor_dataview.
                     <div class="card-body">
                         <form method="post" action="gerenciar_setor.php" id="formCad">
                             <div class="form-group">
-                                <label for="nomesetor">Nome do Setor</label>
-                                <input type="text" maxlength="45" class="form-control obg" id="tipo" name="nome" placeholder="Digite aqui...">
+                                <label for="nome_setor">Nome do Setor</label>
+                                <input type="text" maxlength="45" class="form-control obg" id="nome_setor" name="nome_setor" placeholder="Digite aqui...">
                             </div>
-                            <button onclick="return NotificarCampos('formCad')" type="submit" class="btn btn-success" id="tipo" name="btn_cadastrar">Cadastrar</button>
+                            <button onclick="return NotificarCampos('formCad')" type="submit" class="btn btn-success" id="btn_cadastrar" name="btn_cadastrar">Cadastrar</button>
                         </form>
                     </div>
                     <!-- /.card-body -->
@@ -78,11 +78,20 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_setor_dataview.
                         <table id="setores" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
+                                    <th>Ações</th>
                                     <th>Nome do setor</th>
-                                    <th>Ação</th>
                                 </tr>
                             </thead>
-                            
+                            <tbody>
+                                <?php foreach ($setores as $item) { ?>
+                                    <tr>
+                                        <td>
+                                            <button class="btn btn-danger btn-sm" onclick="ExcluirSetor(<?= $item['id'] ?>)">Excluir</button>
+                                        </td>
+                                        <td><?= $item['nome_setor'] ?></td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
                         </table>
                     </div>
                     <!-- /.card-body -->
