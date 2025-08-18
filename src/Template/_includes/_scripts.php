@@ -48,3 +48,41 @@
         document.getElementById('charCount').textContent = remainingChars + ' caracteres restantes';
     }
 </script>
+
+
+<!-- script para personalização do menu colorindo e marcando o item ativo -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get current page filename
+        var path = window.location.pathname.split('/');
+        var page = path[path.length - 1];
+
+        // Select all nav links
+        var navLinks = document.querySelectorAll('.nav-link');
+
+        navLinks.forEach(function(link) {
+            var href = link.getAttribute('href');
+            if (href && href === page) {
+                link.classList.add('active');
+                // Change the icon to a filled circle for the active page
+                var icon = link.querySelector('.nav-icon, .far.fa-circle');
+                if (icon && icon.classList.contains('fa-circle')) {
+                    icon.classList.remove('far');
+                    icon.classList.add('fas');
+                }
+                // Expand parent menu if exists
+                var parent = link.closest('.has-treeview');
+                if (parent) {
+                    parent.classList.add('menu-open');
+                    var parentLink = parent.querySelector('a.nav-link');
+                    if (parentLink) parentLink.classList.add('active');
+                }
+            }
+        });
+    });
+</script>
+<style>
+    .nav-link.active .fas.fa-circle {
+        color: #007bff !important;
+    }
+</style>
