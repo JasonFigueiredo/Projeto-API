@@ -4,6 +4,7 @@ use Src\_Public\Util;
 use Src\Controller\NovoEquipamentoCTRL;
 use Src\Controller\GerenciarTipoEquipamentoCTRL;
 use Src\Controller\GerenciarModeloEquipamentoCTRL;
+use Src\Controller\SetorCTRL;
 use Src\VO\EquipamentoVO;
 use Src\VO\AlocarVO;
 
@@ -126,13 +127,15 @@ if (isset($_POST['btn_gravar']) && $_POST['btn_gravar'] == 'cadastrar') {
     echo $ret;
 } else if (isset($_POST['carregar_equipamentos_nao_alocados'])) {
     $equipamentos = $ctrl->SelecionarEquipamentoNaoAlocadosCTRL();
-?>
-    <select class="form-control obg">
-        <option value="">Selecione</option>
-        <?php foreach ($equipamentos as $item) { ?>
-            <option value="<?= $item['equipamento_id'] ?>"> <?= 'Identificação: ' . $item["identificacao"] . ' / ' . $item["nome_tipo"] . ' / ' . $item["nome_modelo"] ?></option>
-        <?php } ?>
-    </select>
+    ?>
+    <option value="">Selecione o equipamento</option>
+    <?php 
+    if (!empty($equipamentos)) {
+        foreach ($equipamentos as $item) { ?>
+            <option value="<?= $item['equipamento_id'] ?>">Identificação: <?= $item["identificacao"] ?> / <?= $item["nome_tipo"] ?> / <?= $item["nome_modelo"] ?></option>
+        <?php }
+    }
+    ?>
 <?php } else if (isset($_POST['alocar_equipamento'])) {
 
     $vo = new AlocarVO();
@@ -176,4 +179,5 @@ if (isset($_POST['btn_gravar']) && $_POST['btn_gravar'] == 'cadastrar') {
     $vo->setId($_POST['id_equipamento']);
     $ret = $ctrl->RemoverEquipamentoSetorCTRL($vo);
     echo $ret;
+    exit;
 }

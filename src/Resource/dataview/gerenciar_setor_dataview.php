@@ -51,4 +51,16 @@ if (isset($_POST['consultar_setor']) && $_POST['consultar_setor'] == 'ajx') {
   <?php
   exit;
 }
+
+// Carregar setores para selects (alocação/remoção)
+if (isset($_POST['carregar_setores_select']) && $_POST['carregar_setores_select'] == 'ajx') {
+  $setores = $ctrl->ConsultarSetorCTRL();
+  ?>
+  <option value="">Selecione o setor</option>
+  <?php foreach ($setores as $item) { ?>
+    <option value="<?= $item['id'] ?>"><?= $item['nome_setor'] ?></option>
+  <?php } ?>
+  <?php
+  exit;
+}
 $setores = $ctrl->ConsultarSetorCTRL();

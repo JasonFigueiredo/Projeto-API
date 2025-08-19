@@ -3,7 +3,8 @@ function CarregarTipo() {
         beforeSend: function () {
             Load();
         },
-        type: 'post', url: BASE_URL_DATAVIEW("equipamento_dataview"),
+        type: 'post',
+        url: BASE_URL_DATAVIEW("equipamento_dataview"),
         data: {
             carregar_tipos: "ajx",
             tipo_id: $('#tipo_id').val()
@@ -22,7 +23,8 @@ function CarregarModelos() {
         beforeSend: function () {
             Load();
         },
-        type: 'post', url: BASE_URL_DATAVIEW("equipamento_dataview"),
+        type: 'post',
+        url: BASE_URL_DATAVIEW("equipamento_dataview"),
         data: {
             carregar_modelos: "ajx",
             modelo_id: $('#modelo_id').val()
@@ -37,7 +39,6 @@ function CarregarModelos() {
 }
 
 function FiltrarEquipamentos() {
-
     let idTipo = $("#tipo").val();
     let idModelo = $("#modelo").val();
 
@@ -45,7 +46,8 @@ function FiltrarEquipamentos() {
         beforeSend: function () {
             Load();
         },
-        type: 'post', url: BASE_URL_DATAVIEW("equipamento_dataview"),
+        type: 'post',
+        url: BASE_URL_DATAVIEW("equipamento_dataview"),
         data: {
             filtrar_equipamentos: "ajx",
             tipo: idTipo,
@@ -70,14 +72,14 @@ function Excluir() {
         url: BASE_URL_DATAVIEW("equipamento_dataview"),
         data: {
             btn_excluir: $('#tela').val() == "tela_remover" ? "remover_equipamento" : "excluir",
-            id_equipamento: $("#id_excluir").val(),
+            id_equipamento: $("#id_excluir").val()
         },
         success: function (ret) {
             MostrarMensagem(ret);
             if ($('#tela').val() == "excluir")
                 FiltrarEquipamentos();
             else
-            CarregarEquipamentosAlocados($("#setor").val());
+                CarregarEquipamentosAlocados($("#setor").val());
             FecharModal("modal-excluir");
         },
         complete: function () {
@@ -86,10 +88,13 @@ function Excluir() {
     })
 }
 
+function CarregarExcluir(id, nome) {
+    $('#id_excluir').val(id);
+    $('#nome_excluir').text(nome);
+}
+
 function GravarEquipamento(formID) {
-
     if (NotificarCampos(formID)) {
-
         $.ajax({
             beforeSend: function () {
                 Load();
@@ -102,11 +107,10 @@ function GravarEquipamento(formID) {
                 tipo: $("#tipo").val(),
                 modelo: $("#modelo").val(),
                 descricao: $("#descricao").val(),
-                id_equipamento: $("#id_equipamento").val(),
+                id_equipamento: $("#id_equipamento").val()
             },
             success: function (ret) {
                 MostrarMensagem(ret);
-
                 if ($("#id_equipamento").val() == "") {
                     LimparNotificacoes(formID);
                 }
@@ -119,9 +123,7 @@ function GravarEquipamento(formID) {
 }
 
 function Descartar(formID) {
-
     if (NotificarCampos(formID)) {
-
         $.ajax({
             beforeSend: function () {
                 Load();
@@ -132,7 +134,7 @@ function Descartar(formID) {
                 btn_descarte: "Descarte",
                 id_equipamento: $("#id_descarte").val(),
                 motivo_descarte: $("#motivo_descarte").val(),
-                data_descarte: $("#data_descarte").val(),
+                data_descarte: $("#data_descarte").val()
             },
             success: function (ret) {
                 MostrarMensagem(ret);
@@ -166,9 +168,27 @@ function CarregarEquipamentosNaoAlocados() {
     })
 }
 
+function CarregarSetoresParaAlocacao() {
+    $.ajax({
+        beforeSend: function () {
+            Load();
+        },
+        type: 'post',
+        url: BASE_URL_DATAVIEW("gerenciar_setor_dataview"),
+        data: {
+            carregar_setores_select: "ajx"
+        },
+        success: function (dados) {
+            $("#setor").html(dados);
+        },
+        complete: function () {
+            RemoverLoad();
+        }
+    })
+}
+
 function AlocarEquipamento(formID) {
     if (NotificarCampos(formID)) {
-
         $.ajax({
             beforeSend: function () {
                 Load();
@@ -178,7 +198,7 @@ function AlocarEquipamento(formID) {
             data: {
                 alocar_equipamento: "ajx",
                 id_equipamento: $("#equipamento").val(),
-                id_setor: $("#setor").val(),
+                id_setor: $("#setor").val()
             },
             success: function (ret) {
                 MostrarMensagem(ret);
@@ -216,4 +236,9 @@ function CarregarEquipamentosAlocados(idSetor) {
         $("#divResultado").hide();
         $("#tableResult").html("");
     }
+}
+
+function CarregarSetoresParaRemocao() {
+    // Reutiliza a mesma função para carregar setores
+    CarregarSetoresParaAlocacao();
 }

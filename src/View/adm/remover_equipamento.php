@@ -100,7 +100,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
     <script src="../../Resource/ajax/setor_ajax.js"></script>
     <script src="../../Resource/ajax/equipamento_ajax.js"></script>
     <script>
-        CarregarSetores();
+        CarregarSetoresParaRemocao();
     </script>
 </body>
 

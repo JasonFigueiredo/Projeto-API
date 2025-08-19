@@ -89,7 +89,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/alocar_equipamento_datavi
     <script src="../../Resource/ajax/setor_ajax.js"></script>
     <script src="../../Resource/ajax/equipamento_ajax.js"></script>
     <script>
-        CarregarSetores();
+        CarregarSetoresParaAlocacao();
         CarregarEquipamentosNaoAlocados();
     </script>
 
