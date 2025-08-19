@@ -32,6 +32,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="gerenciar_setor.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Setores</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="alocar_equipamentos.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Alocar</p>
@@ -67,7 +73,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Equipamentos
+                            Usuários
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -76,12 +82,6 @@
                             <a href="novo_usuario.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Novo usuario</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="gerenciar_setor.php" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Gerenciar Setor</p>
                             </a>
                         </li>
                         <li class="nav-item">
