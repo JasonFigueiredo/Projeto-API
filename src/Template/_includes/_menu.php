@@ -18,7 +18,7 @@
                com font-awesome ou qualquer outra biblioteca de ícones -->
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-desktop"></i>
                         <p>
                             Equipamentos
                             <i class="right fas fa-angle-left"></i>
@@ -71,7 +71,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-users"></i>
                         <p>
                             Usuários
                             <i class="right fas fa-angle-left"></i>
@@ -80,13 +80,13 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="novo_usuario.php" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-user-plus nav-icon"></i>
                                 <p>Novo usuario</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="consultar_usuario.php" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-search nav-icon"></i>
                                 <p>Consultar usuario</p>
                             </a>
                         </li>

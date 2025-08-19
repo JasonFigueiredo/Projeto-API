@@ -57,22 +57,20 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_usuario_dataview.php
                     <div class="card-body">
                         <form action="novo_usuario.php" method="post" id="formCad">
                             <div class="form-group">
-                                <label>Tipo:</label>
+                                <label>Escolha o tipo de usuário:</label>
                                 <select class="form-control obg" id="tipo" name="tipo">
                                     <option value="">Selecione...</option>
-                                    <option value="equipamento1">Equipamento 1</option>
-                                    <option value="equipamento2">Equipamento 2</option>
-                                    <option value="equipamento3">Equipamento 3</option>
+                                    <option value="1">Administrador</option>
+                                    <option value="2">Funcionario</option>
+                                    <option value="3">Técnico</option>
                                     <!-- Adicione mais opções conforme necessário -->
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Setor:</label>
-                                <select class="form-control obg" id="" name="">
-                                    <option value="">Selecione...</option>
-                                    <option value="equipamento1">Setor 1</option>
-                                    <option value="equipamento2">Setor 2</option>
-                                    <option value="equipamento3">Setor 3</option>
+                                <select class="form-control obg" id="setor" name="setor">
+                                    <option value="">Selecione</option>
+
                                     <!-- Adicione mais opções conforme necessário -->
                                 </select>
                             </div>
