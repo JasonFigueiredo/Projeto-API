@@ -52,6 +52,26 @@ class Util
         $palavra = str_replace($especiais, '', trim($palavra));
         return $palavra;
     }
+
+    public static function ValidarNome($nome, $tamanhoMinimo = 2)
+    {
+        // Tratar dados primeiro
+        $nomeTratado = self::TratarDados($nome);
+        
+        // Verificar se está vazio após tratamento
+        if (empty($nomeTratado))
+            return false;
+            
+        // Verificar tamanho mínimo
+        if (strlen($nomeTratado) < $tamanhoMinimo)
+            return false;
+            
+        // Verificar se não é apenas números
+        if (is_numeric($nomeTratado))
+            return false;
+            
+        return true;
+    }
     // Função para formatar o valor ATIVO e INATIVO e a com cores personalizadas
 
 

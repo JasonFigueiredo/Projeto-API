@@ -7,6 +7,11 @@
     const ALTERAR_TIPO_EQUIPAMENTO = "Alterar Tipo de Equipamento";
     const EXCLUIR_TIPO_EQUIPAMENTO = "Excluir Tipo de Equipamento";
 
+    // funções de setor
+    const CADASTRAR_SETOR = "Cadastrar Setor";
+    const ALTERAR_SETOR = "Alterar Setor";
+    const EXCLUIR_SETOR = "Excluir Setor";
+
     // funções de modelo de equipamento
     const CADASTRAR_MODELO_EQUIPAMENTO = "Cadastrar Modelo de Equipamento";
     const ALTERAR_MODELO_EQUIPAMENTO = "Alterar Modelo de Equipamento";

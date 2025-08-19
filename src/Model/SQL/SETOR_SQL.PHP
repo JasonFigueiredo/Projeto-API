@@ -31,5 +31,4 @@ class SETOR_SQL
     $sql = 'SELECT id, nome_setor FROM tb_setor WHERE id = ?';
     return $sql;
   }
-
 }
