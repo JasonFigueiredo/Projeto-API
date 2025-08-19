@@ -17,4 +17,3 @@ if (isset($_POST['btn_cadastrar'])) {
 
 $setores = $ctrl->ConsultarSetorCTRL();
 ?>
-

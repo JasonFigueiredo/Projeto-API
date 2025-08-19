@@ -89,6 +89,7 @@ class NOVO_EQUIPAMENTO_SQL
                 WHERE id = ?";
         return $sql;
     }
+    
     public static function SELECIONAR_EQUIPAMENTO_NAO_ALOCADOS()
     {
         $sql = "SELECT eq.id as equipamento_id,
