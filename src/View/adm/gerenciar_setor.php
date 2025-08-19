@@ -60,7 +60,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_setor_dataview.
                                 <label for="nome_setor">Nome do Setor</label>
                                 <input type="text" maxlength="45" class="form-control obg" id="nome_setor" name="nome_setor" placeholder="Digite aqui...">
                             </div>
-                            <button onclick="return NotificarCampos('formCad')" type="submit" class="btn btn-success" id="btn_cadastrar" name="btn_cadastrar">Cadastrar</button>
+                            <button onclick="CadastrarSetor('formCad')" type="button" class="btn btn-success" id="btn_cadastrar" name="btn_cadastrar">Cadastrar</button>
                         </form>
                     </div>
                     <!-- /.card-body -->

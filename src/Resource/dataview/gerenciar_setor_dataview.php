@@ -8,11 +8,14 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
 $ctrl = new SetorCTRL();
 $ret = null;
 
-if (isset($_POST['btn_cadastrar'])) {
+// Cadastro via AJAX
+if (isset($_POST['btn_cadastrar']) && $_POST['btn_cadastrar'] == 'ajx') {
   $vo = new SetorVO();
   $nome_setor = $_POST['nome_setor'] ?? '';
   $vo->setNome($nome_setor);
   $ret = $ctrl->CadastrarSetorCTRL($vo);
+  echo $ret;
+  exit;
 }
 
 // Exclusão via AJAX
