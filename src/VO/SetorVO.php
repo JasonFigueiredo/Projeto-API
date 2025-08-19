@@ -16,7 +16,7 @@ class SetorVO extends LogErroVO
 
   public function getId(): int
   {
-    return $this->id;
+    return $this->id ?? 0;
   }
 
     public function setNome(?string $nome)

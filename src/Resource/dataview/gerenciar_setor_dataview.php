@@ -15,5 +15,31 @@ if (isset($_POST['btn_cadastrar'])) {
   $ret = $ctrl->CadastrarSetorCTRL($vo);
 }
 
+// Exclusão via AJAX
+if (isset($_POST['btn_excluir']) && $_POST['btn_excluir'] == 'ajx') {
+  $id = intval($_POST['id_excluir']);
+  $ret = $ctrl->ExcluirSetorCTRL($id);
+  echo $ret;
+  exit;
+}
+
+// Consultar setores via AJAX
+if (isset($_POST['consultar_setor']) && $_POST['consultar_setor'] == 'ajx') {
+  $setores = $ctrl->ConsultarSetorCTRL();
+  ?>
+  <?php foreach ($setores as $item) { ?>
+    <tr>
+      <td>
+        <a href="#" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#alterar-setor" 
+           onclick="CarregarSetor('<?= $item['id'] ?>','<?= $item['nome_setor'] ?>')">Alterar</a>
+        <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" 
+           onclick="ExcluirSetor('<?= $item['id'] ?>','<?= $item['nome_setor'] ?>')">Excluir</a>
+      </td>
+      <td><?=$item['nome_setor']?></td>
+    </tr>
+  <?php } ?>
+  
+  <?php
+  exit;
+}
 $setores = $ctrl->ConsultarSetorCTRL();
-?>

@@ -60,10 +60,12 @@ class TipoEquipamentoMODEL extends Conexao
     $sql->bindValue(1, $vo->getId());
 
     try {
-      $sql->execute();
-      return 1;
+        $sql->execute();
+        return 1;
     } catch (Exception $ex) {
-      return -1;
+        $vo->setErroTecnico($ex->getMessage());
+        parent::GravarErroLog($vo);
+        return -1;
     }
   }
 }

@@ -26,4 +26,14 @@ class SetorCTRL
     {
         return $this->model->ConsultarSetorMODEL();
     }
+
+    public function ExcluirSetorCTRL(int $id)
+    {
+        if($id <= 0) 
+            return 0;
+
+        $vo = new SetorVO();
+        $vo->setId($id);
+        return $this->model->ExcluirSetorMODEL($vo);
+    }
 }

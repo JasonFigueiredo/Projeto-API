@@ -37,4 +37,19 @@ class SetorMODEL extends Conexao
     $sql->execute();
     return $sql->fetchAll(\PDO::FETCH_ASSOC);
   }
+
+  public function ExcluirSetorMODEL(SetorVO $vo)
+  {
+    $sql = $this->conexao->prepare(SETOR_SQL::EXCLUIR_SETOR());
+    $sql->bindValue(1, $vo->getId());
+
+    try {
+        $sql->execute();
+        return 1;
+    } catch (Exception $ex) {
+        $vo->setErroTecnico($ex->getMessage());
+        parent::GravarErroLog($vo);
+        return -1;
+    }
+  }
 }
