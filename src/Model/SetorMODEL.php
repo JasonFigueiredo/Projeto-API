@@ -52,4 +52,20 @@ class SetorMODEL extends Conexao
         return -1;
     }
   }
+
+  public function AlterarSetorMODEL(SetorVO $vo)
+  {
+    $sql = $this->conexao->prepare(SETOR_SQL::ALTERAR_SETOR());
+    $sql->bindValue(1, $vo->getNome());
+    $sql->bindValue(2, $vo->getId());
+
+    try {
+        $sql->execute();
+        return 1;
+    } catch (Exception $ex) {
+        $vo->setErroTecnico($ex->getMessage());
+        parent::GravarErroLog($vo);
+        return -1;
+    }
+  }
 }

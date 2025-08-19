@@ -31,4 +31,12 @@ class SETOR_SQL
     $sql = 'SELECT id, nome_setor FROM tb_setor WHERE id = ?';
     return $sql;
   }
+
+  public static function ALTERAR_SETOR(): string
+  {
+    $sql = 'UPDATE tb_setor 
+               SET nome_setor = ? 
+             WHERE id = ?';
+    return $sql;
+  }
 }

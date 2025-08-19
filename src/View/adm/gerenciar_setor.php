@@ -100,9 +100,9 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_setor_dataview.
             </section>
             <!-- /.content -->
         </div>
-         <form action="gerenciar_tipo_equipamento.php" method="post" id="formAlt">
+         <form action="gerenciar_setor.php" method="post" id="formAlt">
             <?php include_once 'modais/excluir.php' ?>
-            <?php include_once 'modais/alterar-tipo.php' ?>
+            <?php include_once 'modais/alterar-setor.php' ?>
         </form>
         <!-- /.content-wrapper -->
         <?php

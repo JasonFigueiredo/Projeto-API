@@ -51,4 +51,26 @@ class SetorCTRL
 
         return $this->model->ExcluirSetorMODEL($vo);
     }
+
+    public function AlterarSetorCTRL(int $id, string $nome)
+    {
+        // Validação: Verificar se ID é válido
+        if($id <= 0) 
+            return 0;
+
+        // Validar nome usando Util
+        if (!Util::ValidarNome($nome, 2))
+            return 0;
+
+        // Criar VO com dados
+        $vo = new SetorVO();
+        $vo->setId($id);
+        $vo->setNome(Util::TratarDados($nome));
+        
+        // Definir dados de log para rastreabilidade
+        $vo->setCodLogado(Util::CodigoLogado());
+        $vo->setFuncaoErro(ALTERAR_SETOR);
+
+        return $this->model->AlterarSetorMODEL($vo);
+    }
 }

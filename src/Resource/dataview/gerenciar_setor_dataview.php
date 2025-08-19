@@ -23,6 +23,15 @@ if (isset($_POST['btn_excluir']) && $_POST['btn_excluir'] == 'ajx') {
   exit;
 }
 
+// Alteração via AJAX
+if (isset($_POST['btn_alterar']) && $_POST['btn_alterar'] == 'ajx') {
+  $id = intval($_POST['id_alterar']);
+  $nome = $_POST['nome_alterar'] ?? '';
+  $ret = $ctrl->AlterarSetorCTRL($id, $nome);
+  echo $ret;
+  exit;
+}
+
 // Consultar setores via AJAX
 if (isset($_POST['consultar_setor']) && $_POST['consultar_setor'] == 'ajx') {
   $setores = $ctrl->ConsultarSetorCTRL();
@@ -30,8 +39,8 @@ if (isset($_POST['consultar_setor']) && $_POST['consultar_setor'] == 'ajx') {
   <?php foreach ($setores as $item) { ?>
     <tr>
       <td>
-        <a href="#" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#alterar-setor" 
-           onclick="CarregarSetor('<?= $item['id'] ?>','<?= $item['nome_setor'] ?>')">Alterar</a>
+        <a href="#" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-alterar" 
+           onclick="AlterarSetor('<?= $item['id'] ?>','<?= $item['nome_setor'] ?>')">Alterar</a>
         <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" 
            onclick="ExcluirSetor('<?= $item['id'] ?>','<?= $item['nome_setor'] ?>')">Excluir</a>
       </td>

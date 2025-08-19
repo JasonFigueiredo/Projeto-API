@@ -69,3 +69,36 @@ function ConsultarSetores() {
   });
 }
 
+// Função para preparar alteração do setor
+function AlterarSetor(id, nome) {
+  $('#id_alterar').val(id);
+  $('#nome_alterar').val(nome);
+}
+
+// Função para confirmar alteração do setor
+function Alterar() {
+  let id = $("#id_alterar").val();
+  let nome = $("#nome_alterar").val();
+
+  $.ajax({
+    beforeSend: function () {
+      Load();
+    },
+    type: "post",
+    url: BASE_URL_DATAVIEW("gerenciar_setor_dataview"),
+    data: {
+      btn_alterar: "ajx",
+      id_alterar: id,
+      nome_alterar: nome
+    },
+    success: function (ret) {
+      MostrarMensagem(ret);
+      ConsultarSetores(); // Atualiza a tabela após a alteração
+      FecharModal("modal-alterar");
+    },
+    complete: function () {
+      RemoverLoad();
+    }
+  });
+}
+
