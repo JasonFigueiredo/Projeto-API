@@ -48,3 +48,60 @@ function Load() {
 function RemoverLoad() {
   $(".loader").removeClass("is-active");
 }
+
+function CarregarCamposUsuario(tipo) {
+  // Primeiro esconde todos os campos com animação suave
+  $('#divUsuarioFuncionario, #divUsuarioTecnico').fadeOut(300);
+
+  // Aguarda a animação de saída terminar, então mostra os campos apropriados
+  setTimeout(() => {
+    switch (tipo) {
+      case '1': //ADM
+        $('#divDadosUsuario').fadeIn(500);
+        $('#divDadosEndereco').fadeIn(600);
+        $('#btn_cadastrar').fadeIn(400).addClass('animated-button');
+        break;
+
+      case '2': //FUNCIONARIO
+        $('#divDadosUsuario').fadeIn(500);
+        $('#divDadosEndereco').fadeIn(600);
+        $('#divUsuarioFuncionario').fadeIn(500);
+        CarregarSetoresComAnimacao();
+        $('#btn_cadastrar').fadeIn(400).addClass('animated-button');
+        break;
+
+      case '3': //TECNICO
+        $('#divDadosUsuario').fadeIn(500);
+        $('#divDadosEndereco').fadeIn(600);
+        $('#divUsuarioTecnico').fadeIn(500);
+        $('#btn_cadastrar').fadeIn(400).addClass('animated-button');
+        break;
+
+      default: //NENHUM SELECIONADO
+        $('#divDadosUsuario').fadeOut(300);
+        $('#divDadosEndereco').fadeOut(300);
+        $('#btn_cadastrar').fadeOut(200);
+        break;
+    }
+  }, 350);
+}
+function CarregarSetoresComAnimacao() {
+  // Adiciona efeito de loading suave no select de setor
+  $('#setor').addClass('loading-select');
+
+  // Remove loading após carregar
+  setTimeout(() => {
+    $('#setor').removeClass('loading-select');
+  }, 800);
+}
+
+function AplicarEfeitosVisuais() {
+  // Adiciona classes de transição aos elementos principais
+  $('.form-group').addClass('campo-transicao');
+
+}
+
+// Inicializar efeitos quando a página carregar
+$(document).ready(function () {
+  AplicarEfeitosVisuais();
+});

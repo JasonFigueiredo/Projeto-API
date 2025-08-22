@@ -9,6 +9,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_usuario_dataview.php
     <?php
     include_once PATH . "Template/_includes/_head.php";
     ?>
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -46,7 +47,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_usuario_dataview.php
                 <!-- Default box -->
                 <div class="card">
                     <div class="card-header card-primary card-outline">
-                        <h3 class="card-title">Aqui você insere um novo usuario</h3>
+                        <h3 class="card-title">Dados para cadastro</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
@@ -56,46 +57,112 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_usuario_dataview.php
                     </div>
                     <div class="card-body">
                         <form action="novo_usuario.php" method="post" id="formCad">
-                            <div class="form-group">
-                                <label>Escolha o tipo de usuário:</label>
-                                <select class="form-control obg" id="tipo" name="tipo">
-                                    <option value="">Selecione...</option>
-                                    <option value="1">Administrador</option>
-                                    <option value="2">Funcionario</option>
-                                    <option value="3">Técnico</option>
-                                    <!-- Adicione mais opções conforme necessário -->
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Setor:</label>
-                                <select class="form-control obg" id="setor" name="setor">
-                                    <option value="">Selecione</option>
+                            <div class="row">
+                                <!-- Tipo de usuário - sempre visível -->
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Escolha o tipo de usuário:</label>
+                                        <select class="form-control obg" id="tipo" name="tipo" onchange="CarregarCamposUsuario(this.value)">
+                                            <option value="">Selecione...</option>
+                                            <option value="1">Administrador</option>
+                                            <option value="2">Funcionário</option>
+                                            <option value="3">Técnico</option>
+                                        </select>
+                                    </div>
+                                </div>
 
-                                    <!-- Adicione mais opções conforme necessário -->
-                                </select>
+                                <!-- Setor - visível apenas para funcionários -->
+                                <div class="col-lg-6 col-md-6 col-sm-12" id="divUsuarioFuncionario" style="display: none;">
+                                    <div class="form-group">
+                                        <label>Setor:</label>
+                                        <select class="form-control obg" id="setor" name="setor">
+                                            <option value="">Selecione</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Nome da empresa - visível apenas para técnicos -->
+                                <div class="col-lg-6 col-md-6 col-sm-12" id="divUsuarioTecnico" style="display: none;">
+                                    <div class="form-group">
+                                        <label>Nome da empresa:</label>
+                                        <input type="text" class="form-control obg" id="empresa" name="empresa" placeholder="Digite o nome da empresa">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Nome:</label>
-                                <input type="text" class="form-control obg" id="nome" name="nome" placeholder="Digite o nome do usuario">
+
+                            <!-- Dados do usuário - visível após seleção do tipo -->
+                            <div class="row" id="divDadosUsuario" style="display: none;">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Nome:</label>
+                                        <input type="text" class="form-control obg" id="nome" name="nome" placeholder="Digite o nome do usuario">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label>CPF:</label>
+                                        <input type="text" class="form-control obg" id="cpf" name="cpf" placeholder="Digite o CPF">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Telefone:</label>
+                                        <input type="text" class="form-control obg" id="tel" name="tel" placeholder="Digite o telefone">
+                                        <small class="form-text text-muted">Formato: (ddd) xxxxx-xxxx</small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label>E-mail:</label>
+                                        <input type="email" class="form-control obg" id="email" name="email" placeholder="Digite o E-mail">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Sobrenome:</label>
-                                <input type="text" class="form-control obg" id="sobrenome" name="sobrenome" placeholder="Digite o sobrenome">
+
+                            <!-- Dados de endereço -->
+                            <div class="row" id="divDadosEndereco" style="display: none;">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label>CEP:</label>
+                                        <input type="text" class="form-control obg" id="cep" name="cep"
+                                            placeholder="Digite o CEP"
+                                            onblur="pesquisacep(this.value)"
+                                            maxlength="9"
+                                            oninput="formatarCEP(this)">
+                                        <small class="form-text text-muted">Formato: 00000-000</small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Rua:</label>
+                                        <input type="text" class="form-control obg" id="rua" name="rua" placeholder="Digite a rua">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Bairro:</label>
+                                        <input type="text" class="form-control obg" id="bairro" name="bairro" placeholder="Digite o bairro">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Cidade:</label>
+                                        <input disabled type="text" class="form-control obg" id="cidade" name="cidade" placeholder="Digite o CEP (Preenchimento automático)">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Estado:</label>
+                                        <input disabled type="text" class="form-control obg" id="estado" name="estado" placeholder="Digite o CEP (Preenchimento automático)">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>E-mail:</label>
-                                <input type="email" class="form-control obg" id="email" name="email" placeholder="Digite o E-mail">
+
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <button style="display: none;" onclick="return NotificarCampos('formCad')" type="submit" class="btn btn-primary" id="btn_cadastrar" name="btn_cadastrar">Gravar</button>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Telefone:</label>
-                                <input type="text" class="form-control obg" id="tel" name="tel" placeholder="Digite o telefone">
-                                <small class="form-text text-muted">Formato: (ddd) xxxxx-xxxx</small>
-                            </div>
-                            <div class="form-group">
-                                <label>Endereço:</label>
-                                <input type="text" class="form-control obg" id="endereco" name="endereco" placeholder="Digite a endereço">
-                            </div>
-                            <button onclick="return NotificarCampos('formCad')" type="submit" class="btn btn-primary" name="btn_cadastrar">Gravar</button>
                         </form>
                     </div>
                     <!-- /.card-body -->
