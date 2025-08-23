@@ -15,9 +15,8 @@ if (isset($_POST['btn_cadastrar'])) {
   $vo->setTipo($_POST['tipo']);
   $vo->setEmail($_POST['email']);
   $vo->setTel($_POST['tel']);
-  $vo->setSenha($_POST['senha']);
+  $vo->setSenha($_POST['senha'] ?? null);
 
   // Chame o método para cadastrar o novo usuario
   $ret = $ctrl->NovoUsuario($vo);
 }
-?>

@@ -56,7 +56,7 @@ class UsuarioVO
     }
 
     // get set de TELEFONE
-    public function setTel(int $tel): void
+    public function setTel(string $tel): void
     {
         $this->tel = Util::TirarCaracteresEspeciais($tel);
     }
@@ -66,9 +66,9 @@ class UsuarioVO
     }
 
     // get set de SENHA
-    public function setSenha(string $senha): void
+    public function setSenha(?string $senha): void
     {
-        $this->senha = Util::RemoverTags($senha);
+        $this->senha = $senha ? Util::RemoverTags($senha) : '';
     }
     public function getSenha(): string
     {

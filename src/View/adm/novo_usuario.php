@@ -114,7 +114,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_usuario_dataview.php
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label>E-mail:</label>
-                                        <input type="email" class="form-control obg" id="email" name="email" placeholder="Digite o E-mail">
+                                        <input type="email" class="form-control obg" id="email" name="email" placeholder="Digite o E-mail" oninput="formatarEmail('email')" onblur="validarEmailCompleto('email')" style="text-transform: lowercase;">
                                     </div>
                                 </div>
                             </div>
