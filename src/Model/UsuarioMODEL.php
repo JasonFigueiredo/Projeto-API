@@ -20,7 +20,7 @@ class UsuarioMODEL extends Conexao
     $sql = $this->conexao->prepare(USUARIO_SQL::VERIFICAR_EMAIL());
     $sql->bindValue(1, $email);
     $sql->execute();
-    $ver_email = $sql->fetchAll(\PDO::FETCH_ASSOC);
-    return $ver_email[0]['contar_email'] == 0 ? false : true;
+    $resultado = $sql->fetch(\PDO::FETCH_ASSOC);
+    return $resultado['contar_email'] > 0;
   }
 }

@@ -99,9 +99,13 @@ function validarEmailCompleto(campoId) {
 
   // 8. Primeiro verifica se é domínio confiável conhecido
   if (dominiosConfiaves.includes(dominio)) {
-    // Email confiável
-    MostrarMensagem(6);
+    // Email confiável - agora verifica duplicação
     campoElement.classList.add('is-valid');
+    if (typeof VerificarEmailDuplicado === 'function') {
+      VerificarEmailDuplicado();
+    } else {
+      MostrarMensagem(6);
+    }
     return true;
   }
 
@@ -148,7 +152,11 @@ async function verificarDominioOnline(dominio, campoElement) {
     // Se tem registros MX (email), aceita como válido
     if (data.Answer && data.Answer.length > 0) {
       campoElement.classList.add('is-valid');
-      MostrarMensagem(4); // Email válido
+      if (typeof VerificarEmailDuplicado === 'function') {
+        VerificarEmailDuplicado();
+      } else {
+        MostrarMensagem(4);
+      }
       return true;
     }
 
@@ -159,7 +167,11 @@ async function verificarDominioOnline(dominio, campoElement) {
     if (dataA.Answer && dataA.Answer.length > 0) {
       // Site existe, aceita email
       campoElement.classList.add('is-valid');
-      MostrarMensagem(4); // Email válido
+      if (typeof VerificarEmailDuplicado === 'function') {
+        VerificarEmailDuplicado();
+      } else {
+        MostrarMensagem(4);
+      }
       return true;
     } else {
       // Domínio não existe
@@ -183,7 +195,11 @@ async function verificarDominioOnline(dominio, campoElement) {
 
     if (temExtensaoSegura) {
       campoElement.classList.add('is-valid');
-      MostrarMensagem(4); // Email válido
+      if (typeof VerificarEmailDuplicado === 'function') {
+        VerificarEmailDuplicado();
+      } else {
+        MostrarMensagem(4);
+      }
       return true;
     } else {
       campoElement.classList.add('is-invalid');

@@ -33,7 +33,7 @@ function MostrarMensagem(ret) {
   } else if (ret == 4) {
     toastr.success("Email válido");
   } else if (ret == 5) {
-    toastr.success("Email já cadastrado");
+    toastr.error("Email já cadastrado");
   } else if (ret == 6) {
     toastr.success("Email confiável");
   } else if (ret == 7) {

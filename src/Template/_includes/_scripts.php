@@ -16,6 +16,7 @@
 <script src="../../Resource/js/carregar_modal.js"></script>
 <script src="../../Resource/js/extras.js"></script>
 <script src="../../Resource/js/validar_email.js"></script>
+<script src="../../Resource/ajax/usuario_ajax.js"></script>
 <script src="../../Resource/js/validar_cpf.js"></script>
 <script src="../../Resource/js/buscar_cep.js"></script>
 
