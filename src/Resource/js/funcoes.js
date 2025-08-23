@@ -26,6 +26,14 @@ function NotificarCampos(formID) {
     }
   });
 
+  // Validação adicional de CPF
+  const campoCPF = document.querySelector(`#${formID} #cpf`);
+  if (campoCPF && campoCPF.value.trim() !== '' && campoCPF.classList.contains('obg')) {
+    if (typeof validarCPFCompleto === 'function' && !validarCPFCompleto(campoCPF)) {
+      ret = false;
+    }
+  }
+
   if (!ret) MostrarMensagem(0);
   return ret;
 }

@@ -1,19 +1,3 @@
-const NotificarCamposOriginal = NotificarCampos;
-
-function NotificarCampos(formID) {
-  let ret = NotificarCamposOriginal(formID);
-
-  // Validação adicional de CPF
-  const campoCPF = document.querySelector(`#${formID} #cpf`);
-  if (campoCPF && campoCPF.value.trim() !== '' && campoCPF.classList.contains('obg')) {
-    if (!validarCPFCompleto(campoCPF)) {
-      ret = false;
-    }
-  }
-
-  return ret;
-}
-
 // Função para aplicar máscara de CPF
 function formatarCPF(campo) {
   let cpf = campo.value.replace(/\D/g, '');
