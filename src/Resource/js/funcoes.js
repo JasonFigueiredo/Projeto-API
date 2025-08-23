@@ -17,22 +17,23 @@ function NotificarCampos(formID) {
     "#" + formID + " input, #" + formID + " textarea, #" + formID + " select"
   ).each(function () {
     if ($(this).hasClass("obg")) {
-      if ($(this).val() == "") {
-        ret = false;
-        $(this).addClass("is-invalid");
+      // Verifica se o campo está visível (o próprio campo e todos os seus pais devem estar visíveis)
+      var isVisible = $(this).is(':visible') && 
+                     !$(this).closest('[style*="display: none"], [style*="display:none"]').length;
+      
+      if (isVisible) {
+        if ($(this).val() == "") {
+          ret = false;
+          $(this).addClass("is-invalid");
+        } else {
+          $(this).removeClass("is-invalid").addClass("is-valid");
+        }
       } else {
-        $(this).removeClass("is-invalid").addClass("is-valid");
+        // Remove classes de validação de campos ocultos
+        $(this).removeClass("is-invalid is-valid");
       }
     }
   });
-
-  // Validação adicional de CPF
-  const campoCPF = document.querySelector(`#${formID} #cpf`);
-  if (campoCPF && campoCPF.value.trim() !== '' && campoCPF.classList.contains('obg')) {
-    if (typeof validarCPFCompleto === 'function' && !validarCPFCompleto(campoCPF)) {
-      ret = false;
-    }
-  }
 
   if (!ret) MostrarMensagem(0);
   return ret;
