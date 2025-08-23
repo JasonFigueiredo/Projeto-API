@@ -104,7 +104,7 @@ function validarEmailCompleto(campoId) {
     if (typeof VerificarEmailDuplicado === 'function') {
       VerificarEmailDuplicado();
     } else {
-      MostrarMensagem(6);
+      MostrarMensagem(4);
     }
     return true;
   }
