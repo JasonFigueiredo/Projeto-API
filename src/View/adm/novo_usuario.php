@@ -160,7 +160,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_usuario_dataview.php
 
                             <div class="row">
                                 <div class="col-12 text-center">
-                                    <button style="display: none;" onclick="return NotificarCampos('formCad')" type="submit" class="btn btn-primary" id="btn_cadastrar" name="btn_cadastrar">Gravar</button>
+                                    <button style="display: none;" onclick="return NotificarCampos('formCad')" type="button" class="btn btn-primary" id="btn_cadastrar" name="btn_cadastrar">Gravar</button>
                                 </div>
                             </div>
                         </form>

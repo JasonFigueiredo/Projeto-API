@@ -3,8 +3,9 @@
 namespace Src\VO;
 
 use Src\_Public\Util;
+use Src\VO\EnderecoVO;
 
-class UsuarioVO
+class UsuarioVO extends EnderecoVO
 {
 
     private $id;
@@ -14,6 +15,9 @@ class UsuarioVO
     private $tel;
     private $senha;
     private $status;
+    private $cpf;
+    private $nome_empresa; // Para técnicos
+    private $id_setor; // Para funcionários
 
     // get set de ID
     public function setId(int $id): void
@@ -40,7 +44,7 @@ class UsuarioVO
     {
         $this->tipo = Util::TratarDados($tipo);
     }
-    public function getTipo(): int
+    public function getTipo(): string
     {
         return $this->tipo;
     }
@@ -80,8 +84,38 @@ class UsuarioVO
     {
         $this->status = $status;
     }
-    public function getStatus(): int
+    public function getStatus(): string
     {
         return $this->status;
+    }
+
+    // get e set de CPF
+    public function setCPF(string $cpf): void
+    {
+        $this->cpf = Util::RemoverTags($cpf);
+    }
+    public function getCPF(): string
+    {
+        return $this->cpf;
+    }
+
+    // get e set de NOME_EMPRESA (para técnicos)
+    public function setNomeEmpresa(?string $nome_empresa): void
+    {
+        $this->nome_empresa = $nome_empresa ? Util::RemoverTags($nome_empresa) : null;
+    }
+    public function getNomeEmpresa(): ?string
+    {
+        return $this->nome_empresa;
+    }
+
+    // get e set de ID_SETOR (para funcionários)
+    public function setIdSetor(?int $id_setor): void
+    {
+        $this->id_setor = $id_setor;
+    }
+    public function getIdSetor(): ?int
+    {
+        return $this->id_setor;
     }
 }

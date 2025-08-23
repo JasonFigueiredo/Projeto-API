@@ -7,6 +7,9 @@ use Src\Model\Conexao;
 use Src\VO\UsuarioVO;
 use Src\Model\SQL\USUARIO_SQL;
 
+// Importar as constantes
+require_once __DIR__ . '/../Config/fixos.php';
+
 class UsuarioMODEL extends Conexao
 {
   private $conexao;
@@ -28,8 +31,7 @@ class UsuarioMODEL extends Conexao
   public function cadastrarEstadoMODEL($nomeEstado, $siglaEstado): bool
   {
     $sql = $this->conexao->prepare(USUARIO_SQL::CADASTRAR_ESTADO());
-    $sql->bindValue(1, $nomeEstado);
-    $sql->bindValue(2, $siglaEstado);
+    $sql->bindValue(1, $siglaEstado);
     return $sql->execute();
   }
   // -----PASSO 2 "MODEL 03" -----
@@ -71,18 +73,18 @@ class UsuarioMODEL extends Conexao
     return $resultado['id_estado'] ?? null;
   }
   // -----PASSO 2 "MODEL 07" -----
-  public function cadastrarUsuarioMODEL($usuarioVO): int
+  public function cadastrarUsuarioMODEL(UsuarioVO $usuarioVO): int
   {
 
     $sql = $this->conexao->prepare(USUARIO_SQL::CADASTRAR_USUARIO());
     $i = 1;
     $sql->bindValue($i++, $usuarioVO->getNome());
     $sql->bindValue($i++, $usuarioVO->getTipo());
-    $sql->bindValue($i++, $usuarioVO->getCpf());
+    $sql->bindValue($i++, $usuarioVO->getCPF());
     $sql->bindValue($i++, $usuarioVO->getStatus());
     $sql->bindValue($i++, $usuarioVO->getTel());
     $sql->bindValue($i++, $usuarioVO->getEmail());
-    $sql->bindValue($i++, password_hash($usuarioVO->getSenha(), PASSWORD_DEFAULT));
+    $sql->bindValue($i++, $usuarioVO->getSenha());
 
     try {
       $this->conexao->beginTransaction();
@@ -107,23 +109,69 @@ class UsuarioMODEL extends Conexao
           $sql = $this->conexao->prepare(USUARIO_SQL::CADASTRAR_USUARIO_FUNCIONARIO());
           $i = 1;
           $sql->bindValue($i++, $id_user);
-          $sql->bindValue($i++, $usuarioVO->getSetorId());
+          $sql->bindValue($i++, $usuarioVO->getIdSetor());
           // cadastra na tb_funcionario
           $sql->execute();
           break;
       }
-      //Gravar endereço
 
       $sql = $this->conexao->prepare(USUARIO_SQL::VERIFICAR_CIDADE_CADASTRADA());
+
+      $sql->bindValue(1, $usuarioVO->getCidade());
+      $sql->bindValue(2, $usuarioVO->getEstado());
+      // cadastra na tb_endereco
+      $sql->execute();
+      $tem_cidade = $sql->fetchAll(\PDO::FETCH_ASSOC);
+
+      $id_cidade = 0;
+
+      if (count($tem_cidade) > 0) {
+        $id_cidade = $tem_cidade[0]['id_cidade'];
+      } else {
+
+        $id_estado = 0;
+
+        $sql = $this->conexao->prepare(USUARIO_SQL::VERIFICAR_ESTADO_CADASTRADO());
+
+        $sql->bindValue(1, $usuarioVO->getEstado());
+        // cadastra na tb_estado
+        $sql->execute();
+        $tem_estado = $sql->fetch(\PDO::FETCH_ASSOC);
+      }
+
+      if (count($tem_estado) > 0) {
+        $id_estado = $tem_estado[0]['id'];
+      } else {
+        // cadastra na tb_estado
+        $sql = $this->conexao->prepare(USUARIO_SQL::CADASTRAR_ESTADO());
+        $sql->bindValue(1, $usuarioVO->getEstado());
+        $sql->execute();
+        $id_estado = $this->conexao->lastInsertId();
+      }
+
+      $sql = $this->conexao->prepare(USUARIO_SQL::CADASTRAR_CIDADE());
+      $sql->bindValue(1, $usuarioVO->getCidade());
+      $sql->bindValue(2, $id_estado);
+      
+      $sql->execute();
+      $id_cidade = $this->conexao->lastInsertId();
+
+      $sql = $this->conexao->prepare(USUARIO_SQL::CADASTRAR_ENDERECO());
       $i = 1;
+      $sql->bindValue($i++, $usuarioVO->getRua());
+      $sql->bindValue($i++, $usuarioVO->getBairro());
+      $sql->bindValue($i++, $usuarioVO->getCep());
       $sql->bindValue($i++, $id_user);
-      $sql->bindValue($i++, $usuarioVO->getCidadeId());
+      $sql->bindValue($i++, $id_cidade);
 
       $sql->execute();
 
+      $this->conexao->commit();
       return 1;
     } catch (Exception $ex) {
-      echo $ex->getMessage();
+      $this->conexao->rollBack();
+      $usuarioVO->setErroTecnico($ex->getMessage());
+      parent::GravarErroLog($usuarioVO);
       return -1;
     }
   }

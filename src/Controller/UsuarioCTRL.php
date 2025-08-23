@@ -19,15 +19,36 @@ class UsuarioCTRL
     {
         return $this->model->verificarEmailDuplicadoMODEL($email);
     }
-    // ----- PASSO 3 "CTRL 02" -----
-    public function cadastrarEstadoCTRL($nomeEstado, $siglaEstado): bool
+    // ----- PASSO 3 "CTRL 07" -----
+    public function cadastrarUsuarioCTRL(UsuarioVO $usuarioVO): int
     {
-        return $this->model->cadastrarEstadoMODEL($nomeEstado, $siglaEstado);
+        if (
+            empty($usuarioVO->getNome()) ||
+            empty($usuarioVO->getTipo()) ||
+            empty($usuarioVO->getCpf()) ||
+            empty($usuarioVO->getTel()) ||
+            empty($usuarioVO->getEmail()) ||
+            empty($usuarioVO->getCidade()) ||
+            empty($usuarioVO->getEstado()) ||
+            empty($usuarioVO->getRua()) ||
+            empty($usuarioVO->getBairro()) ||
+            empty($usuarioVO->getCep())
+        ) {
+            return 0; // Dados obrigatórios não preenchidos
+        }
+
+        if ($usuarioVO->getTipo() == USUARIO_TECNICO && empty($usuarioVO->getNomeEmpresa()))
+            return 0; // Nome da empresa é obrigatório para técnicos
+        if ($usuarioVO->getTipo() == USUARIO_FUNCIONARIO && empty($usuarioVO->getIdSetor()))
+            return 0; // Setor é obrigatório para funcionários
+
+        $usuarioVO->setStatus(SITUACAO_ATIVO);
+        // Criptografar senha
+        $usuarioVO->setSenha(Util::CriptografarSenha($usuarioVO->getCPF()));
+        // Definir função de erro
+        $usuarioVO->setFuncaoErro(CADASTRAR_USUARIO);
+        $usuarioVO->setCodLogado(Util::CodigoLogado());
+
+        return $this->model->cadastrarUsuarioMODEL($usuarioVO);
     }
-    // ----- PASSO 3 "CTRL 03" -----
-    public function cadastrarCidadeCTRL($nomeCidade, $idEstado): bool
-    {
-        return $this->model->cadastrarCidadeMODEL($nomeCidade, $idEstado);
-    }
-    // ----- PASSO 3 "CTRL 03" -----
 }

@@ -6,6 +6,10 @@
     const CADASTRAR_TIPO_EQUIPAMENTO = "Cadastrar Tipo de Equipamento";
     const ALTERAR_TIPO_EQUIPAMENTO = "Alterar Tipo de Equipamento";
     const EXCLUIR_TIPO_EQUIPAMENTO = "Excluir Tipo de Equipamento";
+    
+    
+    const CADASTRAR_USUARIO = "Cadastrar Usuário";
+    const ALTERAR_USUARIO = "Alterar Usuário";
 
     // funções de setor
     const CADASTRAR_SETOR = "Cadastrar Setor";

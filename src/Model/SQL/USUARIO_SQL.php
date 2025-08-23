@@ -16,8 +16,8 @@ class USUARIO_SQL
   // ----- PASSO 1 "SQL 02" -----
   public static function CADASTRAR_ESTADO(): string
   {
-    $sql = "INSERT INTO tb_estado (nome_estado, sigla_estado) 
-            VALUES (?, ?)";
+    $sql = "INSERT INTO tb_estado (sigla_estado) 
+            VALUES (?)";
     return $sql;
   }
   // ----- PASSO 1 "SQL 03" -----

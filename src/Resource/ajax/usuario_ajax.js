@@ -23,3 +23,22 @@ function VerificarEmailDuplicado() {
     });
   }
 }
+
+function CadastrarUsuario(formID) {
+  var formData = $("#form_usuario").serialize();
+
+  $.ajax({
+    beforeSend: function () {
+      Load();
+    },
+    type: "post",
+    url: BASE_URL_DATAVIEW('novo_usuario_dataview'),
+    data: formData,
+    success: function (dados) {
+      MostrarMensagem(dados.trim() === 'true' ? 1 : 2);
+    },
+    complete: function () {
+      RemoverLoad();
+    }
+  });
+}
