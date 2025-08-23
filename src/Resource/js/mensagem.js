@@ -32,6 +32,8 @@ function MostrarMensagem(ret) {
     toastr.error("Formato de email inválido");
   } else if (ret == 4) {
     toastr.success("Email válido");
+  } else if (ret == 5) {
+    toastr.success("Email já cadastrado");
   } else if (ret == 6) {
     toastr.success("Email confiável");
   } else if (ret == 7) {

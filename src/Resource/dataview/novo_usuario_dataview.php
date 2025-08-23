@@ -1,22 +1,12 @@
 <?php
 
-use Src\Controller\NovoUsuarioCTRL;
+use Src\Controller\UsuarioCTRL;
 use Src\VO\UsuarioVO;
 
 include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
 
-if (isset($_POST['btn_cadastrar'])) {
+$ctrl = new UsuarioCTRL();
 
-  $vo = new UsuarioVO();
-  $ctrl = new NovoUsuarioCTRL();
-
-  // Defina os valores no VO
-  $vo->setNome($_POST['nome']);
-  $vo->setTipo($_POST['tipo']);
-  $vo->setEmail($_POST['email']);
-  $vo->setTel($_POST['tel']);
-  $vo->setSenha($_POST['senha'] ?? null);
-
-  // Chame o método para cadastrar o novo usuario
-  $ret = $ctrl->NovoUsuario($vo);
+if (isset($_POST['verificar_email_duplicado'])) {
+  echo $ctrl->verificarEmailDuplicadoCTRL($_POST['email']);
 }
