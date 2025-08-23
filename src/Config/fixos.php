@@ -34,3 +34,8 @@
     const SITUACAO_ATIVO = 1;
     const SITUACAO_INATIVO = 0;
     const SITUACAO_DESCARTADO = 0;
+
+    // tipos de usuario
+    const USUARIO_ADM = 1;
+    const USUARIO_FUNCIONARIO = 2;
+    const USUARIO_TECNICO = 3;

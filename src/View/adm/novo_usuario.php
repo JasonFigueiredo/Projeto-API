@@ -64,9 +64,9 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_usuario_dataview.php
                                         <label>Escolha o tipo de usuário:</label>
                                         <select class="form-control obg" id="tipo" name="tipo" onchange="CarregarCamposUsuario(this.value)">
                                             <option value="">Selecione...</option>
-                                            <option value="1">Administrador</option>
-                                            <option value="2">Funcionário</option>
-                                            <option value="3">Técnico</option>
+                                            <option value="<?= USUARIO_ADM ?>">Administrador</option>
+                                            <option value="<?= USUARIO_FUNCIONARIO ?>">Funcionário</option>
+                                            <option value="<?= USUARIO_TECNICO ?>">Técnico</option>
                                         </select>
                                     </div>
                                 </div>
@@ -141,19 +141,19 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_usuario_dataview.php
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label>Bairro:</label>
-                                        <input type="text" class="form-control obg" id="bairro" name="bairro" placeholder="Digite o bairro">
+                                        <input type="text" maxlength="20" class="form-control obg" id="bairro" name="bairro" placeholder="Digite o bairro">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label>Cidade:</label>
-                                        <input disabled type="text" class="form-control obg" id="cidade" name="cidade" placeholder="Digite o CEP (Preenchimento automático)">
+                                        <input disabled maxlength="20" type="text" class="form-control obg" id="cidade" name="cidade" placeholder="Digite o CEP (Preenchimento automático)">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label>Estado:</label>
-                                        <input disabled type="text" class="form-control obg" id="estado" name="estado" placeholder="Digite o CEP (Preenchimento automático)">
+                                        <input disabled maxlength="2" type="text" class="form-control obg" id="estado" name="estado" placeholder="Digite o CEP (Preenchimento automático)">
                                     </div>
                                 </div>
                             </div>
