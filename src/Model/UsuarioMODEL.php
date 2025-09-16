@@ -154,7 +154,7 @@ class UsuarioMODEL extends Conexao
       $sql = $this->conexao->prepare(USUARIO_SQL::CADASTRAR_CIDADE());
       $sql->bindValue(1, $usuarioVO->getCidade());
       $sql->bindValue(2, $id_estado);
-      
+
       $sql->execute();
       $id_cidade = $this->conexao->lastInsertId();
 
@@ -192,7 +192,23 @@ class UsuarioMODEL extends Conexao
     $sql = $this->conexao->prepare(USUARIO_SQL::FILTRAR_USUARIO());
     $sql->bindValue(1, "%$nome%");
     $sql->bindValue(2, "%$nome%");
+    $sql->bindValue(3, "%$nome%");
     $sql->execute();
     return $sql->fetchAll(\PDO::FETCH_ASSOC);
+  }
+  // -----PASSO 2 "MODEL 12" -----
+  public function AlterarStatusMODEL(UsuarioVO $vo): int
+  {
+    $sql = $this->conexao->prepare(USUARIO_SQL::ALTERAR_STATUS());
+    $sql->bindValue(1, $vo->getStatus());
+    $sql->bindValue(2, $vo->getId());
+    try {
+      $sql->execute();
+      return 1;
+    } catch (Exception $ex) {
+      $vo->setErroTecnico($ex->getMessage());
+      parent::GravarErroLog($vo);
+      return -1;
+    }
   }
 }

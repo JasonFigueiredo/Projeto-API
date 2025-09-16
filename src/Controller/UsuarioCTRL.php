@@ -59,4 +59,11 @@ class UsuarioCTRL
     {
         return $this->model->filtrarUsuarioMODEL($nome);
     }
+    // ----- PASSO 3 "CTRL 10" -----
+    public function AlterarStatusUsuarioCTRL(UsuarioVO $vo): int
+    {
+        $vo->setFuncaoErro(ALTERAR_STATUS_USUARIO);
+        // O status já vem correto do JavaScript, não precisa inverter
+        return $this->model->AlterarStatusMODEL($vo);
+    }
 }

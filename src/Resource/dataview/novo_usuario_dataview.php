@@ -59,32 +59,53 @@
     $ret = $ctrl->cadastrarUsuarioCTRL($vo);
     echo $ret;
   } else if (isset($_POST['filtrar_usuario'])) {
-    $usuarios_encontrados = $ctrl->filtrarUsuarioCTRL($_POST['nome_filtro']); 
-    
-    if(count($usuarios_encontrados) == 0)
+    $usuarios_encontrados = $ctrl->filtrarUsuarioCTRL($_POST['nome_filtro']);
+
+    if (count($usuarios_encontrados) == 0)
       echo 0;
     else {
-    ?>
+  ?>
 
-   <table id="tableResult" class="table table-bordered table-striped">
-     <thead>
-       <tr>
-         <th>Ação</th>
-         <th>Nome do usuario</th>
-         <th>Tipo de usuario</th>
-       </tr>
-     </thead>
-     <tbody>
-       <?php foreach ($usuarios_encontrados as $item) { ?>
+     <table id="tableResult" class="table table-bordered table-striped">
+       <thead>
          <tr>
-           <td>
-             <a href="#" class=" btn btn-warning btn-xs">Alterar</a>
-             <a href="#" class=" btn btn-danger btn-xs">Excluir</a>
-           </td>
-           <td><?= $item['nome_usuario'] ?></td>
-           <td><?= Util::MostrarTipoUsuario($item['tipo_usuario']) ?></td>
+           <th>Ação</th>
+           <th>Situação</th>
+           <th>Nome do usuario</th>
+           <th>Tipo de usuario</th>
          </tr>
-       <?php } ?>
-     </tbody>
-   </table>
- <?php } } ?>
+       </thead>
+       <tbody>
+         <?php
+          foreach ($usuarios_encontrados as $item) {
+          ?>
+           <tr>
+             <td>
+               <a href="#" class="btn btn-warning btn-xs">Alterar</a>
+             </td>
+             <td>
+               <div class="custom-control custom-switch">
+                 <input type="checkbox" 
+                        class="custom-control-input" 
+                        id="switch_<?= $item['id'] ?>" 
+                        <?= $item['status_usuario'] == SITUACAO_ATIVO ? 'checked' : '' ?>
+                        onchange="AlterarStatusUsuario(<?= $item['id'] ?>, this.checked ? <?= SITUACAO_ATIVO ?> : <?= SITUACAO_INATIVO ?>)">
+                 <label class="custom-control-label" for="switch_<?= $item['id'] ?>">
+                   <?= $item['status_usuario'] == SITUACAO_ATIVO ? 'ATIVO' : 'INATIVO' ?>
+                 </label>
+               </div>
+             </td>
+             <td><?= $item['nome_usuario'] ?></td>
+             <td><?= Util::MostrarTipoUsuario($item['tipo_usuario']) ?></td>
+           </tr>
+         <?php } ?>
+       </tbody>
+     </table>
+ <?php }
+  } else if (isset($_POST['alterar_status_usuario'])) {
+    $vo = new UsuarioVO();
+    $vo->setId($_POST['id_usuario']);
+    $vo->setStatus($_POST['status_usuario']);
+    echo $ret = $ctrl->AlterarStatusUsuarioCTRL($vo);
+    exit;
+  } ?>

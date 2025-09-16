@@ -92,4 +92,20 @@
     .invalid-feedback i {
         margin-right: 0.25rem;
     }
+    
+    /* Estilo para switch de status padrão */
+    .custom-switch .custom-control-label::before {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+    
+    .custom-switch .custom-control-input:checked ~ .custom-control-label::before {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+    
+    .custom-switch .custom-control-label {
+        font-weight: bold;
+        color: #495057;
+    }
 </style>

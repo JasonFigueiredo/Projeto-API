@@ -138,21 +138,48 @@ function FiltrarUsuario() {
         nome_filtro: nome
       },
       success: function (dados) {
-        if(dados == 0) {
+        if (dados == 0) {
           MostrarMensagem(9);
         } else {
-        $("#tableResult").fadeOut(200, function() {
-          $(this).html(dados).fadeIn(300);
-        });
-      }
+          $("#tableResult").fadeOut(200, function () {
+            $(this).html(dados).fadeIn(300);
+          });
+        }
       },
       complete: function () {
         RemoverLoad();
       }
     });
   } else {
-    $("#tableResult").fadeOut(200, function() {
+    $("#tableResult").fadeOut(200, function () {
       $(this).html("");
     });
   }
+}
+
+function AlterarStatusUsuario(id, status) {
+  $.ajax({
+    beforeSend: function () {
+      Load();
+    },
+    type: 'post',
+    url: BASE_URL_DATAVIEW('novo_usuario_dataview'),
+    data: {
+      alterar_status_usuario: 'ajx',
+      id_usuario: id,
+      status_usuario: status
+    },
+    success: function (ret) {
+      MostrarMensagem(ret);
+      if (ret == 1) {
+        // Atualiza o label do switch
+        var label = $('#switch_' + id).next('label');
+        var novoStatus = status == 1 ? 'ATIVO' : 'INATIVO';
+        label.text(novoStatus);
+      }
+    },
+    complete: function () {
+      RemoverLoad();
+    }
+  });
 }

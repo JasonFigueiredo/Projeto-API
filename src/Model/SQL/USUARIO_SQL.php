@@ -89,10 +89,19 @@ class USUARIO_SQL
 
   public static function FILTRAR_USUARIO(): string
   {
-    $sql = "SELECT id, nome_usuario, tipo_usuario
+    $sql = "SELECT id, nome_usuario, tipo_usuario, status_usuario
               FROM tb_usuario
              WHERE nome_usuario LIKE ?
-               OR tipo_usuario LIKE ?";
+               OR tipo_usuario LIKE ?
+               OR status_usuario LIKE ?";
+    return $sql;
+  }
+  // ----- PASSO 1 "SQL 11" -----
+  public static function ALTERAR_STATUS(): string
+  {
+    $sql = "UPDATE tb_usuario 
+              SET status_usuario = ?
+            WHERE id = ?";
     return $sql;
   }
 }

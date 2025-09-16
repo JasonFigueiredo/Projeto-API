@@ -10,6 +10,7 @@
     
     const CADASTRAR_USUARIO = "Cadastrar Usuário";
     const ALTERAR_USUARIO = "Alterar Usuário";
+    const ALTERAR_STATUS_USUARIO = "Alterar Status de Usuário";
 
     // funções de setor
     const CADASTRAR_SETOR = "Cadastrar Setor";
