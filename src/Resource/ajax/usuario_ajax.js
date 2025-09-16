@@ -95,22 +95,64 @@ function LimparCamposUsuario() {
   $("#email").val('').removeClass('is-valid is-invalid');
   $("#cpf").val('').removeClass('is-valid is-invalid');
   $("#tel").val('').removeClass('is-valid is-invalid');
-  
+
   // Limpa campos de endereço
   $("#cep").val('').removeClass('is-valid is-invalid');
   $("#rua").val('').removeClass('is-valid is-invalid');
   $("#bairro").val('').removeClass('is-valid is-invalid');
   $("#cidade").val('').removeClass('is-valid is-invalid');
   $("#estado").val('').removeClass('is-valid is-invalid');
-  
+
   // Limpa campos específicos por tipo
   $("#empresa").val('').removeClass('is-valid is-invalid');
   $("#setor").val('').removeClass('is-valid is-invalid');
-  
+
   // Limpa seleção de tipo
   $("#tipo").val('').trigger('change');
   $("#tipo").val('').removeClass('is-valid is-invalid');
-  
+
   // Remove mensagens de validação
   $('.toastr').remove();
+}
+
+// Debounce simples de atraso de 300ms para atualização a cada letra digitada
+var timeoutFiltro;
+function FiltrarUsuarioDebounced() {
+  clearTimeout(timeoutFiltro);
+  timeoutFiltro = setTimeout(FiltrarUsuario, 300);
+}
+// --------------------------
+
+
+function FiltrarUsuario() {
+  let nome = document.getElementById('nome_filtro').value;
+  if (nome && nome.trim() != '') {
+    $.ajax({
+      beforeSend: function () {
+        Load();
+      },
+      type: 'post',
+      url: BASE_URL_DATAVIEW('novo_usuario_dataview'),
+      data: {
+        filtrar_usuario: 'ajx',
+        nome_filtro: nome
+      },
+      success: function (dados) {
+        if(dados == 0) {
+          MostrarMensagem(9);
+        } else {
+        $("#tableResult").fadeOut(200, function() {
+          $(this).html(dados).fadeIn(300);
+        });
+      }
+      },
+      complete: function () {
+        RemoverLoad();
+      }
+    });
+  } else {
+    $("#tableResult").fadeOut(200, function() {
+      $(this).html("");
+    });
+  }
 }

@@ -72,9 +72,26 @@ class Util
             
         return true;
     }
+
+
+    public static function MostrarTipoUsuario(int $tipo): string
+    {
+        $tipoUsuario = '';
+        switch ($tipo) {
+            case USUARIO_ADM:
+                $tipoUsuario = 'Administrador';
+                break;
+            case USUARIO_FUNCIONARIO:
+                $tipoUsuario = 'Funcionário';
+                break;
+            case USUARIO_TECNICO:
+                $tipoUsuario = 'Técnico';
+                break;
+        }
+        return $tipoUsuario;
+    }
+
     // Função para formatar o valor ATIVO e INATIVO e a com cores personalizadas
-
-
     public static function MostrarSituacao(int $sit): string
     {
         $situacao = '';

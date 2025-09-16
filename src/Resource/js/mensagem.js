@@ -40,5 +40,7 @@ function MostrarMensagem(ret) {
     toastr.error("Domínio de email não confiável");
   } else if (ret == 8) {
     toastr.info("Verificando e-mail...");
+  } else if (ret == 9) {
+    toastr.info("Nenhum resultado encontrado");
   }
 }

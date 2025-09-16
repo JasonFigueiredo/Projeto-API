@@ -56,10 +56,9 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                     <div class="card-body">
                         <form action="consultar_usuario.php" method="POST" id="formCad">
                             <div class="form-group">
-                                <label for="nomeEquipamento">Pesquisar por tipo</label>
-                                <input type="text" class="form-control obg" id="nomeEquipamento" name="nomeEquipamento" placeholder="Digite aqui...">
+                                <label for="nome_filtro">Pesquisar por Usuario</label>
+                                <input oninput="FiltrarUsuarioDebounced()" maxlength="10" type="text" class="form-control" id="nome_filtro" placeholder="Digite aqui...">
                             </div>
-                        <button onclick="return NotificarCampos('formCad')" type="button" class="btn btn-success">Buscar</button>
                         </form>
                     </div>
                     <!-- /.card-body -->
@@ -70,28 +69,12 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
             <section class="content">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">Usuario cadastrado</h3>
+                        <h3 class="card-title">Usuarios cadastrados</h3>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Nome do usuario</th>
-                                    <th>Setor</th>
-                                    <th>Ação</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>João no arms</td>
-                                    <td>Manutenção</td>
-                                    <td>
-                                        <a href="#" class=" btn btn-warning btn-xs">Alterar</a>
-                                        <a href="#" class=" btn btn-danger btn-xs">Excluir</a>
-                                    </td>
-                                </tr>
-                            </tbody>
+                    <div class="card-body table-responsive p-0">
+                        <table id="tableResult" class="table table-bordered table-striped">
+                           
                         </table>
                     </div>
                     <!-- /.card-body -->

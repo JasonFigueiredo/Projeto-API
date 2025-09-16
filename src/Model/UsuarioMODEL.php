@@ -186,4 +186,13 @@ class UsuarioMODEL extends Conexao
     $resultado = $sql->fetch(\PDO::FETCH_ASSOC);
     return $resultado['contar_cpf'] > 0;
   }
+  // -----PASSO 2 "MODEL 11" -----
+  public function filtrarUsuarioMODEL(string $nome): array
+  {
+    $sql = $this->conexao->prepare(USUARIO_SQL::FILTRAR_USUARIO());
+    $sql->bindValue(1, "%$nome%");
+    $sql->bindValue(2, "%$nome%");
+    $sql->execute();
+    return $sql->fetchAll(\PDO::FETCH_ASSOC);
+  }
 }

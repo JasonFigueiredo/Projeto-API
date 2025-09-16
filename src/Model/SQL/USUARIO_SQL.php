@@ -86,4 +86,13 @@ class USUARIO_SQL
                   WHERE cpf_usuario = ?";
     return $sql;
   }
+
+  public static function FILTRAR_USUARIO(): string
+  {
+    $sql = "SELECT id, nome_usuario, tipo_usuario
+              FROM tb_usuario
+             WHERE nome_usuario LIKE ?
+               OR tipo_usuario LIKE ?";
+    return $sql;
+  }
 }

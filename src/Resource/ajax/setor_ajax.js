@@ -17,6 +17,25 @@ function CarregarSetores() {
   });
 }
 
+function CarregarSetoresSelect() {
+  $.ajax({
+    beforeSend: function () {
+      Load();
+    },
+    type: 'POST',
+    url: BASE_URL_DATAVIEW('gerenciar_setor_dataview'),
+    data: {
+      carregar_setores_select: 'ajx'
+    },
+    success: function (dados) {
+      $('#setor').html(dados);
+    },
+    complete: function () {
+      RemoverLoad();
+    }
+  });
+}
+
 function CadastrarSetor(formID) {
   if (NotificarCampos(formID)) {
     $.ajax({

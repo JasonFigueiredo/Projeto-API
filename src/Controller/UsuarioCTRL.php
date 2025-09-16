@@ -53,4 +53,10 @@ class UsuarioCTRL
     {
         return $this->model->verificarCpfDuplicadoMODEL($cpf);
     }
+
+    // ----- PASSO 3 "CTRL 09" -----
+    public function filtrarUsuarioCTRL(string $nome): array
+    {
+        return $this->model->filtrarUsuarioMODEL($nome);
+    }
 }

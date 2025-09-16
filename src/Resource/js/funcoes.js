@@ -18,9 +18,9 @@ function NotificarCampos(formID) {
   ).each(function () {
     if ($(this).hasClass("obg")) {
       // Verifica se o campo está visível (o próprio campo e todos os seus pais devem estar visíveis)
-      var isVisible = $(this).is(':visible') && 
-                     !$(this).closest('[style*="display: none"], [style*="display:none"]').length;
-      
+      var isVisible = $(this).is(':visible') &&
+        !$(this).closest('[style*="display: none"], [style*="display:none"]').length;
+
       if (isVisible) {
         if ($(this).val() == "") {
           ret = false;
@@ -72,10 +72,10 @@ function CarregarCamposUsuario(tipo) {
         break;
 
       case '2': //FUNCIONARIO
+        CarregarSetoresSelect();
         $('#divDadosUsuario').fadeIn(500);
         $('#divDadosEndereco').fadeIn(600);
         $('#divUsuarioFuncionario').fadeIn(500);
-        CarregarSetoresComAnimacao();
         $('#btn_cadastrar').fadeIn(400).addClass('animated-button');
         break;
 
@@ -93,15 +93,6 @@ function CarregarCamposUsuario(tipo) {
         break;
     }
   }, 350);
-}
-function CarregarSetoresComAnimacao() {
-  // Adiciona efeito de loading suave no select de setor
-  $('#setor').addClass('loading-select');
-
-  // Remove loading após carregar
-  setTimeout(() => {
-    $('#setor').removeClass('loading-select');
-  }, 800);
 }
 
 function AplicarEfeitosVisuais() {
