@@ -49,6 +49,8 @@ class ModeloEquipamentoMODEL extends Conexao
       $sql->execute();
       return 1;
     } catch (Exception $ex) {
+      $vo->setErroTecnico($ex->getMessage());
+      parent::GravarErroLog($vo);
       return -1;
     }
   }
@@ -62,6 +64,8 @@ class ModeloEquipamentoMODEL extends Conexao
       $sql->execute();
       return 1;
     } catch (Exception $ex) {
+      $vo->setErroTecnico($ex->getMessage());
+      parent::GravarErroLog($vo);
       return -1;
     }
   }

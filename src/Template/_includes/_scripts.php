@@ -24,12 +24,55 @@
 <script src="../../Resource/ajax/equipamento_ajax.js"></script>
 <script src="../../Resource/ajax/tipo_equipamento_ajax.js"></script>
 <script src="../../Resource/ajax/modelo_equipamento_ajax.js"></script>
+<script src="../../Resource/js/navegacao_ativa.js"></script>
 
 
 <style>
-    .nav-link.active .fas.fa-circle {
-        color: #007bff !important;
+    /* Estilo para item ativo no menu */
+    .nav-link.active {
+        background-color: #007bff !important;
+        color: #fff !important;
+        border-radius: 5px;
+        margin: 2px 0;
     }
+    
+    .nav-link.active .nav-icon {
+        color: #fff !important;
+    }
+    
+    .nav-link.active p {
+        color: #fff !important;
+        font-weight: bold;
+    }
+    
+    /* Estilo para submenu aberto - apenas o item pai */
+    .nav-item.menu-open > .nav-link {
+        background-color: #007bff !important;
+        color: #fff !important;
+    }
+    
+    .nav-item.menu-open > .nav-link .nav-icon {
+        color: #fff !important;
+    }
+    
+    .nav-item.menu-open > .nav-link p {
+        color: #fff !important;
+        font-weight: bold;
+    }
+    
+    /* Hover effect */
+    .nav-link:hover:not(.active) {
+        background-color: #f8f9fa !important;
+        color: #495057 !important;
+        border-radius: 5px;
+        margin: 2px 0;
+    }
+    
+    .nav-link:hover:not(.active) .nav-icon {
+        color: #495057 !important;
+    }
+    
+    
     
     /* Estado de carregamento para verificação de email */
     .is-loading {
