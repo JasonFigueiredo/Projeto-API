@@ -68,8 +68,8 @@ function CadastrarUsuario(formID) {
         nome: $("#nome").val(),
         email: $("#email").val(),
         cpf: $("#cpf").val().replace(/\D/g, ''), // Remove formatação, envia apenas números
-        tel: $("#tel").val(),
-        cep: $("#cep").val(),
+        tel: $("#tel").val().replace(/\D/g, ''), // Remove formatação, envia apenas números
+        cep: $("#cep").val().replace(/\D/g, ''), // Remove formatação, envia apenas números
         rua: $("#rua").val(),
         bairro: $("#bairro").val(),
         cidade: $("#cidade").val(),
@@ -182,4 +182,65 @@ function AlterarStatusUsuario(id, status) {
       RemoverLoad();
     }
   });
+}
+
+function DetalharUsuario(id) {
+  $.ajax({
+    beforeSend: function () {
+      Load();
+    },
+    type: 'post',
+    url: BASE_URL_DATAVIEW('novo_usuario_dataview'),
+    data: {
+      detalhar_usuario: 'ajx',
+      id_usuario: id
+    },
+    success: function (dados) {
+      window.location.href = 'alterar_usuario.php?cod=' + id;
+    },
+    complete: function () {
+      RemoverLoad();
+    }
+  });
+}
+
+function AlterarUsuario(formID) {
+  if (NotificarCampos(formID)) {
+    let tipo = $("#tipo").val();
+    $.ajax({
+      beforeSend: function () {
+        Load();
+      },
+      type: "post",
+      url: BASE_URL_DATAVIEW('novo_usuario_dataview'),
+      data: {
+        btn_alterar: 'ajx',
+        id_usuario: $("#id_usuario").val(),
+        empresa: tipo == 3 ? $("#empresa").val() : '',
+        setor: tipo == 2 ? $("#setor").val() : '',
+        tipo: tipo,
+        nome: $("#nome").val(),
+        email: $("#email").val(),
+        cpf: $("#cpf").val().replace(/\D/g, ''), // Remove formatação, envia apenas números
+        tel: $("#tel").val().replace(/\D/g, ''), // Remove formatação, envia apenas números
+        cep: $("#cep").val().replace(/\D/g, ''), // Remove formatação, envia apenas números
+        rua: $("#rua").val(),
+        bairro: $("#bairro").val(),
+        cidade: $("#cidade").val(),
+        estado: $("#estado").val(),
+      },
+      success: function (ret) {
+        MostrarMensagem(ret);
+        if (ret == 1) {
+          // Aguardar um pouco para mostrar a mensagem e depois redirecionar
+          setTimeout(function() {
+            window.location.href = 'consultar_usuario.php';
+          }, 2000);
+        }
+      },
+      complete: function () {
+        RemoverLoad();
+      }
+    });
+  }
 }

@@ -101,6 +101,21 @@ function AplicarEfeitosVisuais() {
 
 }
 
+// Função para formatar telefone com máscara visual
+function formatarTelefone(campo) {
+  let telefone = campo.value.replace(/\D/g, '');
+  
+  if (telefone.length <= 10) {
+    // Formato: (xx) xxxx-xxxx
+    telefone = telefone.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+  } else {
+    // Formato: (xx) xxxxx-xxxx
+    telefone = telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+  }
+  
+  campo.value = telefone;
+}
+
 // Inicializar efeitos quando a página carregar
 $(document).ready(function () {
   AplicarEfeitosVisuais();

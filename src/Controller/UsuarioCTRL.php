@@ -66,4 +66,20 @@ class UsuarioCTRL
         // O status já vem correto do JavaScript, não precisa inverter
         return $this->model->AlterarStatusMODEL($vo);
     }
+
+    // ----- PASSO 3 "CTRL 11" -----
+    public function DetalharUsuarioCTRL(int $id): array | int
+    {
+        if ($id == "" || $id <= 0)
+            return 0;
+
+        return $this->model->DetalharUsuarioMODEL($id);
+    }
+
+    // ----- PASSO 3 "CTRL 12" -----
+    public function AlterarUsuarioCTRL(UsuarioVO $vo): int
+    {
+        $vo->setFuncaoErro(ALTERAR_USUARIO);
+        return $this->model->AlterarUsuarioMODEL($vo);
+    }
 }

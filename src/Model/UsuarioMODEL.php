@@ -211,4 +211,60 @@ class UsuarioMODEL extends Conexao
       return -1;
     }
   }
+
+  // -----PASSO 2 "MODEL 13" -----
+  public function DetalharUsuarioMODEL(int $id): array
+  {
+    $sql = $this->conexao->prepare(USUARIO_SQL::DETALHAR_USUARIO());
+    $sql->bindValue(1, $id);
+    $sql->execute();
+    $resultado = $sql->fetch(\PDO::FETCH_ASSOC);
+    return $resultado ?: [];
+  }
+
+  // ----- PASSO 2 "MODEL 14" -----
+  public function AlterarUsuarioMODEL(UsuarioVO $vo): int
+  {
+    try {
+      $this->conexao->beginTransaction();
+
+      // Atualizar dados do usuário
+      $sql = $this->conexao->prepare(USUARIO_SQL::ALTERAR_USUARIO());
+      $sql->bindValue(1, $vo->getNome());
+      $sql->bindValue(2, $vo->getEmail());
+      $sql->bindValue(3, $vo->getCpf());
+      $sql->bindValue(4, $vo->getTel());
+      $sql->bindValue(5, $vo->getId());
+      $sql->execute();
+
+      // Atualizar endereço (UsuarioVO herda de EnderecoVO)
+      $sql = $this->conexao->prepare(USUARIO_SQL::ALTERAR_ENDERECO());
+      $sql->bindValue(1, $vo->getCep());
+      $sql->bindValue(2, $vo->getRua());
+      $sql->bindValue(3, $vo->getBairro());
+      $sql->bindValue(4, $vo->getId());
+      $sql->execute();
+
+      // Atualizar dados específicos por tipo
+      if ($vo->getTipo() == USUARIO_FUNCIONARIO && $vo instanceof FuncionarioVO) {
+        $sql = $this->conexao->prepare(USUARIO_SQL::ALTERAR_FUNCIONARIO());
+        $sql->bindValue(1, $vo->getIdSetor());
+        $sql->bindValue(2, $vo->getId());
+        $sql->execute();
+      } else if ($vo->getTipo() == USUARIO_TECNICO && $vo instanceof TecnicoVO) {
+        $sql = $this->conexao->prepare(USUARIO_SQL::ALTERAR_TECNICO());
+        $sql->bindValue(1, $vo->getNomeEmpresa());
+        $sql->bindValue(2, $vo->getId());
+        $sql->execute();
+      }
+
+      $this->conexao->commit();
+      return 1;
+    } catch (Exception $ex) {
+      $this->conexao->rollBack();
+      $vo->setErroTecnico($ex->getMessage());
+      parent::GravarErroLog($vo);
+      return -1;
+    }
+  }
 }
