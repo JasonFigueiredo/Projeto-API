@@ -63,14 +63,7 @@ class TipoEquipamentoMODEL extends Conexao
         $sql->execute();
         return 1;
     } catch (Exception $ex) {
-        // Verificar se é erro de integridade referencial
-        if (strpos($ex->getMessage(), '1451') !== false || strpos($ex->getMessage(), 'foreign key constraint') !== false) {
-            return -2; // Código específico para erro de integridade referencial
-        }
-        
-        $vo->setErroTecnico($ex->getMessage());
-        parent::GravarErroLog($vo);
-        return -1;
+      return -1;
     }
   }
 }
