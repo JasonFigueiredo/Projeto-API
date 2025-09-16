@@ -16,8 +16,8 @@ class UsuarioVO extends EnderecoVO
     private $senha;
     private $status;
     private $cpf;
-    private $nome_empresa; // Para técnicos
-    private $id_setor; // Para funcionários
+   
+    
 
     // get set de ID
     public function setId(int $id): void
@@ -99,23 +99,6 @@ class UsuarioVO extends EnderecoVO
         return $this->cpf;
     }
 
-    // get e set de NOME_EMPRESA (para técnicos)
-    public function setNomeEmpresa(?string $nome_empresa): void
-    {
-        $this->nome_empresa = $nome_empresa ? Util::RemoverTags($nome_empresa) : null;
-    }
-    public function getNomeEmpresa(): ?string
-    {
-        return $this->nome_empresa;
-    }
+  
 
-    // get e set de ID_SETOR (para funcionários)
-    public function setIdSetor(?int $id_setor): void
-    {
-        $this->id_setor = $id_setor;
-    }
-    public function getIdSetor(): ?int
-    {
-        return $this->id_setor;
-    }
 }

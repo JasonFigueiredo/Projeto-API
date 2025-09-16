@@ -19,6 +19,12 @@
 <script src="../../Resource/ajax/usuario_ajax.js"></script>
 <script src="../../Resource/js/validar_cpf.js"></script>
 <script src="../../Resource/js/buscar_cep.js"></script>
+<script src="../../Resource/ajax/usuario_ajax.js"></script>
+<script src="../../Resource/ajax/setor_ajax.js"></script>
+<script src="../../Resource/ajax/equipamento_ajax.js"></script>
+<script src="../../Resource/ajax/tipo_equipamento_ajax.js"></script>
+<script src="../../Resource/ajax/modelo_equipamento_ajax.js"></script>
+
 
 <style>
     .nav-link.active .fas.fa-circle {

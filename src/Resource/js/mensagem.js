@@ -34,6 +34,8 @@ function MostrarMensagem(ret) {
     toastr.success("Email válido");
   } else if (ret == 5) {
     toastr.error("Email já cadastrado");
+  } else if (ret == 6) {
+    toastr.error("CPF já cadastrado");
   } else if (ret == 7) {
     toastr.error("Domínio de email não confiável");
   } else if (ret == 8) {

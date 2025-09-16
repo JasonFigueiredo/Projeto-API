@@ -114,7 +114,8 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_usuario_dataview.php
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label>E-mail:</label>
-                                        <input type="email" class="form-control obg" id="email" name="email" placeholder="Digite o E-mail" oninput="formatarEmail('email')" onblur="validarEmailCompleto('email')" style="text-transform: lowercase;">
+                                        <input type="email" class="form-control obg" id="email" name="email" placeholder="Digite o E-mail" oninput="formatarEmail('email')" 
+                                        onblur="validarEmailCompleto('email')" style="text-transform: lowercase;">
                                     </div>
                                 </div>
                             </div>
@@ -160,7 +161,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_usuario_dataview.php
 
                             <div class="row">
                                 <div class="col-12 text-center">
-                                    <button style="display: none;" onclick="return NotificarCampos('formCad')" type="button" class="btn btn-primary" id="btn_cadastrar" name="btn_cadastrar">Gravar</button>
+                                    <button style="display: none;" onclick="CadastrarUsuario('formCad')" type="button" class="btn btn-primary" id="btn_cadastrar" name="btn_cadastrar">Gravar</button>
                                 </div>
                             </div>
                         </form>

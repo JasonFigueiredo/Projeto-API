@@ -5,6 +5,8 @@ namespace Src\Model;
 use Exception;
 use Src\Model\Conexao;
 use Src\VO\UsuarioVO;
+use Src\VO\TecnicoVO;
+use Src\VO\FuncionarioVO;
 use Src\Model\SQL\USUARIO_SQL;
 
 // Importar as constantes
@@ -100,7 +102,7 @@ class UsuarioMODEL extends Conexao
           $sql = $this->conexao->prepare(USUARIO_SQL::CADASTRAR_USUARIO_TECNICO());
           $i = 1;
           $sql->bindValue($i++, $id_user);
-          $sql->bindValue($i++, $usuarioVO->getNomeEmpresa());
+          $sql->bindValue($i++, $usuarioVO instanceof TecnicoVO ? $usuarioVO->getNomeEmpresa() : '');
           // cadastra na tb_tecnico
           $sql->execute();
           break;
@@ -109,7 +111,7 @@ class UsuarioMODEL extends Conexao
           $sql = $this->conexao->prepare(USUARIO_SQL::CADASTRAR_USUARIO_FUNCIONARIO());
           $i = 1;
           $sql->bindValue($i++, $id_user);
-          $sql->bindValue($i++, $usuarioVO->getIdSetor());
+          $sql->bindValue($i++, $usuarioVO instanceof FuncionarioVO ? $usuarioVO->getIdSetor() : 0);
           // cadastra na tb_funcionario
           $sql->execute();
           break;
@@ -124,19 +126,19 @@ class UsuarioMODEL extends Conexao
       $tem_cidade = $sql->fetchAll(\PDO::FETCH_ASSOC);
 
       $id_cidade = 0;
+      $id_estado = 0;
+      $tem_estado = [];
 
       if (count($tem_cidade) > 0) {
         $id_cidade = $tem_cidade[0]['id_cidade'];
       } else {
-
-        $id_estado = 0;
 
         $sql = $this->conexao->prepare(USUARIO_SQL::VERIFICAR_ESTADO_CADASTRADO());
 
         $sql->bindValue(1, $usuarioVO->getEstado());
         // cadastra na tb_estado
         $sql->execute();
-        $tem_estado = $sql->fetch(\PDO::FETCH_ASSOC);
+        $tem_estado = $sql->fetchAll(\PDO::FETCH_ASSOC);
       }
 
       if (count($tem_estado) > 0) {
@@ -174,5 +176,14 @@ class UsuarioMODEL extends Conexao
       parent::GravarErroLog($usuarioVO);
       return -1;
     }
+  }
+  // -----PASSO 2 "MODEL 10" -----
+  public function verificarCpfDuplicadoMODEL($cpf): bool
+  {
+    $sql = $this->conexao->prepare(USUARIO_SQL::VERIFICAR_CPF());
+    $sql->bindValue(1, $cpf);
+    $sql->execute();
+    $resultado = $sql->fetch(\PDO::FETCH_ASSOC);
+    return $resultado['contar_cpf'] > 0;
   }
 }

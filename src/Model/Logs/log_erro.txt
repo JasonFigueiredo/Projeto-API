@@ -54,3 +54,80 @@ Codigo do logado: 1
 Funcao do erro: Excluir Setor
 Erro tecnico: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_controleos`.`tb_alocar`, CONSTRAINT `fk_tb_alocar_tb_setor1` FOREIGN KEY (`setor_id`) REFERENCES `tb_setor` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
 ------------------------------------------------------
+------------------------------------------------------
+Data do erro: 2025-09-09
+Hora do erro: 19:30
+Codigo do logado: 1
+Funcao do erro: Cadastrar Usuário
+Erro tecnico: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ci.id_estado' in 'on clause'
+------------------------------------------------------
+------------------------------------------------------
+Data do erro: 2025-09-09
+Hora do erro: 19:30
+Codigo do logado: 1
+Funcao do erro: Cadastrar Usuário
+Erro tecnico: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ci.id_estado' in 'on clause'
+------------------------------------------------------
+------------------------------------------------------
+Data do erro: 2025-09-09
+Hora do erro: 21:20
+Codigo do logado: 1
+Funcao do erro: Cadastrar Usuário
+Erro tecnico: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ci.id_estado' in 'on clause'
+------------------------------------------------------
+------------------------------------------------------
+Data do erro: 2025-09-09
+Hora do erro: 21:20
+Codigo do logado: 1
+Funcao do erro: Cadastrar Usuário
+Erro tecnico: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ci.id_estado' in 'on clause'
+------------------------------------------------------
+------------------------------------------------------
+Data do erro: 2025-09-09
+Hora do erro: 21:20
+Codigo do logado: 1
+Funcao do erro: Cadastrar Usuário
+Erro tecnico: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ci.id_estado' in 'on clause'
+------------------------------------------------------
+------------------------------------------------------
+Data do erro: 2025-09-09
+Hora do erro: 21:20
+Codigo do logado: 1
+Funcao do erro: Cadastrar Usuário
+Erro tecnico: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ci.id_estado' in 'on clause'
+------------------------------------------------------
+------------------------------------------------------
+Data do erro: 2025-09-09
+Hora do erro: 21:20
+Codigo do logado: 1
+Funcao do erro: Cadastrar Usuário
+Erro tecnico: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ci.id_estado' in 'on clause'
+------------------------------------------------------
+------------------------------------------------------
+Data do erro: 2025-09-09
+Hora do erro: 21:21
+Codigo do logado: 1
+Funcao do erro: Cadastrar Usuário
+Erro tecnico: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ci.id_estado' in 'on clause'
+------------------------------------------------------
+------------------------------------------------------
+Data do erro: 2025-09-09
+Hora do erro: 21:21
+Codigo do logado: 1
+Funcao do erro: Cadastrar Usuário
+Erro tecnico: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ci.id_estado' in 'on clause'
+------------------------------------------------------
+------------------------------------------------------
+Data do erro: 2025-09-09
+Hora do erro: 21:38
+Codigo do logado: 1
+Funcao do erro: Cadastrar Usuário
+Erro tecnico: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id_estado' in 'field list'
+------------------------------------------------------
+------------------------------------------------------
+Data do erro: 2025-09-09
+Hora do erro: 21:38
+Codigo do logado: 1
+Funcao do erro: Cadastrar Usuário
+Erro tecnico: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id_estado' in 'field list'
+------------------------------------------------------

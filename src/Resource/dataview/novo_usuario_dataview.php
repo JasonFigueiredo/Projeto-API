@@ -1,8 +1,10 @@
-<?php
+ <?php
 
+use Src\_Public\Util;
 use Src\Controller\UsuarioCTRL;
 use Src\VO\UsuarioVO;
 use Src\VO\FuncionarioVO;
+use Src\VO\TecnicoVO;
 
 include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
 
@@ -12,24 +14,32 @@ if (isset($_POST['verificar_email_duplicado'])) {
   $emailDuplicado = $ctrl->verificarEmailDuplicadoCTRL($_POST['email']);
   echo $emailDuplicado ? 'true' : 'false';
   exit;
+} else if (isset($_POST['verificar_cpf_duplicado'])) {
+  $cpfDuplicado = $ctrl->verificarCpfDuplicadoCTRL($_POST['cpf']);
+  echo $cpfDuplicado ? 'true' : 'false';
+  exit;
 } else if (isset($_POST['btn_cadastrar'])) {
+
   switch ($_POST['tipo']) {
     case USUARIO_ADM:
+      //Util::MostrarDadosArray('USUARIO_ADM');
       $vo = new UsuarioVO();
       //DADOS DO USUARIO/ADM
       break;
 
     case USUARIO_TECNICO:
-      $vo = new FuncionarioVO();
+     // Util::MostrarDadosArray('USUARIO_TECNICO');
+      $vo = new TecnicoVO();
       // O perfil do tecnico esta dentro de FuncionarioVO
       //DADOS DO TECNICO
-      $vo->setNomeEmpresa($_POST['nome_empresa']);
+      $vo->setNomeEmpresa($_POST['empresa']);
       break;
 
     case USUARIO_FUNCIONARIO:
+     // Util::MostrarDadosArray('USUARIO_FUNCIONARIO');
       $vo = new FuncionarioVO();
       //DADOS DO FUNCIONARIO
-      $vo->setIdSetor($_POST['id_setor']);
+      $vo->setIdSetor($_POST['setor']);
       break;
   }
   //DADOS COMUNS A TODOS OS PERFIS
@@ -37,7 +47,7 @@ if (isset($_POST['verificar_email_duplicado'])) {
   $vo->setNome($_POST['nome']);
   $vo->setEmail($_POST['email']);
   $vo->setCPF($_POST['cpf']);
-  $vo->setTel($_POST['telefone']);
+  $vo->setTel($_POST['tel']);
 
   //dados do endereço
   $vo->setRua($_POST['rua']);

@@ -23,7 +23,7 @@ class USUARIO_SQL
   // ----- PASSO 1 "SQL 03" -----
   public static function CADASTRAR_CIDADE(): string
   {
-    $sql = "INSERT INTO tb_cidade (nome_cidade, id_estado) 
+    $sql = "INSERT INTO tb_cidade (nome_cidade, estado_id) 
             VALUES (?, ?)";
     return $sql;
   }
@@ -40,7 +40,7 @@ class USUARIO_SQL
     $sql = "SELECT ci.id AS id_cidade
               FROM tb_cidade  as ci
         inner join tb_estado as es
-                on ci.id_estado = es.id
+                on ci.estado_id = es.id
              WHERE ci.nome_cidade = ?
                AND es.sigla_estado = ?";
     return $sql;
@@ -75,6 +75,15 @@ class USUARIO_SQL
     $sql = "INSERT INTO tb_funcionario
      (usuario_id, setor_id) 
             VALUES (?, ?)";
+    return $sql;
+  }
+  // ----- PASSO 1 "SQL 10" -----
+  public static function VERIFICAR_CPF(): string
+  {
+    $sql = "SELECT COUNT(cpf_usuario) 
+                     AS contar_cpf 
+                   FROM tb_usuario 
+                  WHERE cpf_usuario = ?";
     return $sql;
   }
 }

@@ -37,10 +37,7 @@ class UsuarioCTRL
             return 0; // Dados obrigatórios não preenchidos
         }
 
-        if ($usuarioVO->getTipo() == USUARIO_TECNICO && empty($usuarioVO->getNomeEmpresa()))
-            return 0; // Nome da empresa é obrigatório para técnicos
-        if ($usuarioVO->getTipo() == USUARIO_FUNCIONARIO && empty($usuarioVO->getIdSetor()))
-            return 0; // Setor é obrigatório para funcionários
+        // Validações específicas serão feitas no Model
 
         $usuarioVO->setStatus(SITUACAO_ATIVO);
         // Criptografar senha
@@ -50,5 +47,10 @@ class UsuarioCTRL
         $usuarioVO->setCodLogado(Util::CodigoLogado());
 
         return $this->model->cadastrarUsuarioMODEL($usuarioVO);
+    }
+    // ----- PASSO 3 "CTRL 08" -----
+    public function verificarCpfDuplicadoCTRL($cpf): bool
+    {
+        return $this->model->verificarCpfDuplicadoMODEL($cpf);
     }
 }

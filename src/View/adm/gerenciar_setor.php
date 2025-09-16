@@ -83,15 +83,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_setor_dataview.
                                 </tr>
                             </thead>
                             <tbody id="tableResult">
-                                <?php foreach ($setores as $item) { ?>
-                                    <tr>
-                                        <td>
-                                            <a href="#" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#alterar-setor" onclick="CarregarSetor('<?= $item['id'] ?>','<?= $item['nome_setor'] ?>')">Alterar</a>
-                                            <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-excluir" onclick="ExcluirSetor('<?= $item['id']?>','<?= $item['nome_setor'] ?>')">Excluir</a>
-                                        </td>
-                                        <td><?= $item['nome_setor'] ?></td>
-                                    </tr>
-                                <?php } ?>
+                                <!-- Conteúdo carregado via AJAX -->
                             </tbody>
                         </table>
                     </div>

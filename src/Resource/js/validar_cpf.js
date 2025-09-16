@@ -10,20 +10,6 @@ function formatarCPF(campo) {
   cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
 
   campo.value = cpf;
-
-  // Feedback visual imediato
-  const cpfLimpo = cpf.replace(/\D/g, '');
-  if (cpfLimpo.length === 11) {
-    if (validarCPF(cpfLimpo)) {
-      campo.classList.remove('is-invalid');
-      campo.classList.add('is-valid');
-    } else {
-      campo.classList.remove('is-valid');
-      campo.classList.add('is-invalid');
-    }
-  } else {
-    campo.classList.remove('is-valid', 'is-invalid');
-  }
 }
 
 // Validação matemática completa do CPF
@@ -80,25 +66,31 @@ function validarCPFCompleto(campo) {
 
   if (cpf.length === 0) return true;
 
-  let codigo = -11; // CPF válido
-
   if (cpf.length !== 11) {
-    codigo = -7; // CPF deve ter 11 dígitos
-  } else if (/^(\d)\1{10}$/.test(cpf)) {
-    codigo = -8; // Números iguais
-  } else if (!validarCPF(cpf)) {
-    codigo = -10; // CPF inválido
-  }
-
-  if (codigo === -11) {
-    campo.classList.add('is-valid');
-  } else {
     campo.classList.add('is-invalid');
-    limparCPFInvalido(campo); // Limpa campo se inválido
+    limparCPFInvalido(campo);
+    MostrarMensagem(-7); // CPF deve ter 11 dígitos
+    return false;
+  } else if (/^(\d)\1{10}$/.test(cpf)) {
+    campo.classList.add('is-invalid');
+    limparCPFInvalido(campo);
+    MostrarMensagem(-8); // Números iguais
+    return false;
+  } else if (!validarCPF(cpf)) {
+    campo.classList.add('is-invalid');
+    limparCPFInvalido(campo);
+    MostrarMensagem(-10); // CPF inválido
+    return false;
+  } else {
+    campo.classList.add('is-valid');
+    // Verifica duplicação se CPF for válido
+    if (typeof VerificarCPFDuplicado === 'function') {
+      VerificarCPFDuplicado();
+    } else {
+      MostrarMensagem(-11);
+    }
+    return true;
   }
-
-  MostrarMensagem(codigo);
-  return codigo === -11;
 }
 
   // Inicializar validação CPF
@@ -112,8 +104,22 @@ function inicializarValidacaoCPF(seletor) {
   // Events
   campo.oninput = () => formatarCPF(campo);
   campo.onblur = () => validarCPFCompleto(campo);
+  campo.onpaste = (e) => {
+    // Permite colar e formata automaticamente
+    setTimeout(() => {
+      formatarCPF(campo);
+    }, 10);
+  };
   campo.onkeydown = (e) => {
     const permitidas = ['Backspace', 'Delete', 'Tab', 'ArrowLeft', 'ArrowRight'];
+    const teclasCtrl = ['c', 'v', 'x', 'a']; // Ctrl+C, Ctrl+V, Ctrl+X, Ctrl+A
+    
+    // Permite teclas de controle (Ctrl+C, Ctrl+V, etc.)
+    if (e.ctrlKey && teclasCtrl.includes(e.key.toLowerCase())) {
+      return; // Permite a ação
+    }
+    
+    // Permite teclas permitidas e números
     if (!permitidas.includes(e.key) && !/[0-9]/.test(e.key)) {
       e.preventDefault();
     }

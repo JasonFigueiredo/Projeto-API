@@ -76,7 +76,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_tipo_equipament
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0">
                         <table class="table table-bordered table-striped" id="tableResult">
-                           
+                            <!-- Conteúdo carregado via AJAX -->
                         </table>
                     </div>
                     <!-- /.card-body -->
