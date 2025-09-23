@@ -22,21 +22,17 @@ if (isset($_POST['verificar_email_duplicado'])) {
 
   switch ($_POST['tipo']) {
     case USUARIO_ADM:
-      //Util::MostrarDadosArray('USUARIO_ADM');
       $vo = new UsuarioVO();
       //DADOS DO USUARIO/ADM
       break;
 
     case USUARIO_TECNICO:
-      // Util::MostrarDadosArray('USUARIO_TECNICO');
       $vo = new TecnicoVO();
-      // O perfil do tecnico esta dentro de FuncionarioVO
       //DADOS DO TECNICO
       $vo->setNomeEmpresa($_POST['empresa']);
       break;
 
     case USUARIO_FUNCIONARIO:
-      // Util::MostrarDadosArray('USUARIO_FUNCIONARIO');
       $vo = new FuncionarioVO();
       //DADOS DO FUNCIONARIO
       $vo->setIdSetor($_POST['setor']);
@@ -109,13 +105,13 @@ if (isset($_POST['verificar_email_duplicado'])) {
   // Lógica para alterar usuário
   $id_usuario = $_POST['id_usuario'] ?? '';
   $tipo = $_POST['tipo'] ?? '';
-  
+
   // Validar se ID do usuário foi enviado
   if (empty($id_usuario) || !is_numeric($id_usuario)) {
     echo 0; // ID inválido
     exit;
   }
-  
+
   // Criar VO baseado no tipo
   switch ($tipo) {
     case USUARIO_ADM:
@@ -139,7 +135,7 @@ if (isset($_POST['verificar_email_duplicado'])) {
       echo 0;
       exit;
   }
-  
+
   // Preencher dados comuns
   $vo->setId(intval($id_usuario));
   $vo->setNome($_POST['nome']);
@@ -147,18 +143,17 @@ if (isset($_POST['verificar_email_duplicado'])) {
   $vo->setCpf($_POST['cpf']);
   $vo->setTel($_POST['tel']);
   $vo->setTipo(intval($tipo));
-  
+
   // Dados de endereço (UsuarioVO herda de EnderecoVO)
   $vo->setCep($_POST['cep']);
   $vo->setRua($_POST['rua']);
   $vo->setBairro($_POST['bairro']);
   $vo->setCidade($_POST['cidade']);
   $vo->setEstado($_POST['estado']);
-  
+
   // Chamar método de alteração no controller
   echo $ret = $ctrl->AlterarUsuarioCTRL($vo);
   exit;
-  
 } else if (isset($_GET['cod']) && is_numeric($_GET['cod'])) {
 
   $dados = $ctrl->DetalharUsuarioCTRL($_GET['cod']);
