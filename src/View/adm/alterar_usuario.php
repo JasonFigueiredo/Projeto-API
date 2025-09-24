@@ -111,7 +111,7 @@ if (isset($_GET['cod']) && is_numeric($_GET['cod'])) {
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label>CPF:</label>
-                                        <input type="text" class="form-control obg" id="cpf" name="cpf" value="<?= $dados['cpf_usuario'] ?? '' ?>" placeholder="000.000.000-00" oninput="formatarCPF(this)" maxlength="14" onblur="VerificarCPFDuplicadoAlteracao(this)">
+                                        <input type="text" class="form-control obg" id="cpf" name="cpf" value="<?= $dados['cpf_usuario'] ?? '' ?>" placeholder="000.000.000-00" maxlength="14">
                                     </div>
                                 </div>
                             </div>
@@ -235,6 +235,11 @@ if (isset($_GET['cod']) && is_numeric($_GET['cod'])) {
             $('#divUsuarioTecnico').hide();
         }
     });
+    
+    // Inicializar validação CPF
+    if (document.getElementById('cpf')) {
+        inicializarValidacaoCPF('#cpf');
+    }
     </script>
     <?php endif; ?>
 </body>

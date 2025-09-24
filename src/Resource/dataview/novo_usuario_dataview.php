@@ -160,4 +160,13 @@ if (isset($_POST['verificar_email_duplicado'])) {
 
   if (!is_array($dados) || empty($dados))
     Util::ChamarPagina('consultar_usuario');
+} 
+
+ else if (isset($_POST['btn_logar'])) {
+  $login = $_POST['login_usuario'];
+  $senha = $_POST['senha_usuario'];
+  
+  $ret = $ctrl->ValidarLoginCTRL($login, $senha);
+  echo $ret;
+
 } ?>

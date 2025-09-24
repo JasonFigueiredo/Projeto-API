@@ -42,5 +42,7 @@ function MostrarMensagem(ret) {
     toastr.info("Verificando e-mail...");
   } else if (ret == 9) {
     toastr.info("Nenhum resultado encontrado");
+  } else if (ret == 10) {
+    toastr.error("Usuario não encontrado");
   }
 }

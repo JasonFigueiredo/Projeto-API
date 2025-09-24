@@ -82,4 +82,18 @@ class UsuarioCTRL
         $vo->setFuncaoErro(ALTERAR_USUARIO);
         return $this->model->AlterarUsuarioMODEL($vo);
     }
+
+    // ----- PASSO 3 "CTRL 13" -----
+    public function ValidarLoginCTRL(string $login, string $senha): int
+    {   
+        if (empty($login) || empty($senha)) 
+            return 0;
+
+        $usuario = $this->model->ValidarLoginMODEL($login, SITUACAO_ATIVO);
+        if (empty($usuario))
+            return 10;
+        if (!Util::VerificarSenha($senha, $usuario['senha_usuario']))
+            return 10;
+        return 1;
+    }
 }

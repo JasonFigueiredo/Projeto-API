@@ -1,0 +1,482 @@
+/* Personalização minimalista da tela de login */
+.login-box {
+  max-width: 400px;
+  margin: 8% auto;
+  border-radius: 12px !important;
+  width: 90%;
+  min-width: 300px;
+}
+
+.card {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid #e3e6f0 !important;
+  overflow: hidden !important;
+}
+
+.login-card-body {
+  padding: 2rem !important;
+  border-radius: 12px !important;
+}
+
+.form-control {
+  border-radius: 8px !important;
+  border: 1px solid #d1d3e2 !important;
+  padding: 0.75rem 1rem !important;
+  font-size: 0.875rem !important;
+  transition: border-color 0.15s ease-in-out !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.form-control:focus {
+  border-color: #5a5c69 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.form-control:hover {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.form-control:active {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.input-group-text {
+  background-color: #f8f9fc !important;
+  border: 1px solid #d1d3e2 !important;
+  border-radius: 0 8px 8px 0 !important;
+  color: #5a5c69 !important;
+  min-width: 45px !important;
+  width: 45px !important;
+  height: 100% !important;
+  min-height: 38px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  vertical-align: top !important;
+}
+
+.input-group-text .fas {
+  font-size: 1rem !important;
+  width: auto !important;
+  height: auto !important;
+  display: inline-block !important;
+  line-height: 1 !important;
+  vertical-align: middle !important;
+}
+
+.input-group .form-control:first-child {
+  border-radius: 8px 0 0 8px !important;
+}
+
+.btn-primary {
+  background-color: #4e73df !important;
+  border-color: #4e73df !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 2rem !important;
+  font-weight: 600 !important;
+  font-size: 0.875rem !important;
+  transition: all 0.15s ease-in-out !important;
+  white-space: nowrap !important;
+  min-width: 120px !important;
+  text-align: center !important;
+  display: block !important;
+  margin: 1rem auto !important;
+  width: 100% !important;
+}
+
+.btn-primary:hover {
+  background-color: #2e59d9 !important;
+  border-color: #2e59d9 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Garantir que o texto do botão não quebre */
+.btn-primary,
+.btn-primary * {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.icheck-primary input[type="checkbox"]:checked + label::before {
+  background-color: #4e73df !important;
+  border-color: #4e73df !important;
+  border-radius: 6px !important;
+}
+
+.icheck-primary input[type="checkbox"] + label::before {
+  border-radius: 6px !important;
+}
+
+.mb-1 a, .mb-0 a {
+  color: #5a5c69 !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  transition: color 0.15s ease-in-out !important;
+  margin: 0.5rem 0 !important;
+  display: inline-block !important;
+}
+
+.mb-1 a:hover, .mb-0 a:hover {
+  color: #4e73df !important;
+}
+
+.mb-1, .mb-0 {
+  margin-bottom: 1rem !important;
+}
+
+.login-logo a {
+  color: #4e73df !important;
+  font-size: 2.5rem !important;
+  font-weight: 800 !important;
+  text-decoration: none !important;
+  background: linear-gradient(135deg, #4e73df 0%, #2e59d9 50%, #1e3a8a 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  text-shadow: 0 2px 4px rgba(78, 115, 223, 0.3) !important;
+  transition: all 0.3s ease !important;
+  display: inline-block !important;
+  letter-spacing: -0.5px !important;
+}
+
+.login-logo a:hover {
+  transform: scale(1.05) !important;
+  filter: brightness(1.1) !important;
+  text-shadow: 0 4px 8px rgba(78, 115, 223, 0.4) !important;
+}
+
+.login-logo a b {
+  color: #2e59d9 !important;
+  font-weight: 900 !important;
+}
+
+.login-box-msg {
+  color: #4e73df !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 2.5rem !important;
+  margin-top: 1rem !important;
+  text-align: center !important;
+  position: relative !important;
+  padding: 0.5rem 0 !important;
+}
+
+.login-box-msg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #4e73df, #2e59d9);
+  border-radius: 2px;
+}
+
+.login-box-msg::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(90deg, #2e59d9, #4e73df);
+  border-radius: 1px;
+}
+
+/* Animação sutil */
+.card {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.login-logo {
+  animation: slideInDown 0.6s ease-out 0.2s both;
+}
+
+.login-box-msg {
+  animation: fadeIn 0.8s ease-out 0.4s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .login-box {
+    margin: 8% auto;
+    padding: 0 0.5rem;
+    border-radius: 15px !important;
+  }
+  
+  .card {
+    border-radius: 15px !important;
+  }
+  
+  .login-card-body {
+    padding: 2rem 1.5rem !important;
+    border-radius: 15px !important;
+  }
+  
+  .form-control {
+    border-radius: 12px !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .input-group {
+    margin-bottom: 1.25rem !important;
+  }
+  
+  .input-group-text {
+    border-radius: 0 12px 12px 0 !important;
+  }
+  
+  .input-group .form-control:first-child {
+    border-radius: 12px 0 0 12px !important;
+  }
+  
+  .btn-primary {
+    border-radius: 8px !important;
+    padding: 0.75rem 1.5rem !important;
+    font-size: 0.8rem !important;
+    margin: 1rem auto !important;
+    width: 100% !important;
+  }
+  
+  .login-logo a {
+    font-size: 2rem !important;
+  }
+  
+  .login-box-msg {
+    font-size: 1rem !important;
+    margin-bottom: 2rem !important;
+    margin-top: 0.75rem !important;
+  }
+  
+  .mb-1, .mb-0 {
+    margin-bottom: 0.75rem !important;
+  }
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .login-box {
+    width: 95% !important;
+    min-width: 280px !important;
+    margin: 5% auto !important;
+  }
+  
+  .login-card-body {
+    padding: 1.5rem !important;
+  }
+  
+  .input-group-text {
+    min-width: 40px !important;
+    padding: 0.5rem !important;
+  }
+  
+  .input-group-text .fas {
+    font-size: 0.8rem !important;
+  }
+  
+  .form-control {
+    font-size: 0.8rem !important;
+    padding: 0.6rem 0.8rem !important;
+  }
+  
+  .btn-primary {
+    padding: 0.6rem 1.5rem !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-box {
+    width: 98% !important;
+    min-width: 260px !important;
+    margin: 2% auto !important;
+  }
+  
+  .login-card-body {
+    padding: 1rem !important;
+  }
+  
+  .input-group-text {
+    min-width: 35px !important;
+    padding: 0.4rem !important;
+  }
+  
+  .input-group-text .fas {
+    font-size: 0.75rem !important;
+  }
+  
+  .form-control {
+    font-size: 0.75rem !important;
+    padding: 0.5rem 0.6rem !important;
+  }
+  
+  .btn-primary {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.75rem !important;
+  }
+}
+
+/* Garantir que os ícones não quebrem e se adaptem ao zoom */
+.input-group {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: stretch !important;
+  height: auto !important;
+}
+
+.input-group .form-control {
+  flex: 1 !important;
+  min-width: 0 !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  line-height: 1.5 !important;
+  padding: 0.75rem 1rem !important;
+  box-sizing: border-box !important;
+}
+
+.input-group-append {
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: stretch !important;
+  height: 38px !important;
+  min-height: 38px !important;
+}
+
+/* Ajustes para zoom */
+.input-group-text {
+  transition: all 0.2s ease !important;
+}
+
+/* Garantir alinhamento perfeito em qualquer zoom */
+.input-group .form-control {
+  border: 1px solid #d1d3e2 !important;
+  border-right: none !important;
+  border-radius: 8px 0 0 8px !important;
+}
+
+.input-group-text {
+  border: 1px solid #d1d3e2 !important;
+  border-left: none !important;
+  border-radius: 0 8px 8px 0 !important;
+  border-left-color: transparent !important;
+}
+
+/* Garantir que as bordas se conectem perfeitamente */
+.input-group .form-control:focus {
+  border-color: #5a5c69 !important;
+  border-right: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.input-group .form-control:focus + .input-group-append .input-group-text {
+  border-color: #5a5c69 !important;
+  border-left-color: #5a5c69 !important;
+}
+
+/* Ajustes específicos para zoom */
+@media (min-resolution: 1.5dppx) {
+  .input-group-text .fas {
+    font-size: 1.1rem !important;
+  }
+}
+
+@media (min-resolution: 2dppx) {
+  .input-group-text .fas {
+    font-size: 1.2rem !important;
+  }
+}
+
+/* Garantir que os ícones se adaptem ao tamanho do input */
+.input-group-text {
+  font-size: inherit !important;
+}
+
+.input-group-text .fas {
+  font-size: 1em !important;
+  transform: scale(1) !important;
+  transform-origin: center !important;
+}
+
+/* Ajuste para diferentes tamanhos de fonte do sistema */
+@media (prefers-reduced-motion: no-preference) {
+  .input-group-text .fas {
+    transition: transform 0.2s ease !important;
+  }
+}
+
+/* Correção final para alinhamento perfeito */
+.input-group {
+  position: relative !important;
+}
+
+.input-group .form-control {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.input-group-append {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.input-group-text {
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+
+/* Forçar altura idêntica */
+.input-group .form-control,
+.input-group-text {
+  height: 38px !important;
+  min-height: 38px !important;
+  max-height: 38px !important;
+}

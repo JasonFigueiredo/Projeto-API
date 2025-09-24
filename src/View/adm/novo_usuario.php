@@ -101,7 +101,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_usuario_dataview.php
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label>CPF:</label>
-                                        <input type="text" class="form-control obg" id="cpf" name="cpf" placeholder="Digite o CPF">
+                                        <input type="text" class="form-control obg" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
@@ -183,6 +183,15 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_usuario_dataview.php
     include_once PATH . 'Template/_includes/_scripts.php';
     include_once PATH . 'Template/_includes/_msg.php';
     ?>
+    
+    <script>
+    // Inicializar validação CPF
+    $(document).ready(function () {
+        if (document.getElementById('cpf')) {
+            inicializarValidacaoCPF('#cpf');
+        }
+    });
+    </script>
 </body>
 
 </html>

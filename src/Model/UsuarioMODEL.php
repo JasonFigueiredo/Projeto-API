@@ -264,7 +264,18 @@ class UsuarioMODEL extends Conexao
       $this->conexao->rollBack();
       $vo->setErroTecnico($ex->getMessage());
       parent::GravarErroLog($vo);
-      return -1;
-    }
+        return -1;
+      }
+  }
+
+  public function ValidarLoginMODEL(string $login, int $status): null | array | bool
+  {
+    $sql = $this->conexao->prepare(USUARIO_SQL::VALIDAR_LOGIN());
+    $sql->bindValue(1, $login);
+    $sql->bindValue(2, $status);
+    $sql->execute();
+
+    return $sql->fetch(\PDO::FETCH_ASSOC);
+
   }
 }

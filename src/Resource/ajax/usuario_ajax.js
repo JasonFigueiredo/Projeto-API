@@ -50,6 +50,32 @@ function VerificarCPFDuplicado() {
   }
 }
 
+function VerificarCPFDuplicadoAlteracao(campo) {
+  var cpf = $(campo).val().replace(/\D/g, ''); // Remove formatação
+
+  if (cpf && cpf.length === 11) {
+    $.ajax({
+      beforeSend: function () {
+        Load();
+      },
+      type: "post",
+      url: BASE_URL_DATAVIEW('novo_usuario_dataview'),
+      data: {
+        verificar_cpf_duplicado: 'ajx',
+        cpf: cpf
+      },
+      success: function (dados) {
+        var duplicado = dados.trim() === 'true';
+        MostrarMensagem(duplicado ? 6 : -11); // 6 = CPF já cadastrado, -11 = CPF válido
+        $(campo).addClass(duplicado ? 'is-invalid' : 'is-valid').removeClass(duplicado ? 'is-valid' : 'is-invalid');
+      },
+      complete: function () {
+        RemoverLoad();
+      }
+    });
+  }
+}
+
 
 function CadastrarUsuario(formID) {
   if (NotificarCampos(formID)) {
@@ -236,6 +262,35 @@ function AlterarUsuario(formID) {
           setTimeout(function() {
             window.location.href = 'consultar_usuario.php';
           }, 2000);
+        }
+      },
+      complete: function () {
+        RemoverLoad();
+      }
+    });
+  }
+}
+
+function Logar(formID){
+  if (NotificarCampos('formLOG')) {
+    let login = $("#login").val().replace(/\D/g, ''); // Remove formatação do CPF
+    let senha = $("#senha").val();
+    $.ajax({
+      beforeSend: function () {
+        Load();
+      },
+      type: "post",
+      url: BASE_URL_DATAVIEW('novo_usuario_dataview'),
+      data: {
+        btn_logar: 'ajx',
+        login_usuario: login,
+        senha_usuario: senha
+      },
+      success: function (ret) {
+        MostrarMensagem(ret);
+        if (ret == 1) {
+          // Redirecionar para página principal após login bem-sucedido
+          window.location.href = '../../index3.html';
         }
       },
       complete: function () {
