@@ -244,20 +244,20 @@
   .login-box {
     margin: 8% auto;
     padding: 0 0.5rem;
-    border-radius: 15px !important;
+    border-radius: 5px !important;
   }
   
   .card {
-    border-radius: 15px !important;
+    border-radius: 10px !important;
   }
   
   .login-card-body {
     padding: 2rem 1.5rem !important;
-    border-radius: 15px !important;
+    border-radius: 5px !important;
   }
   
   .form-control {
-    border-radius: 12px !important;
+    border-radius: 5px !important;
     margin-bottom: 0.75rem !important;
   }
   
@@ -266,11 +266,11 @@
   }
   
   .input-group-text {
-    border-radius: 0 12px 12px 0 !important;
+    border-radius: 0 5px 5px 0 !important;
   }
   
   .input-group .form-control:first-child {
-    border-radius: 12px 0 0 12px !important;
+    border-radius: 5px 0 0 5px !important;
   }
   
   .btn-primary {
