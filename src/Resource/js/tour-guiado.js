@@ -33,11 +33,15 @@ class TourGuiado {
         const tourAtivo = sessionStorage.getItem('tourAtivo');
         const passoAtual = sessionStorage.getItem('tourPassoAtual');
         
+        console.log(`🔍 DEBUG: Verificando estado do tour - Ativo: ${tourAtivo}, Passo: ${passoAtual}`);
+        
         if (tourAtivo === 'true' && passoAtual) {
             this.isActive = true;
             this.passoAtual = parseInt(passoAtual);
             this.overlay.style.pointerEvents = 'auto';
             this.mostrarOverlay();
+            
+            console.log(`🔄 DEBUG: Retomando tour do passo ${this.passoAtual + 1}`);
             
             // Executar imediatamente
             this.executarPasso();
@@ -240,8 +244,15 @@ class TourGuiado {
         
         this.isActive = true;
         
+        // Limpar qualquer estado anterior do tour
+        sessionStorage.removeItem('tourAtivo');
+        sessionStorage.removeItem('tourPassoAtual');
+        
         // Detectar em qual passo iniciar baseado na página atual
-        this.passoAtual = this.detectarPassoAtual();
+        const passoDetectado = this.detectarPassoAtual();
+        this.passoAtual = passoDetectado;
+        
+        console.log(`🎯 DEBUG: Passo detectado: ${passoDetectado}, Tour iniciado no passo ${this.passoAtual + 1}`);
         
         this.overlay.style.pointerEvents = 'auto';
         this.mostrarOverlay();
@@ -255,9 +266,51 @@ class TourGuiado {
     detectarPassoAtual() {
         const urlAtual = window.location.pathname;
         
+        // Debug temporário
+        console.log('🔍 DEBUG: URL atual:', urlAtual);
+        
         // Casos especiais para páginas com múltiplos passos
+        // IMPORTANTE: Verificar páginas mais específicas PRIMEIRO para evitar conflitos
+        
+        if (urlAtual.includes('consultar_equipamento.php')) {
+            // Se estiver na página de consultar equipamento, sempre iniciar do passo 5
+            console.log('🎯 DEBUG: Página consultar_equipamento.php detectada - retornando passo 5');
+            return 4; // Passo 5: Consultar Equipamentos
+        }
+        
+        if (urlAtual.includes('gerenciar_tipo_equipamento.php')) {
+            // Se estiver na página de gerenciar tipo equipamento, sempre iniciar do passo 6
+            console.log('🎯 DEBUG: Página gerenciar_tipo_equipamento.php detectada - retornando passo 6');
+            return 5; // Passo 6: Gerenciar Tipos de Equipamento
+        }
+        
+        if (urlAtual.includes('gerenciar_modelo_equipamento.php')) {
+            // Se estiver na página de gerenciar modelo equipamento, sempre iniciar do passo 7
+            console.log('🎯 DEBUG: Página gerenciar_modelo_equipamento.php detectada - retornando passo 7');
+            return 6; // Passo 7: Gerenciar Modelos de Equipamento
+        }
+        
+        if (urlAtual.includes('remover_equipamento.php')) {
+            // Se estiver na página de remover equipamento, sempre iniciar do passo 8
+            console.log('🎯 DEBUG: Página remover_equipamento.php detectada - retornando passo 8');
+            return 7; // Passo 8: Remover Equipamentos
+        }
+        
+        if (urlAtual.includes('alocar_equipamentos.php')) {
+            // Se estiver na página de alocar equipamentos, sempre iniciar do passo 4
+            console.log('🎯 DEBUG: Página alocar_equipamentos.php detectada - retornando passo 4');
+            return 3; // Passo 4: Alocar Equipamentos
+        }
+        
+        if (urlAtual.includes('gerenciar_setor.php')) {
+            // Se estiver na página de gerenciar setor, sempre iniciar do passo 3
+            console.log('🎯 DEBUG: Página gerenciar_setor.php detectada - retornando passo 3');
+            return 2; // Passo 3: Gerenciar Setores
+        }
+        
         if (urlAtual.includes('equipamento.php')) {
             // Se estiver na página de equipamento, verificar qual elemento está mais visível
+            console.log('🎯 DEBUG: Página equipamento.php detectada - verificando elementos visíveis');
             const sidebar = document.querySelector('.sidebar');
             const cardHeader = document.querySelector('.card-header');
             
@@ -302,6 +355,9 @@ class TourGuiado {
             }
         }
         
+        // Debug para verificar se está passando pelos outros casos
+        console.log('🔍 DEBUG: Verificando outros casos...');
+        
         if (urlAtual.includes('consultar_usuario.php')) {
             // Se estiver na página de consultar usuário, verificar qual elemento está mais visível
             const cardHeader = document.querySelector('.card-header');
@@ -326,10 +382,24 @@ class TourGuiado {
         }
         
         // Para outras páginas, encontrar o passo correspondente
+        console.log('🔍 DEBUG: Verificando loop genérico...');
         for (let i = 0; i < this.passos.length; i++) {
             const passo = this.passos[i];
+            console.log(`🔍 DEBUG: Verificando passo ${i + 1}: ${passo.pagina}`);
             if (urlAtual.includes(passo.pagina)) {
-                return i;
+                console.log(`✅ DEBUG: Página ${passo.pagina} encontrada no passo ${i + 1}`);
+                // Verificar se é a primeira ocorrência desta página
+                let primeiraOcorrencia = true;
+                for (let j = 0; j < i; j++) {
+                    if (this.passos[j].pagina === passo.pagina) {
+                        primeiraOcorrencia = false;
+                        break;
+                    }
+                }
+                if (primeiraOcorrencia) {
+                    console.log(`🎯 DEBUG: Retornando passo ${i + 1} (primeira ocorrência)`);
+                    return i;
+                }
             }
         }
         
@@ -355,12 +425,16 @@ class TourGuiado {
 
         const passo = this.passos[this.passoAtual];
         
+        console.log(`🚀 DEBUG: Executando passo ${this.passoAtual + 1} - Página: ${passo.pagina}`);
+        
         // Verificar se estamos na página correta
         if (!this.verificarPagina(passo.pagina)) {
+            console.log(`🔄 DEBUG: Navegando para página: ${passo.pagina}`);
             this.navegarParaPagina(passo.pagina);
             return;
         }
 
+        console.log(`✅ DEBUG: Página correta - destacando elemento: ${passo.elemento}`);
         // Executar imediatamente
         this.destacarElemento(passo);
     }
@@ -375,6 +449,8 @@ class TourGuiado {
         const urlBase = window.location.origin + window.location.pathname.split('/').slice(0, -2).join('/');
         const novaUrl = `${urlBase}/adm/${pagina}`;
         
+        console.log(`🌐 DEBUG: Navegando de ${window.location.pathname} para ${novaUrl}`);
+        console.log(`📊 DEBUG: Passo atual: ${this.passoAtual + 1}`);
         
         // Salvar estado do tour antes de navegar
         sessionStorage.setItem('tourAtivo', 'true');
