@@ -78,6 +78,7 @@
     backdrop-filter: none !important;
     transition: opacity 0.15s ease !important;
     pointer-events: none !important;
+    display: none !important; /* Escondido por padrão */
 }
 
 /* Destaque dos elementos */
@@ -98,17 +99,27 @@
     border-radius: 12px !important;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(40, 167, 69, 0.3), 0 0 20px rgba(40, 167, 69, 0.2) !important;
     z-index: 10000 !important;
-    max-width: 380px !important;
-    min-width: 320px !important;
+    max-width: 320px !important; /* Reduzido de 380px */
+    min-width: 280px !important; /* Reduzido de 320px */
     font-family: 'Source Sans Pro', sans-serif !important;
     transition: all 0.15s ease !important;
     border: 2px solid rgba(40, 167, 69, 0.3) !important;
+    display: none !important; /* Escondido por padrão */
+    opacity: 0 !important; /* Inicialmente transparente */
+    transform: scale(0.8) !important; /* Inicialmente pequeno */
+}
+
+/* Classe para mostrar o tooltip quando ativo */
+.tour-tooltip.tour-tooltip-active {
+    display: block !important;
+    opacity: 1 !important;
+    transform: scale(1) !important;
 }
 
 .tour-tooltip-header {
     background: linear-gradient(135deg, #28a745, #20c997);
     color: white;
-    padding: 15px 20px;
+    padding: 12px 16px; /* Reduzido de 15px 20px */
     border-radius: 12px 12px 0 0;
     display: flex;
     justify-content: space-between;
@@ -117,7 +128,7 @@
 
 .tour-tooltip-title {
     margin: 0;
-    font-size: 1.1rem;
+    font-size: 1rem; /* Reduzido de 1.1rem */
     font-weight: 700;
 }
 
@@ -142,25 +153,25 @@
 }
 
 .tour-tooltip-body {
-    padding: 20px;
+    padding: 16px; /* Reduzido de 20px */
 }
 
 .tour-tooltip-text {
     margin: 0;
     color: #333;
-    line-height: 1.6;
-    font-size: 0.95rem;
+    line-height: 1.5; /* Reduzido de 1.6 */
+    font-size: 0.875rem; /* Reduzido de 0.95rem */
 }
 
 .tour-tooltip-footer {
-    padding: 15px 20px;
+    padding: 12px 16px; /* Reduzido de 15px 20px */
     border-top: 1px solid #eee;
     background: #f8f9fa;
     border-radius: 0 0 12px 12px;
 }
 
 .tour-progress {
-    margin-bottom: 15px;
+    margin-bottom: 12px; /* Reduzido de 15px */
 }
 
 .tour-progress-text {

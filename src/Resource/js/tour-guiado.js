@@ -70,19 +70,8 @@ class TourGuiado {
     criarTooltip() {
         this.tooltip = document.createElement('div');
         this.tooltip.className = 'tour-tooltip';
-        this.tooltip.style.cssText = `
-            position: absolute;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            z-index: 10000;
-            max-width: 380px;
-            min-width: 320px;
-            opacity: 0;
-            transform: scale(0.8);
-            transition: all ${this.config.duracaoAnimacao}ms ease;
-            pointer-events: auto;
-        `;
+        // Remover CSS inline para usar apenas o CSS do arquivo
+        // this.tooltip.style.cssText = `...`; // Removido
         
         this.tooltip.innerHTML = `
             <div class="tour-tooltip-header">
@@ -116,6 +105,11 @@ class TourGuiado {
         `;
         
         document.body.appendChild(this.tooltip);
+        
+        // Debug: Verificar se tooltip foi criado
+        console.log('🔍 DEBUG: Tooltip criado e adicionado ao DOM');
+        console.log('🔍 DEBUG: Tooltip element:', this.tooltip);
+        console.log('🔍 DEBUG: Tooltip classes:', this.tooltip.className);
     }
 
     adicionarBotaoIniciar() {
@@ -234,7 +228,7 @@ class TourGuiado {
                 elemento: 'table tbody tr:first-child',
                 titulo: 'Lista de Usuários',
                 descricao: 'Na lista de usuários você pode ver o <strong>nome</strong>, <strong>tipo de usuário</strong> e <strong>situação</strong> (ativo/inativo) de cada pessoa. Use os botões de ação para <strong>alterar</strong> informações ou <strong>ativar/desativar</strong> usuários.',
-                posicao: 'top'
+                posicao: 'bottom'
             }
         ];
     }
@@ -408,13 +402,21 @@ class TourGuiado {
     }
 
     mostrarOverlay() {
-        // Overlay agora é transparente, apenas mantém a estrutura
+        // Mostrar overlay e garantir que está visível
+        this.overlay.style.display = 'block';
         this.overlay.style.opacity = '1';
     }
 
     esconderOverlay() {
-        // Overlay agora é transparente, apenas mantém a estrutura
+        // Esconder overlay e remover do DOM para evitar problemas de layout
         this.overlay.style.opacity = '0';
+        this.overlay.style.display = 'none';
+    }
+
+    esconderTooltip() {
+        // Esconder tooltip removendo a classe ativa
+        this.tooltip.className = 'tour-tooltip';
+        console.log('🔍 DEBUG: Tooltip escondido');
     }
 
     executarPasso() {
@@ -543,12 +545,15 @@ class TourGuiado {
         this.tooltip.style.top = top + 'px';
         this.tooltip.style.left = left + 'px';
         
-        // Adicionar classe de posição
-        this.tooltip.className = `tour-tooltip ${posicao}`;
+        // Debug: Verificar se tooltip existe
+        console.log('🔍 DEBUG: Tooltip existe?', !!this.tooltip);
+        console.log('🔍 DEBUG: Posição calculada:', { top, left });
         
-        // Mostrar tooltip
-        this.tooltip.style.opacity = '1';
-        this.tooltip.style.transform = 'scale(1)';
+        // Mostrar tooltip usando classe CSS
+        this.tooltip.className = `tour-tooltip tour-tooltip-active ${posicao}`;
+        
+        console.log('✅ DEBUG: Tooltip exibido com sucesso');
+        console.log('🔍 DEBUG: Classes do tooltip:', this.tooltip.className);
     }
 
     atualizarTooltip(passo) {
@@ -605,8 +610,7 @@ class TourGuiado {
         this.isActive = false;
         this.removerDestaque();
         this.esconderOverlay();
-        this.tooltip.style.opacity = '0';
-        this.tooltip.style.transform = 'scale(0.8)';
+        this.esconderTooltip();
         
         // Limpar estado do tour
         sessionStorage.removeItem('tourAtivo');
