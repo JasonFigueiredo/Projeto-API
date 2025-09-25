@@ -14,5 +14,7 @@
 <link rel="stylesheet" href="../../Template/dist/css/adminlte.min.css">
 <link rel="stylesheet" href="../../Template/loader/dist/css-loader.css">
  <link rel="stylesheet" href="../../Template/dist/css/login-custom.css">
+<!-- Tour Guiado CSS -->
+<link rel="stylesheet" href="../../Template/dist/css/tour-guiado.css">
 <!-- Google Font: Source Sans Pro -->
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">

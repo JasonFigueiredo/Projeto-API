@@ -25,6 +25,8 @@
 <script src="../../Resource/ajax/tipo_equipamento_ajax.js"></script>
 <script src="../../Resource/ajax/modelo_equipamento_ajax.js"></script>
 <script src="../../Resource/js/navegacao_ativa.js"></script>
+<!-- Tour Guiado JavaScript -->
+<script src="../../Resource/js/tour-guiado.js"></script>
 
 
 <style>

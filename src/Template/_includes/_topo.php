@@ -10,6 +10,7 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">Contato</a>
         </li>
+        <!-- Botão de iniciar tour será adicionado automaticamente pelo JavaScript -->
     </ul>
 
     <!-- SEARCH FORM -->

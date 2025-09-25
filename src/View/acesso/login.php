@@ -41,7 +41,9 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_usuario_dataview.php
           </div>
           <div class="row">
             <div class="col-12">
-              <button type="button" class="btn btn-primary btn-block" onclick="Logar(formLOG)">Entrar</button>
+              <div style="text-align: left;">
+                <button type="button" class="btn btn-primary" onclick="Logar(formLOG)">Entrar</button>
+              </div>
             </div>
           </div>
         </form>
