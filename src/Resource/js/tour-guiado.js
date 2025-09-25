@@ -146,11 +146,53 @@ class TourGuiado {
         this.passos = [
             // Seção Equipamentos
             {
-                pagina: 'equipamento.php',
-                elemento: '.sidebar',
-                titulo: 'Menu de Navegação',
-                descricao: 'Bem-vindo ao sistema de controle de chamados! Este é o menu principal onde você encontrará todas as funcionalidades organizadas por categorias. Vamos começar explorando a seção de Equipamentos.',
+                pagina: 'gerenciar_tipo_equipamento.php',
+                elemento: '.card-header',
+                titulo: 'Gerenciar Tipos de Equipamento',
+                descricao: 'Aqui você gerencia todos os tipos de equipamentos cadastrados no sistema. Os tipos ajudam na categorização e organização dos equipamentos (ex: Computador, Impressora, Telefone).',
+                posicao: 'bottom'
+            },
+            {
+                pagina: 'gerenciar_tipo_equipamento.php',
+                elemento: 'input[name="tipo"], input[id="tipo"]',
+                titulo: 'Nome do Tipo',
+                descricao: 'Digite o nome do tipo de equipamento que deseja cadastrar (ex: Computador, Impressora, Telefone). Este nome será usado para categorizar os equipamentos no sistema.',
+                posicao: 'bottom'
+            },
+            {
+                pagina: 'gerenciar_tipo_equipamento.php',
+                elemento: 'button[name="btn_cadastrar"], .btn-success, button[onclick*="CadastrarTipoEquipamento"]',
+                titulo: 'Gravar Tipo',
+                descricao: 'Após digitar o nome do tipo, clique no botão <strong>"Gravar"</strong> para salvar o novo tipo de equipamento no sistema.',
                 posicao: 'right'
+            },
+            {
+                pagina: 'gerenciar_tipo_equipamento.php',
+                elemento: '#tableResult tbody tr td:nth-child(2), .table tbody tr td:nth-child(2)',
+                titulo: 'Nome do Equipamento',
+                descricao: 'Aqui você visualiza o <strong>nome do equipamento</strong> que foi cadastrado no sistema. Cada linha representa um tipo diferente (ex: Computador, Impressora, Telefone).',
+                posicao: 'bottom'
+            },
+            {
+                pagina: 'gerenciar_tipo_equipamento.php',
+                elemento: '.btn-warning, button[data-target="#alterar-tipo"]',
+                titulo: 'Alterar Tipo',
+                descricao: 'Clique no botão <strong>"Alterar"</strong> para modificar as informações do tipo de equipamento selecionado. Aqui você pode editar o nome ou outras propriedades do tipo.',
+                posicao: 'right'
+            },
+            {
+                pagina: 'gerenciar_tipo_equipamento.php',
+                elemento: '.btn-danger, button[data-target="#modal-excluir"]',
+                titulo: 'Excluir Tipo',
+                descricao: 'Clique no botão <strong>"Excluir"</strong> para remover permanentemente o tipo de equipamento do sistema. <strong>Atenção:</strong> Esta ação não pode ser desfeita.',
+                posicao: 'right'
+            },
+            {
+                pagina: 'gerenciar_modelo_equipamento.php',
+                elemento: '.card-header',
+                titulo: 'Gerenciar Modelos de Equipamento',
+                descricao: 'Aqui você pode cadastrar e gerenciar os modelos específicos de equipamentos (ex: Dell Optiplex 7090, HP LaserJet Pro). Os modelos definem as especificações técnicas dos equipamentos.',
+                posicao: 'bottom'
             },
             {
                 pagina: 'equipamento.php',
@@ -158,6 +200,34 @@ class TourGuiado {
                 titulo: 'Cadastro de Equipamentos',
                 descricao: 'Aqui você pode cadastrar novos equipamentos no sistema. Preencha todos os campos obrigatórios como nome, modelo, tipo e localização do equipamento.',
                 posicao: 'bottom'
+            },
+            {
+                pagina: 'equipamento.php',
+                elemento: 'select[name="tipo"], select[id="tipo"]',
+                titulo: 'Tipo de Equipamento',
+                descricao: 'Aqui você seleciona o tipo de equipamento (ex: Computador, Impressora, Telefone). Esta categorização ajuda na organização e controle dos equipamentos do sistema.',
+                posicao: 'right'
+            },
+            {
+                pagina: 'equipamento.php',
+                elemento: 'select[name="modelo"], select[id="modelo"]',
+                titulo: 'Modelo do Equipamento',
+                descricao: 'Selecione o modelo específico do equipamento (ex: Dell Optiplex 7090, HP LaserJet Pro). O modelo determina as especificações técnicas e compatibilidade do equipamento.',
+                posicao: 'right'
+            },
+            {
+                pagina: 'equipamento.php',
+                elemento: 'input[name="identificacao"], input[id="identificacao"]',
+                titulo: 'Identificação do Equipamento',
+                descricao: 'Digite um código único para identificar o equipamento (ex: COMP-001, IMP-002). Esta identificação será usada para rastreamento, controle de patrimônio e localização do equipamento.',
+                posicao: 'right'
+            },
+            {
+                pagina: 'equipamento.php',
+                elemento: 'textarea[name="descricao"], textarea[id="descricao"]',
+                titulo: 'Observações do Equipamento',
+                descricao: 'Adicione informações adicionais sobre o equipamento, como localização física, responsável, histórico de manutenção ou outras observações relevantes para o controle.',
+                posicao: 'right'
             },
             {
                 pagina: 'gerenciar_setor.php',
@@ -178,20 +248,6 @@ class TourGuiado {
                 elemento: '.card-header',
                 titulo: 'Consultar Equipamentos',
                 descricao: 'Esta tela permite visualizar todos os equipamentos cadastrados no sistema, com opções de filtro e busca para encontrar equipamentos específicos.',
-                posicao: 'bottom'
-            },
-            {
-                pagina: 'gerenciar_tipo_equipamento.php',
-                elemento: '.card-header',
-                titulo: 'Gerenciar Tipos de Equipamento',
-                descricao: 'Aqui você define os tipos de equipamentos (ex: Computador, Impressora, Telefone). Isso ajuda na categorização e organização dos equipamentos.',
-                posicao: 'bottom'
-            },
-            {
-                pagina: 'gerenciar_modelo_equipamento.php',
-                elemento: '.card-header',
-                titulo: 'Gerenciar Modelos de Equipamento',
-                descricao: 'Esta tela permite cadastrar e gerenciar os modelos específicos de equipamentos (ex: Dell Optiplex 7090, HP LaserJet Pro).',
                 posicao: 'bottom'
             },
             {
@@ -248,6 +304,13 @@ class TourGuiado {
         
         console.log(`🎯 DEBUG: Passo detectado: ${passoDetectado}, Tour iniciado no passo ${this.passoAtual + 1}`);
         
+        // Verificar se não estamos na página inicial do tour
+        if (!window.location.pathname.includes('gerenciar_tipo_equipamento.php')) {
+            // Navegar para a página inicial do tour
+            this.navegarParaPagina('gerenciar_tipo_equipamento.php');
+            return;
+        }
+        
         this.overlay.style.pointerEvents = 'auto';
         this.mostrarOverlay();
         this.executarPasso();
@@ -273,9 +336,9 @@ class TourGuiado {
         }
         
         if (urlAtual.includes('gerenciar_tipo_equipamento.php')) {
-            // Se estiver na página de gerenciar tipo equipamento, sempre iniciar do passo 6
-            console.log('🎯 DEBUG: Página gerenciar_tipo_equipamento.php detectada - retornando passo 6');
-            return 5; // Passo 6: Gerenciar Tipos de Equipamento
+            // Se estiver na página de gerenciar tipo equipamento, sempre iniciar do passo 2
+            console.log('🎯 DEBUG: Página gerenciar_tipo_equipamento.php detectada - retornando passo 1');
+            return 0; // Passo 1: Gerenciar Tipos de Equipamento
         }
         
         if (urlAtual.includes('gerenciar_modelo_equipamento.php')) {
@@ -464,6 +527,23 @@ class TourGuiado {
     destacarElemento(passo) {
         // Executar imediatamente
         const elemento = document.querySelector(passo.elemento);
+        
+        // Debug específico para campo de observações
+        if (passo.titulo.includes('Observações')) {
+            console.log('🔍 DEBUG: Procurando campo de observações...');
+            console.log('🔍 DEBUG: Seletor usado:', passo.elemento);
+            console.log('🔍 DEBUG: Elemento encontrado:', !!elemento);
+            if (elemento) {
+                console.log('🔍 DEBUG: Elemento encontrado:', elemento);
+            } else {
+                // Tentar encontrar qualquer textarea na página
+                const textareas = document.querySelectorAll('textarea');
+                console.log('🔍 DEBUG: Todas as textareas encontradas:', textareas.length);
+                textareas.forEach((textarea, index) => {
+                    console.log(`🔍 DEBUG: Textarea ${index}:`, textarea.name, textarea.placeholder, textarea.id);
+                });
+            }
+        }
         
         if (!elemento) {
             // Tentar novamente rapidamente

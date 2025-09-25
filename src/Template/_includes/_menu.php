@@ -26,6 +26,18 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
+                            <a href="gerenciar_tipo_equipamento.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Tipo</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="gerenciar_modelo_equipamento.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Modelos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="equipamento.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Novo</p>
@@ -47,18 +59,6 @@
                             <a href="consultar_equipamento.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Consultar</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="gerenciar_tipo_equipamento.php" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Tipo</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="gerenciar_modelo_equipamento.php" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Modelos</p>
                             </a>
                         </li>
                         <li class="nav-item">
