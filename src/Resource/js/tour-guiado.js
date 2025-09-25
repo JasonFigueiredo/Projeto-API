@@ -138,7 +138,6 @@ class TourGuiado {
             
             // Inserir após o link do menu
             menuLink.parentNode.insertAdjacentElement('afterend', botaoTour);
-            console.log('Botão de tour adicionado com sucesso');
         } else {
             console.warn('Elemento do menu não encontrado para adicionar botão de tour');
         }
@@ -240,13 +239,102 @@ class TourGuiado {
         if (this.isActive) return;
         
         this.isActive = true;
-        this.passoAtual = 0;
+        
+        // Detectar em qual passo iniciar baseado na página atual
+        this.passoAtual = this.detectarPassoAtual();
+        
         this.overlay.style.pointerEvents = 'auto';
         this.mostrarOverlay();
         this.executarPasso();
         
         // Salvar que o tour foi iniciado
         localStorage.setItem('tourIniciado', 'true');
+        
+    }
+
+    detectarPassoAtual() {
+        const urlAtual = window.location.pathname;
+        
+        // Casos especiais para páginas com múltiplos passos
+        if (urlAtual.includes('equipamento.php')) {
+            // Se estiver na página de equipamento, verificar qual elemento está mais visível
+            const sidebar = document.querySelector('.sidebar');
+            const cardHeader = document.querySelector('.card-header');
+            
+            if (sidebar && cardHeader) {
+                // Verificar qual está mais visível na tela
+                const sidebarRect = sidebar.getBoundingClientRect();
+                const cardRect = cardHeader.getBoundingClientRect();
+                
+                // Se o card está mais visível (não está fora da tela), iniciar do passo 2
+                if (cardRect.top < window.innerHeight && cardRect.bottom > 0) {
+                    return 1; // Segundo passo: Cadastro de Equipamentos
+                } else {
+                    return 0; // Primeiro passo: Menu de Navegação
+                }
+            } else if (cardHeader) {
+                return 1; // Segundo passo: Cadastro de Equipamentos
+            } else {
+                return 0; // Primeiro passo: Menu de Navegação
+            }
+        }
+        
+        if (urlAtual.includes('novo_usuario.php')) {
+            // Se estiver na página de novo usuário, verificar qual elemento está mais visível
+            const sidebar = document.querySelector('.sidebar');
+            const selectTipo = document.querySelector('select[name*="tipo"], select[name*="perfil"], select[name*="cargo"]');
+            
+            if (sidebar && selectTipo) {
+                // Verificar qual está mais visível na tela
+                const sidebarRect = sidebar.getBoundingClientRect();
+                const selectRect = selectTipo.getBoundingClientRect();
+                
+                // Se o select está mais visível, iniciar do passo 10
+                if (selectRect.top < window.innerHeight && selectRect.bottom > 0) {
+                    return 9; // Passo 10: Seleção de Tipo de Usuário
+                } else {
+                    return 8; // Passo 9: Seção de Usuários
+                }
+            } else if (selectTipo) {
+                return 9; // Passo 10: Seleção de Tipo de Usuário
+            } else {
+                return 8; // Passo 9: Seção de Usuários
+            }
+        }
+        
+        if (urlAtual.includes('consultar_usuario.php')) {
+            // Se estiver na página de consultar usuário, verificar qual elemento está mais visível
+            const cardHeader = document.querySelector('.card-header');
+            const table = document.querySelector('table tbody tr:first-child');
+            
+            if (cardHeader && table) {
+                // Verificar qual está mais visível na tela
+                const cardRect = cardHeader.getBoundingClientRect();
+                const tableRect = table.getBoundingClientRect();
+                
+                // Se a tabela está mais visível, iniciar do passo 12
+                if (tableRect.top < window.innerHeight && tableRect.bottom > 0) {
+                    return 11; // Passo 12: Lista de Usuários
+                } else {
+                    return 10; // Passo 11: Consultar Usuários
+                }
+            } else if (table) {
+                return 11; // Passo 12: Lista de Usuários
+            } else {
+                return 10; // Passo 11: Consultar Usuários
+            }
+        }
+        
+        // Para outras páginas, encontrar o passo correspondente
+        for (let i = 0; i < this.passos.length; i++) {
+            const passo = this.passos[i];
+            if (urlAtual.includes(passo.pagina)) {
+                return i;
+            }
+        }
+        
+        // Se não encontrar correspondência, iniciar do primeiro passo
+        return 0;
     }
 
     mostrarOverlay() {
@@ -260,25 +348,19 @@ class TourGuiado {
     }
 
     executarPasso() {
-        console.log(`Executando passo ${this.passoAtual + 1} de ${this.passos.length}`);
-        
         if (this.passoAtual >= this.passos.length) {
-            console.log('Tour concluído - finalizando');
             this.finalizarTour();
             return;
         }
 
         const passo = this.passos[this.passoAtual];
-        console.log(`Passo atual: ${passo.titulo} - Página: ${passo.pagina}`);
         
         // Verificar se estamos na página correta
         if (!this.verificarPagina(passo.pagina)) {
-            console.log(`Navegando para página: ${passo.pagina}`);
             this.navegarParaPagina(passo.pagina);
             return;
         }
 
-        console.log('Página correta encontrada - destacando elemento');
         // Executar imediatamente
         this.destacarElemento(passo);
     }
@@ -293,7 +375,6 @@ class TourGuiado {
         const urlBase = window.location.origin + window.location.pathname.split('/').slice(0, -2).join('/');
         const novaUrl = `${urlBase}/adm/${pagina}`;
         
-        console.log(`Navegando para: ${novaUrl}`);
         
         // Salvar estado do tour antes de navegar
         sessionStorage.setItem('tourAtivo', 'true');
@@ -303,20 +384,14 @@ class TourGuiado {
     }
 
     destacarElemento(passo) {
-        console.log(`Destacando elemento: ${passo.elemento}`);
-        
         // Executar imediatamente
         const elemento = document.querySelector(passo.elemento);
         
         if (!elemento) {
-            console.warn(`Elemento não encontrado: ${passo.elemento}`);
-            console.log('Tentando novamente rapidamente...');
-            
             // Tentar novamente rapidamente
             setTimeout(() => {
                 const elementoRetry = document.querySelector(passo.elemento);
                 if (!elementoRetry) {
-                    console.error(`Elemento ainda não encontrado após retry: ${passo.elemento}`);
                     this.proximoPasso();
                     return;
                 }
@@ -443,9 +518,7 @@ class TourGuiado {
     }
 
     pularTour() {
-        if (confirm('Tem certeza que deseja pular o tour guiado? Você pode iniciá-lo novamente a qualquer momento.')) {
-            this.finalizarTour();
-        }
+        this.finalizarTour();
     }
 
     fecharTour() {
@@ -471,7 +544,6 @@ class TourGuiado {
             toastr.success('🎉 Tour guiado concluído! Você já conhece as principais funcionalidades do sistema. Pode iniciar o tour novamente a qualquer momento usando o botão no topo da página.');
         }
         
-        console.log('Tour finalizado com sucesso');
     }
 
     removerDestaque() {
@@ -540,7 +612,6 @@ document.addEventListener('DOMContentLoaded', function() {
         tourGuiado.verificarTourNecessario();
     }
     
-    console.log('Sistema de Tour Guiado inicializado');
 });
 
 // Função global para iniciar tour (pode ser chamada de qualquer lugar)
