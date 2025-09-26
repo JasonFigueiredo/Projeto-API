@@ -257,9 +257,48 @@ class TourGuiado {
                 descricao: 'Aqui você pode cadastrar novos equipamentos no sistema. Preencha todos os campos obrigatórios como nome, modelo, tipo e localização do equipamento.',
                 posicao: 'bottom'
             },
-            
             {
-                // passo 14:
+                // passo complemento 1 passo 14:
+                pagina: 'equipamento.php',
+                elemento: 'select[name="tipo"], select[id="tipo"]',
+                titulo: 'Selecionar Tipo de Equipamento',
+                descricao: 'Aqui você deve selecionar o tipo de equipamento que deseja cadastrar (ex: Computador, Notebook, Impressora).',
+                posicao: 'bottom'
+            },
+            {
+                // passo complemento 2 passo 15:
+                pagina: 'equipamento.php',
+                elemento: 'select[name="modelo"], select[id="modelo"]',
+                titulo: 'Selecionar Modelo de Equipamento',
+                descricao: 'Aqui você deve selecionar o modelo específico do equipamento (ex: Dell Optiplex 7090, HP LaserJet Pro).',
+                posicao: 'bottom'
+            },
+            {
+                // passo complemento 3 passo 16:
+                pagina: 'equipamento.php',
+                elemento: 'input[name="identificacao"], input[id="identificacao"]',
+                titulo: 'Identificação do Equipamento',
+                descricao: 'Aqui você deve digitar a identificação única do equipamento (número de patrimônio, serial, etc.).',
+                posicao: 'bottom'
+            },
+            {
+                // passo complemento 4 passo 17:
+                pagina: 'equipamento.php',
+                elemento: 'textarea[name="descricao"], textarea[id="descricao"], textarea[placeholder*="observações"]',
+                titulo: 'Observações sobre o Equipamento',
+                descricao: 'Aqui você pode adicionar observações importantes sobre o equipamento (opcional).',
+                posicao: 'bottom'
+            },
+            {
+                // passo complemento 5 passo 18:
+                pagina: 'equipamento.php',
+                elemento: 'button[name="btn_cadastrar"], .btn-success',
+                titulo: 'Cadastrar Equipamento',
+                descricao: 'Clique neste botão para cadastrar o equipamento com todas as informações preenchidas.',
+                posicao: 'right'
+            },
+            {
+                // passo 19:
                 pagina: 'gerenciar_setor.php',
                 elemento: '.card-header',
                 titulo: 'Gerenciar Setores',
@@ -267,7 +306,7 @@ class TourGuiado {
                 posicao: 'bottom'
             },
             {
-                // passo 15:
+                // passo 20:
                 pagina: 'alocar_equipamentos.php',
                 elemento: '.card-header',
                 titulo: 'Alocar Equipamentos',
@@ -275,7 +314,7 @@ class TourGuiado {
                 posicao: 'bottom'
             },
             {
-                // passo 16:
+                // passo 21:
                 pagina: 'consultar_equipamento.php',
                 elemento: '.card-header',
                 titulo: 'Consultar Equipamentos',
@@ -283,7 +322,7 @@ class TourGuiado {
                 posicao: 'bottom'
             },
             {
-                // passo 17:
+                // passo 22:
                 pagina: 'remover_equipamento.php',
                 elemento: '.card-header',
                 titulo: 'Remover Equipamentos',
@@ -292,7 +331,7 @@ class TourGuiado {
             },
             // Seção Usuários
             {
-                // passo 18:
+                // passo 23:
                 pagina: 'novo_usuario.php',
                 elemento: 'select[name*="tipo"], select[name*="perfil"], select[name*="cargo"]',
                 titulo: 'Seleção de Tipo de Usuário',
@@ -300,7 +339,7 @@ class TourGuiado {
                 posicao: 'bottom'
             },
             {
-                // passo 19:
+                // passo 24:
                 pagina: 'consultar_usuario.php',
                 elemento: '.card-header',
                 titulo: 'Consultar Usuários',
@@ -387,22 +426,22 @@ class TourGuiado {
         }
         
         if (urlAtual.includes('gerenciar_setor.php')) {
-            return 13; // Passo 14: Gerenciar Setores
+            return 18; // Passo 19: Gerenciar Setores
         }
         if (urlAtual.includes('alocar_equipamentos.php')) {
-            return 14; // Passo 15: Alocar Equipamentos
+            return 19; // Passo 20: Alocar Equipamentos
         }
         if (urlAtual.includes('consultar_equipamento.php')) {
-            return 15; // Passo 16: Consultar Equipamentos
+            return 20; // Passo 21: Consultar Equipamentos
         }
         if (urlAtual.includes('remover_equipamento.php')) {
-            return 16; // Passo 17: Remover Equipamentos
+            return 21; // Passo 22: Remover Equipamentos
         }
         if (urlAtual.includes('novo_usuario.php')) {
-            return 17; // Passo 18: Novo Usuário
+            return 22; // Passo 23: Novo Usuário
         }
         if (urlAtual.includes('consultar_usuario.php')) {
-            return 18; // Passo 19: Consultar Usuários
+            return 23; // Passo 24: Consultar Usuários
         }
     }
 
@@ -937,4 +976,22 @@ function testarPosicionamentoFixo(seletor) {
     } else {
         console.error('Tour Guiado não foi inicializado ainda');
     }
+}
+
+// Função para testar todos os passos do equipamento.php
+function testarPassosEquipamento() {
+    console.log(`🧪 DEBUG: Testando todos os passos do equipamento.php`);
+    
+    const passosEquipamento = [
+        { seletor: 'select[name="tipo"], select[id="tipo"]', nome: 'Tipo de Equipamento' },
+        { seletor: 'select[name="modelo"], select[id="modelo"]', nome: 'Modelo de Equipamento' },
+        { seletor: 'input[name="identificacao"], input[id="identificacao"]', nome: 'Identificação' },
+        { seletor: 'textarea[name="descricao"], textarea[id="descricao"]', nome: 'Observações' },
+        { seletor: 'button[name="btn_cadastrar"], .btn-success', nome: 'Botão Cadastrar' }
+    ];
+    
+    passosEquipamento.forEach((passo, index) => {
+        console.log(`\n--- Testando ${index + 1}: ${passo.nome} ---`);
+        testarPosicionamento(passo.seletor, 'bottom');
+    });
 }
