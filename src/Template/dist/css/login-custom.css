@@ -108,6 +108,64 @@
   text-overflow: ellipsis !important;
 }
 
+/* CORREÇÃO CRÍTICA: Campos de seleção - texto completo visível */
+/* Regras com máxima prioridade para sobrescrever qualquer CSS conflitante */
+select,
+select.form-control,
+select.custom-select,
+.form-control[type="select"],
+select[class*="form-control"],
+select[class*="custom-select"] {
+  overflow: visible !important;
+  text-overflow: unset !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  min-width: 200px !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 38px !important;
+  max-height: none !important;
+  padding: 8px 12px !important;
+  line-height: 1.4 !important;
+  font-size: 0.875rem !important;
+  display: block !important;
+  box-sizing: border-box !important;
+}
+
+/* Opções do select com texto completo visível */
+select option,
+select.form-control option,
+select.custom-select option,
+select[class*="form-control"] option,
+select[class*="custom-select"] option {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  word-wrap: break-word !important;
+  padding: 8px 12px !important;
+  min-height: 35px !important;
+  line-height: 1.4 !important;
+  font-size: 0.875rem !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  background: white !important;
+  color: #495057 !important;
+}
+
+/* Garantir que campos de seleção não sejam afetados por regras de botão */
+select *,
+select.form-control *,
+select.custom-select *,
+select[class*="form-control"] *,
+select[class*="custom-select"] * {
+  overflow: visible !important;
+  text-overflow: unset !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+}
+
 /* Limpar float do botão */
 .row:after {
   content: "";
@@ -338,6 +396,22 @@
     width: auto !important;
     float: left !important;
   }
+  
+  /* Ajustes para campos de seleção em telas médias */
+  select.form-control,
+  select.custom-select,
+  select {
+    min-width: 180px !important;
+    font-size: 0.8rem !important;
+  }
+  
+  select.form-control option,
+  select.custom-select option,
+  select option {
+    padding: 7px 11px !important;
+    min-height: 32px !important;
+    font-size: 0.8rem !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -371,6 +445,22 @@
     margin: 1rem 0 !important;
     width: auto !important;
     float: left !important;
+  }
+  
+  /* Ajustes para campos de seleção em telas pequenas */
+  select.form-control,
+  select.custom-select,
+  select {
+    min-width: 150px !important;
+    font-size: 0.75rem !important;
+  }
+  
+  select.form-control option,
+  select.custom-select option,
+  select option {
+    padding: 6px 10px !important;
+    min-height: 30px !important;
+    font-size: 0.75rem !important;
   }
 }
 
@@ -494,4 +584,207 @@
   height: 38px !important;
   min-height: 38px !important;
   max-height: 38px !important;
+}
+
+/* Correções específicas para campos de seleção em input-group */
+.input-group select,
+.input-group select.form-control,
+.input-group select.custom-select,
+.input-group select[class*="form-control"],
+.input-group select[class*="custom-select"] {
+  overflow: visible !important;
+  text-overflow: unset !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  min-width: 200px !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  max-height: 38px !important;
+  padding: 8px 12px !important;
+  line-height: 1.4 !important;
+  font-size: 0.875rem !important;
+  display: block !important;
+  box-sizing: border-box !important;
+}
+
+/* Garantir que opções em input-group também sejam visíveis */
+.input-group select option,
+.input-group select.form-control option,
+.input-group select.custom-select option {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  word-wrap: break-word !important;
+  padding: 8px 12px !important;
+  min-height: 35px !important;
+  line-height: 1.4 !important;
+  font-size: 0.875rem !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  background: white !important;
+  color: #495057 !important;
+}
+
+/* Garantir que campos de seleção não sejam afetados pelas regras de botão */
+select.form-control *,
+select.custom-select *,
+select * {
+  overflow: visible !important;
+  text-overflow: unset !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+}
+
+/* Correção para Select2 e outros plugins de select */
+.select2-container .select2-selection--single,
+.select2-container .select2-selection--multiple {
+  overflow: visible !important;
+  text-overflow: unset !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  min-width: 200px !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered,
+.select2-container .select2-selection--multiple .select2-selection__rendered {
+  overflow: visible !important;
+  text-overflow: unset !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  padding: 8px 12px !important;
+  line-height: 1.4 !important;
+}
+
+/* Garantir que dropdowns de select sejam totalmente visíveis */
+.select2-dropdown {
+  overflow: visible !important;
+  max-width: none !important;
+  width: auto !important;
+  min-width: 200px !important;
+}
+
+.select2-dropdown .select2-results__option {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  word-wrap: break-word !important;
+  padding: 8px 12px !important;
+  min-height: 35px !important;
+  line-height: 1.4 !important;
+}
+
+/* REGRAS DE MÁXIMA PRIORIDADE - SOBRESCREVER QUALQUER CSS CONFLITANTE */
+/* Estas regras devem ser aplicadas por último para garantir que funcionem */
+body select,
+html select,
+* select,
+div select,
+form select,
+.card select,
+.modal select,
+.container select,
+.row select,
+.col select {
+  overflow: visible !important;
+  text-overflow: unset !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  min-width: 200px !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 38px !important;
+  max-height: none !important;
+  padding: 8px 12px !important;
+  line-height: 1.4 !important;
+  font-size: 0.875rem !important;
+  display: block !important;
+  box-sizing: border-box !important;
+}
+
+body select option,
+html select option,
+* select option,
+div select option,
+form select option,
+.card select option,
+.modal select option,
+.container select option,
+.row select option,
+.col select option {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  word-wrap: break-word !important;
+  padding: 8px 12px !important;
+  min-height: 35px !important;
+  line-height: 1.4 !important;
+  font-size: 0.875rem !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  background: white !important;
+  color: #495057 !important;
+}
+
+/* Forçar aplicação em todos os elementos select */
+select:not([style*="overflow: hidden"]) {
+  overflow: visible !important;
+  text-overflow: unset !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+}
+
+select option:not([style*="overflow: hidden"]) {
+  overflow: visible !important;
+  text-overflow: unset !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+}
+
+/* CORREÇÃO FINAL - REGRAS COM MÁXIMA ESPECIFICIDADE */
+/* Aplicar diretamente em todos os selects da página */
+select[class],
+select[id],
+select[name],
+select[type] {
+  overflow: visible !important;
+  text-overflow: unset !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  min-width: 200px !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 38px !important;
+  max-height: none !important;
+  padding: 8px 12px !important;
+  line-height: 1.4 !important;
+  font-size: 0.875rem !important;
+  display: block !important;
+  box-sizing: border-box !important;
+}
+
+select[class] option,
+select[id] option,
+select[name] option,
+select[type] option {
+  overflow: visible !important;
+  text-overflow: unset !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  padding: 8px 12px !important;
+  min-height: 35px !important;
+  line-height: 1.4 !important;
+  font-size: 0.875rem !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  background: white !important;
+  color: #495057 !important;
 }
