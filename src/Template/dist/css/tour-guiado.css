@@ -200,7 +200,7 @@
 
 /* Tooltip do Tour */
 .tour-tooltip {
-    position: absolute !important;
+    position: fixed !important;
     background: white !important;
     border-radius: 12px !important;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(40, 167, 69, 0.3), 0 0 20px rgba(40, 167, 69, 0.2) !important;
@@ -220,6 +220,10 @@
     display: block !important;
     opacity: 1 !important;
     transform: scale(1) !important;
+    position: fixed !important;
+    will-change: auto !important;
+    backface-visibility: hidden !important;
+    transform-style: preserve-3d !important;
 }
 
 .tour-tooltip-header {
@@ -558,4 +562,25 @@
     top: 50%;
     transform: translateY(-50%);
     border-right-color: white;
+}
+
+/* Posicionamento fixo e estável para tooltip */
+.tour-tooltip {
+    will-change: auto !important;
+    backface-visibility: hidden !important;
+    transform-style: preserve-3d !important;
+    contain: layout style paint !important;
+    isolation: isolate !important;
+}
+
+/* Garantir que o tooltip não seja afetado por transformações do pai */
+.tour-tooltip.tour-tooltip-active {
+    transform: scale(1) translateZ(0) !important;
+    will-change: auto !important;
+}
+
+/* Prevenir reflow e repaint desnecessários */
+.tour-tooltip * {
+    will-change: auto !important;
+    backface-visibility: hidden !important;
 }

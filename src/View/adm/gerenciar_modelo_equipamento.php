@@ -73,8 +73,8 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_modelo_equipame
                         <h3 class="card-title">Modelos cadastrados</h3>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body">
-                        <table class="table table-striped table-bordered table-hover" id="tableResult">
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-bordered table-striped" id="tableResult">
 
                         </table>
                     </div>

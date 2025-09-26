@@ -74,8 +74,8 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_setor_dataview.
                         <h3 class="card-title">Setores cadastrados</h3>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body">
-                        <table id="setores" class="table table-bordered table-striped">
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-bordered table-striped" id="setores"">
                             <thead>
                                 <tr>
                                     <th>Ações</th>

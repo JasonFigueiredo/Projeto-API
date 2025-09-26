@@ -76,7 +76,7 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0">
-                        <table id="tableResult" class="table table-bordered table-striped">
+                        <table class="table table-bordered table-striped" id="tableResult">
 
                         </table>
                     </div>

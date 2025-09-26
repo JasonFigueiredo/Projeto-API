@@ -7,25 +7,8 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a href="../../index3.html" class="nav-link">Menu</a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contato</a>
-        </li>
         <!-- Botão de iniciar tour será adicionado automaticamente pelo JavaScript -->
     </ul>
-
-    <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-        <div class="input-group input-group-sm">
-            <input class="form-control form-control-navbar" type="search" placeholder="Pesquisar" aria-label="Search">
-            <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-        </div>
-    </form>
-
-    <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">

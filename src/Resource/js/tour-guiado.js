@@ -145,64 +145,145 @@ class TourGuiado {
         // Configuração dos passos do tour conforme especificado
         this.passos = [
             // Seção Equipamentos
-            // passo 0:
             {
+                // passo 0:
                 pagina: 'gerenciar_tipo_equipamento.php',
                 elemento: '.sidebar',
                 titulo: 'Menu de Navegação',
                 descricao: 'Bem-vindo ao sistema de controle de chamados! Este é o menu principal onde você encontrará todas as funcionalidades organizadas por categorias. Vamos começar explorando a seção de Equipamentos.',
                 posicao: 'right'
             },
-            // passo 1:
             {
+                //-------------------- passo 1:
                 pagina: 'gerenciar_tipo_equipamento.php',
                 elemento: '.card-header',
                 titulo: 'Gerenciar Tipos de Equipamento',
-                descricao: 'Aqui você define os tipos de equipamentos (ex: Computador, Impressora, Telefone). Isso ajuda na categorização e organização dos equipamentos.',
+                descricao: 'Aqui você define os tipos de equipamentos. Isso ajuda na categorização e organização dos equipamentos.',
                 posicao: 'bottom'
             },
-            // passo 2:
             {
+                // passo complemento 1 passo 2:
+                pagina: 'gerenciar_tipo_equipamento.php',
+                elemento: 'input[type="text"], input[name*="nome"], input[placeholder*="Digite"]',
+                titulo: 'Campo de Input',
+                descricao: 'Aqui você deve digitar o nome do tipo de equipamento que deseja cadastrar (ex: Computador, Notebook, Impressora).',
+                posicao: 'bottom'
+            },
+            {
+                // passo complemento 2 passo 3:
+                pagina: 'gerenciar_tipo_equipamento.php',
+                elemento: 'button[type="submit"], .btn-success, button[value*="Gravar"], button[value*="Salvar"]',
+                titulo: 'Botão Gravar',
+                descricao: 'Clique neste botão para salvar o tipo de equipamento que você digitou.',
+                posicao: 'right'
+            },
+            {
+                // passo complemento 3 passo 4:
+                pagina: 'gerenciar_tipo_equipamento.php',
+                elemento: 'tbody tr, .list-group-item, .table tbody tr',
+                titulo: 'Nome de Equipamento',
+                descricao: 'Aqui aparecerão todos os tipos de equipamentos que você cadastrou.',
+                posicao: 'bottom'
+            },
+            {
+                // passo complemento 4 passo 5:
+                pagina: 'gerenciar_tipo_equipamento.php',
+                elemento: '.btn-warning, button[value*="Alterar"], button[title*="Alterar"]',
+                titulo: 'Botão Alterar',
+                descricao: 'Use este botão para modificar um tipo de equipamento existente.',
+                posicao: 'right'
+            },
+            {
+                // passo complemento 5 passo 6:
+                pagina: 'gerenciar_tipo_equipamento.php',
+                elemento: '.btn-danger, button[value*="Excluir"], button[title*="Excluir"]',
+                titulo: 'Botão Excluir',
+                descricao: 'Use este botão para remover um tipo de equipamento da lista.',
+                posicao: 'right'
+            },
+            {
+                //-------------------- passo 7:
                 pagina: 'gerenciar_modelo_equipamento.php',
                 elemento: '.card-header',
                 titulo: 'Gerenciar Modelos de Equipamento',
-                descricao: 'Esta tela permite cadastrar e gerenciar os modelos específicos de equipamentos (ex: Dell Optiplex 7090, HP LaserJet Pro).',
+                descricao: 'Esta tela permite cadastrar e gerenciar os modelos específicos de equipamentos.',
                 posicao: 'bottom'
             },
-            // passo 3:
             {
+                // passo complemento 1 passo 8:
+                pagina: 'gerenciar_modelo_equipamento.php',
+                elemento: 'input[type="text"], input[name*="nome"], input[placeholder*="Digite"]',
+                titulo: 'Campo de Input',
+                descricao: 'Aqui você deve digitar o nome do modelo de equipamento que deseja cadastrar (ex: Dell Optiplex 7090, HP LaserJet Pro).',
+                posicao: 'bottom'
+            },
+            {
+                // passo complemento 2 passo 9:
+                pagina: 'gerenciar_modelo_equipamento.php',
+                elemento: 'button[type="submit"], .btn-success, button[value*="Gravar"], button[value*="Salvar"]',
+                titulo: 'Botão Gravar',
+                descricao: 'Clique neste botão para salvar o modelo de equipamento que você digitou.',
+                posicao: 'right'
+            },
+            {
+                // passo complemento 3 passo 10:
+                pagina: 'gerenciar_modelo_equipamento.php',
+                elemento: 'tbody tr, .list-group-item, .table tbody tr',
+                titulo: 'Nome de Equipamento',
+                descricao: 'Aqui aparecerão todos os modelos de equipamentos que você cadastrou.',
+                posicao: 'bottom'
+            },
+            {
+                // passo complemento 4 passo 11:
+                pagina: 'gerenciar_modelo_equipamento.php',
+                elemento: '.btn-warning, button[value*="Alterar"], button[title*="Alterar"]',
+                titulo: 'Botão Alterar',
+                descricao: 'Use este botão para modificar um modelo de equipamento existente.',
+                posicao: 'right'
+            },
+            {
+                // passo complemento 5 passo 12:
+                pagina: 'gerenciar_modelo_equipamento.php',
+                elemento: '.btn-danger, button[value*="Excluir"], button[title*="Excluir"]',
+                titulo: 'Botão Excluir',
+                descricao: 'Use este botão para remover um modelo de equipamento da lista.',
+                posicao: 'right'
+            },
+            {
+                // -------------------- passo 13:
                 pagina: 'equipamento.php',
                 elemento: '.card-header',
                 titulo: 'Cadastro de Equipamentos',
                 descricao: 'Aqui você pode cadastrar novos equipamentos no sistema. Preencha todos os campos obrigatórios como nome, modelo, tipo e localização do equipamento.',
                 posicao: 'bottom'
             },
-            // passo 4:
+            
             {
+                // passo 14:
                 pagina: 'gerenciar_setor.php',
                 elemento: '.card-header',
                 titulo: 'Gerenciar Setores',
                 descricao: 'Esta tela permite criar e gerenciar os setores da empresa. Os setores são importantes para organizar os equipamentos por departamento ou área de trabalho.',
                 posicao: 'bottom'
             },
-            // passo 5:
             {
+                // passo 15:
                 pagina: 'alocar_equipamentos.php',
                 elemento: '.card-header',
                 titulo: 'Alocar Equipamentos',
                 descricao: 'Aqui você pode alocar equipamentos para usuários específicos ou setores. Esta funcionalidade ajuda no controle de quem está usando cada equipamento.',
                 posicao: 'bottom'
             },
-            // passo 6:
             {
+                // passo 16:
                 pagina: 'consultar_equipamento.php',
                 elemento: '.card-header',
                 titulo: 'Consultar Equipamentos',
                 descricao: 'Esta tela permite visualizar todos os equipamentos cadastrados no sistema, com opções de filtro e busca para encontrar equipamentos específicos.',
                 posicao: 'bottom'
             },
-            // passo 7:
             {
+                // passo 17:
                 pagina: 'remover_equipamento.php',
                 elemento: '.card-header',
                 titulo: 'Remover Equipamentos',
@@ -210,24 +291,24 @@ class TourGuiado {
                 posicao: 'bottom'
             },
             // Seção Usuários
-            // passo 8:
             {
+                // passo 18:
                 pagina: 'novo_usuario.php',
                 elemento: 'select[name*="tipo"], select[name*="perfil"], select[name*="cargo"]',
                 titulo: 'Seleção de Tipo de Usuário',
                 descricao: 'Aqui você deve selecionar o tipo de usuário: <strong>Admin</strong> (acesso total), <strong>Funcionário</strong> (acesso limitado) ou <strong>Técnico</strong> (acesso técnico). Esta definição determina as permissões do usuário no sistema.',
                 posicao: 'bottom'
             },
-            // passo 9:
             {
+                // passo 19:
                 pagina: 'consultar_usuario.php',
                 elemento: '.card-header',
                 titulo: 'Consultar Usuários',
                 descricao: 'Esta tela permite visualizar todos os usuários cadastrados no sistema. Aqui você pode ver informações como nome, tipo de usuário e status.',
                 posicao: 'bottom'
             },
-            // passo 10:
             {
+                // passo 15:
                 pagina: 'consultar_usuario.php',
                 elemento: 'table tbody tr:first-child',
                 titulo: 'Lista de Usuários',
@@ -269,8 +350,8 @@ class TourGuiado {
 
         // Casos especiais para páginas com múltiplos passos
         // IMPORTANTE: Verificar páginas mais específicas PRIMEIRO para evitar conflitos
-        // passo 0/1:
         if (urlAtual.includes('gerenciar_tipo_equipamento.php')) {
+            // passo 0/1:
             // Se estiver na página de gerenciar tipo equipamento, sempre iniciar do passo 1
             const sidebar = document.querySelector('.sidebar');
             const cardHeader = document.querySelector('.card-header');
@@ -282,47 +363,46 @@ class TourGuiado {
 
                 // Se o card está mais visível (não está fora da tela), iniciar do passo 2
                 if (cardRect.top < window.innerHeight && cardRect.bottom > 0) {
-                    return 1; // Segundo passo: Cadastro de Equipamentos
+                    return 0; // Segundo passo: Cadastro de Equipamentos
                 } else {
-                    return 0; // Primeiro passo: Menu de Navegação
+                    return 1; // Primeiro passo: Menu de Navegação
                 }
             } else if (cardHeader) {
-                return 1; // Segundo passo: Cadastro de Equipamentos
+                return 0; // Segundo passo: Cadastro de Equipamentos
             } else {
-                return 0; // Primeiro passo: Menu de Navegação
+                return 1; // Primeiro passo: Menu de Navegação
             }
         }
 
         if (urlAtual.includes('gerenciar_modelo_equipamento.php')) {
-            return 2; // Passo 2: Gerenciar Modelos de Equipamento
+            return 7; // Passo 8: Gerenciar Modelos de Equipamento
         }
         
-        // Passo 3: Equipamento - verificação específica
         if (urlAtual.includes('equipamento.php') && 
             !urlAtual.includes('gerenciar_modelo_equipamento.php') && 
             !urlAtual.includes('consultar_equipamento.php') && 
             !urlAtual.includes('remover_equipamento.php')) {
-            console.log('🎯 DEBUG: Página equipamento.php detectada - retornando passo 3');
-            return 3; // Passo 3: Equipamento
+            console.log('🎯 DEBUG: Página equipamento.php detectada - retornando passo 13');
+            return 12; // Passo 13: Equipamento
         }
         
         if (urlAtual.includes('gerenciar_setor.php')) {
-            return 4; // Passo 4: Gerenciar Setores
+            return 13; // Passo 14: Gerenciar Setores
         }
         if (urlAtual.includes('alocar_equipamentos.php')) {
-            return 5; // Passo 5: Alocar Equipamentos
+            return 14; // Passo 15: Alocar Equipamentos
         }
         if (urlAtual.includes('consultar_equipamento.php')) {
-            return 6; // Passo 6: Consultar Equipamentos
+            return 15; // Passo 16: Consultar Equipamentos
         }
         if (urlAtual.includes('remover_equipamento.php')) {
-            return 7; // Passo 7: Remover Equipamentos
+            return 16; // Passo 17: Remover Equipamentos
         }
         if (urlAtual.includes('novo_usuario.php')) {
-            return 8; // Passo 8: Novo Usuário
+            return 17; // Passo 18: Novo Usuário
         }
         if (urlAtual.includes('consultar_usuario.php')) {
-            return 9; // Passo 9: Consultar Usuários
+            return 18; // Passo 19: Consultar Usuários
         }
     }
 
@@ -355,10 +435,11 @@ class TourGuiado {
 
         console.log(`🚀 DEBUG: Executando passo ${this.passoAtual + 1} - Página: ${passo.pagina}`);
         console.log(`📍 DEBUG: URL atual: ${window.location.pathname}`);
+        console.log(`🔍 DEBUG: Passo atual (índice): ${this.passoAtual}, Total de passos: ${this.passos.length}`);
 
-        // Lógica especial para passo 3 (equipamento.php)
-        if (this.passoAtual === 2 && passo.pagina === 'equipamento.php') {
-            console.log(`🎯 DEBUG: Passo 3 especial - Verificando se precisa navegar para equipamento.php`);
+        // Lógica especial para passo 13 (equipamento.php) - índice 12
+        if (this.passoAtual === 12 && passo.pagina === 'equipamento.php') {
+            console.log(`🎯 DEBUG: Passo 13 especial (índice 12) - Verificando se precisa navegar para equipamento.php`);
             const urlAtual = window.location.pathname;
             const nomeArquivo = urlAtual.split('/').pop();
             
@@ -366,7 +447,7 @@ class TourGuiado {
             
             // Verificação mais específica - apenas se o nome do arquivo for exatamente "equipamento.php"
             if (nomeArquivo !== 'equipamento.php') {
-                console.log(`🔄 DEBUG: Navegando para equipamento.php (passo 3 especial) - arquivo atual: ${nomeArquivo}`);
+                console.log(`🔄 DEBUG: Navegando para equipamento.php (passo 13 especial) - arquivo atual: ${nomeArquivo}`);
                 this.navegarParaPagina('equipamento.php');
                 return;
             }
@@ -454,23 +535,35 @@ class TourGuiado {
     }
 
     destacarElemento(passo) {
-        // Executar imediatamente
-        const elemento = document.querySelector(passo.elemento);
+        console.log(`🔍 DEBUG: Tentando encontrar elemento: ${passo.elemento}`);
+        
+        try {
+            // Executar imediatamente
+            const elemento = document.querySelector(passo.elemento);
 
-        if (!elemento) {
-            // Tentar novamente rapidamente
-            setTimeout(() => {
-                const elementoRetry = document.querySelector(passo.elemento);
-                if (!elementoRetry) {
-                    this.proximoPasso();
-                    return;
-                }
-                this.destacarElementoAuxiliar(elementoRetry, passo);
-            }, 200);
-            return;
+            if (!elemento) {
+                console.log(`⚠️ DEBUG: Elemento não encontrado, tentando novamente...`);
+                // Tentar novamente rapidamente
+                setTimeout(() => {
+                    const elementoRetry = document.querySelector(passo.elemento);
+                    if (!elementoRetry) {
+                        console.log(`❌ DEBUG: Elemento ainda não encontrado, pulando passo`);
+                        this.proximoPasso();
+                        return;
+                    }
+                    console.log(`✅ DEBUG: Elemento encontrado na segunda tentativa`);
+                    this.destacarElementoAuxiliar(elementoRetry, passo);
+                }, 200);
+                return;
+            }
+
+            console.log(`✅ DEBUG: Elemento encontrado: ${elemento.tagName}`);
+            this.destacarElementoAuxiliar(elemento, passo);
+        } catch (error) {
+            console.error(`❌ DEBUG: Erro ao buscar elemento: ${error.message}`);
+            console.log(`🔄 DEBUG: Pulando passo devido ao erro`);
+            this.proximoPasso();
         }
-
-        this.destacarElementoAuxiliar(elemento, passo);
     }
 
     destacarElementoAuxiliar(elemento, passo) {
@@ -494,52 +587,69 @@ class TourGuiado {
     posicionarTooltip(elemento, passo) {
         const rect = elemento.getBoundingClientRect();
         const tooltipRect = this.tooltip.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
 
         let top, left, posicao;
+        const margin = 15; // Margem mínima entre tooltip e elemento
+
+        console.log(`🎯 DEBUG: Posicionando tooltip - Elemento: ${rect.width}x${rect.height} em (${rect.left}, ${rect.top})`);
+
+        // Usar posição fixa baseada na preferência do passo
+        posicao = `tour-tooltip-${passo.posicao}`;
 
         switch (passo.posicao) {
             case 'top':
-                top = rect.top - tooltipRect.height - 20;
+                top = rect.top - tooltipRect.height - margin;
                 left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
-                posicao = 'tour-tooltip-top';
                 break;
             case 'bottom':
-                top = rect.bottom + 20;
+                top = rect.bottom + margin;
                 left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
-                posicao = 'tour-tooltip-bottom';
                 break;
             case 'left':
                 top = rect.top + (rect.height / 2) - (tooltipRect.height / 2);
-                left = rect.left - tooltipRect.width - 20;
-                posicao = 'tour-tooltip-left';
+                left = rect.left - tooltipRect.width - margin;
                 break;
             case 'right':
+                // Posicionamento fixo ao lado direito, centralizado verticalmente
                 top = rect.top + (rect.height / 2) - (tooltipRect.height / 2);
-                left = rect.right + 20;
-                posicao = 'tour-tooltip-right';
+                left = rect.right + margin;
                 break;
             default:
-                top = rect.bottom + 20;
+                top = rect.bottom + margin;
                 left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
                 posicao = 'tour-tooltip-bottom';
         }
 
-        // Ajustar posição se sair da tela
-        if (left < 10) left = 10;
-        if (left + tooltipRect.width > window.innerWidth - 10) {
-            left = window.innerWidth - tooltipRect.width - 10;
-        }
-        if (top < 10) top = 10;
-        if (top + tooltipRect.height > window.innerHeight - 10) {
-            top = window.innerHeight - tooltipRect.height - 10;
+        // Ajustar apenas se sair da tela (sem mudar a posição relativa)
+        const minLeft = 10;
+        const maxLeft = viewportWidth - tooltipRect.width - 10;
+        const minTop = 10;
+        const maxTop = viewportHeight - tooltipRect.height - 10;
+
+        // Ajustar horizontalmente se necessário
+        if (left < minLeft) {
+            left = minLeft;
+        } else if (left > maxLeft) {
+            left = maxLeft;
         }
 
+        // Ajustar verticalmente se necessário
+        if (top < minTop) {
+            top = minTop;
+        } else if (top > maxTop) {
+            top = maxTop;
+        }
+
+        // Aplicar posição fixa
+        this.tooltip.style.position = 'fixed';
         this.tooltip.style.top = top + 'px';
         this.tooltip.style.left = left + 'px';
+        this.tooltip.style.zIndex = '10000';
 
-        // Debug: Verificar se tooltip existe
-        console.log('🔍 DEBUG: Tooltip existe?', !!this.tooltip);
-        console.log('🔍 DEBUG: Posição calculada:', { top, left });
+        console.log(`📍 DEBUG: Posição final: ${passo.posicao} em (${left}, ${top})`);
+        console.log(`🎯 DEBUG: Elemento center: ${rect.top + rect.height/2}px, Tooltip center: ${top + tooltipRect.height/2}px`);
 
         // Mostrar tooltip usando classe CSS
         this.tooltip.className = `tour-tooltip tour-tooltip-active ${posicao}`;
@@ -584,9 +694,9 @@ class TourGuiado {
         
         this.passoAtual++;
         
-        // Log especial para passo 3
-        if (this.passoAtual === 3) {
-            console.log(`🎯 DEBUG: Chegou no passo 3 - deve navegar para equipamento.php`);
+        // Log especial para passo 8 (índice 7)
+        if (this.passoAtual === 8) {
+            console.log(`🎯 DEBUG: Chegou no passo 8 - deve navegar para equipamento.php`);
         }
         
         this.executarPasso();
@@ -714,11 +824,11 @@ function testarNavegacaoEquipamento() {
     }
 }
 
-// Função para forçar passo 3
-function forcarPasso3() {
+// Função para forçar passo 8
+function forcarPasso8() {
     if (tourGuiado) {
-        console.log('🧪 DEBUG: Forçando passo 3');
-        tourGuiado.passoAtual = 2; // Passo 3 (índice 2)
+        console.log('🧪 DEBUG: Forçando passo 8');
+        tourGuiado.passoAtual = 7; // Passo 8 (índice 7)
         tourGuiado.executarPasso();
     } else {
         console.error('Tour Guiado não foi inicializado ainda');
@@ -737,6 +847,93 @@ function testarVerificacaoPagina() {
         console.log(`🎯 Esperado: equipamento.php`);
         console.log(`✅ É equipamento.php? ${nomeArquivo === 'equipamento.php'}`);
         console.log(`🔍 Verificar página: ${tourGuiado.verificarPagina('equipamento.php')}`);
+    } else {
+        console.error('Tour Guiado não foi inicializado ainda');
+    }
+}
+
+// Função para debug completo dos passos
+function debugPassos() {
+    if (tourGuiado) {
+        console.log('🧪 DEBUG: Listando todos os passos');
+        console.log(`📊 Total de passos: ${tourGuiado.passos.length}`);
+        console.log(`📍 Passo atual: ${tourGuiado.passoAtual}`);
+        
+        tourGuiado.passos.forEach((passo, index) => {
+            console.log(`Passo ${index + 1} (índice ${index}): ${passo.pagina} - ${passo.titulo}`);
+        });
+        
+        console.log(`🎯 Passo 8 (índice 7): ${tourGuiado.passos[7]?.pagina} - ${tourGuiado.passos[7]?.titulo}`);
+    } else {
+        console.error('Tour Guiado não foi inicializado ainda');
+    }
+}
+
+// Função para testar seletores
+function testarSeletor(seletor) {
+    console.log(`🧪 DEBUG: Testando seletor: ${seletor}`);
+    try {
+        const elemento = document.querySelector(seletor);
+        if (elemento) {
+            console.log(`✅ DEBUG: Elemento encontrado:`, elemento);
+            console.log(`📄 DEBUG: Tag: ${elemento.tagName}, Classes: ${elemento.className}`);
+        } else {
+            console.log(`❌ DEBUG: Elemento não encontrado`);
+        }
+    } catch (error) {
+        console.error(`❌ DEBUG: Erro no seletor: ${error.message}`);
+    }
+}
+
+// Função para testar posicionamento de tooltip
+function testarPosicionamento(seletor, posicao = 'bottom') {
+    if (tourGuiado) {
+        console.log(`🧪 DEBUG: Testando posicionamento para: ${seletor}`);
+        const elemento = document.querySelector(seletor);
+        if (elemento) {
+            const rect = elemento.getBoundingClientRect();
+            console.log(`📐 DEBUG: Elemento - L: ${rect.left}, T: ${rect.top}, W: ${rect.width}, H: ${rect.height}`);
+            console.log(`🖥️ DEBUG: Viewport - W: ${window.innerWidth}, H: ${window.innerHeight}`);
+            
+            // Simular posicionamento
+            const mockPasso = { posicao: posicao };
+            tourGuiado.posicionarTooltip(elemento, mockPasso);
+        } else {
+            console.log(`❌ DEBUG: Elemento não encontrado`);
+        }
+    } else {
+        console.error('Tour Guiado não foi inicializado ainda');
+    }
+}
+
+// Função específica para testar posicionamento right
+function testarPosicaoRight(seletor) {
+    console.log(`🧪 DEBUG: Testando posicionamento RIGHT para: ${seletor}`);
+    testarPosicionamento(seletor, 'right');
+}
+
+// Função para testar posicionamento fixo
+function testarPosicionamentoFixo(seletor) {
+    if (tourGuiado) {
+        console.log(`🧪 DEBUG: Testando posicionamento FIXO para: ${seletor}`);
+        const elemento = document.querySelector(seletor);
+        if (elemento) {
+            const rect = elemento.getBoundingClientRect();
+            console.log(`📐 DEBUG: Elemento - L: ${rect.left}, T: ${rect.top}, W: ${rect.width}, H: ${rect.height}`);
+            
+            // Simular posicionamento fixo
+            const mockPasso = { posicao: 'right' };
+            tourGuiado.posicionarTooltip(elemento, mockPasso);
+            
+            // Verificar se está usando position: fixed
+            const tooltip = tourGuiado.tooltip;
+            const computedStyle = window.getComputedStyle(tooltip);
+            console.log(`🔍 DEBUG: Position: ${computedStyle.position}`);
+            console.log(`🔍 DEBUG: Top: ${computedStyle.top}, Left: ${computedStyle.left}`);
+            console.log(`🔍 DEBUG: Z-index: ${computedStyle.zIndex}`);
+        } else {
+            console.log(`❌ DEBUG: Elemento não encontrado`);
+        }
     } else {
         console.error('Tour Guiado não foi inicializado ainda');
     }
