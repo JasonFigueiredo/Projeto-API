@@ -162,7 +162,7 @@ if (isset($_POST['btn_gravar']) && $_POST['btn_gravar'] == 'cadastrar') {
                 <td>
                     <a href="#" data-toggle="modal" data-target="#modal-excluir" 
                     onclick="CarregarExcluir(<?= $item['alocar_id'] ?>, '<?=$item['identificacao'] . ' / ' . $item['nome_tipo']. ' / ' . $item['nome_modelo']?>')" 
-                    class="btn btn-danger btn-md">Remover do Setor</a>
+                    class="btn btn-danger btn-xs">Remover do Setor</a>
                 </td>
                 <td><?= 'identificação: ' . $item['identificacao'] . ' / ' . $item['nome_tipo']. ' / ' . $item['nome_modelo']?></td>
                 <!-- função para formatar a visualização da data -->

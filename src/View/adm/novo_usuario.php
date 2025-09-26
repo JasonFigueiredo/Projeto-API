@@ -48,12 +48,6 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_usuario_dataview.php
                 <div class="card">
                     <div class="card-header card-primary card-outline">
                         <h3 class="card-title">Dados para cadastro</h3>
-
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
-                                title="Collapse">
-                                <i class="fas fa-minus"></i></button>
-                        </div>
                     </div>
                     <div class="card-body">
                         <form action="novo_usuario.php" method="post" id="formCad">

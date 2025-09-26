@@ -63,12 +63,6 @@ if (isset($_GET['cod']) && is_numeric($_GET['cod'])) {
                 <div class="card">
                     <div class="card-header card-primary card-outline">
                         <h3 class="card-title">Dados para alteração</h3>
-
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
-                                title="Collapse">
-                                <i class="fas fa-minus"></i></button>
-                        </div>
                     </div>
                     <div class="card-body">
                         <form action="novo_usuario.php" method="post" id="formCad">

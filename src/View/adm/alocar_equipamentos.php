@@ -47,12 +47,6 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/alocar_equipamento_datavi
                 <div class="card">
                     <div class="card-header card-primary card-outline">
                         <h3 class="card-title">Aqui você poderá alocar um equipamento ao setor especifico</h3>
-
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
-                                title="Collapse">
-                                <i class="fas fa-minus"></i></button>
-                        </div>
                     </div>
                     <div class="card-body">
                         <form action="alocar_equipamentos.php" method="post" id="formCad">

@@ -47,12 +47,6 @@ include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
                 <div class="card">
                     <div class="card-header card-primary card-outline">
                         <h3 class="card-title">Aqui você poderá selecionar os setores cadastrados</h3>
-
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
-                                title="Collapse">
-                                <i class="fas fa-minus"></i></button>
-                        </div>
                     </div>
                     <div class="card-body">
                         <form action="remover_equipamento.php" method="post" id="formCad">

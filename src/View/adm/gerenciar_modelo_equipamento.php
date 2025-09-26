@@ -46,13 +46,6 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/gerenciar_modelo_equipame
                 <div class="card">
                     <div class="card-header card-primary card-outline">
                         <h3 class="card-title ">Aqui você pode gerenciar todos os modelos de equipamentos cadastrados</h3>
-
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
-                                title="Collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
                     </div>
                     <form action="gerenciar_modelo_equipamento.php" method="post" id="formCad">
                         <div class="card-body">

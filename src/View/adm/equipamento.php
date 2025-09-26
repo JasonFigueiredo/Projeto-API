@@ -46,12 +46,6 @@ $titulo =  isset($equipamento) ? ALTERAR_EQUIPAMENTO  : CADASTRAR_EQUIPAMENTO;
                 <div class="card">
                     <div class="card-header card-primary card-outline">
                         <h3 class="card-title"><?= $titulo ?></h3>
-
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
-                                title="Collapse">
-                                <i class="fas fa-minus"></i></button>
-                        </div>
                     </div>
                     <div class="card-body">
                         <form id="formCad" action="novo_equipamento.php" method="post">
