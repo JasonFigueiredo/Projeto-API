@@ -1,5 +1,9 @@
 <?php
 include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
+
+// Verificar se o usuário está logado
+use Src\_Public\Util;
+Util::VerificarLogado();
 ?>
 <!DOCTYPE html>
 <html>

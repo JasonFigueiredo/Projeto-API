@@ -3,7 +3,7 @@ function CPF(campo, evento) {
   // Configuração inicial do campo
   if (!campo.maxLength) {
     campo.maxLength = 14;
-    campo.placeholder = '000.000.000-00';
+    campo.placeholder = 'CPF';
   }
   
   // Função para obter CPF sem formatação (apenas números)
@@ -132,7 +132,7 @@ function inicializarValidacaoCPF(seletor) {
 
   // Configuração inicial
   campo.maxLength = 14;
-  campo.placeholder = '000.000.000-00';
+  campo.placeholder = 'CPF';
 
   // Eventos unificados
   campo.oninput = (e) => CPF(campo, 'input');

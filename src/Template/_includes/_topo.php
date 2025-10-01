@@ -1,3 +1,10 @@
+<?php
+include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
+use Src\_Public\Util;
+Util::VerificarLogado();
+?>
+
+
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">

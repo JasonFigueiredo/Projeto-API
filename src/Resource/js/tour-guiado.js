@@ -29,6 +29,15 @@ class TourGuiado {
     }
 
     verificarEstadoTour() {
+        // Verificar se estamos na página de login
+        const currentPath = window.location.pathname;
+        const isLoginPage = currentPath.includes('login.php') || currentPath.includes('acesso');
+        
+        if (isLoginPage) {
+            console.log('🔒 DEBUG: Página de login detectada, não retomando tour');
+            return;
+        }
+
         // Verificar se há um tour ativo em andamento
         const tourAtivo = sessionStorage.getItem('tourAtivo');
         const passoAtual = sessionStorage.getItem('tourPassoAtual');
@@ -1133,6 +1142,15 @@ class TourGuiado {
     }
 
     verificarTourNecessario() {
+        // Verificar se estamos na página de login
+        const currentPath = window.location.pathname;
+        const isLoginPage = currentPath.includes('login.php') || currentPath.includes('acesso');
+        
+        if (isLoginPage) {
+            console.log('🔒 DEBUG: Página de login detectada, não mostrando tour');
+            return;
+        }
+
         const tourConcluido = localStorage.getItem('tourConcluido');
         const tourIniciado = localStorage.getItem('tourIniciado');
 

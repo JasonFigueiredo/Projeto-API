@@ -104,7 +104,7 @@ function AplicarEfeitosVisuais() {
 // Função para formatar telefone com máscara visual
 function formatarTelefone(campo) {
   let telefone = campo.value.replace(/\D/g, '');
-  
+
   if (telefone.length <= 10) {
     // Formato: (xx) xxxx-xxxx
     telefone = telefone.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
@@ -112,7 +112,7 @@ function formatarTelefone(campo) {
     // Formato: (xx) xxxxx-xxxx
     telefone = telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
   }
-  
+
   campo.value = telefone;
 }
 
@@ -120,3 +120,15 @@ function formatarTelefone(campo) {
 $(document).ready(function () {
   AplicarEfeitosVisuais();
 });
+
+// Função simples para sair do sistema
+function sairSistema() {
+  // Limpar dados da sessão (se necessário)
+  if (typeof (Storage) !== "undefined") {
+    localStorage.clear();
+    sessionStorage.clear();
+  }
+
+  // Redirecionar diretamente para a página de login
+  window.location.href = '../../View/acesso/login.php';
+}

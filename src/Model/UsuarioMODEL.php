@@ -276,6 +276,5 @@ class UsuarioMODEL extends Conexao
     $sql->execute();
 
     return $sql->fetch(\PDO::FETCH_ASSOC);
-
   }
 }

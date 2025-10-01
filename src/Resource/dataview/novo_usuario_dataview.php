@@ -163,10 +163,10 @@ if (isset($_POST['verificar_email_duplicado'])) {
 } 
 
  else if (isset($_POST['btn_logar'])) {
-  $login = $_POST['login_usuario'];
-  $senha = $_POST['senha_usuario'];
+  $login = $_POST['login'];
+  $senha = $_POST['senha'];
   
   $ret = $ctrl->ValidarLoginCTRL($login, $senha);
   echo $ret;
-
+  exit;
 } ?>

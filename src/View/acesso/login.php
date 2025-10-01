@@ -42,7 +42,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_usuario_dataview.php
           <div class="row">
             <div class="col-12">
               <div style="text-align: left;">
-                <button type="button" class="btn btn-primary" onclick="Logar(formLOG)">Entrar</button>
+                <button type="submit" name="btn_logar" class="btn btn-primary" onclick="Logar('formLOG'); return false;">Entrar</button>
               </div>
             </div>
           </div>
@@ -55,17 +55,25 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_usuario_dataview.php
 
   <?php
   include_once PATH . "Template/_includes/_scripts.php";
+  include_once PATH . "Template/_includes/_msg.php";
   ?>
-  <script src="../../Resource/js/usuario_ajax.js"></script>
-  <script src="../../Resource/js/validar_cpf.js"></script>
-  <script src="../../Resource/js/validar_email.js"></script>
+  <script src="../../Resource/ajax/usuario_ajax.js"></script>
+  <!-- Validação de CPF comentada para evitar conflitos no login -->
+  <!-- <script src="../../Resource/js/validar_cpf.js"></script> -->
   
   <script>
-  // Inicializar validação CPF no campo de login
+  // Aplicar máscara de CPF no campo de login
   $(document).ready(function () {
-    if (document.getElementById('login')) {
-      inicializarValidacaoCPF('#login');
-    }
+    $('#login').on('input', function() {
+      let cpf = $(this).val().replace(/\D/g, '');
+      if (cpf.length > 11) cpf = cpf.substring(0, 11);
+      
+      cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+      cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+      cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+      
+      $(this).val(cpf);
+    });
   });
   </script>
 

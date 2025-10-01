@@ -172,7 +172,7 @@ class USUARIO_SQL
 
   public static function VALIDAR_LOGIN()
   {
-    return "SELECT id, nome_usuario, senha_usuario
+    $sql = "SELECT id, nome_usuario, senha_usuario
               FROM tb_usuario
              WHERE cpf_usuario = ?
                AND status_usuario = ?";

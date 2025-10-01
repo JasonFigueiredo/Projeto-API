@@ -4,16 +4,54 @@ namespace Src\_Public;
 
 class Util
 {
-    public static function CodigoLogado()
+
+    public static function IniciarSessao(): void
     {
-        return 1;
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+    }
+    public static function CriarSessao(int $id, string $nome): void
+    {
+        self::IniciarSessao();
+        $_SESSION['cod'] = $id;
+        $_SESSION['nome'] = $nome;
     }
 
+    public static function CodigoLogado(): int
+    {
+        self::IniciarSessao();
+        return $_SESSION['cod'];
+    }
+
+    public static function NomeLogado(): string
+    {
+        self::IniciarSessao();
+        return $_SESSION['nome'];
+    }
+    // deslogar finalizando as sessões
+    public static function Deslogar()
+    {
+        self::IniciarSessao();
+        unset($_SESSION['cod']);
+        unset($_SESSION['nome']);
+        self::ChamarPagina('http://localhost:8080/ControleOs/src/View/acesso/login');
+    }
+    public static function VerificarLogado()
+    {
+        self::IniciarSessao();
+        if(!isset($_SESSION['cod']) || empty($_SESSION['cod']))
+        {
+            self::ChamarPagina('http://localhost:8080/ControleOs/src/View/acesso/login');
+        }
+    }
+    // setar fuso horario
     private static function SetarFusoHorario()
     {
         date_default_timezone_set('America/Sao_Paulo');
     }
 
+    // data atual
     public static function DataAtual()
     {
         self::SetarFusoHorario();
@@ -57,19 +95,19 @@ class Util
     {
         // Tratar dados primeiro
         $nomeTratado = self::TratarDados($nome);
-        
+
         // Verificar se está vazio após tratamento
         if (empty($nomeTratado))
             return false;
-            
+
         // Verificar tamanho mínimo
         if (strlen($nomeTratado) < $tamanhoMinimo)
             return false;
-            
+
         // Verificar se não é apenas números
         if (is_numeric($nomeTratado))
             return false;
-            
+
         return true;
     }
 

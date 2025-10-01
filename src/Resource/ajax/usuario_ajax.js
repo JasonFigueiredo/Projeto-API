@@ -275,6 +275,7 @@ function Logar(formID){
   if (NotificarCampos('formLOG')) {
     let login = $("#login").val().replace(/\D/g, ''); // Remove formatação do CPF
     let senha = $("#senha").val();
+    
     $.ajax({
       beforeSend: function () {
         Load();
@@ -283,14 +284,16 @@ function Logar(formID){
       url: BASE_URL_DATAVIEW('novo_usuario_dataview'),
       data: {
         btn_logar: 'ajx',
-        login_usuario: login,
-        senha_usuario: senha
+        login: login,
+        senha: senha
       },
       success: function (ret) {
         MostrarMensagem(ret);
         if (ret == 1) {
-          // Redirecionar para página principal após login bem-sucedido
-          window.location.href = '../../index3.html';
+          // Login bem-sucedido, redirecionar
+          setTimeout(function() {
+            window.location.href = '../../View/adm/consultar_usuario.php';
+          }, 1000);
         }
       },
       complete: function () {

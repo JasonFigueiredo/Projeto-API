@@ -94,6 +94,8 @@ class UsuarioCTRL
             return 10;
         if (!Util::VerificarSenha($senha, $usuario['senha_usuario']))
             return 10;
-        return 1;
+        
+        Util::CriarSessao($usuario['id'], $usuario['nome_usuario']);
+        return 1; // Login bem-sucedido
     }
 }

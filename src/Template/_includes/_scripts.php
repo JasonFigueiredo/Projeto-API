@@ -28,7 +28,6 @@
 <!-- Tour Guiado JavaScript -->
 <script src="../../Resource/js/tour-guiado.js"></script>
 
-
 <style>
     /* Estilo para item ativo no menu */
     .nav-link.active {

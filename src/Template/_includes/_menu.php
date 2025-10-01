@@ -1,3 +1,15 @@
+<?php
+
+include_once dirname(__DIR__, 3) . '/vendor/autoload.php';
+
+use Src\_Public\Util;
+
+if (isset($_GET['close']) && $_GET['close'] == 1) {
+
+    Util::Deslogar();
+}
+?>
+
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Sidebar -->
     <div class="sidebar">
@@ -91,6 +103,13 @@
                             </a>
                         </li>
                     </ul>
+                    <hr>
+                <li class="nav-item">
+                    <a href="../../Template/_includes/_menu.php?close=1" class="nav-link sair-sistema">
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
+                        <p>Sair do Sistema</p>
+                    </a>
+                </li>
                 </li>
                 <!-- /.sidebar -->
             </ul>
@@ -99,3 +118,31 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+
+<style>
+    /* Estilo personalizado para o botão Sair do Sistema */
+    .sair-sistema {
+        background-color: rgba(220, 53, 69, 0.5) !important;
+        /* Vermelho claro com 50% transparência */
+        border-radius: 5px !important;
+        margin: 5px 10px !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .sair-sistema:hover {
+        background-color: rgba(220, 53, 69, 0.7) !important;
+        /* Vermelho mais escuro no hover */
+        transform: translateY(-1px) !important;
+    }
+
+    .sair-sistema i,
+    .sair-sistema p {
+        color: #fff !important;
+        /* Texto branco para contraste */
+    }
+
+    .sair-sistema:hover i,
+    .sair-sistema:hover p {
+        color: #fff !important;
+    }
+</style>
