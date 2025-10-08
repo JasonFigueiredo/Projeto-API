@@ -6,6 +6,7 @@ use Exception;
 use Src\Model\Conexao;
 use Src\VO\TipoVO;
 use Src\Model\SQL\TIPO_EQUIPAMENTO_SQL;
+// Inserção de pagina desabilitado porque a procedure ja esta fazendo o CRUD no proprio DB
 
 class TipoEquipamentoMODEL extends Conexao
 {
@@ -20,7 +21,7 @@ class TipoEquipamentoMODEL extends Conexao
 
   public function CadastrarTipoEquipamentoMODEL(TipoVO $vo): int
   {
-    $sql = $this->conexao->prepare(TIPO_EQUIPAMENTO_SQL::INSERIR_TIPO_EQUIPAMENTO());
+    $sql = $this->conexao->prepare('call proc_tipo_cadastrar (?);');
     $sql->bindValue(1, $vo->getNome());
 
     try {
@@ -35,16 +36,17 @@ class TipoEquipamentoMODEL extends Conexao
 
   public function ConsultarTipoEquipamentoModel()
   {
-    $sql = $this->conexao->prepare(TIPO_EQUIPAMENTO_SQL::SELECIONAR_TIPO_EQUIPAMENTO());
+    $sql = $this->conexao->prepare('call proc_tipo_consultar ()');
     $sql->execute();
     return $sql->fetchAll(\PDO::FETCH_ASSOC);
   }
 
   public function AlterarTipoEquipamentoMODEL(TipoVO $vo)
   {
-    $sql = $this->conexao->prepare(TIPO_EQUIPAMENTO_SQL::ALTERAR_TIPO_EQUIPAMENTO());
-    $sql->bindValue(1, $vo->getNome());
-    $sql->bindValue(2, $vo->getId());
+    $sql = $this->conexao->prepare('call proc_tipo_alterar(?,?);');
+    $i = 1;
+    $sql->bindValue($i++, $vo->getNome());
+    $sql->bindValue($i++, $vo->getId());
 
     try {
       $sql->execute();
@@ -56,7 +58,7 @@ class TipoEquipamentoMODEL extends Conexao
 
   public function ExcluirTipoEquipamentoMODEL(TipoVO $vo)
   {
-    $sql = $this->conexao->prepare(TIPO_EQUIPAMENTO_SQL::EXCLUIR_TIPO_EQUIPAMENTO());
+    $sql = $this->conexao->prepare('call proc_tipo_excluir(?)');
     $sql->bindValue(1, $vo->getId());
 
     try {

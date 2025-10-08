@@ -35,14 +35,14 @@ class Util
         self::IniciarSessao();
         unset($_SESSION['cod']);
         unset($_SESSION['nome']);
-        self::ChamarPagina('http://localhost:8080/ControleOs/src/View/acesso/login');
+        self::ChamarPagina('http://localhost:9090/ControleOs/src/View/acesso/login');
     }
     public static function VerificarLogado()
     {
         self::IniciarSessao();
         if(!isset($_SESSION['cod']) || empty($_SESSION['cod']))
         {
-            self::ChamarPagina('http://localhost:8080/ControleOs/src/View/acesso/login');
+            self::ChamarPagina('http://localhost:9090/ControleOs/src/View/acesso/login');
         }
     }
     // setar fuso horario

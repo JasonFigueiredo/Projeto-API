@@ -1,5 +1,6 @@
 <?php
-
+// apos a criação da PROCEDURE não é mais necessario esse arquivo de SQL, pois o CRUD ja esta no proprio DB
+// atravez da PROCEDURE, onde ela ja faz todo esse trabalho.
 namespace Src\Model\SQL;
 
 
