@@ -51,7 +51,6 @@ function CadastrarSetor(formID) {
       success: function (ret) {
         MostrarMensagem(ret);
         LimparNotificacoes(formID);
-        ConsultarSetores();
       },
       complete: function () {
         RemoverLoad();
@@ -80,7 +79,6 @@ function Excluir() {
     },
     success: function (ret) {
       MostrarMensagem(ret);
-      ConsultarSetores();
       FecharModal('modal-excluir');
     },
     complete: function () {
@@ -130,7 +128,6 @@ function Alterar() {
     },
     success: function (ret) {
       MostrarMensagem(ret);
-      ConsultarSetores();
       FecharModal('modal-alterar');
     },
     complete: function () {
