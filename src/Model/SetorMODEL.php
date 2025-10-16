@@ -55,7 +55,7 @@ class SetorMODEL extends Conexao
 
   public function AlterarSetorMODEL(SetorVO $vo)
   {
-    $sql = $this->conexao->prepare(SETOR_SQL::ALTERAR_SETOR());
+    $sql = $this->conexao->prepare('call proc_setor_alterar(?,?);');
     $sql->bindValue(1, $vo->getNome());
     $sql->bindValue(2, $vo->getId());
 

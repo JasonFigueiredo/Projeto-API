@@ -27,7 +27,7 @@ class SETOR_SQL
     return $sql;
   }
 
-  public static function BUSCAR_SETOR_POR_ID(): string
+  public static function BUSCAR_SETOR_POR_ID(): string //procedure finalizada
   {
     $sql = 'SELECT id, nome_setor 
             FROM tb_setor 
@@ -35,7 +35,7 @@ class SETOR_SQL
     return $sql;
   }
 
-  public static function ALTERAR_SETOR(): string
+  public static function ALTERAR_SETOR(): string //procedure finalizada
   {
     $sql = 'UPDATE tb_setor 
                SET nome_setor = ? 
