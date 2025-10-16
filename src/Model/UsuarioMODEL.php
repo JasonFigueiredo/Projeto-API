@@ -264,8 +264,8 @@ class UsuarioMODEL extends Conexao
       $this->conexao->rollBack();
       $vo->setErroTecnico($ex->getMessage());
       parent::GravarErroLog($vo);
-        return -1;
-      }
+      return -1;
+    }
   }
 
   public function ValidarLoginMODEL(string $login, int $status): null | array | bool
@@ -276,5 +276,11 @@ class UsuarioMODEL extends Conexao
     $sql->execute();
 
     return $sql->fetch(\PDO::FETCH_ASSOC);
+  }
+  public function RegistrarLogAcesso(int $iduser): void
+  {
+    $sql = $this->conexao->prepare('call proc_registrar_acesso(?)');
+    $sql->bindValue(1, $iduser);
+    $sql->execute();
   }
 }

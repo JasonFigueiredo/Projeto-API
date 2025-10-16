@@ -85,8 +85,8 @@ class UsuarioCTRL
 
     // ----- PASSO 3 "CTRL 13" -----
     public function ValidarLoginCTRL(string $login, string $senha): int
-    {   
-        if (empty($login) || empty($senha)) 
+    {
+        if (empty($login) || empty($senha))
             return 0;
 
         $usuario = $this->model->ValidarLoginMODEL($login, SITUACAO_ATIVO);
@@ -94,7 +94,8 @@ class UsuarioCTRL
             return 10;
         if (!Util::VerificarSenha($senha, $usuario['senha_usuario']))
             return 10;
-        
+        $this->model->RegistrarLogAcesso($usuario['id']);
+
         Util::CriarSessao($usuario['id'], $usuario['nome_usuario']);
         return 1; // Login bem-sucedido
     }
