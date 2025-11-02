@@ -18,7 +18,7 @@ class SetorMODEL extends Conexao
 
   public function CadastrarSetorMODEL(SetorVO $vo)
   {
-    $sql = $this->conexao->prepare('call proc_setor_cadastrar(?);');
+    $sql = $this->conexao->prepare(SETOR_SQL::INSERIR_SETOR());
     $sql->bindValue(1, $vo->getNome());
     
     try {
@@ -33,14 +33,14 @@ class SetorMODEL extends Conexao
 
   public function ConsultarSetorMODEL()
   {
-    $sql = $this->conexao->prepare('call proc_setor_consultar();');
+    $sql = $this->conexao->prepare(SETOR_SQL::SELECIONAR_SETOR());
     $sql->execute();
     return $sql->fetchAll(\PDO::FETCH_ASSOC);
   }
 
   public function ExcluirSetorMODEL(SetorVO $vo)
   {
-    $sql = $this->conexao->prepare('call proc_setor_excluir(?);');
+    $sql = $this->conexao->prepare(SETOR_SQL::EXCLUIR_SETOR());
     $sql->bindValue(1, $vo->getId());
 
     try {
@@ -55,7 +55,7 @@ class SetorMODEL extends Conexao
 
   public function AlterarSetorMODEL(SetorVO $vo)
   {
-    $sql = $this->conexao->prepare('call proc_setor_alterar(?,?);');
+    $sql = $this->conexao->prepare(SETOR_SQL::ALTERAR_SETOR());
     $sql->bindValue(1, $vo->getNome());
     $sql->bindValue(2, $vo->getId());
 

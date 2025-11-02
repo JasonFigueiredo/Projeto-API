@@ -21,7 +21,7 @@ class TipoEquipamentoMODEL extends Conexao
 
   public function CadastrarTipoEquipamentoMODEL(TipoVO $vo): int
   {
-    $sql = $this->conexao->prepare('call proc_tipo_cadastrar (?);');
+    $sql = $this->conexao->prepare(TIPO_EQUIPAMENTO_SQL::INSERIR_TIPO_EQUIPAMENTO());
     $sql->bindValue(1, $vo->getNome());
 
     try {
@@ -36,14 +36,14 @@ class TipoEquipamentoMODEL extends Conexao
 
   public function ConsultarTipoEquipamentoModel()
   {
-    $sql = $this->conexao->prepare('call proc_tipo_consultar ()');
+    $sql = $this->conexao->prepare(TIPO_EQUIPAMENTO_SQL::SELECIONAR_TIPO_EQUIPAMENTO());
     $sql->execute();
     return $sql->fetchAll(\PDO::FETCH_ASSOC);
   }
 
   public function AlterarTipoEquipamentoMODEL(TipoVO $vo)
   {
-    $sql = $this->conexao->prepare('call proc_tipo_alterar(?,?);');
+    $sql = $this->conexao->prepare(TIPO_EQUIPAMENTO_SQL::ALTERAR_TIPO_EQUIPAMENTO());
     $i = 1;
     $sql->bindValue($i++, $vo->getNome());
     $sql->bindValue($i++, $vo->getId());
@@ -58,7 +58,7 @@ class TipoEquipamentoMODEL extends Conexao
 
   public function ExcluirTipoEquipamentoMODEL(TipoVO $vo)
   {
-    $sql = $this->conexao->prepare('call proc_tipo_excluir(?)');
+    $sql = $this->conexao->prepare(TIPO_EQUIPAMENTO_SQL::EXCLUIR_TIPO_EQUIPAMENTO());
     $sql->bindValue(1, $vo->getId());
 
     try {

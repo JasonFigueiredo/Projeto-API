@@ -30,7 +30,7 @@ class UsuarioMODEL extends Conexao
     return $resultado['contar_email'] > 0;
   }
   // -----PASSO 2 "MODEL 02" -----
-  public function cadastrarEstadoMODEL($nomeEstado, $siglaEstado): bool
+  public function cadastrarEstadoMODEL($siglaEstado): bool
   {
     $sql = $this->conexao->prepare(USUARIO_SQL::CADASTRAR_ESTADO());
     $sql->bindValue(1, $siglaEstado);
@@ -279,7 +279,7 @@ class UsuarioMODEL extends Conexao
   }
   public function RegistrarLogAcesso(int $iduser): void
   {
-    $sql = $this->conexao->prepare('call proc_registrar_acesso(?)');
+    $sql = $this->conexao->prepare(USUARIO_SQL::VALIDAR_LOGIN());
     $sql->bindValue(1, $iduser);
     $sql->execute();
   }

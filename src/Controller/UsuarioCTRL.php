@@ -94,7 +94,7 @@ class UsuarioCTRL
             return 10;
         if (!Util::VerificarSenha($senha, $usuario['senha_usuario']))
             return 10;
-        $this->model->RegistrarLogAcesso($usuario['id']);
+        // $this->model->RegistrarLogAcesso($usuario['id']);
 
         Util::CriarSessao($usuario['id'], $usuario['nome_usuario']);
         return 1; // Login bem-sucedido

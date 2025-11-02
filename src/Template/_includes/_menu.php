@@ -19,7 +19,7 @@ if (isset($_GET['close']) && $_GET['close'] == 1) {
                 <img src="/ControleOs/src/Template/dist/img/jason.png" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Jason Figueiredo</a>
+                <a href="#" class="d-block">Jason ADM</a>
             </div>
         </div>
 
