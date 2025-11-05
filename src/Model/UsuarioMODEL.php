@@ -279,7 +279,7 @@ class UsuarioMODEL extends Conexao
   }
   public function RegistrarLogAcesso(int $iduser): void
   {
-    $sql = $this->conexao->prepare(USUARIO_SQL::VALIDAR_LOGIN());
+    $sql = $this->conexao->prepare(USUARIO_SQL::REGISTRAR_LOG_ACESSO());
     $sql->bindValue(1, $iduser);
     $sql->execute();
   }

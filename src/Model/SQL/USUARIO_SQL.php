@@ -179,4 +179,11 @@ class USUARIO_SQL
 
     return $sql;
   }
+
+  public static function REGISTRAR_LOG_ACESSO(): string
+  {
+    $sql = "INSERT INTO tb_log (usuario_id, data) 
+            VALUES (?, NOW())";
+    return $sql;
+  }
 }
