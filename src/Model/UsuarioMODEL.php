@@ -213,7 +213,7 @@ class UsuarioMODEL extends Conexao
   }
 
   // -----PASSO 2 "MODEL 13" -----
-  public function DetalharUsuarioMODEL(int $id): array
+  public function DetalharUsuarioMODEL(int $id): array | bool
   {
     $sql = $this->conexao->prepare(USUARIO_SQL::DETALHAR_USUARIO());
     $sql->bindValue(1, $id);

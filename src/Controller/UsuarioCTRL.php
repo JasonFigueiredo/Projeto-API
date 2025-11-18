@@ -68,7 +68,7 @@ class UsuarioCTRL
     }
 
     // ----- PASSO 3 "CTRL 11" -----
-    public function DetalharUsuarioCTRL(int $id): array | int
+    public function DetalharUsuarioCTRL(int $id): array | int | bool
     {
         if ($id == "" || $id <= 0)
             return 0;
