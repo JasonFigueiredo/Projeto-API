@@ -201,8 +201,8 @@ if (isset($_GET['cod']) && is_numeric($_GET['cod'])) {
     include_once PATH . 'Template/_includes/_msg.php';
     ?>
     
-    <?php if ($dados): ?>
-    <script>
+<?php if ($dados): ?>
+<script>
     $(document).ready(function() {
         // Mostrar botão alterar
         $('#btn_cadastrar').show();
