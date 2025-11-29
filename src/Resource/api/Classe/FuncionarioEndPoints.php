@@ -17,12 +17,11 @@ class FuncionarioEndPoints extends ApiRequest
    public function CheckEndPoint($endpoint) {
       return method_exists($this, $endpoint);
    }
-
+    
    public function DetalharUsuarioAPI(){
 
       $objCTRL = new UsuarioCTRL();
       $dados_usario = $objCTRL->DetalharUsuarioCTRL($this->params['id_user']);
       return $dados_usario;
-
    }
 }

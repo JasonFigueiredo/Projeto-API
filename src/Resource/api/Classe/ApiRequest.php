@@ -37,14 +37,22 @@ class ApiRequest
    {
       return in_array($this->GetMethod(), $this->method_available);
    }
-   public function SendData($message, $data, $status)
+
+   public function SendResponse()
    {
-      header('Content-Type: application/json; charset=utf-8');
-      echo json_encode([
-         'message' => $message,
-         'data'    => $data,
-         'status'  => $status
-      ]);
+      header('Content-Type: application/json');
+      echo json_encode($this->data);
       exit;
+   }
+
+   public function SendData($msg = '', $result = null, $status = '')
+   {
+      $this->data = [
+         'status'  => $status,
+         'message' => $msg,
+         'result'  => $result,
+      ];
+
+      $this->SendResponse();
    }
 }
