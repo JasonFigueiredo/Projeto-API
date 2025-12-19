@@ -20,6 +20,34 @@ class UsuarioMODEL extends Conexao
   {
     $this->conexao = parent::retornarConexao();
   }
+
+  public function BuscarSenhaModel(int $id): string | null
+  {
+    $sql = $this->conexao->prepare(USUARIO_SQL::BUSCAR_SENHA());
+    $sql->bindValue(1, $id);
+    $sql->execute();
+    $resultado = $sql->fetch(\PDO::FETCH_ASSOC);
+    // ✅ Retorna senha_usuario (nome correto da coluna no banco)
+    return $resultado ? $resultado['senha_usuario'] : null;
+  }
+
+  public function AlterarSenhaMODEL(UsuarioVO $vo): int
+  {
+    $sql = $this->conexao->prepare(USUARIO_SQL::ALTERAR_SENHA());
+    $i = 1;
+    $sql->bindValue($i++, $vo->getSenha());
+    $sql->bindValue($i++, $vo->getId());
+
+    try {
+      $sql->execute();
+      return 1;
+    } catch (Exception $ex) {
+      $vo->setErroTecnico($ex->getMessage());
+      parent::GravarErroLog($vo);
+      return -1;
+    }
+  }
+
   // -----PASSO 2 "MODEL 01" -----
   public function verificarEmailDuplicadoMODEL($email): bool
   {
@@ -213,7 +241,7 @@ class UsuarioMODEL extends Conexao
   }
 
   // -----PASSO 2 "MODEL 13" -----
-  public function DetalharUsuarioMODEL(int $id): array | bool
+  public function DetalharUsuarioMODEL(int $id): array|bool
   {
     $sql = $this->conexao->prepare(USUARIO_SQL::DETALHAR_USUARIO());
     $sql->bindValue(1, $id);
@@ -268,7 +296,7 @@ class UsuarioMODEL extends Conexao
     }
   }
 
-  public function ValidarLoginMODEL(string $login, int $status): null | array | bool
+  public function ValidarLoginMODEL(string $login, int $status): null|array|bool
   {
     $sql = $this->conexao->prepare(USUARIO_SQL::VALIDAR_LOGIN());
     $sql->bindValue(1, $login);

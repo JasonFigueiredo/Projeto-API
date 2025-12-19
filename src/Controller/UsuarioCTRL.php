@@ -68,7 +68,7 @@ class UsuarioCTRL
     }
 
     // ----- PASSO 3 "CTRL 11" -----
-    public function DetalharUsuarioCTRL(int $id): array | int | bool
+    public function DetalharUsuarioCTRL(int $id): array|int|bool
     {
         if ($id == "" || $id <= 0)
             return 0;
@@ -77,9 +77,10 @@ class UsuarioCTRL
     }
 
     // ----- PASSO 3 "CTRL 12" -----
-    public function AlterarUsuarioCTRL(UsuarioVO $vo): int
+    public function AlterarUsuarioCTRL(UsuarioVO $vo, bool $tem_sessao = true): int
     {
         $vo->setFuncaoErro(ALTERAR_USUARIO);
+        $vo->setCodLogado($tem_sessao ? Util::CodigoLogado() : $vo->getId());
         return $this->model->AlterarUsuarioMODEL($vo);
     }
 
@@ -98,5 +99,30 @@ class UsuarioCTRL
 
         Util::CriarSessao($usuario['id'], $usuario['nome_usuario']);
         return 1; // Login bem-sucedido
+    }
+
+    public function AlterarSenhaCTRL(UsuarioVO $vo, bool $tem_sessao = true): int
+    {
+        if (empty($vo->getId()) || empty($vo->getSenha()))
+            return 0;
+
+        $vo->setSenha(Util::CriptografarSenha($vo->getSenha()));
+        $vo->setCodLogado($tem_sessao ? Util::CodigoLogado() : $vo->getId());
+        $vo->setFuncaoErro(ALTERAR_SENHA_USUARIO);
+
+        return $this->model->AlterarSenhaMODEL($vo);
+    }
+
+    public function VerificarSenhaCTRL(int $id, string $senha_digitada): int
+    {
+        $senha_hash = $this->model->BuscarSenhaModel($id);
+
+        if (empty($senha_hash)) {
+            return -1;
+        }
+
+        // ✅ $senha_hash já é string, não array
+        $ret = Util::VerificarSenha($senha_digitada, $senha_hash);
+        return $ret ? 1 : -1;
     }
 }

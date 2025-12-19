@@ -189,4 +189,19 @@ class USUARIO_SQL
             VALUES (?, NOW())";
     return $sql;
   }
+
+  public static function ALTERAR_SENHA(): string
+  {
+    $sql = "UPDATE tb_usuario 
+            SET senha_usuario = ? 
+            WHERE id = ?";
+    return $sql;
+  }
+
+  public static function BUSCAR_SENHA(){
+    $sql = "SELECT senha_usuario 
+              FROM tb_usuario 
+             WHERE id = ?";
+    return $sql;
+  }
 }
