@@ -21,7 +21,11 @@ class Util
     public static function CodigoLogado(): int
     {
         self::IniciarSessao();
-        return $_SESSION['cod'];
+        // Se não houver sessão (ambiente dev/API), usar fallback 4 para evitar erro
+        if (!isset($_SESSION['cod']) || $_SESSION['cod'] === '' || $_SESSION['cod'] === null) {
+            return 4;
+        }
+        return (int) $_SESSION['cod'];
     }
 
     public static function NomeLogado(): string

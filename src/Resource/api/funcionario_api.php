@@ -13,7 +13,8 @@ if (!$obj->CheckMethod())
 
 $recebido = getallheaders();
 
-$json = isset($recebido['Content-Type']) && $recebido['Content-Type'] == 'application/json' ? true : false;
+$ct = $recebido['Content-Type'] ?? '';
+$json = stripos($ct, 'application/json') !== false;
 
 //Verifica se o pacote de dados do CLIENTE é no formato JSON
 if ($json) {
