@@ -10,11 +10,11 @@ function limpa_formulário_cep() {
 
 function formatarCEP(campo) {
   let cep = campo.value.replace(/\D/g, '');
-  
+
   // Aplica máscara e limita a 8 dígitos
   if (cep.length > 5) cep = cep.replace(/^(\d{5})(\d)/, '$1-$2');
   campo.value = cep.slice(0, 9);
-  
+
   // Validação visual simplificada
   campo.classList.toggle('campo-valido', cep.length === 9);
   campo.classList.toggle('campo-invalido', cep.length > 0 && cep.length !== 9);
@@ -29,8 +29,13 @@ function limpaFormularioCep() {
 }
 
 function preencherCamposEndereco(conteudo) {
-  const campos = { rua: conteudo.logradouro, bairro: conteudo.bairro, cidade: conteudo.localidade, estado: conteudo.uf };
-  
+  const campos = {
+    rua: conteudo.logradouro || conteudo.street,
+    bairro: conteudo.bairro || conteudo.neighborhood,
+    cidade: conteudo.localidade || conteudo.city,
+    estado: conteudo.uf || conteudo.state
+  };
+
   Object.entries(campos).forEach(([id, valor], i) => {
     setTimeout(() => {
       const el = document.getElementById(id);
@@ -51,7 +56,7 @@ function mostrarLoadingCep() {
 }
 
 function removerLoadingCep() {
-  ['rua', 'bairro', 'cidade', 'estado'].forEach(id => 
+  ['rua', 'bairro', 'cidade', 'estado'].forEach(id =>
     document.getElementById(id).classList.remove('cep-loading')
   );
 }
@@ -63,9 +68,9 @@ function habilitarCampos(flag) {
 
 function meuCallback(conteudo) {
   removerLoadingCep();
-  
+
   const cepField = document.getElementById('cep');
-  
+
   if (!("erro" in conteudo)) {
     preencherCamposEndereco(conteudo);
     cepField.className = cepField.className.replace(/campo-\w+/g, '') + ' campo-valido';
@@ -80,10 +85,10 @@ function meuCallback(conteudo) {
 
 function validarFormatoCep(cep) {
   const cepLimpo = cep.replace(/\D/g, '');
-  
-  return cepLimpo.length === 8 && 
-         !/^(\d)\1{7}$/.test(cepLimpo) && 
-         cepLimpo !== '00000000';
+
+  return cepLimpo.length === 8 &&
+    !/^(\d)\1{7}$/.test(cepLimpo) &&
+    cepLimpo !== '00000000';
 }
 
 function pesquisacep(valor) {
@@ -103,32 +108,15 @@ function pesquisacep(valor) {
   }
 
   mostrarLoadingCep();
-
-  const script = document.createElement('script');
+  const controller = new AbortController();
   const timeout = setTimeout(() => {
-    cleanup();
-    MostrarMensagem(-4);
+    controller.abort();
   }, 10000);
 
-  function cleanup() {
-    clearTimeout(timeout);
-    removerLoadingCep();
-    if (script.parentNode) script.parentNode.removeChild(script);
-  }
-
-  window.meuCallbackWrapper = function(conteudo) {
-    cleanup();
-    meuCallback(conteudo);
-  };
-
-  script.src = `https://viacep.com.br/ws/${cep}/json/?callback=meuCallbackWrapper`;
-  script.onerror = () => {
-    cleanup();
-    limpaFormularioCep();
-    MostrarMensagem(-5);
-  };
-
-  document.body.appendChild(script);
+  fetch(`https://brasilapi.com.br/api/cep/v2/${cep}`, { signal: controller.signal })
+    .then(res => res.ok ? res.json() : Promise.reject(new Error('http')))
+    .then(data => (clearTimeout(timeout), meuCallback(data)))
+    .catch(err => (clearTimeout(timeout), removerLoadingCep(), limpaFormularioCep(), MostrarMensagem(err.name === 'AbortError' ? -4 : -5)));
 }
 
 // Inicializar formatação ao carregar a página

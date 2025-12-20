@@ -187,3 +187,10 @@ Codigo do logado: 4
 Funcao do erro: Abrir Chamado
 Erro tecnico: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'usuario_id' in 'field list'
 ------------------------------------------------------
+------------------------------------------------------
+Data do erro: 2025-12-20
+Hora do erro: 14:20
+Codigo do logado: 2
+Funcao do erro: Excluir Setor
+Erro tecnico: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`db_controleos`.`tb_alocar`, CONSTRAINT `fk_tb_alocar_tb_setor1` FOREIGN KEY (`setor_id`) REFERENCES `tb_setor` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+------------------------------------------------------
