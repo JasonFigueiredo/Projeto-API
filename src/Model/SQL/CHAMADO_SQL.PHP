@@ -7,7 +7,7 @@ class CHAMADO_SQL
    public static function ABRIR_CHAMADO(): string
    {
       $sql = 'INSERT INTO tb_chamado
-               (data_abertura , hora_abertura, problema, funcionario_usuario_id, alocar_id)
+               (data_abertura , hora_abertura, problema, funcionario_id, alocar_id)
                Values
                (?,?,?,?,?)';
 
@@ -26,12 +26,13 @@ class CHAMADO_SQL
 
    public static function FILTRAR_CHAMADO($situacao, $setor)
    {
-      $sql = 'SELECT tipo.nome_tipo,
+      $sql = 'SELECT chamado.id as chamado_id,
+                  tipo.nome_tipo,
                   modelo.nome_modelo,
                   equip.identificacao,
                   chamado.data_abertura,
-                  chamado.hora_abertura
-                  chamado.problema,
+                  chamado.hora_abertura,
+                  chamado.problema as problema_descricao,
                   chamado.data_atendimento,
                   chamado.hora_atendimento,
                   chamado.data_encerramento,
@@ -40,7 +41,8 @@ class CHAMADO_SQL
                   chamado.alocar_id,
                   usuario_tec_atend.nome_usuario as tecnico_atendimento,
                   usuario_tec_final.nome_usuario as tecnico_finalizado,
-                  usuario_func.nome_usuario as funcionario
+                  usuario_func.nome_usuario as usuario_nome,
+                  CONCAT(tipo.nome_tipo, " - ", modelo.nome_modelo, " / ID: ", equip.identificacao) as equipamento_nome
 
              from tb_chamado as chamado
        inner join tb_funcionario as func
@@ -66,19 +68,19 @@ class CHAMADO_SQL
 
       switch ($situacao) {
          case SIT_CHAMADO_AGUARDANDO:
-            $sql .= "WHERE chamado.tecnico_atendimento_id IS NULL " . (!$setor ? " AND alo.setor_id = ?" : "");
+            $sql .= " WHERE chamado.tecnico_atendimento_id IS NULL " . ($setor ? " AND alo.setor_id = ?" : "");
             break;
 
          case SIT_CHAMADO_ANDAMENTO:
-            $sql .= "WHERE chamado.tecnico_atendimento_id IS NOT NULL  and chamado.tecnico_finalizar_id IS NULL " . (!$setor ? " AND alo.setor_id = ?" : "");
+            $sql .= " WHERE chamado.tecnico_atendimento_id IS NOT NULL  and chamado.tecnico_finalizar_id IS NULL " . ($setor ? " AND alo.setor_id = ?" : "");
             break;
 
          case SIT_CHAMADO_ENCERRADO:
-            $sql .= "WHERE chamado.tecnico_finalizar_id IS NOT NULL " . (!$setor ? " AND alo.setor_id = ?" : "");
+            $sql .= " WHERE chamado.tecnico_finalizar_id IS NOT NULL " . ($setor ? " AND alo.setor_id = ?" : "");
             break;
 
          default:
-            $sql .= (!empty($setor) ? 'WHERE alo.setor_id = ?' : '');
+            $sql .= ($setor ? ' WHERE alo.setor_id = ?' : '');
             break;
       }
       return $sql;

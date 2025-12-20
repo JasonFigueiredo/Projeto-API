@@ -23,7 +23,7 @@ class USUARIO_SQL
   // ----- PASSO 1 "SQL 03" -----
   public static function CADASTRAR_CIDADE(): string
   {
-    $sql = "INSERT INTO tb_cidade (nome_cidade, estado_id) 
+    $sql = "INSERT INTO tb_cidade (nome_cidade, cidade_id) 
             VALUES (?, ?)";
     return $sql;
   }
@@ -40,7 +40,7 @@ class USUARIO_SQL
     $sql = "SELECT ci.id AS id_cidade
               FROM tb_cidade  as ci
         inner join tb_estado as es
-                on ci.estado_id = es.id
+                on ci.cidade_id = es.id
              WHERE ci.nome_cidade = ?
                AND es.sigla_estado = ?";
     return $sql;
@@ -129,7 +129,7 @@ class USUARIO_SQL
         INNER JOIN tb_cidade as cid
                 ON en.cidade_id = cid.id
         INNER JOIN tb_estado as est
-                ON cid.estado_id = est.id
+                ON cid.cidade_id = est.id
          LEFT JOIN tb_tecnico as tec
                 ON usu.id = tec.usuario_id
          LEFT JOIN tb_funcionario as fun
