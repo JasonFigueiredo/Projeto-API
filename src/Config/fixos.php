@@ -37,6 +37,12 @@
     const SITUACAO_EQUIPAMENTO_ALOCADO = 1;
     const SITUACAO_EQUIPAMENTO_REMOVIDO = 2;
     const SITUACAO_EQUIPAMENTO_MANUTENCAO = 3;
+    
+    // Flags de situação de equipamento
+    const SIT_CHAMADO_AGUARDANDO = 1;
+    const SIT_CHAMADO_ANDAMENTO = 2;
+    const SIT_CHAMADO_ENCERRADO = 3;
+
 
     // Situações de equipamento
     const SITUACAO_ATIVO = 1;

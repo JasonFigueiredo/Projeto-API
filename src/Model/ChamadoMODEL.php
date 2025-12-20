@@ -16,6 +16,17 @@ class ChamadoMODEL extends Conexao
       $this->conexao = parent::retornarConexao();
    }
 
+   public function FiltrarChamadoModel(int $situacao, int $setor_id ): array | null
+   {
+      $tem_setor = $setor_id == -1 ? false : true;
+      $sql = $this->conexao->prepare(CHAMADO_SQL::FILTRAR_CHAMADO($situacao, $tem_setor ? $setor_id : null));
+      if ($tem_setor) {
+         $sql->bindValue(1, $setor_id);
+      }
+      $sql->execute();
+      return $sql->fetchAll(\PDO::FETCH_ASSOC);
+   }
+
    public function AbrirChamadoModel(ChamadoVO $vo): int
    {
 

@@ -29,4 +29,9 @@ class ChamadoCTRL {
       $vo->setSituacao(SITUACAO_EQUIPAMENTO_MANUTENCAO);
       return $this->model->AbrirChamadoModel($vo);
    }
+
+   public function FiltrarChamadosCTRL(int $situacao, int $setor_id): array | null
+   {
+      return $this->model->FiltrarChamadoModel($situacao, $setor_id);
+   }
 }

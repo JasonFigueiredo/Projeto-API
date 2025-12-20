@@ -93,4 +93,12 @@ class FuncionarioEndPoints extends ApiRequest
 
       return (new ChamadoCTRL)->AbrirChamadoCTRL($vo,false);
    }
+
+   public function FiltrarChamadosAPI()
+   {
+      return (new ChamadoCTRL)->FiltrarChamadosCTRL(
+         $this->params['situacao'],
+         $this->params['setor_id']
+      );
+   }
 }
