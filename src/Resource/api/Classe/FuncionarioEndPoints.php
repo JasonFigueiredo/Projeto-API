@@ -2,10 +2,15 @@
 
 namespace Src\Resource\api\Classe;
 
+use Src\Controller\ChamadoCTRL;
 use Src\Controller\UsuarioCTRL;
+use Src\Controller\NovoEquipamentoCTRL;
 use Src\Resource\api\Classe\ApiRequest;
+use Src\VO\ChamadoVO;
+use Src\VO\EquipamentoVO;
 use Src\VO\FuncionarioVO;
 use Src\VO\UsuarioVO;
+
 
 class FuncionarioEndPoints extends ApiRequest
 {
@@ -72,5 +77,20 @@ class FuncionarioEndPoints extends ApiRequest
       $ret = $this->ctrl_user->AlterarUsuarioCTRL($vo, false);
 
       return $ret;
+   }
+
+   public function ListarEquipamentosAlocadosSetorAPI()
+   {
+      return (new NovoEquipamentoCTRL)->ListarEquipamentosAlocadosSetorCTRL($this->params['setor_id']);
+   }
+
+   public function AbrirChamadoAPI(): int
+   {
+      $vo = new ChamadoVO();
+      $vo->setIdAlocar($this->params['alocar_id']);
+      $vo->setIdFuncionario($this->params['func_id']);
+      $vo->setProblema($this->params['problema']);
+
+      return (new ChamadoCTRL)->AbrirChamadoCTRL($vo,false);
    }
 }

@@ -9,6 +9,8 @@
     
     const ALTERAR_SENHA_USUARIO = "Alterar Senha de Usuário";
 
+    const ABRIR_CHAMADO = "Abrir Chamado";
+
     const CADASTRAR_USUARIO = "Cadastrar Usuário";
     const ALTERAR_USUARIO = "Alterar Usuário";
     const ALTERAR_STATUS_USUARIO = "Alterar Status de Usuário";
