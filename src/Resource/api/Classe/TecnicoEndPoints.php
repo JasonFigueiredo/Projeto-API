@@ -98,4 +98,28 @@ class TecnicoEndPoints extends ApiRequest
          $this->params['setor_id']
       );
    }
+
+   public function AtenderChamadoAPI(): int
+   {
+      $vo = new ChamadoVO();
+      $vo->setId($this->params['chamado_id']);
+      $vo->setDataAtendimento($this->params['data_atendimento']);
+      $vo->setHoraAtendimento($this->params['hora_atendimento']);
+      $vo->setIdTecnicoAtendimento($this->params['tecnico_id']);
+
+      return (new ChamadoCTRL)->AtenderChamadoCTRL($vo);
+   }
+
+   public function FinalizarChamadoAPI(): int
+   {
+      $vo = new ChamadoVO();
+      $vo->setId($this->params['chamado_id']);
+      $vo->setDataEncerramento($this->params['data_encerramento']);
+      $vo->setHoraEncerramento($this->params['hora_encerramento']);
+      $vo->setTecnicoEncerramentoId($this->params['tecnico_id']);
+      $vo->setLaudo($this->params['laudo']);
+      $vo->setIdAlocar($this->params['alocar_id']);
+
+      return (new ChamadoCTRL)->FinalizarChamadoCTRL($vo);
+   }
 }

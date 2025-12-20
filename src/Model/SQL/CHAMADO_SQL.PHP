@@ -85,4 +85,27 @@ class CHAMADO_SQL
       }
       return $sql;
    }
+
+   public static function ATENDER_CHAMADO(): string
+   {
+      $sql = 'UPDATE tb_chamado
+               SET data_atendimento = ?,
+                   hora_atendimento = ?,
+                   tecnico_atendimento_id = ?
+             WHERE id = ?';
+
+      return $sql;
+   }
+
+   public static function FINALIZAR_CHAMADO(): string
+   {
+      $sql = 'UPDATE tb_chamado
+               SET data_encerramento = ?,
+                   hora_encerramento = ?,
+                   tecnico_finalizar_id = ?,
+                   laudo = ?
+             WHERE id = ?';
+
+      return $sql;
+   }
 }

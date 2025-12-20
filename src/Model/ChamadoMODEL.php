@@ -56,4 +56,53 @@ class ChamadoMODEL extends Conexao
          return -1;
       }
    }
+
+   public function AtenderChamadoModel(ChamadoVO $vo): int
+   {
+      $sql = $this->conexao->prepare(CHAMADO_SQL::ATENDER_CHAMADO());
+      $i = 1;
+      $sql->bindValue($i++, $vo->getDataAtendimento());
+      $sql->bindValue($i++, $vo->getHoraAtendimento());
+      $sql->bindValue($i++, $vo->getIdTecnicoAtendimento());
+      $sql->bindValue($i++, $vo->getId());
+      try {
+         $sql->execute();
+         return 1;
+      } catch (Exception $ex) {
+         $vo->setErroTecnico($ex->getMessage());
+         parent::GravarErroLog($vo);
+         $this->conexao->rollBack();
+         return -1;
+      }
+   }
+
+   public function FinalizarChamadoModel(ChamadoVO $vo): int
+   {
+      $this->conexao->beginTransaction();
+
+      try {
+         $sql = $this->conexao->prepare(CHAMADO_SQL::FINALIZAR_CHAMADO());
+         $i = 1;
+         $sql->bindValue($i++, $vo->getDataEncerramento());
+         $sql->bindValue($i++, $vo->getHoraEncerramento());
+         $sql->bindValue($i++, $vo->getTecnicoEncerramentoId());
+         $sql->bindValue($i++, $vo->getLaudo());
+         $sql->bindValue($i++, $vo->getId());
+         $sql->execute();
+
+         $sql = $this->conexao->prepare(CHAMADO_SQL::ATUALIZAR_ALOCAMENTO());
+         $i = 1;
+         $sql->bindValue($i++, SITUACAO_EQUIPAMENTO_ALOCADO);
+         $sql->bindValue($i++, $vo->getIdAlocar());
+         $sql->execute();
+
+         $this->conexao->commit();
+         return 1;
+      } catch (Exception $ex) {
+         $vo->setErroTecnico($ex->getMessage());
+         parent::GravarErroLog($vo);
+         $this->conexao->rollBack();
+         return -1;
+      }
+   }
 }

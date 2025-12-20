@@ -17,8 +17,21 @@ class ChamadoVO extends LogErroVO
    private $data_abertura;
    private $hora_abertura;
    private $situacao;
+   private $data_atendimento;
+   private $hora_atendimento;
+   private $data_encerramento;
+   private $hora_encerramento;
+   private $chamado_id;
 
 
+   public function getChamadoId(): int
+   {
+      return $this->chamado_id;
+   }
+   public function setChamadoId(int $chamado_id): void
+   {
+      $this->chamado_id = $chamado_id;
+   }
    public function getSituacao(): string
    {
       return $this->situacao;
@@ -42,6 +55,42 @@ class ChamadoVO extends LogErroVO
    public function setHoraAbertura(string $hora_abertura): void
    {
       $this->hora_abertura = Util::RemoverTags($hora_abertura);
+   }
+
+   public function getDataAtendimento(): string
+   {
+      return $this->data_atendimento;
+   }
+   public function setDataAtendimento(string $data_atendimento): void
+   {
+      $this->data_atendimento = Util::RemoverTags($data_atendimento);
+   }
+
+   public function getHoraAtendimento(): string
+   {
+      return $this->hora_atendimento;
+   }
+   public function setHoraAtendimento(string $hora_atendimento): void
+   {
+      $this->hora_atendimento = Util::RemoverTags($hora_atendimento);
+   }
+
+   public function getDataEncerramento(): string
+   {
+      return $this->data_encerramento;
+   }
+   public function setDataEncerramento(string $data_encerramento): void
+   {
+      $this->data_encerramento = Util::RemoverTags($data_encerramento);
+   }
+
+   public function getHoraEncerramento(): string
+   {
+      return $this->hora_encerramento;
+   }
+   public function setHoraEncerramento(string $hora_encerramento): void
+   {
+      $this->hora_encerramento = Util::RemoverTags($hora_encerramento);
    }
 
 
@@ -91,6 +140,17 @@ class ChamadoVO extends LogErroVO
    }
 
    public function setTecnicoAtendimentoId(int $tecnico_atendimento_id): void
+   {
+      $this->tecnico_atendimento_id = $tecnico_atendimento_id;
+   }
+
+   // Alias para compatibilidade com chamadas do frontend
+   public function getIdTecnicoAtendimento(): int
+   {
+      return $this->tecnico_atendimento_id;
+   }
+
+   public function setIdTecnicoAtendimento(int $tecnico_atendimento_id): void
    {
       $this->tecnico_atendimento_id = $tecnico_atendimento_id;
    }
