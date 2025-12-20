@@ -46,3 +46,24 @@ function MostrarMensagem(ret) {
     toastr.error("Usuario não encontrado");
   }
 }
+
+function MensagemCustomizada(msg) {
+  toastr.info(msg);
+}
+
+function Mensagem(msg, cor) {
+  switch (cor) {
+    case COR_MSG_ERRO:
+      toastr.error(msg);
+      break;
+    case COR_MSG_ATENCAO:
+      toastr.warning(msg);
+      break;
+    case COR_MSG_SUCESS:
+      toastr.success(msg);
+      break;
+    case COR_MSG_AVISO:
+      toastr.info(msg);
+      break;
+  }
+}

@@ -1,3 +1,8 @@
+const COR_MSG_SUCESS = 1;
+const COR_MSG_ERRO = -1;
+const COR_MSG_AVISO = 2;
+const COR_MSG_ATENCAO = 0;
+
 function BASE_URL_DATAVIEW(dataview) {
   return '../../Resource/dataview/' + dataview + '.php';
 }
@@ -123,12 +128,72 @@ $(document).ready(function () {
 
 // Função simples para sair do sistema
 function sairSistema() {
-  // Limpar dados da sessão (se necessário)
-  if (typeof (Storage) !== "undefined") {
-    localStorage.clear();
-    sessionStorage.clear();
-  }
+  ClearTnk();
+  window.location.href = 'http://localhost:9090/ControleOs/src/View/acesso/login.php';
+}
 
-  // Redirecionar diretamente para a página de login
-  window.location.href = '../../View/acesso/login.php';
+function SetarCampoValor(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.value = value ?? '';
+}
+
+function PegarValor(id) {
+  const el = document.getElementById(id);
+  return el ? el.value : '';
+}
+
+function setAuthCookie(token) {
+  // Define cookie acessível pelo servidor (expira em 1 dia)
+  document.cookie = `user_tkn=${token}; path=/; max-age=${60 * 60 * 24}; SameSite=Lax`;
+}
+
+// Funções de token JWT
+function AddTnk(t) {
+  localStorage.setItem('user_tkn', t);
+}
+
+function GetTnkValue() {
+  const token = GetTnk();
+  if (!token) return {};
+  const base64Url = token.split('.')[1];
+  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
+    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+  }).join(''));
+  return JSON.parse(jsonPayload);
+}
+
+function GetTnk() {
+  return localStorage.getItem('user_tkn');
+}
+
+function setNomeLogado(nome) {
+  localStorage.setItem('nome_logado', nome);
+}
+
+function getNomeLogado() {
+  return localStorage.getItem('nome_logado');
+}
+
+function MostrarNomeLogin() {
+  const nome = getNomeLogado();
+  const el = document.getElementById('nome_logado');
+  if (nome && el) el.innerHTML = nome;
+}
+
+function ClearTnk() {
+  localStorage.clear();
+  sessionStorage.clear();
+  document.cookie = 'user_tkn=; path=/; max-age=0; SameSite=Lax';
+}
+
+function Sair() {
+  ClearTnk();
+  window.location.href = 'http://localhost:9090/ControleOs/src/View/acesso/login.php';
+}
+
+function Verify() {
+  if (localStorage.getItem('user_tkn') === null) {
+    window.location.href = 'http://localhost:9090/ControleOs/src/View/acesso/login.php';
+  }
 }

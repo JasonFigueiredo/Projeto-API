@@ -175,8 +175,16 @@ class USUARIO_SQL
 
   public static function VALIDAR_LOGIN()
   {
-    $sql = "SELECT id, nome_usuario, senha_usuario
-              FROM tb_usuario
+      $sql = "SELECT us.id, 
+           us.nome_usuario, 
+           us.senha_usuario, 
+           us.tipo_usuario,
+           fu.setor_id
+              FROM tb_usuario as us
+         LEFT JOIN tb_funcionario as fu
+                on us.id = fu.usuario_id
+         LEFT JOIN tb_tecnico as te
+                on us.id = te.usuario_id
              WHERE cpf_usuario = ?
                AND status_usuario = ?";
 
@@ -198,7 +206,8 @@ class USUARIO_SQL
     return $sql;
   }
 
-  public static function BUSCAR_SENHA(){
+  public static function BUSCAR_SENHA()
+  {
     $sql = "SELECT senha_usuario 
               FROM tb_usuario 
              WHERE id = ?";

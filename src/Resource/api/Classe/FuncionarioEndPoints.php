@@ -2,6 +2,7 @@
 
 namespace Src\Resource\api\Classe;
 
+use Src\_Public\Util;
 use Src\Controller\ChamadoCTRL;
 use Src\Controller\UsuarioCTRL;
 use Src\Controller\NovoEquipamentoCTRL;
@@ -20,42 +21,70 @@ class FuncionarioEndPoints extends ApiRequest
    {
       $this->ctrl_user = new UsuarioCTRL();
    }
-
    private $params;
-
    public function AddParameters($p)
    {
       $this->params = $p;
    }
-
-   public function VerificarSenhaAPI(){
-      return $this->ctrl_user-> VerificarSenhaCTRL($this->params['id_user'], $this->params['senha_digitada']);
+   public function VerificarSenhaAPI(): int|string
+   {
+      if (!Util::AuthenticationTokenAccess()) {
+         return NAO_AUTORIZADO;
+      }
+      
+      // Valida se o usuário está acessando apenas seus próprios dados
+      if (!Util::ValidateTokenOwnership($this->params['id_user'])) {
+         return NAO_AUTORIZADO;
+      }
+      
+      return $this->ctrl_user->VerificarSenhaCTRL($this->params['id_user'], $this->params['senha_digitada']);
    }
-
    public function CheckEndPoint($endpoint)
    {
       return method_exists($this, $endpoint);
    }
-
-   public function DetalharUsuarioAPI()
+   public function DetalharUsuarioAPI(): array|int|string
    {
-
+      if (!Util::AuthenticationTokenAccess()) {
+         return NAO_AUTORIZADO;
+      }
+      
+      // Valida se o usuário está acessando apenas seus próprios dados
+      if (!Util::ValidateTokenOwnership($this->params['id_user'])) {
+         return NAO_AUTORIZADO;
+      }
+      
       $dados_usario = $this->ctrl_user->DetalharUsuarioCTRL($this->params['id_user']);
       return $dados_usario;
-
    }
-
-   public function AlterarSenhaAPI(){
-      $vo = new UsuarioVO() ;
-
+   public function AlterarSenhaAPI(): int|string
+   {
+      if (!Util::AuthenticationTokenAccess()) {
+         return NAO_AUTORIZADO;
+      }
+      
+      // Valida se o usuário está acessando apenas seus próprios dados
+      if (!Util::ValidateTokenOwnership($this->params['cod_usuario'])) {
+         return NAO_AUTORIZADO;
+      }
+      
+      $vo = new UsuarioVO();
       $vo->setId($this->params['cod_usuario']);
       $vo->setSenha($this->params['nova_senha']);
 
       return $this->ctrl_user->AlterarSenhaCTRL($vo);
    }
-
-   public function AlterarMeusDadosAPI(): int
+   public function AlterarMeusDadosAPI(): int|string
    {
+      if (!Util::AuthenticationTokenAccess()) {
+         return NAO_AUTORIZADO;
+      }
+      
+      // Valida se o usuário está acessando apenas seus próprios dados
+      if (!Util::ValidateTokenOwnership($this->params['cod_usuario'])) {
+         return NAO_AUTORIZADO;
+      }
+      
       $vo = new FuncionarioVO();
       // Dados do funcionário
       $vo->setIdSetor($this->params['setor']);
@@ -78,27 +107,44 @@ class FuncionarioEndPoints extends ApiRequest
 
       return $ret;
    }
-
-   public function ListarEquipamentosAlocadosSetorAPI()
+   public function ListarEquipamentosAlocadosSetorAPI(): array|string
    {
+      if (!Util::AuthenticationTokenAccess()) {
+         return NAO_AUTORIZADO;
+      }
+      
       return (new NovoEquipamentoCTRL)->ListarEquipamentosAlocadosSetorCTRL($this->params['setor_id']);
    }
-
-   public function AbrirChamadoAPI(): int
+   public function AbrirChamadoAPI(): int|string
    {
+      if (!Util::AuthenticationTokenAccess()) {
+         return NAO_AUTORIZADO;
+      }
+      
       $vo = new ChamadoVO();
       $vo->setIdAlocar($this->params['alocar_id']);
       $vo->setIdFuncionario($this->params['func_id']);
       $vo->setProblema($this->params['problema']);
 
-      return (new ChamadoCTRL)->AbrirChamadoCTRL($vo,false);
+      return (new ChamadoCTRL)->AbrirChamadoCTRL($vo, false);
    }
-
-   public function FiltrarChamadosAPI()
+   public function FiltrarChamadosAPI(): array|string
    {
+      if (!Util::AuthenticationTokenAccess()) {
+         return NAO_AUTORIZADO;
+      }
+      
       return (new ChamadoCTRL)->FiltrarChamadosCTRL(
          $this->params['situacao'],
          $this->params['setor_id']
+      );
+   }
+   public function ValidarLoginAPI(): int|string
+   {
+      // Login não requer autenticação (é o endpoint que gera o token)
+      return $this->ctrl_user->ValidarLoginAPICTRL(
+         $this->params['login'],
+         $this->params['senha']
       );
    }
 }

@@ -14,6 +14,30 @@ class UsuarioCTRL
     {
         $this->model = new UsuarioMODEL();
     }
+    // ----- PASSO 3 "CTRL 00" -----
+    public function ValidarLoginAPICTRL(string $login, string $senha): string|int
+    {
+        if (empty($login) || empty($senha))
+            return 0;
+
+        $usuario = $this->model->ValidarLoginMODEL($login, SITUACAO_ATIVO);
+
+        if (empty($usuario))
+            return 1;
+        if (!Util::VerificarSenha($senha, $usuario['senha_usuario']))
+            return 10;
+
+        $this->model->RegistrarLogAcesso($usuario['id']);
+
+        $dados_usuario = [
+            'cod_user' => $usuario['id'],
+            'nome' => $usuario['nome_usuario'],
+            'cod_setor' => $usuario['setor_id'] ?? null,
+            'tipo_usuario' => $usuario['tipo_usuario'] ?? null,
+        ];
+        $token = Util::CreateTokenAuthentication($dados_usuario);
+        return $token;
+    }
     // ----- PASSO 3 "CTRL 01" -----
     public function verificarEmailDuplicadoCTRL($email): bool
     {

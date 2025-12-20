@@ -55,3 +55,6 @@ const SITUACAO_DESCARTADO = 0;
 const USUARIO_ADM = 1;
 const USUARIO_FUNCIONARIO = 2;
 const USUARIO_TECNICO = 3;
+
+const SECRET = 'SeuTokenSuperSecreto123!@#';
+const NAO_AUTORIZADO = 'Usuario nao autorizado a acessar este recurso.';

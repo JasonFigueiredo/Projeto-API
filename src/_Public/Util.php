@@ -4,6 +4,162 @@ namespace Src\_Public;
 
 class Util
 {
+    public static function CreateTokenAuthentication(array $dados_user)
+    {
+        $header = [
+            'typ' => 'JWT',
+            'alg' => 'HS256'
+        ];
+
+        $payload = $dados_user;
+
+        $header = json_encode($header);
+        $payload = json_encode($payload);
+
+        $header = base64_encode($header);
+        $payload = base64_encode($payload);
+
+        $sign = hash_hmac(
+            "sha256",
+            $header . '.' . $payload,
+            SECRET,
+            true
+        );
+
+        $sign = base64_encode($sign);
+        $token = $header . '.' . $payload . '.' . $sign;
+        return $token;
+    }
+
+    /**
+     * Recupera o header Authorization de forma segura, com fallbacks.
+     */
+    public static function GetAuthorizationHeader(): ?string
+    {
+        // Tenta via apache_request_headers
+        if (function_exists('apache_request_headers')) {
+            $headers = apache_request_headers();
+            if (is_array($headers) && !empty($headers)) {
+                // Normaliza chaves para minúsculas
+                $headersLower = array_change_key_case($headers, CASE_LOWER);
+                if (isset($headersLower['authorization']) && $headersLower['authorization'] !== '') {
+                    return $headersLower['authorization'];
+                }
+            }
+        }
+
+        // Fallbacks comuns em diferentes servidores
+        if (isset($_SERVER['HTTP_AUTHORIZATION']) && $_SERVER['HTTP_AUTHORIZATION'] !== '') {
+            return $_SERVER['HTTP_AUTHORIZATION'];
+        }
+        if (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION']) && $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] !== '') {
+            return $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
+        }
+
+        // getallheaders em alguns ambientes não-Apache
+        if (function_exists('getallheaders')) {
+            $headers = getallheaders();
+            if (is_array($headers) && !empty($headers)) {
+                $headersLower = array_change_key_case($headers, CASE_LOWER);
+                if (isset($headersLower['authorization']) && $headersLower['authorization'] !== '') {
+                    return $headersLower['authorization'];
+                }
+            }
+        }
+
+        // Fallback para cookie de token (definido no frontend)
+        if (isset($_COOKIE['user_tkn']) && $_COOKIE['user_tkn'] !== '') {
+            return 'Bearer ' . $_COOKIE['user_tkn'];
+        }
+        return null;
+    }
+
+    /**
+     * Valida token JWT e retorna true/false
+     */
+    public static function AuthenticationTokenAccess(): bool
+    {
+        // Recupera o header Authorization com fallbacks
+        $authHeader = self::GetAuthorizationHeader();
+        if ($authHeader === null || $authHeader === '') {
+            return false;
+        }
+
+        // Procura por esquema Bearer e extrai o token
+        $tokenStr = null;
+        if (preg_match('/Bearer\s+(\S+)/i', $authHeader, $m)) {
+            $tokenStr = $m[1];
+        } else {
+            // Caso não venha com "Bearer ", tenta usar o header bruto
+            $tokenStr = trim($authHeader);
+        }
+
+        // Token precisa ter 3 partes separadas por ponto
+        $parts = explode('.', $tokenStr);
+        if (count($parts) !== 3) {
+            return false;
+        }
+
+        [$header, $payload, $sign] = $parts;
+
+        // Recalcula a assinatura para validar
+        $valid = hash_hmac('sha256', $header . '.' . $payload, SECRET, true);
+        $valid = base64_encode($valid);
+
+        // hash_equals para comparação segura
+        return hash_equals($valid, $sign);
+    }
+
+    /**
+     * Extrai dados do payload do JWT
+     * Retorna array com dados ou null se inválido
+     */
+    public static function GetTokenData(): ?array
+    {
+        $authHeader = self::GetAuthorizationHeader();
+        if ($authHeader === null || $authHeader === '') {
+            return null;
+        }
+
+        // Extrai token
+        $tokenStr = null;
+        if (preg_match('/Bearer\s+(\S+)/i', $authHeader, $m)) {
+            $tokenStr = $m[1];
+        } else {
+            $tokenStr = trim($authHeader);
+        }
+
+        $parts = explode('.', $tokenStr);
+        if (count($parts) !== 3) {
+            return null;
+        }
+
+        // Decodifica payload
+        try {
+            $payload = json_decode(base64_decode($parts[1]), true);
+            return $payload;
+        } catch (\Exception $e) {
+            return null;
+        }
+    }
+
+    /**
+     * Valida se o ID do usuário no token corresponde ao ID solicitado
+     */
+    public static function ValidateTokenOwnership(int $userId): bool
+    {
+        if (!self::AuthenticationTokenAccess()) {
+            return false;
+        }
+
+        $tokenData = self::GetTokenData();
+        if ($tokenData === null) {
+            return false;
+        }
+
+        // Verifica se o cod_user do token corresponde ao userId solicitado
+        return isset($tokenData['cod_user']) && (int)$tokenData['cod_user'] === $userId;
+    }
 
     public static function IniciarSessao(): void
     {
@@ -44,10 +200,23 @@ class Util
     public static function VerificarLogado()
     {
         self::IniciarSessao();
-        if(!isset($_SESSION['cod']) || empty($_SESSION['cod']))
-        {
-            self::ChamarPagina('http://localhost:9090/ControleOs/src/View/acesso/login');
+        if (isset($_SESSION['cod']) && !empty($_SESSION['cod'])) {
+            return;
         }
+
+        // Tenta autenticar via token JWT (cookie/header)
+        if (self::AuthenticationTokenAccess()) {
+            $tokenData = self::GetTokenData();
+            if ($tokenData && isset($tokenData['cod_user']) && isset($tokenData['nome'])) {
+                // Popular sessão para compatibilidade com páginas antigas
+                $_SESSION['cod'] = (int)$tokenData['cod_user'];
+                $_SESSION['nome'] = $tokenData['nome'];
+                return;
+            }
+        }
+
+        // Se não autenticou, redireciona para login unificado
+        self::ChamarPagina('http://localhost:9090/ControleOs/src/View/acesso/login.php');
     }
     // setar fuso horario
     private static function SetarFusoHorario()

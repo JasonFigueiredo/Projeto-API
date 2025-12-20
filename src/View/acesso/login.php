@@ -9,13 +9,13 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_usuario_dataview.php
   <?php
   include_once PATH . "Template/_includes/_head.php";
   ?>
-  <!-- CSS personalizado para login -->
 </head>
 
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
-      <a><b>Controle de Chamados</b></a>
+      <a style="color: white;"><b>Sistema de Controle de Chamados</b></a>
+      <p style="font-size: 14px; color: black; margin-top: 10px;">Acesso Unificado</p>
     </div>
     <!-- /.login-logo -->
     <div class="card">
@@ -57,7 +57,7 @@ include_once dirname(__DIR__, 2) . '/Resource/dataview/novo_usuario_dataview.php
   include_once PATH . "Template/_includes/_scripts.php";
   include_once PATH . "Template/_includes/_msg.php";
   ?>
-  <script src="../../Resource/ajax/usuario_ajax.js"></script>
+    <script src="../../Resource/ajax/login_ajax.js"></script>
   <!-- Validação de CPF comentada para evitar conflitos no login -->
   <!-- <script src="../../Resource/js/validar_cpf.js"></script> -->
   
